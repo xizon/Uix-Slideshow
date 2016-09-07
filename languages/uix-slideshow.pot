@@ -1,0 +1,593 @@
+# Loco Gettext template
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Uix Slides 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
+"POT-Revision-Date: Wed Sep 07 2016 16:44:14 GMT+0800 (CST)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#. URI of the plugin
+msgid "https://uiux.cc/wp-plugins/uix-slideshow"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"This plugin is a simple way to build, organize and display slideshow into "
+"any existing WordPress theme."
+msgstr ""
+
+#. Author of the plugin
+msgid "UIUX Lab"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://uiux.cc"
+msgstr ""
+
+#: ../uix-slideshow.php:206
+msgid "Uix Slideshow Settings"
+msgstr ""
+
+#: ../uix-slideshow.php:207 ../uix-slideshow.php:269
+msgid "Settings"
+msgstr ""
+
+#: ../uix-slideshow.php:222 ../uix-slideshow.php:223
+msgid "Helper"
+msgstr ""
+
+#: ../uix-slideshow.php:270 ../uix-slideshow.php:363 ../helper/settings.php:70
+msgid "How to use?"
+msgstr ""
+
+#: ../uix-slideshow.php:362
+msgid ""
+"Do you want to create a slideshow website with WordPress?  Learn how to add "
+"slideshow to your themes."
+msgstr ""
+
+#: ../uix-slideshow.php:366
+#, php-format
+msgid "<a href=\"%1$s\">Hide Notice</a>"
+msgstr ""
+
+#: ../uix-slideshow.php:378
+msgid ""
+"<strong>You need to create Uix Slideshow template files in your templates "
+"directory. You can create the files on the WordPress admin panel.</strong>"
+msgstr ""
+
+#: ../uix-slideshow.php:378 ../helper/tabs/usage.php:22
+msgid "Create now!"
+msgstr ""
+
+#: ../uix-slideshow.php:378 ../helper/tabs/temp.php:55
+msgid ""
+"As a workaround you can use FTP, access the Uix Slideshow template files "
+"path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and "
+"upload files to your theme templates directory <code>/wp-"
+"content/themes/{your-theme}/</code>. "
+msgstr ""
+
+#: ../uix-slideshow.php:532 ../uix-slideshow.php:607
+msgid ""
+"<div class=\"notice notice-success\"><p>Operation successfully completed!"
+"</p></div>"
+msgstr ""
+
+#: ../uix-slideshow.php:534
+msgid ""
+"<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
+"template files:</strong> Please check your server settings. You can upload "
+"files to theme templates directory using FTP.</p></div>"
+msgstr ""
+
+#: ../uix-slideshow.php:539
+msgid ""
+"<div class=\"notice notice-error\"><p><strong>There was a problem removing "
+"your template files:</strong> Please check your server settings. You can "
+"upload files to theme templates directory using FTP.</p></div>"
+msgstr ""
+
+#: ../uix-slideshow.php:542
+msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
+msgstr ""
+
+#: ../helper/settings.php:8
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: ../helper/settings.php:52
+msgid "Uix Slideshow Helper"
+msgstr ""
+
+#: ../helper/settings.php:66
+msgid "About"
+msgstr ""
+
+#: ../helper/settings.php:75
+msgid "Credits"
+msgstr ""
+
+#: ../helper/settings.php:80
+msgid "Template Files"
+msgstr ""
+
+#: ../helper/settings.php:85
+msgid "<i class=\"dashicons dashicons-admin-generic\"></i> General Settings"
+msgstr ""
+
+#: ../helper/settings.php:90
+msgid "<i class=\"dashicons dashicons-welcome-view-site\"></i> Custom CSS"
+msgstr ""
+
+#: ../helper/tabs/about.php:10
+msgid ""
+"This plugin is a simple way to build, organize and display slideshow into "
+"any existing WordPress theme. <strong>Using template file to embed your "
+"theme.</strong> <br>Insert slideshow anywhere on your site using a custom "
+"post type. Powered by jQuery Flexslider with some transition styles to "
+"choose from."
+msgstr ""
+
+#: ../helper/tabs/credits.php:11
+msgid ""
+"I would like to give special thanks to credits. The following is a guide to "
+"the list of credits for this plugin:"
+msgstr ""
+
+#: ../helper/tabs/custom-css.php:19 ../helper/tabs/general-settings.php:28
+msgid "Settings saved."
+msgstr ""
+
+#: ../helper/tabs/custom-css.php:33
+msgid ""
+"You can overview the original styles to overwrite it. It will be on creating "
+"new styles to your website, without modifying original <code>.css</code> "
+"files."
+msgstr ""
+
+#: ../helper/tabs/custom-css.php:38
+msgid "Paste your CSS code"
+msgstr ""
+
+#: ../helper/tabs/custom-css.php:71 ../helper/tabs/custom-css.php:108
+msgid "CSS file root directory:"
+msgstr ""
+
+#: ../helper/tabs/custom-css.php:76
+msgid "Close"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:46
+msgid "Effect"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:53
+msgid "Slide"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:60
+msgid "Fade"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:71
+msgid "Speed of Images Appereance"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:76 ../helper/tabs/general-settings.php:91
+msgid "ms"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:86
+msgid "Delay Between Images"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:102
+msgid "Previous Button Text"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:115
+msgid "Next Button Text"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:128
+msgid "Automatically Transition"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:134
+msgid "Setup a slideshow for the slider to animate automatically."
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:144
+msgid "Show Arrow Navigation"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:150
+msgid "Create previous/next arrow navigation."
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:160
+msgid "Show Paging Navigation"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:166
+msgid "Create navigation for paging control of each slide."
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:177
+msgid "Animation Loop"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:183
+msgid "Gives the slider a seamless infinite loop."
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:193
+msgid "Smooth Height"
+msgstr ""
+
+#: ../helper/tabs/general-settings.php:199
+msgid "Animate the height of the slider smoothly for slides of varying height."
+msgstr ""
+
+#: ../helper/tabs/temp.php:17
+msgid ""
+"Uix Slideshow template files already exists. Remove Uix Slideshow template "
+"files in your templates directory:"
+msgstr ""
+
+#: ../helper/tabs/temp.php:19
+msgid ""
+"As a workaround you can use FTP, access path <code>/wp-content/themes/{your-"
+"theme}/</code> and remove Uix Slideshow template files."
+msgstr ""
+
+#: ../helper/tabs/temp.php:24 ../helper/tabs/temp.php:60
+msgid "Template files list:"
+msgstr ""
+
+#: ../helper/tabs/temp.php:44
+msgid "Remove Uix Slideshow Template Files"
+msgstr ""
+
+#: ../helper/tabs/temp.php:53
+msgid "Copy Uix Slideshow template files in your templates directory:"
+msgstr ""
+
+#: ../helper/tabs/temp.php:79
+msgid "Click This Button to Copy Uix Slideshow Files"
+msgstr ""
+
+#: ../helper/tabs/usage.php:11
+msgid ""
+"<h4 class=\"uix-bg-custom-title\">1. After activating your theme, you can see "
+"a prompt pointed out as absolutely critical. Go to <strong>\"Appearance -> "
+"Install Plugins\"</strong>.\n"
+"Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-"
+"content/plugins/) And upload files there.)</h4>"
+msgstr ""
+
+#: ../helper/tabs/usage.php:18
+msgid ""
+"<h4 class=\"uix-bg-custom-title\">2. You need to create Uix Slideshow template "
+"files in your templates directory. You can create the files on the WordPress "
+"admin panel.</h4>"
+msgstr ""
+
+#: ../helper/tabs/usage.php:26
+msgid ""
+"&nbsp;&nbsp;&nbsp;&nbsp;As a workaround you can use FTP, access the Uix "
+"Slideshow template files path <code>/wp-content/plugins/uix-"
+"slideshow/theme_templates/</code> and upload files to your theme templates "
+"directory <code>/wp-content/themes/{your-theme}/</code>. "
+msgstr ""
+
+#: ../helper/tabs/usage.php:30
+msgid ""
+"&nbsp;&nbsp;&nbsp;&nbsp;Please check if you have the 1 template file "
+"<code>\"partials-uix_slideshow.php\"</code> in your templates directory. If "
+"you can't find these files, then just copy them from the directory \"/wp-"
+"content/plugins/uix-slideshow/theme_templates/\" to your templates directory."
+msgstr ""
+
+#: ../helper/tabs/usage.php:39
+msgid ""
+"<h4 class=\"uix-bg-custom-title\">3. Create uix slideshow item and publish "
+"slideshow then.</h4>"
+msgstr ""
+
+#: ../helper/tabs/usage.php:46
+msgid ""
+"<h4 class=\"uix-bg-custom-title\">4. You can pretty much custom every aspect "
+"of the look and feel of this page by modifying the <code>*.php</code> "
+"template files <strong>(Access the path to the themes directory)</strong> . "
+"Best Practices for Editing WordPress Template Files:</h4>"
+msgstr ""
+
+#: ../helper/tabs/usage.php:49
+msgid ""
+"&nbsp;&nbsp;&nbsp;&nbsp;(1) WordPress comes with a theme and plugin editor "
+"as part of the core functionality. You can find it in your install by going "
+"to <strong>\"Appearance > Editor\"</strong> from your sidebar."
+msgstr ""
+
+#: ../helper/tabs/usage.php:57
+msgid ""
+"&nbsp;&nbsp;&nbsp;&nbsp;(2) You can connect to your site via an "
+"<strong>FTP</strong> client, download a copy of the file you want to change, "
+"make the changes and then upload the file back to the server, overwriting "
+"the file that’s on the server."
+msgstr ""
+
+#: ../helper/tabs/usage.php:62
+msgid "<h4 class=\"uix-bg-custom-title\">5. Adding Uix Slideshow to Web Pages.</h4>"
+msgstr ""
+
+#: ../helper/tabs/usage.php:65
+msgid ""
+"There are two different ways you can add the Uix Slideshow widget to your "
+"site's pages:"
+msgstr ""
+
+#: ../helper/tabs/usage.php:69
+msgid ""
+"&nbsp;&nbsp;&nbsp;&nbsp;(1) <strong>Shortcode</strong> - Embed a shortcode "
+"into the editor of any post, page, or custom post type."
+msgstr ""
+
+#: ../helper/tabs/usage.php:72
+msgid ""
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use <code>[uix_slideshow_output show=\"-"
+"1\"]</code> to add it to your Post, Widgets or Page content. Now this "
+"shortcode has one attributes. Uix Slideshow show at most can be customized "
+"using the \"show\" parameter. Show all items if value is \"-1\". Go to your "
+"WordPress admin panel, edit or create a new post (or page). You’ll see our "
+"tiny little button in the toolbar, preceded by a separator:"
+msgstr ""
+
+#: ../helper/tabs/usage.php:80
+msgid ""
+"&nbsp;&nbsp;&nbsp;&nbsp;(2) <strong>Template tags</strong> - Add a simple "
+"PHP function to one of your theme's template files."
+msgstr ""
+
+#: ../helper/tabs/usage.php:83
+msgid ""
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Place <code>&lt;?php get_template_part( "
+"'partials', 'uix_slideshow' ); ?&gt;</code> in your templates."
+msgstr ""
+
+#: ../helper/tabs/usage.php:88
+msgid ""
+"<h4 class=\"uix-bg-custom-title\">6. The Uix Slideshow plugin allows users to "
+"easily customize to themes. Go to <strong>\"Uix Slideshow -> Settings -> "
+"General Settings\"</strong>.</h4>"
+msgstr ""
+
+#: ../helper/tabs/usage.php:94
+msgid ""
+"<h4 class=\"uix-bg-custom-title\">7. You can overview the original styles to "
+"overwrite it. It will be on creating new styles to your website, without "
+"modifying original <code>.css</code> files. Go to <strong>\"Uix Slideshow -> "
+"Settings -> Custom CSS\"</strong>.</h4>"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:16
+msgid "Slider Image"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:35
+msgid "Slider Settings"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:43
+msgid "Caption"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:51
+msgid "Title Color"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:59
+msgid "Caption Color"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:73
+msgid "URL Settings"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:80 ../post-extensions/slideshow.
+#: php:96
+msgid "URL"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:81
+msgid ""
+"Enter a custom URL to link this slide to. Don't forget the http:// at the "
+"front!"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:87
+msgid "Button Label"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:88
+msgid "It defines the text on the button."
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:91
+msgid "Check Out"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:95
+msgid "Target"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:96
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:46 ../shortcodes/core/tinymce-plugin-lang.php:
+#: 12
+msgid "Uix Slideshow"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:47
+msgid "Slideshow Item"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:48
+msgid "Add New Item"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:49 ../post-extensions/slideshow.php:51
+msgid "Add New Slideshow Item"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:50
+msgid "Edit Slideshow Item"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:52
+msgid "View Item"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:53
+msgid "Search Slideshow"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:54
+msgid "No slideshow items found"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:55
+msgid "No slideshow items found in trash"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:94
+msgid "Slide Image"
+msgstr ""
+
+#: ../post-extensions/slideshow.php:97
+msgid "Author"
+msgstr ""
+
+#. Description of the plugin
+msgid "This will create metaboxes with custom fields that will blow your mind."
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:258
+msgid "Clear"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:259
+msgid "Default"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:260
+msgid "Select Color"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:261
+msgid "Current Color"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:288
+msgid "Select / Deselect All"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:1179
+msgid "Save"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_ajax.php:47
+msgid "Please Try Again"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_ajax.php:131
+msgid "Remove Embed"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_ajax.php:134
+#, php-format
+msgid "No oEmbed Results Found for %s. View more info at"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_field.php:
+#: 459
+msgid "Add Group"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_field.php:
+#: 460
+msgid "Remove Group"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
+#: 250
+msgid "Add Row"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
+#: 306 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
+#: php:706 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_Meta_Box_types.php:768
+msgid "Remove"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
+#: 601 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
+#: php:635
+msgid "No terms"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
+#: 674 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
+#: php:728
+msgid "Add or Upload File"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
+#: 695 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
+#: php:760
+msgid "Remove Image"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
+#: 706 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
+#: php:768
+msgid "File:"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
+#: 706 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
+#: php:768
+msgid "Download"
+msgstr ""
+
+#: ../shortcodes/core/tinymce-plugin-lang.php:13
+msgid "Insert Uix Slideshow"
+msgstr ""
+
+#: ../shortcodes/core/tinymce-plugin-lang.php:14
+msgid "Show at most (Show all items if value is \"-1\")"
+msgstr ""
