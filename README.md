@@ -36,13 +36,13 @@ Initial Release.
 
 ###Screenshot
 
-![](https://github.com/xizon/Uix-Shortcodes/blob/master/assets/screenshot-1.jpg)
+![](https://github.com/xizon/Uix-Slideshow/blob/master/assets/screenshot-1.jpg)
 
-![](https://github.com/xizon/Uix-Shortcodes/blob/master/assets/screenshot-2.jpg)
+![](https://github.com/xizon/Uix-Slideshow/blob/master/assets/screenshot-2.jpg)
 
-![](https://github.com/xizon/Uix-Shortcodes/blob/master/assets/screenshot-3.jpg)
+![](https://github.com/xizon/Uix-Slideshow/blob/master/assets/screenshot-3.jpg)
 
-![](https://github.com/xizon/Uix-Shortcodes/blob/master/assets/screenshot-4.jpg)
+![](https://github.com/xizon/Uix-Slideshow/blob/master/assets/screenshot-4.jpg)
 
 
 
