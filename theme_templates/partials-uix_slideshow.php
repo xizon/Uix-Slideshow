@@ -44,7 +44,7 @@ $uix_slideshow_query = new WP_Query(
                     $caption       = get_post_meta( get_the_ID(), 'uix_slideshow_caption', true );
                     $button_text   = get_post_meta( get_the_ID(), 'uix_slideshow_button_text', true );
                     $url           = get_post_meta( get_the_ID(), 'uix_slideshow_url', true );
-                    $url_target    = get_post_meta( get_the_ID(), 'uix_slideshow_target', true );
+                    $url_target    = ( get_post_meta( get_the_ID(), 'uix_slideshow_target', true ) ) ? esc_attr( '_blank' ) : esc_attr( '_self' );
                     $title_color   = ( get_post_meta( get_the_ID(), 'uix_slideshow_title_color', true ) == '' ) ? esc_attr( '#ffffff' ) : esc_attr( get_post_meta( get_the_ID(), 'uix_slideshow_title_color', true ) );
                     $caption_color = ( get_post_meta( get_the_ID(), 'uix_slideshow_caption_color', true ) == '' ) ? esc_attr( '#ffffff' ) : esc_attr( get_post_meta( get_the_ID(), 'uix_slideshow_caption_color', true ) ); 
                 
