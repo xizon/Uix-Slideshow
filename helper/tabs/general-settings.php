@@ -146,7 +146,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'general-settings' ) {
              <td>
                 <p>
                     <label>
-                    <input name="uix_slideshow_opt_arr_nav" type="checkbox" value="1" <?php checked( '1', get_option('uix_slideshow_opt_arr_nav') ); ?> />
+                    <input name="uix_slideshow_opt_arr_nav" type="checkbox" value="1" <?php checked( '1', get_option( 'uix_slideshow_opt_arr_nav', 1 ) ); ?> />
                     <?php _e( 'Create previous/next arrow navigation.', 'uix-slideshow' ); ?>
                     </label>
                 </p>
