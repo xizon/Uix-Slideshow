@@ -10,22 +10,53 @@ $hidden_field_name = 'submit_hidden_uix_slideshow_generalsettings';
 	
 	
 // If they did, this hidden field will be set to 'Y'
-if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
-	
-	// Save the posted value in the database
-	update_option( 'uix_slideshow_opt_animation', $_POST[ 'uix_slideshow_opt_animation' ] );
-	update_option( 'uix_slideshow_opt_auto', $_POST[ 'uix_slideshow_opt_auto' ] );
-	update_option( 'uix_slideshow_opt_effect_duration', $_POST[ 'uix_slideshow_opt_effect_duration' ] );
-	update_option( 'uix_slideshow_opt_speed', $_POST[ 'uix_slideshow_opt_speed' ] );
-	update_option( 'uix_slideshow_opt_arr_nav', $_POST[ 'uix_slideshow_opt_arr_nav' ] );
-	update_option( 'uix_slideshow_opt_paging_nav', $_POST[ 'uix_slideshow_opt_paging_nav' ] );
-	update_option( 'uix_slideshow_opt_animloop', $_POST[ 'uix_slideshow_opt_animloop' ] );
-	update_option( 'uix_slideshow_opt_smoothheight', $_POST[ 'uix_slideshow_opt_smoothheight' ] );
-	update_option( 'uix_slideshow_opt_prev_txt', wp_unslash( $_POST[ 'uix_slideshow_opt_prev_txt' ] ) );
-	update_option( 'uix_slideshow_opt_next_txt', wp_unslash( $_POST[ 'uix_slideshow_opt_next_txt' ] ) );
+if ( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
 
-	// Put a "settings saved" message on the screen
-	echo '<div class="updated"><p><strong>'.__('Settings saved.', 'uix-slideshow' ).'</strong></p></div>';
+	// Just security thingy that wordpress offers us
+	check_admin_referer( 'uix_slideshow_generalsettings' );
+	
+	// Only if administrator
+	if( current_user_can( 'administrator' ) ) {
+		
+		$uix_slideshow_opt_animation 	         = sanitize_text_field( $_POST[ 'uix_slideshow_opt_animation' ] );
+		$uix_slideshow_opt_auto 	             = isset( $_POST['uix_slideshow_opt_auto'] ) ? sanitize_text_field( $_POST[ 'uix_slideshow_opt_auto' ] ) : 0;
+		$uix_slideshow_opt_arr_nav 	             = isset( $_POST['uix_slideshow_opt_arr_nav'] ) ? sanitize_text_field( $_POST[ 'uix_slideshow_opt_arr_nav' ] ) : 0;
+		$uix_slideshow_opt_paging_nav 	         = isset( $_POST['uix_slideshow_opt_paging_nav'] ) ? sanitize_text_field( $_POST[ 'uix_slideshow_opt_paging_nav' ] ) : 0;
+		$uix_slideshow_opt_animloop 	         = isset( $_POST['uix_slideshow_opt_animloop'] ) ? sanitize_text_field( $_POST[ 'uix_slideshow_opt_animloop' ] ) : 0;
+		$uix_slideshow_opt_smoothheight 	     = isset( $_POST['uix_slideshow_opt_smoothheight'] ) ? sanitize_text_field( $_POST[ 'uix_slideshow_opt_smoothheight' ] ) : 0;
+		
+		$uix_slideshow_opt_effect_duration 	     = intval( $_POST[ 'uix_slideshow_opt_effect_duration' ] );
+		if ( !$uix_slideshow_opt_effect_duration ) {
+			$uix_slideshow_opt_effect_duration = 600;
+		}
+		
+		$uix_slideshow_opt_speed 	             = intval( $_POST[ 'uix_slideshow_opt_speed' ] );
+		if ( !$uix_slideshow_opt_speed ) {
+			$uix_slideshow_opt_speed = 10000;
+		}
+	
+		
+		$uix_slideshow_opt_prev_txt 	         = wp_unslash( $_POST[ 'uix_slideshow_opt_prev_txt' ] );
+		$uix_slideshow_opt_next_txt 	         = wp_unslash( $_POST[ 'uix_slideshow_opt_next_txt' ] );
+		
+		
+		// Save the posted value in the database
+		update_option( 'uix_slideshow_opt_animation', $uix_slideshow_opt_animation );
+		update_option( 'uix_slideshow_opt_auto', $uix_slideshow_opt_auto );
+		update_option( 'uix_slideshow_opt_effect_duration', $uix_slideshow_opt_effect_duration );
+		update_option( 'uix_slideshow_opt_speed', $uix_slideshow_opt_speed );
+		update_option( 'uix_slideshow_opt_arr_nav', $uix_slideshow_opt_arr_nav );
+		update_option( 'uix_slideshow_opt_paging_nav', $uix_slideshow_opt_paging_nav );
+		update_option( 'uix_slideshow_opt_animloop', $uix_slideshow_opt_animloop );
+		update_option( 'uix_slideshow_opt_smoothheight', $uix_slideshow_opt_smoothheight );
+		update_option( 'uix_slideshow_opt_prev_txt', $uix_slideshow_opt_prev_txt );
+		update_option( 'uix_slideshow_opt_next_txt', $uix_slideshow_opt_next_txt );
+	
+		// Put a "settings saved" message on the screen
+		echo '<div class="updated"><p><strong>'.__('Settings saved.', 'uix-slideshow' ).'</strong></p></div>';
+	
+	}
+	
 
  }  
 
@@ -35,9 +66,10 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'general-settings' ) {
 
 ?>
 
-    <form name="form1" method="post" action="">
+    <form method="post" action="">
     
         <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
+        <?php wp_nonce_field( 'uix_slideshow_generalsettings' ); ?>
   
         <table class="form-table">
         
@@ -207,7 +239,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'general-settings' ) {
           
         </table> 
         
-
+        
         <?php submit_button(); ?>
 
     

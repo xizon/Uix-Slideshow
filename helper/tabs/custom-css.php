@@ -9,14 +9,24 @@ $hidden_field_name = 'submit_hidden_uix_slideshow_customcss';
 
 	
 // If they did, this hidden field will be set to 'Y'
-if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
-
-	// Save the posted value in the database
-	update_option( 'uix_slideshow_opt_cssnewcode', wp_unslash( $_POST[ 'uix_slideshow_opt_cssnewcode' ] ) );
-
-
-	// Put a "settings saved" message on the screen
-	echo '<div class="updated"><p><strong>'.__('Settings saved.', 'uix-slideshow' ).'</strong></p></div>';
+if ( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
+	
+	// Just security thingy that wordpress offers us
+	check_admin_referer( 'uix_slideshow_customcss' );
+	
+	// Only if administrator
+	if( current_user_can( 'administrator' ) ) {
+		
+		$uix_slideshow_opt_cssnewcode = wp_unslash( $_POST[ 'uix_slideshow_opt_cssnewcode' ] );
+	
+		// Save the posted value in the database
+		update_option( 'uix_slideshow_opt_cssnewcode', $uix_slideshow_opt_cssnewcode );
+	
+	
+		// Put a "settings saved" message on the screen
+		echo '<div class="updated"><p><strong>'.__('Settings saved.', 'uix-slideshow' ).'</strong></p></div>';
+		
+	}
 
  }  
 
@@ -26,9 +36,10 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 ?>
 
-    <form name="form1" method="post" action="">
+    <form method="post" action="">
     
         <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
+        <?php wp_nonce_field( 'uix_slideshow_customcss' ); ?>
         
         <h4><?php _e( 'You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original <code>.css</code> files.', 'uix-slideshow' ); ?></h4>
             
@@ -52,19 +63,17 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	$filesystype = 'plugin';
 	$filesyspath = 'assets/css/';
 
-	
-	wp_nonce_field( 'css-filesystem-nonce' );
-	
+
 	// capture output from WP_Filesystem
 	ob_start();
 	
-		UixSlideshow::wpfilesystem_read_file( 'css-filesystem-nonce', 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER.'&tab=custom-css', $filesyspath, $org_cssname_uix_slideshow, $filesystype );
+		UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER.'&tab=custom-css', $filesyspath, $org_cssname_uix_slideshow, $filesystype );
 		$filesystem_uix_slideshow_out = ob_get_contents();
 	ob_end_clean();
 	
 	if ( empty( $filesystem_uix_slideshow_out ) ) {
 		
-		$style_org_code_uix_slideshow = UixSlideshow::wpfilesystem_read_file( 'css-filesystem-nonce', 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER.'&tab=custom-css', $filesyspath, $org_cssname_uix_slideshow, $filesystype );
+		$style_org_code_uix_slideshow = UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER.'&tab=custom-css', $filesyspath, $org_cssname_uix_slideshow, $filesystype );
 		
 		echo '
 		
