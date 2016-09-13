@@ -5,6 +5,8 @@ Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Donate Me](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PYZLU7UZNQ6CE)
 
+[Plugin for Wordpress at WordPress.org Repository](https://wordpress.org/plugins/uix-slideshow/)
+
 [Plugin URI](https://uiux.cc/wp-plugins/uix-slideshow/)
 
 ### Licensing
