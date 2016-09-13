@@ -1,5 +1,5 @@
 === Uix Slideshow ===
-Contributors: UIUX Lab
+Contributors: uiuxlab
 Donate link: https://uiux.cc
 Author URI: https://uiux.cc
 Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
