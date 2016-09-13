@@ -27,14 +27,15 @@ There are two different ways you can add the Uix Slideshow widget to your site's
 
 (1) Shortcode - Embed a shortcode into the editor of any post, page, or custom post type. 
   
-  Use [uix_slideshow_output show="-1"] to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter. Show all items if value is '-1'.
-  
+
+  Use `[uix_slideshow_output show="-1"]` to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter. Show all items if value is '-1'.
+
+
   Go to your WordPress admin panel, edit or create a new post (or page). You’ll see a Uix Slideshow button in the toolbar.
 
 (2) Template tags - Add a simple PHP function to one of your theme's template files. 
 
-  Place <?php get_template_part( 'partials', 'uix_slideshow' ); ?> in your templates.
-
+  Place `<?php get_template_part( 'partials', 'uix_slideshow' ); ?>` in your templates.
 
 == Installation ==
 
@@ -62,14 +63,15 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
   (1) Shortcode - Embed a shortcode into the editor of any post, page, or custom post type. 
       
-      Use [uix_slideshow_output show="-1"] to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter. Show all items if value is '-1'.
+     Use `[uix_slideshow_output show="-1"]` to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter. Show all items if value is '-1'.
+
+
       
       Go to your WordPress admin panel, edit or create a new post (or page). You’ll see a Uix Slideshow button in the toolbar.
   
   (2) Template tags - Add a simple PHP function to one of your theme's template files. 
   
-      Place <?php get_template_part( 'partials', 'uix_slideshow' ); ?> in your templates.
-
+      Place `<?php get_template_part( 'partials', 'uix_slideshow' ); ?>` in your templates.
  
 6. The Uix Slideshow plugin allows users to easily customize to themes. Go to "Uix Slideshow -> Settings -> General Settings". 
 
