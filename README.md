@@ -21,9 +21,13 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates 
 
-##### Version 1.1
+##### Version 1.0.1
 
 Optimized for tablet display.
+
+Improved event binding from the plugin main JavaScript file.
+
+Improved the main CSS file.
 
 
 ##### Version 1.0.0
