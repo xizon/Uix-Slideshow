@@ -262,7 +262,7 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 	margin: 0 auto;
 }
 
-@media all and (max-width: 767px) {
+@media all and (max-width: 768px) {
 	
 	.custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .text-container {
 		width: 98%;
@@ -302,7 +302,7 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 }
 
 
-@media all and (max-width: 767px) {
+@media all and (max-width: 768px) {
 		
 	.custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .link-button {
 		margin: .8em !important;
@@ -327,7 +327,7 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 }
 
 
-@media all and (max-width: 767px) {
+@media all and (max-width: 768px) {
 
 	.custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .text-container .level-1 {
 		font-size: 1.625em !important;

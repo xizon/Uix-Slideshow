@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 4.6
-Stable tag: 1.0.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,6 +99,11 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+= 1.1 =
+
+* Optimized for tablet display.
+
 
 = 1.0.0 =
 

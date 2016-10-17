@@ -21,6 +21,11 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates 
 
+##### Version 1.1
+
+Optimized for tablet display.
+
+
 ##### Version 1.0.0
 
 Initial Release.
@@ -34,6 +39,7 @@ Initial Release.
 - WP 4.4.2
 - WP 4.5.*
 - WP 4.6
+- WP 4.6.1
 
 
 ###Screenshot
