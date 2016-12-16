@@ -16,7 +16,7 @@ function uix_slideshow_custom_tinymce_plugin_translation() {
 		
     );
     $locale = _WP_Editors::$mce_locale;
-    $translated = 'tinyMCE.addI18n("' . $locale . '.uix_slideshow_custom_tinymce_plugin", ' . json_encode( $strings ) . ");\n";
+    $translated = 'tinyMCE.addI18n("' . $locale . '.uix_slideshow_custom_tinymce_plugin", ' . json_encode( $strings ) . ");".PHP_EOL;
 
      return $translated;
 }
