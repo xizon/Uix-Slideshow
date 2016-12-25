@@ -27,7 +27,7 @@ function uix_slideshow_fun( $atts, $content = null ){
 	ob_start();
 	
 	    if( !UixSlideshow::tempfile_exists() ) {
-			require_once WP_PLUGIN_DIR .'/'.UixSlideshow::get_slug(). '/theme_templates/partials-uix_slideshow.php';
+			require_once UIX_SLIDESHOW_PLUGIN_DIR. 'theme_templates/partials-uix_slideshow.php';
 		} else {
 			require_once get_template_directory() . '/partials-uix_slideshow.php';
 		}

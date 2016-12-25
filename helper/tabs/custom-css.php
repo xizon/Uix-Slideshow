@@ -58,22 +58,37 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 <?php
 
 
-	$org_cssname_uix_slideshow = 'flexslider-custom.css';
-	$org_csspath_uix_slideshow = UixSlideshow::plug_directory() .'assets/css/'. $org_cssname_uix_slideshow;
-	$filesystype = 'plugin';
-	$filesyspath = 'assets/css/';
+	$newFilePath                 = get_stylesheet_directory() . '/uix-slideshow-style.css';
+	$newFilePath2                = get_stylesheet_directory() . '/assets/css/uix-slideshow-style.css';
+	$org_cssname_uix_slideshow   = UixSlideshow::core_css_file( 'name' );
+	$org_csspath_uix_slideshow   = UixSlideshow::core_css_file();
 
+	if ( file_exists( $newFilePath ) || file_exists( $newFilePath2 ) ) {
+		$filetype = 'theme';
+		
+		//CSS file directory
+		$filepath = '';
+		
+		if ( file_exists( $newFilePath2 ) ) {
+			$filepath = 'assets/css/';
+		}
+		
+	} else {
+		$filetype = 'plugin';
+		$filepath = 'assets/css/';
+	}
+	
 
 	// capture output from WP_Filesystem
 	ob_start();
 	
-		UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER.'&tab=custom-css', $filesyspath, $org_cssname_uix_slideshow, $filesystype );
+		UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'admin.php?page='.UixSlideshow::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_slideshow, $filetype );
 		$filesystem_uix_slideshow_out = ob_get_contents();
 	ob_end_clean();
 	
 	if ( empty( $filesystem_uix_slideshow_out ) ) {
 		
-		$style_org_code_uix_slideshow = UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER.'&tab=custom-css', $filesyspath, $org_cssname_uix_slideshow, $filesystype );
+		$style_org_code_uix_slideshow = UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'admin.php?page='.UixSlideshow::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_slideshow, $filetype );
 		
 		echo '
 		

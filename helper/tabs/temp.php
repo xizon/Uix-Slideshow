@@ -20,12 +20,12 @@ if ( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' 
 		
 		if( UixSlideshow::tempfile_exists() ) {
 			// Template files removed
-			$status_echo = UixSlideshow::templates( 'uix_slideshow_tempfiles', 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER, true );
+			$status_echo = UixSlideshow::templates( 'uix_slideshow_tempfiles', 'admin.php?page='.UixSlideshow::HELPER.'&tab=temp', true );
 			echo $status_echo;
 	
 		} else {
 			// Template files copied
-			$status_echo = UixSlideshow::templates( 'uix_slideshow_tempfiles', 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER );
+			$status_echo = UixSlideshow::templates( 'uix_slideshow_tempfiles', 'admin.php?page='.UixSlideshow::HELPER.'&tab=temp' );
 			echo $status_echo;
 		
 		}
@@ -41,7 +41,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'temp' ) { ?>
 	
     <?php if( UixSlideshow::tempfile_exists() ) { ?>
     
-        <form method="post" action="">
+        <form method="post" action="" onsubmit="return confirm('<?php echo esc_attr__( 'Are you sure?\nIt is possible based on your theme of the plugin templates. When you create them again, the default plugin template will be used.', 'uix-slideshow' ); ?>')">
         
             <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
             <?php wp_nonce_field( 'uix_slideshow_tempfiles' ); ?>

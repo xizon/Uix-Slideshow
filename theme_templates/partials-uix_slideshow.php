@@ -15,10 +15,6 @@ if ( ! class_exists( 'UixSlideshow' ) ) {
     return;
 }
 
-// Important: This variable with this plugin's customizer linking
-global $slideshow_prefix;
-$slideshow_prefix = 'custom-slideshow';
-
 // Query
 $uix_slideshow_query = new WP_Query(
 	array(
@@ -32,7 +28,7 @@ $uix_slideshow_query = new WP_Query(
 
 <?php if ( $uix_slideshow_query->posts && is_array ( $uix_slideshow_query->posts ) ) {  ?>
             
-    <div class="custom-slideshow-flexslider primary custom-slideshow-flexslider-loading">
+    <div data-uix-slideshow="1" data-prefix="custom-slideshow" class="custom-slideshow-flexslider primary custom-slideshow-flexslider-loading">
         <div class="custom-slideshow-slides">
    
             <?php

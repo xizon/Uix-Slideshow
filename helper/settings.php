@@ -85,10 +85,12 @@ function uix_slideshow_options_page(){
 		'title'   =>  __( '<i class="dashicons dashicons-admin-generic"></i> General Settings', 'uix-shortcodes' )
 	];
 	
-	$tabs[] = [
-	    'tab'     =>  'custom-css', 
-		'title'   =>  __( '<i class="dashicons dashicons-welcome-view-site"></i> Custom CSS', 'uix-shortcodes' )
-	];	
+	if ( UixSlideshow::core_css_file_exists() ) {
+		$tabs[] = [
+			'tab'     =>  'custom-css', 
+			'title'   =>  __( '<i class="dashicons dashicons-welcome-view-site"></i> Custom CSS', 'uix-shortcodes' )
+		];
+	}
 	
 	
 	?>
@@ -103,7 +105,7 @@ function uix_slideshow_options_page(){
     </h2>
 
     <?php 
-		foreach ( glob( WP_PLUGIN_DIR .'/'.UixSlideshow::get_slug(). "/helper/tabs/*.php") as $file ) {
+		foreach ( glob( UIX_SLIDESHOW_PLUGIN_DIR. "helper/tabs/*.php") as $file ) {
 			include $file;
 		}	
 	?>

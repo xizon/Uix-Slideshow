@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Wed Sep 07 2016 16:44:14 GMT+0800 (CST)\n"
+"POT-Revision-Date: Mon Dec 26 2016 01:52:52 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,44 +42,44 @@ msgstr ""
 msgid "https://uiux.cc"
 msgstr ""
 
-#: ../uix-slideshow.php:206
+#: ../uix-slideshow.php:215
 msgid "Uix Slideshow Settings"
 msgstr ""
 
-#: ../uix-slideshow.php:207 ../uix-slideshow.php:269
+#: ../uix-slideshow.php:216 ../uix-slideshow.php:278
 msgid "Settings"
 msgstr ""
 
-#: ../uix-slideshow.php:222 ../uix-slideshow.php:223
+#: ../uix-slideshow.php:231 ../uix-slideshow.php:232
 msgid "Helper"
 msgstr ""
 
-#: ../uix-slideshow.php:270 ../uix-slideshow.php:363 ../helper/settings.php:70
+#: ../uix-slideshow.php:279 ../uix-slideshow.php:357 ../helper/settings.php:70
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-slideshow.php:362
+#: ../uix-slideshow.php:356
 msgid ""
 "Do you want to create a slideshow website with WordPress?  Learn how to add "
 "slideshow to your themes."
 msgstr ""
 
-#: ../uix-slideshow.php:366
+#: ../uix-slideshow.php:360
 #, php-format
 msgid "<a href=\"%1$s\">Hide Notice</a>"
 msgstr ""
 
-#: ../uix-slideshow.php:378
+#: ../uix-slideshow.php:372
 msgid ""
 "<strong>You need to create Uix Slideshow template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: ../uix-slideshow.php:378 ../helper/tabs/usage.php:22
+#: ../uix-slideshow.php:372 ../helper/tabs/usage.php:22
 msgid "Create now!"
 msgstr ""
 
-#: ../uix-slideshow.php:378 ../helper/tabs/temp.php:55
+#: ../uix-slideshow.php:372 ../helper/tabs/temp.php:73
 msgid ""
 "As a workaround you can use FTP, access the Uix Slideshow template files "
 "path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and "
@@ -87,27 +87,27 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: ../uix-slideshow.php:532 ../uix-slideshow.php:607
+#: ../uix-slideshow.php:537 ../uix-slideshow.php:612
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-slideshow.php:534
+#: ../uix-slideshow.php:539
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-slideshow.php:539
+#: ../uix-slideshow.php:544
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-slideshow.php:542
+#: ../uix-slideshow.php:547
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
@@ -135,7 +135,7 @@ msgstr ""
 msgid "<i class=\"dashicons dashicons-admin-generic\"></i> General Settings"
 msgstr ""
 
-#: ../helper/settings.php:90
+#: ../helper/settings.php:91
 msgid "<i class=\"dashicons dashicons-welcome-view-site\"></i> Custom CSS"
 msgstr ""
 
@@ -154,126 +154,132 @@ msgid ""
 "the list of credits for this plugin:"
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:19 ../helper/tabs/general-settings.php:28
+#: ../helper/tabs/custom-css.php:27 ../helper/tabs/general-settings.php:56
 msgid "Settings saved."
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:33
+#: ../helper/tabs/custom-css.php:44
 msgid ""
 "You can overview the original styles to overwrite it. It will be on creating "
 "new styles to your website, without modifying original <code>.css</code> "
 "files."
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:38
+#: ../helper/tabs/custom-css.php:49
 msgid "Paste your CSS code"
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:71 ../helper/tabs/custom-css.php:108
+#: ../helper/tabs/custom-css.php:95 ../helper/tabs/custom-css.php:132
 msgid "CSS file root directory:"
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:76
+#: ../helper/tabs/custom-css.php:100
 msgid "Close"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:46
+#: ../helper/tabs/general-settings.php:78
 msgid "Effect"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:53
+#: ../helper/tabs/general-settings.php:85
 msgid "Slide"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:60
+#: ../helper/tabs/general-settings.php:92
 msgid "Fade"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:71
+#: ../helper/tabs/general-settings.php:103
 msgid "Speed of Images Appereance"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:76 ../helper/tabs/general-settings.php:91
+#: ../helper/tabs/general-settings.php:108 ../helper/tabs/general-settings.php:123
 msgid "ms"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:86
+#: ../helper/tabs/general-settings.php:118
 msgid "Delay Between Images"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:102
+#: ../helper/tabs/general-settings.php:134
 msgid "Previous Button Text"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:115
+#: ../helper/tabs/general-settings.php:147
 msgid "Next Button Text"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:128
+#: ../helper/tabs/general-settings.php:160
 msgid "Automatically Transition"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:134
+#: ../helper/tabs/general-settings.php:166
 msgid "Setup a slideshow for the slider to animate automatically."
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:144
+#: ../helper/tabs/general-settings.php:176
 msgid "Show Arrow Navigation"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:150
+#: ../helper/tabs/general-settings.php:182
 msgid "Create previous/next arrow navigation."
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:160
+#: ../helper/tabs/general-settings.php:192
 msgid "Show Paging Navigation"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:166
+#: ../helper/tabs/general-settings.php:198
 msgid "Create navigation for paging control of each slide."
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:177
+#: ../helper/tabs/general-settings.php:209
 msgid "Animation Loop"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:183
+#: ../helper/tabs/general-settings.php:215
 msgid "Gives the slider a seamless infinite loop."
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:193
+#: ../helper/tabs/general-settings.php:225
 msgid "Smooth Height"
 msgstr ""
 
-#: ../helper/tabs/general-settings.php:199
+#: ../helper/tabs/general-settings.php:231
 msgid "Animate the height of the slider smoothly for slides of varying height."
 msgstr ""
 
-#: ../helper/tabs/temp.php:17
+#: ../helper/tabs/temp.php:44
+msgid ""
+"Are you sure?\\nIt is possible based on your theme of the plugin templates. "
+"When you create them again, the default plugin template will be used."
+msgstr ""
+
+#: ../helper/tabs/temp.php:50
 msgid ""
 "Uix Slideshow template files already exists. Remove Uix Slideshow template "
 "files in your templates directory:"
 msgstr ""
 
-#: ../helper/tabs/temp.php:19
+#: ../helper/tabs/temp.php:52
 msgid ""
 "As a workaround you can use FTP, access path <code>/wp-content/themes/{your-"
 "theme}/</code> and remove Uix Slideshow template files."
 msgstr ""
 
-#: ../helper/tabs/temp.php:24 ../helper/tabs/temp.php:60
+#: ../helper/tabs/temp.php:56 ../helper/tabs/temp.php:78
 msgid "Template files list:"
 msgstr ""
 
-#: ../helper/tabs/temp.php:44
+#: ../helper/tabs/temp.php:60
 msgid "Remove Uix Slideshow Template Files"
 msgstr ""
 
-#: ../helper/tabs/temp.php:53
+#: ../helper/tabs/temp.php:71
 msgid "Copy Uix Slideshow template files in your templates directory:"
 msgstr ""
 
-#: ../helper/tabs/temp.php:79
+#: ../helper/tabs/temp.php:82
 msgid "Click This Button to Copy Uix Slideshow Files"
 msgstr ""
 
@@ -415,8 +421,8 @@ msgstr ""
 msgid "URL Settings"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:80 ../post-extensions/slideshow.
-#: php:96
+#: ../post-extensions/post-extensions-init.php:80 ../post-extensions/post-
+#: extensions-init.php:210
 msgid "URL"
 msgstr ""
 
@@ -446,48 +452,49 @@ msgstr ""
 msgid "Open link in a new window/tab"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:46 ../shortcodes/core/tinymce-plugin-lang.php:
-#: 12
+#: ../post-extensions/post-extensions-init.php:160 ../shortcodes/core/tinymce-
+#: plugin-lang.php:12
 msgid "Uix Slideshow"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:47
+#: ../post-extensions/post-extensions-init.php:161
 msgid "Slideshow Item"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:48
+#: ../post-extensions/post-extensions-init.php:162
 msgid "Add New Item"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:49 ../post-extensions/slideshow.php:51
+#: ../post-extensions/post-extensions-init.php:163 ../post-extensions/post-
+#: extensions-init.php:165
 msgid "Add New Slideshow Item"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:50
+#: ../post-extensions/post-extensions-init.php:164
 msgid "Edit Slideshow Item"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:52
+#: ../post-extensions/post-extensions-init.php:166
 msgid "View Item"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:53
+#: ../post-extensions/post-extensions-init.php:167
 msgid "Search Slideshow"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:54
+#: ../post-extensions/post-extensions-init.php:168
 msgid "No slideshow items found"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:55
+#: ../post-extensions/post-extensions-init.php:169
 msgid "No slideshow items found in trash"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:94
+#: ../post-extensions/post-extensions-init.php:208
 msgid "Slide Image"
 msgstr ""
 
-#: ../post-extensions/slideshow.php:97
+#: ../post-extensions/post-extensions-init.php:211
 msgid "Author"
 msgstr ""
 

@@ -29,15 +29,13 @@ class UixSlideshow {
 	 */
 	public static function init() {
 	
-		self::meta_boxes();
-		
-		global $slideshow_prefix;
-		$slideshow_prefix = 'custom-slideshow';
-		
+		self::setup_constants();
+		self::includes();
+	
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) ); 
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
 		add_action( 'current_screen', array( __CLASS__, 'usage_notice' ) );
 		add_action( 'current_screen', array( __CLASS__, 'do_register_shortcodes' ) );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
@@ -45,11 +43,45 @@ class UixSlideshow {
 		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_action( 'wp_head', array( __CLASS__, 'do_my_shortcodes' ) );
-		add_action( 'wp_footer', array( __CLASS__, 'main_scripts' ), 100 );
 		add_action( 'after_setup_theme', array( __CLASS__, 'image_sizes' ) );
 		
 
 	}
+	
+
+	/**
+	 * Setup plugin constants.
+	 *
+	 */
+	public static  function setup_constants() {
+
+		// Plugin Folder Path.
+		if ( ! defined( 'UIX_SLIDESHOW_PLUGIN_DIR' ) ) {
+			define( 'UIX_SLIDESHOW_PLUGIN_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
+		}
+
+		// Plugin Folder URL.
+		if ( ! defined( 'UIX_SLIDESHOW_PLUGIN_URL' ) ) {
+			define( 'UIX_SLIDESHOW_PLUGIN_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+		}
+
+		// Plugin Root File.
+		if ( ! defined( 'UIX_SLIDESHOW_PLUGIN_FILE' ) ) {
+			define( 'UIX_SLIDESHOW_PLUGIN_FILE', trailingslashit( __FILE__ ) );
+		}
+	}
+	
+	/*
+	 * Include required files.
+	 *
+	 *
+	 */
+	public static function includes() {
+		if ( ! class_exists( 'cmb_Meta_Box' ) ) {
+			require_once UIX_SLIDESHOW_PLUGIN_DIR.'post-extensions/custom-metaboxes-and-fields/init.php';
+		}
+	}
+	
 	
 	
 	/*
@@ -66,8 +98,45 @@ class UixSlideshow {
 		// Easing
 		wp_enqueue_script( 'jquery-easing', self::plug_directory() .'assets/js/jquery.easing.js', array( 'jquery' ), '1.3', false );	
 	
+
+		if ( self::core_css_file_exists() ) {
+			
+			//Add shortcodes style to Front-End
+			wp_enqueue_style( self::PREFIX . '-slideshow', self::core_css_file(), false, self::ver(), 'all');
+			
+		}
+		
 		//Main stylesheets and scripts to Front-End
-		wp_enqueue_style( self::PREFIX . '-slideshow', self::plug_directory() .'assets/css/flexslider-custom.css', false, self::ver(), 'all' );
+		wp_enqueue_script( self::PREFIX . '-slideshow', self::core_js_file(), array( 'jquery' ), self::ver() , true );	
+
+
+		$uix_slideshow_opt_animation       = get_option( 'uix_slideshow_opt_animation', 'slide' );
+		$uix_slideshow_opt_auto            = get_option( 'uix_slideshow_opt_auto', true );
+		$uix_slideshow_opt_speed           = get_option( 'uix_slideshow_opt_speed', 10000 );
+		$uix_slideshow_opt_effect_duration = get_option( 'uix_slideshow_opt_effect_duration', 600 );
+		$uix_slideshow_opt_smoothheight    = get_option( 'uix_slideshow_opt_smoothheight', true );
+		$uix_slideshow_opt_paging_nav      = get_option( 'uix_slideshow_opt_paging_nav', true );
+		$uix_slideshow_opt_arr_nav         = get_option( 'uix_slideshow_opt_arr_nav', true );
+		$uix_slideshow_opt_animloop        = get_option( 'uix_slideshow_opt_animloop', true );
+		$uix_slideshow_opt_prev_txt        = get_option( 'uix_slideshow_opt_prev_txt', '<span class=\'custom-slideshow-flex-dir custom-slideshow-flex-dir-prev\'></span>' );
+		$uix_slideshow_opt_next_txt        = get_option( 'uix_slideshow_opt_next_txt', '<span class=\'custom-slideshow-flex-dir custom-slideshow-flex-dir-next\'></span>' );
+	
+		
+		$translation_array = array(
+			'animation'        =>  $uix_slideshow_opt_animation,
+			'auto'             =>  ( $uix_slideshow_opt_auto ) ? 'true' : 'false',
+			'speed'            =>  $uix_slideshow_opt_speed,
+			'effect_duration'  =>  $uix_slideshow_opt_effect_duration,
+			'smoothheight'     =>  ( $uix_slideshow_opt_smoothheight ) ? 'true' : 'false',
+			'paging_nav'       =>  ( $uix_slideshow_opt_paging_nav ) ? 'true' : 'false',
+			'arr_nav'          =>  ( $uix_slideshow_opt_arr_nav ) ? 'true' : 'false',
+			'animloop'         =>  ( $uix_slideshow_opt_animloop ) ? 'true' : 'false',
+			'prev_txt'         =>  str_replace( '"', '\'', $uix_slideshow_opt_prev_txt ),
+			'next_txt'         =>  str_replace( '"', '\'', $uix_slideshow_opt_next_txt )
+		);
+
+
+		wp_localize_script( self::PREFIX . '-slideshow', 'uix_slideshow_vars', $translation_array );	
 
 	}
 	
@@ -116,7 +185,25 @@ class UixSlideshow {
 	 *
 	 */
 	public static function inc_str( $str, $incstr ) {
-	    
+		
+		$incstr = str_replace( '(', '\(',
+				  str_replace( ')', '\)',
+				  str_replace( '|', '\|',
+				  str_replace( '*', '\*',
+				  str_replace( '+', '\+',
+			      str_replace( '.', '\.',
+				  str_replace( '[', '\[',
+				  str_replace( ']', '\]',
+				  str_replace( '?', '\?',
+				  str_replace( '/', '\/',
+				  str_replace( '^', '\^',
+			      str_replace( '{', '\{',
+				  str_replace( '}', '\}',	
+				  str_replace( '$', '\$',
+			      str_replace( '\\', '\\\\',
+				  $incstr 
+				  )))))))))))))));
+			
 		if ( !empty( $incstr ) ) {
 			if ( preg_match( '/'.$incstr.'/', $str ) ) {
 				return true;
@@ -130,71 +217,6 @@ class UixSlideshow {
 
 	}
 
-
-	/*
-	 * Adding <script> to wordpress for your website
-	 *
-	 *
-	 */
-	public static function main_scripts() {
-		
-		global $slideshow_prefix;
-		
-		$uix_slideshow_opt_animation = get_option( 'uix_slideshow_opt_animation', 'slide' );
-		$uix_slideshow_opt_auto = get_option( 'uix_slideshow_opt_auto', true );
-		$uix_slideshow_opt_speed = get_option( 'uix_slideshow_opt_speed', 10000 );
-		$uix_slideshow_opt_effect_duration = get_option( 'uix_slideshow_opt_effect_duration', 600 );
-		$uix_slideshow_opt_smoothheight = get_option( 'uix_slideshow_opt_smoothheight', true );
-		$uix_slideshow_opt_paging_nav = get_option( 'uix_slideshow_opt_paging_nav', true );
-		$uix_slideshow_opt_arr_nav = get_option( 'uix_slideshow_opt_arr_nav', true );
-		$uix_slideshow_opt_animloop = get_option( 'uix_slideshow_opt_animloop', true );
-		$uix_slideshow_opt_prev_txt = get_option( 'uix_slideshow_opt_prev_txt', '<span class=\'custom-slideshow-flex-dir custom-slideshow-flex-dir-prev\'></span>' );
-		$uix_slideshow_opt_next_txt = get_option( 'uix_slideshow_opt_next_txt', '<span class=\'custom-slideshow-flex-dir custom-slideshow-flex-dir-next\'></span>' );
-	
-		echo '
-		<script type="text/javascript">
-			( function($) {
-			"use strict";
-				$( function() {
-					
-					$( ".'.$slideshow_prefix.'-flexslider" ).flexslider({
-						namespace	      : "'.$slideshow_prefix.'-flex-",
-						animation         : "'.$uix_slideshow_opt_animation.'",
-						selector          : ".'.$slideshow_prefix.'-slides > div.item",
-						controlNav        : '.( $uix_slideshow_opt_paging_nav ? 'true' : 'false' ).',
-						directionNav      : '.( $uix_slideshow_opt_arr_nav ? 'true' : 'false' ).',
-						smoothHeight      : '.( $uix_slideshow_opt_smoothheight ? 'true' : 'false' ).',
-						prevText          : "'.str_replace( '"', '\'', $uix_slideshow_opt_prev_txt ).'",
-						nextText          : "'.str_replace( '"', '\'', $uix_slideshow_opt_next_txt ).'",
-						animationSpeed    : '.$uix_slideshow_opt_effect_duration.',
-						slideshowSpeed    : '.$uix_slideshow_opt_speed.',
-						slideshow         : '.( $uix_slideshow_opt_auto ? 'true' : 'false' ).',
-						animationLoop     : '.( $uix_slideshow_opt_animloop ? 'true' : 'false' ).',
-						/*
-						start: initslides, //Fires when the slider loads the first slide
-						before: initslides //Fires after each slider animation completes
-						*/
-						start: function( slider ) {
-								slider.removeClass( "'.$slideshow_prefix.'-flexslider-loading" );
-						}		
-					});
-				
-				
-					function initslides( slider ) {
-						$.each( slider.slides, function( i, item ) {
-							var el = $( item );
-							el.find( ".slides-info" ).css( {"margin-top": ( el.find( "img" ).height() - el.find( ".container" ).height() ) / 2 + "px" } );	
-						})
-					}
-				
-						
-				} );
-			} ) ( jQuery );
-        </script>
-		';
-
-	}
-	
 	
 	
 	/*
@@ -249,7 +271,7 @@ class UixSlideshow {
 	 */
 	 public static function load_helper() {
 		 
-		 require_once 'helper/settings.php';
+		 require_once UIX_SLIDESHOW_PLUGIN_DIR.'helper/settings.php';
 	 }
 	
 	
@@ -289,7 +311,7 @@ class UixSlideshow {
 	
 		  if( $currentScreen->base === "post" || self::inc_str( $currentScreen->base, '_page_' ) ) {
 			
-				require_once 'shortcodes/backstage-init.php';
+				require_once UIX_SLIDESHOW_PLUGIN_DIR.'shortcodes/backstage-init.php';
 		
 		  } 
 	
@@ -303,7 +325,7 @@ class UixSlideshow {
 	 */
 	public static function do_my_shortcodes() {
 	
-		  require_once 'shortcodes/frontpage-init.php';
+		  require_once UIX_SLIDESHOW_PLUGIN_DIR.'shortcodes/frontpage-init.php';
 	
 	}
 	
@@ -320,21 +342,6 @@ class UixSlideshow {
          return dirname( plugin_basename( __FILE__ ) );
 	
 	}
-	
-	
-	/*
-	 * Custom Metaboxes and Fields
-	 *
-	 *
-	 */
-	public static function meta_boxes() {
-	
-		if ( ! class_exists( 'cmb_Meta_Box' ) ) {
-			require_once 'post-extensions/custom-metaboxes-and-fields/init.php';
-		}
-
-	}
-
 
 	
 	/*
@@ -423,17 +430,28 @@ class UixSlideshow {
 	}
 	
 	
+	/*
+	 * Callback the plugin directory URL
+	 *
+	 *
+	 */
+	public static function plug_directory() {
+
+	  return UIX_SLIDESHOW_PLUGIN_URL;
+
+	}
 	
 	/*
 	 * Callback the plugin directory
 	 *
 	 *
 	 */
-	public static function plug_directory() {
+	public static function plug_filepath() {
 
-	  return plugin_dir_url( __FILE__ );
+	  return UIX_SLIDESHOW_PLUGIN_DIR;
 
 	}
+	
 	
 	
 	/*
@@ -445,7 +463,7 @@ class UixSlideshow {
 	
 		
 		$filenames = array();
-		$filepath = WP_PLUGIN_DIR .'/'.self::get_slug(). '/theme_templates/';
+		$filepath = UIX_SLIDESHOW_PLUGIN_DIR. 'theme_templates/';
 		$themepath = get_stylesheet_directory() . '/';
 		
 		foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
@@ -484,7 +502,7 @@ class UixSlideshow {
 		  global $wp_filesystem;
 			
 		  $filenames = array();
-		  $filepath = WP_PLUGIN_DIR .'/'.self::get_slug(). '/theme_templates/';
+		  $filepath = UIX_SLIDESHOW_PLUGIN_DIR. 'theme_templates/';
 		  $themepath = get_stylesheet_directory() . '/';
 
 	      foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
@@ -563,21 +581,21 @@ class UixSlideshow {
 	 * Example:
 	 
             $output = "";
-			$wpnonce_url = 'edit.php?post_type='.UixSlideshow::get_slug().'&page='.UixSlideshow::HELPER;
-			$wpnonce_action = 'temp-filesystem-nonce';
-
-            if ( !empty( $_POST ) ) {
+			
+            if ( !empty( $_POST ) && check_admin_referer( 'custom_action_nonce') ) {
 				
 				
-                  $output = UixSlideshow::wpfilesystem_write_file( $wpnonce_action, $wpnonce_url, 'helper/tabs/', '1.txt', 'This is test.' );
+                  $output = UixSlideshow::wpfilesystem_write_file( 'custom_action_nonce', 'admin.php?page='.UixSlideshow::HELPER.'&tab=???', 'helper/', 'debug.txt', 'This is test.' );
 				  echo $output;
 			
             } else {
 				
-				wp_nonce_field( $wpnonce_action );
+				wp_nonce_field( 'custom_action_nonce' );
 				echo '<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="'.__( 'Click This Button to Copy Files', 'uix-slideshow' ).'"  /></p>';
 				
 			}
+			
+		
 	 *
 	 */
 	public static function wpfilesystem_connect_fs( $url, $method, $context, $fields = null) {
@@ -601,7 +619,7 @@ class UixSlideshow {
 		
 		  $url = wp_nonce_url( $nonce, $nonceaction );
 		
-		  $contentdir = trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() ).$path; 
+		  $contentdir = UIX_SLIDESHOW_PLUGIN_DIR.$path; 
 		  
 		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir, '' ) ) {
 			  
@@ -621,7 +639,7 @@ class UixSlideshow {
 		  $url = wp_nonce_url( $nonce, $nonceaction );
 	
 		  if ( $type == 'plugin' ) {
-			  $contentdir = trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() ).$path; 
+			  $contentdir = UIX_SLIDESHOW_PLUGIN_DIR.$path; 
 		  } 
 		  if ( $type == 'theme' ) {
 			  $contentdir = trailingslashit( get_template_directory() ).$path; 
@@ -667,18 +685,6 @@ class UixSlideshow {
 	}
 	
 
-	/*
-	 * Custom post extensions
-	 *
-	 *
-	 */
-	public static function post_ex() {
-	
-		require_once 'post-extensions/post-extensions-init.php';
-
-		
-	}
-	
 
 
 	/*
@@ -714,7 +720,87 @@ class UixSlideshow {
 
 	}
 
+	/*
+	 * Custom post extensions
+	 *
+	 *
+	 */
+	public static function post_ex() {
+	
+		require_once 'post-extensions/post-extensions-init.php';
 
+		
+	}	
+	
+	/**
+	 * Determine whether the css core file exists
+	 *
+	 */
+	public static function core_css_file_exists() {
+		  $FilePath      = get_stylesheet_directory() . '/uix-slideshow-style.css';
+	      $FilePath2     = get_stylesheet_directory() . '/assets/css/uix-slideshow-style.css';
+		  $FilePath3     = self::plug_filepath() .'assets/css/uix-slideshow.css';
+		  if ( file_exists( $FilePath ) || file_exists( $FilePath2 ) || file_exists( $FilePath3 ) ) {
+			  return true;
+		  } else {
+			  return false;
+		  }	
+	}
+	
+	/**
+	 * Returns .css file name of custom script 
+	 *
+	 */
+	public static function core_css_file( $type = 'uri' ) {
+		
+		$validPath    = self::plug_directory() .'assets/css/uix-slideshow.css';
+		$newFilePath  = get_stylesheet_directory() . '/uix-slideshow-style.css';
+		$newFilePath2 = get_stylesheet_directory() . '/assets/css/uix-slideshow-style.css';
+	
+		if ( file_exists( $newFilePath ) ) {
+			$validPath = get_template_directory_uri() . '/uix-slideshow-style.css';
+		}
+		
+	
+		if ( file_exists( $newFilePath2 ) ) {
+			$validPath = get_template_directory_uri() . '/assets/css/uix-slideshow-style.css';
+		}
+		
+		if ( $type == 'name' ) {
+			if ( file_exists( $newFilePath ) || file_exists( $newFilePath2 ) ) {
+				$validPath = 'uix-slideshow-style.css';
+			} else {
+				$validPath = 'uix-slideshow.css';
+			}
+		}
+		
+		
+		return $validPath;
+		
+	}
+		
+	/**
+	 * Returns .js file name of custom script 
+	 *
+	 */
+	public static function core_js_file() {
+		
+		$validPath    = self::plug_directory() .'assets/js/uix-slideshow.js';
+		$newFilePath  = get_stylesheet_directory() . '/uix-slideshow-custom.js';
+		$newFilePath2 = get_stylesheet_directory() . '/assets/js/uix-slideshow-custom.js';
+	
+		if ( file_exists( $newFilePath ) ) {
+			$validPath = get_template_directory_uri() . '/uix-slideshow-custom.js';
+		}
+		
+	
+		if ( file_exists( $newFilePath2 ) ) {
+			$validPath = get_template_directory_uri() . '/assets/js/uix-slideshow-custom.js';
+		}
+		
+		return $validPath;
+		
+	}
 
 }
 
