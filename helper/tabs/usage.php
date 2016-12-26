@@ -92,8 +92,20 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
         </p>  
         <p>
            <?php _e( '<h4 class="uix-bg-custom-title">7. You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original <code>.css</code> files. Go to <strong>"Uix Slideshow -> Settings -> Custom CSS"</strong>.</h4>', 'uix-slideshow' ); ?>
-        </p>   
+        </p> 
+        <blockquote class="uix-bg-custom-blockquote">
+			<p class="uix-bg-custom-desc">
+			   <?php _e( 'There is a second way, make a new Cascading Style Sheet (CSS) document which name to <strong>uix-slideshow-style.css</strong> to your templates directory ( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}/assets/css/</code> ). You can connect to your site via an FTP client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet to your WordPress Theme. Of course, Uix Slideshow\'s function of "Custom CSS" is still valid.', 'uix-slideshow' ); ?>
+
+			</p>    
+			<p class="uix-bg-custom-desc">
+			   <?php _e( '<b>Note:<b> Making a new javascrpt (.js) document which name to <strong>uix-slideshow-custom.js</strong> to your templates directory ( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}/assets/js/</code> ). Once you have created an existing JS file, Uix Slideshow will use it as a default script to your WordPress Theme.', 'uix-slideshow' ); ?>
+
+			</p>
+        </blockquote>      
         <p>
            <img src="<?php echo UixSlideshow::plug_directory(); ?>helper/img/css.jpg" alt="">
         </p>  
+     
+        
 <?php } ?>

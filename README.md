@@ -19,9 +19,25 @@ This plugin is a simple way to build, organize and display slideshow into any ex
 
 Insert slideshow anywhere on your site using a custom post type. Powered by jQuery Flexslider with some transition styles to choose from.
 
-### Updates 
 
-##### Version 1.0.1
+
+### Updates
+
+#### === 1.0.5 ===
+
+WordPress 4.7 compatible.
+
+Enhanced scalability structure.
+
+Enhanced the user experience of templates admin panel.
+
+Supports custom Uix Slideshow core stylesheet and script based on "/wp-content/themes/{your-theme}/" and "/wp-content/themes/{your-theme}/" directories  for your theme.
+
+Supports custom Uix Slideshow core stylesheet and script based on "/wp-content/themes/{your-theme}/assets/css/" and "/wp-content/themes/{your-theme}/assets/js/" directories  for your theme.
+
+
+
+#### === 1.0.1 ===
 
 Optimized for tablet display.
 
@@ -30,9 +46,13 @@ Improved event binding from the plugin main JavaScript file.
 Improved the main CSS file.
 
 
-##### Version 1.0.0
 
-Initial Release.
+#### === 1.0.0 ===
+
+First release.
+
+
+
 
 
 ### Tested under
@@ -120,3 +140,10 @@ There are two different ways you can add the Uix Slideshow widget to your site's
 7.You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original `.css` files. Go to **"Uix Slideshow -> Settings -> Custom CSS"**.
 
 ![](https://github.com/xizon/Uix-Slideshow/blob/master/helper/img/css.jpg)
+
+
+> There is a second way, make a new Cascading Style Sheet (CSS) document which name to **uix-slideshow-style.css** to your **templates directory** (`/wp-content/themes/{your-theme}/` or `/wp-content/themes/{your-theme}/assets/css/`). You can connect to your site via an **FTP** client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet to your WordPress Theme. Of course, Uix Slideshow's function of "Custom CSS" is still valid.
+
+
+> Note: Making a new javascrpt (.js) document which name to **uix-slideshow-custom.js** to your templates directory (`/wp-content/themes/{your-theme}/` or `/wp-content/themes/{your-theme}/assets/js/`). Once you have created an existing JS file, Uix Slideshow will use it as a default script to your WordPress Theme.
+

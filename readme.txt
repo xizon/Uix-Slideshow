@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 4.7
-Stable tag: 1.0.1
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,20 @@ There are two different ways you can add the Uix Slideshow widget to your site's
 (2) Template tags - Add a simple PHP function to one of your theme's template files. 
 
   Place `<?php get_template_part( 'partials', 'uix_slideshow' ); ?>` in your templates.
+  
+  
+  
+= Custom Usage =
+
+You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original .css files. Go to "Uix Slideshow" in the WordPress Administration Screens, then link to a specific tab like "Custom CSS".
+
+> There is a second way, make a new Cascading Style Sheet (CSS) document which name to <strong>"uix-slideshow-style.css"</strong> to your templates directory (/wp-content/themes/{your-theme}/). You can connect to your site via an FTP client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet to your WordPress Theme. Of course, Uix Slideshow's function of "Custom CSS" is still valid.
+
+> Note: Making a new javascrpt (.js) document which name to <strong>"uix-slideshow-custom.js"</strong> to your templates directory. Once you have created an existing JS file (uix-slideshow-custom.js), Uix Slideshow will use it as a default script to your WordPress Theme.
+
+
+  
+  
 
 == Installation ==
 
@@ -99,6 +113,16 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+= 1.0.5 =
+
+* WordPress 4.7 compatible.
+* Enhanced scalability structure.
+* Enhanced the user experience of templates admin panel.
+* Supports custom Uix Slideshow core stylesheet and script based on "/wp-content/themes/{your-theme}/" and "/wp-content/themes/{your-theme}/" directories  for your theme.
+* Supports custom Uix Slideshow core stylesheet and script based on "/wp-content/themes/{your-theme}/assets/css/" and "/wp-content/themes/{your-theme}/assets/js/" directories  for your theme.
+
+
 
 = 1.0.1 =
 
