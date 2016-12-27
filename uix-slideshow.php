@@ -150,15 +150,18 @@ class UixSlideshow {
 	 */
 	public static function backstage_scripts() {
 	
-		  //Check if screen’s ID, base, post type, and taxonomy, among other data points
-		  $currentScreen = get_current_screen();
-		  
-		  if ( isset( $_GET[ 'tab' ] ) && isset( $_GET[ 'page' ] ) ) {
+		 //Check if screen’s ID, base, post type, and taxonomy, among other data points
+		 $currentScreen = get_current_screen();
+	
+		 if ( 
+			 self::inc_str( $currentScreen->id, 'uix_slideshow' ) || 
+			 self::inc_str( $currentScreen->id, 'uix-slideshow' ) || 
+			 self::inc_str( $currentScreen->base, '_page_' )
+		 ) 
+		 {
 				  
-					if ( is_admin()) {
-							wp_enqueue_style( self::PREFIX . '-slideshow-main', self::plug_directory() .'style.css', false, self::ver(), 'all');	
-					}
-	  
+		      wp_enqueue_style( self::PREFIX . '-slideshow-admin', self::plug_directory() .'style.css', false, self::ver(), 'all' );	
+			
 		  }
 		
 
@@ -355,7 +358,11 @@ class UixSlideshow {
 		  //Check if screen’s ID, base, post type, and taxonomy, among other data points
 		  $currentScreen = get_current_screen();
 
-		  if( ( self::inc_str( $currentScreen->id, 'uix_slideshow' ) || self::inc_str( $currentScreen->id, 'uix-slideshow' ) ) && !self::inc_str( $currentScreen->id, '_page_' ) ) {
+		  if ( 
+			  ( self::inc_str( $currentScreen->id, 'uix_slideshow' ) || self::inc_str( $currentScreen->id, 'uix-slideshow' ) ) && 
+			  !self::inc_str( $currentScreen->id, '_page_' ) 
+		  ) 
+		  {
 			  add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
 			  add_action( 'admin_notices', array( __CLASS__, 'template_notice_required' ) );
 		  }
