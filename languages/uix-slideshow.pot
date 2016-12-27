@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Mon Dec 26 2016 11:32:02 GMT+0800 (CST)\n"
+"POT-Revision-Date: Tue Dec 27 2016 14:25:22 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,6 +85,13 @@ msgid ""
 "path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and "
 "upload files to your theme templates directory <code>/wp-"
 "content/themes/{your-theme}/</code>. "
+msgstr ""
+
+#: ../uix-slideshow.php:483
+#, php-format
+msgid ""
+"<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-write-"
+"blog\"></i> Edit this template</a>"
 msgstr ""
 
 #: ../uix-slideshow.php:555 ../uix-slideshow.php:630
