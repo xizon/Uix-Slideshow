@@ -23,33 +23,33 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
-#### === 1.0.5 ===
+#### = 1.0.6 =
 
-WordPress 4.7 compatible.
-
-Enhanced scalability structure.
-
-Enhanced the user experience of templates admin panel.
-
-Supports custom Uix Slideshow core stylesheet and script based on "/wp-content/themes/{your-theme}/" and "/wp-content/themes/{your-theme}/" directories  for your theme.
-
-Supports custom Uix Slideshow core stylesheet and script based on "/wp-content/themes/{your-theme}/assets/css/" and "/wp-content/themes/{your-theme}/assets/js/" directories  for your theme.
+* Fixed a bug that caused the slides to not be displayed.
 
 
 
-#### === 1.0.1 ===
+#### = 1.0.5 =
 
-Optimized for tablet display.
+* WordPress 4.7 compatible.
+* Enhanced scalability structure.
+* Enhanced the user experience of templates admin panel.
+* Supports custom Uix Slideshow core stylesheet and script based on "/wp-content/themes/{your-theme}/" and "/wp-content/themes/{your-theme}/" directories  for your theme.
+* Supports custom Uix Slideshow core stylesheet and script based on "/wp-content/themes/{your-theme}/assets/css/" and "/wp-content/themes/{your-theme}/assets/js/" directories  for your theme.
 
-Improved event binding from the plugin main JavaScript file.
-
-Improved the main CSS file.
 
 
+#### = 1.0.1 =
 
-#### === 1.0.0 ===
+* Optimized for tablet display.
+* Improved event binding from the plugin main JavaScript file.
+* Improved the main CSS file.
 
-First release.
+
+
+#### = 1.0.0 =
+
+* First release.
 
 
 
