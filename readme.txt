@@ -43,7 +43,7 @@ There are two different ways you can add the Uix Slideshow widget to your site's
 
 You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original .css files. Go to "Uix Slideshow" in the WordPress Administration Screens, then link to a specific tab like "Custom CSS".
 
-> There is a second way, make a new Cascading Style Sheet (CSS) document which name to <strong>"uix-slideshow-style.css"</strong> to your templates directory (/wp-content/themes/{your-theme}/). You can connect to your site via an FTP client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet to your WordPress Theme. Of course, Uix Slideshow's function of "Custom CSS" is still valid.
+> There is a second way, make a new Cascading Style Sheet (CSS) document which name to <strong>"uix-slideshow-custom.css"</strong> to your templates directory (/wp-content/themes/{your-theme}/). You can connect to your site via an FTP client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet to your WordPress Theme. Of course, Uix Slideshow's function of "Custom CSS" is still valid.
 
 > Note: Making a new javascrpt (.js) document which name to <strong>"uix-slideshow-custom.js"</strong> to your templates directory. Once you have created an existing JS file (uix-slideshow-custom.js), Uix Slideshow will use it as a default script to your WordPress Theme.
 

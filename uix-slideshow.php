@@ -744,8 +744,8 @@ class UixSlideshow {
 	 *
 	 */
 	public static function core_css_file_exists() {
-		  $FilePath      = get_stylesheet_directory() . '/uix-slideshow-style.css';
-	      $FilePath2     = get_stylesheet_directory() . '/assets/css/uix-slideshow-style.css';
+		  $FilePath      = get_stylesheet_directory() . '/uix-slideshow-custom.css';
+	      $FilePath2     = get_stylesheet_directory() . '/assets/css/uix-slideshow-custom.css';
 		  $FilePath3     = self::plug_filepath() .'assets/css/uix-slideshow.css';
 		  if ( file_exists( $FilePath ) || file_exists( $FilePath2 ) || file_exists( $FilePath3 ) ) {
 			  return true;
@@ -761,21 +761,21 @@ class UixSlideshow {
 	public static function core_css_file( $type = 'uri' ) {
 		
 		$validPath    = self::plug_directory() .'assets/css/uix-slideshow.css';
-		$newFilePath  = get_stylesheet_directory() . '/uix-slideshow-style.css';
-		$newFilePath2 = get_stylesheet_directory() . '/assets/css/uix-slideshow-style.css';
+		$newFilePath  = get_stylesheet_directory() . '/uix-slideshow-custom.css';
+		$newFilePath2 = get_stylesheet_directory() . '/assets/css/uix-slideshow-custom.css';
 	
 		if ( file_exists( $newFilePath ) ) {
-			$validPath = get_template_directory_uri() . '/uix-slideshow-style.css';
+			$validPath = get_template_directory_uri() . '/uix-slideshow-custom.css';
 		}
 		
 	
 		if ( file_exists( $newFilePath2 ) ) {
-			$validPath = get_template_directory_uri() . '/assets/css/uix-slideshow-style.css';
+			$validPath = get_template_directory_uri() . '/assets/css/uix-slideshow-custom.css';
 		}
 		
 		if ( $type == 'name' ) {
 			if ( file_exists( $newFilePath ) || file_exists( $newFilePath2 ) ) {
-				$validPath = 'uix-slideshow-style.css';
+				$validPath = 'uix-slideshow-custom.css';
 			} else {
 				$validPath = 'uix-slideshow.css';
 			}

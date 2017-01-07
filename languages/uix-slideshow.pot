@@ -407,7 +407,7 @@ msgstr ""
 #: ../helper/tabs/usage.php:98
 msgid ""
 "There is a second way, make a new Cascading Style Sheet (CSS) document which "
-"name to <strong>uix-slideshow-style.css</strong> to your templates directory "
+"name to <strong>uix-slideshow-custom.css</strong> to your templates directory "
 "( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-"
 "content/themes/{your-theme}/assets/css/</code> ). You can connect to your "
 "site via an FTP client, make the changes and then upload the file back to "

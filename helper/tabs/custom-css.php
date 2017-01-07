@@ -58,8 +58,8 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 <?php
 
 
-	$newFilePath                 = get_stylesheet_directory() . '/uix-slideshow-style.css';
-	$newFilePath2                = get_stylesheet_directory() . '/assets/css/uix-slideshow-style.css';
+	$newFilePath                 = get_stylesheet_directory() . '/uix-slideshow-custom.css';
+	$newFilePath2                = get_stylesheet_directory() . '/assets/css/uix-slideshow-custom.css';
 	$org_cssname_uix_slideshow   = UixSlideshow::core_css_file( 'name' );
 	$org_csspath_uix_slideshow   = UixSlideshow::core_css_file();
 
