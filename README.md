@@ -23,6 +23,11 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
+#### = 1.0.7 =
+
+* Optimized binding theme picker.
+
+
 #### = 1.0.6 =
 
 * Fixed a bug that caused the slides to not be displayed.
