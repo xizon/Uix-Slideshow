@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Tue Dec 27 2016 14:25:22 GMT+0800 (CST)\n"
+"POT-Revision-Date: Mon Feb 13 2017 12:42:11 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,44 +42,44 @@ msgstr ""
 msgid "https://uiux.cc"
 msgstr ""
 
-#: ../uix-slideshow.php:233
+#: ../uix-slideshow.php:236
 msgid "Uix Slideshow Settings"
 msgstr ""
 
-#: ../uix-slideshow.php:234 ../uix-slideshow.php:296
+#: ../uix-slideshow.php:237 ../uix-slideshow.php:299
 msgid "Settings"
 msgstr ""
 
-#: ../uix-slideshow.php:249 ../uix-slideshow.php:250
+#: ../uix-slideshow.php:252 ../uix-slideshow.php:253
 msgid "Helper"
 msgstr ""
 
-#: ../uix-slideshow.php:297 ../uix-slideshow.php:375 ../helper/settings.php:114
+#: ../uix-slideshow.php:300 ../uix-slideshow.php:382 ../helper/settings.php:114
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-slideshow.php:374
+#: ../uix-slideshow.php:381
 msgid ""
 "Do you want to create a slideshow website with WordPress?  Learn how to add "
 "slideshow to your themes."
 msgstr ""
 
-#: ../uix-slideshow.php:378
+#: ../uix-slideshow.php:385
 #, php-format
 msgid "<a href=\"%1$s\">Hide Notice</a>"
 msgstr ""
 
-#: ../uix-slideshow.php:390
+#: ../uix-slideshow.php:397
 msgid ""
 "<strong>You need to create Uix Slideshow template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: ../uix-slideshow.php:390 ../helper/tabs/usage.php:22
+#: ../uix-slideshow.php:397 ../helper/tabs/usage.php:22
 msgid "Create now!"
 msgstr ""
 
-#: ../uix-slideshow.php:390 ../helper/tabs/temp.php:73
+#: ../uix-slideshow.php:397 ../helper/tabs/temp.php:73
 msgid ""
 "As a workaround you can use FTP, access the Uix Slideshow template files "
 "path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and "
@@ -87,34 +87,34 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: ../uix-slideshow.php:483
+#: ../uix-slideshow.php:490
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-write-"
 "blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: ../uix-slideshow.php:555 ../uix-slideshow.php:630
+#: ../uix-slideshow.php:562 ../uix-slideshow.php:637
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-slideshow.php:557
+#: ../uix-slideshow.php:564
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-slideshow.php:562
+#: ../uix-slideshow.php:569
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-slideshow.php:565
+#: ../uix-slideshow.php:572
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
@@ -407,8 +407,8 @@ msgstr ""
 #: ../helper/tabs/usage.php:98
 msgid ""
 "There is a second way, make a new Cascading Style Sheet (CSS) document which "
-"name to <strong>uix-slideshow-custom.css</strong> to your templates directory "
-"( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-"
+"name to <strong>uix-slideshow-custom.css</strong> to your templates "
+"directory ( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-"
 "content/themes/{your-theme}/assets/css/</code> ). You can connect to your "
 "site via an FTP client, make the changes and then upload the file back to "
 "the server. Once you have created an existing CSS file, Uix Slideshow will "
@@ -530,92 +530,118 @@ msgstr ""
 msgid "This will create metaboxes with custom fields that will blow your mind."
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/init.php:258
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:265
 msgid "Clear"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/init.php:259
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:266
 msgid "Default"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/init.php:260
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:267
 msgid "Select Color"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/init.php:261
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:268
 msgid "Current Color"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/init.php:288
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:295
 msgid "Select / Deselect All"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/init.php:1179
+#: ../post-extensions/custom-metaboxes-and-fields/init.php:1275
 msgid "Save"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_ajax.php:47
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_ajax.
+#: php:47
 msgid "Please Try Again"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_ajax.php:131
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_ajax.
+#: php:131
 msgid "Remove Embed"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_ajax.php:134
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_ajax.
+#: php:134
 #, php-format
 msgid "No oEmbed Results Found for %s. View more info at"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_field.php:
-#: 459
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_field.
+#: php:459
 msgid "Add Group"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_field.php:
-#: 460
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_field.
+#: php:460
 msgid "Remove Group"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
-#: 250
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:250
 msgid "Add Row"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
-#: 306 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
-#: php:706 ../post-extensions/custom-metaboxes-and-
-#: fields/helpers/cmb_Meta_Box_types.php:768
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:306 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:779 ../post-extensions/custom-
+#: metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.php:841
 msgid "Remove"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
-#: 601 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
-#: php:635
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:380 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:405
+msgid "Title"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:385 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:410
+msgid "Value"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:387 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:412
+msgid "Remove field"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:397
+msgid "Add a custom attribute"
+msgstr ""
+
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:674 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:708
 msgid "No terms"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
-#: 674 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
-#: php:728
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:747 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:801
 msgid "Add or Upload File"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
-#: 695 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
-#: php:760
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:768 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:833
 msgid "Remove Image"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
-#: 706 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
-#: php:768
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:779 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:841
 msgid "File:"
 msgstr ""
 
-#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.php:
-#: 706 ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_Meta_Box_types.
-#: php:768
+#: ../post-extensions/custom-metaboxes-and-fields/helpers/cmb_uix_Meta_Box_types.
+#: php:779 ../post-extensions/custom-metaboxes-and-
+#: fields/helpers/cmb_uix_Meta_Box_types.php:841
 msgid "Download"
 msgstr ""
 
