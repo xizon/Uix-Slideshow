@@ -4,11 +4,11 @@
  * CMB field validation
  * @since  0.0.4
  */
-class cmb_Meta_Box_Sanitize {
+class cmb_uix_Meta_Box_Sanitize {
 
 	/**
 	 * A CMB field object
-	 * @var cmb_Meta_Box_field object
+	 * @var cmb_uix_Meta_Box_field object
 	 */
 	public $field;
 
@@ -27,8 +27,8 @@ class cmb_Meta_Box_Sanitize {
 	public function __construct( $field, $value ) {
 		$this->field       = $field;
 		$this->value       = $value;
-		$this->object_id   = cmb_Meta_Box::get_object_id();
-		$this->object_type = cmb_Meta_Box::get_object_type();
+		$this->object_id   = cmb_uix_Meta_Box::get_object_id();
+		$this->object_type = cmb_uix_Meta_Box::get_object_type();
 	}
 
 	/**
@@ -50,7 +50,7 @@ class cmb_Meta_Box_Sanitize {
 	public function default_sanitization( $value ) {
 
 		// Allow field type validation via filter
-		$updated = apply_filters( 'cmb_validate_'. $this->field->type(), null, $value, $this->object_id, $this->field->args(), $this );
+		$updated = apply_filters( 'cmb_uix_validate_'. $this->field->type(), null, $value, $this->object_id, $this->field->args(), $this );
 
 		if ( null !== $updated )
 			return $updated;
@@ -225,9 +225,9 @@ class cmb_Meta_Box_Sanitize {
 			$tzstring = $value['timezone'];
 
 		if ( empty( $tzstring ) )
-			$tzstring = cmb_Meta_Box::timezone_string();
+			$tzstring = cmb_uix_Meta_Box::timezone_string();
 
-		$offset = cmb_Meta_Box::timezone_offset( $tzstring, true );
+		$offset = cmb_uix_Meta_Box::timezone_offset( $tzstring, true );
 
 		if ( substr( $tzstring, 0, 3 ) === 'UTC' )
 			$tzstring = timezone_name_from_abbr( '', $offset, 0 );
@@ -273,7 +273,7 @@ class cmb_Meta_Box_Sanitize {
 
 		unset( $args['_id'], $args['_name'] );
 		// And get new field object
-		$field      = new cmb_Meta_Box_field( $args, $group );
+		$field      = new cmb_uix_Meta_Box_field( $args, $group );
 		$id_key     = $field->_id();
 		$id_val_old = $field->escaped_value( 'absint' );
 
@@ -291,7 +291,7 @@ class cmb_Meta_Box_Sanitize {
 
 		// If there is no ID saved yet, try to get it from the url
 		if ( $value && ! $id_val ) {
-			$id_val = cmb_Meta_Box::image_id_from_url( $value );
+			$id_val = cmb_uix_Meta_Box::image_id_from_url( $value );
 		}
 
 		if ( $group ) {

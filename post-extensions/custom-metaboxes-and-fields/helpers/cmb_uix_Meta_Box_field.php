@@ -4,7 +4,7 @@
  * CMB field class
  * @since  1.1.0
  */
-class cmb_Meta_Box_field {
+class cmb_uix_Meta_Box_field {
 
 	/**
 	 * Metabox object id
@@ -48,17 +48,17 @@ class cmb_Meta_Box_field {
 	 * @param array $group_field (optional) Group field object
 	 */
 	public function __construct( $field_args, $group_field = null ) {
-		$this->object_id   = cmb_Meta_Box::get_object_id();
-		$this->object_type = cmb_Meta_Box::get_object_type();
+		$this->object_id   = cmb_uix_Meta_Box::get_object_id();
+		$this->object_type = cmb_uix_Meta_Box::get_object_type();
 		$this->group       = ! empty( $group_field ) ? $group_field : false;
 		$this->args        = $this->_set_field_defaults( $field_args );
 
 		// Allow an override for the field's value
-		// (assuming no one would want to save 'cmb_no_override_val' as a value)
-		$this->value = apply_filters( 'cmb_override_meta_value', 'cmb_no_override_val', $this->object_id, $this->args(), $this->object_type, $this );
+		// (assuming no one would want to save 'cmb_uix_no_override_val' as a value)
+		$this->value = apply_filters( 'cmb_uix_override_meta_value', 'cmb_uix_no_override_val', $this->object_id, $this->args(), $this->object_type, $this );
 
 		// If no override, get our meta
-		$this->value = 'cmb_no_override_val' === $this->value
+		$this->value = 'cmb_uix_no_override_val' === $this->value
 			? $this->get_data()
 			: $this->value;
 	}
@@ -141,7 +141,7 @@ class cmb_Meta_Box_field {
 		extract( $this->data_args( $args ) );
 
 		$data = 'options-page' === $type
-			? cmb_Meta_Box::get_option( $id, $field_id )
+			? cmb_uix_Meta_Box::get_option( $id, $field_id )
 			: get_metadata( $type, $id, $field_id, ( $single || $repeat ) /* If multicheck this can be multiple values */ );
 
 		if ( $this->group && $data ) {
@@ -164,7 +164,7 @@ class cmb_Meta_Box_field {
 		$new_value = $repeat ? array_values( $new_value ) : $new_value;
 
 		if ( 'options-page' === $type )
-			return cmb_Meta_Box::update_option( $id, $field_id, $new_value, $single );
+			return cmb_uix_Meta_Box::update_option( $id, $field_id, $new_value, $single );
 
 		if ( ! $single )
 			return add_metadata( $type, $id, $field_id, $new_value, false );
@@ -181,7 +181,7 @@ class cmb_Meta_Box_field {
 		extract( $this->data_args() );
 
 		return 'options-page' === $type
-			? cmb_Meta_Box::remove_option( $id, $field_id )
+			? cmb_uix_Meta_Box::remove_option( $id, $field_id )
 			: delete_metadata( $type, $id, $field_id, $old );
 	}
 
@@ -222,8 +222,8 @@ class cmb_Meta_Box_field {
 			return call_user_func( $cb, $meta_value, $this->args(), $this );
 		}
 
-		$clean = new cmb_Meta_Box_Sanitize( $this, $meta_value );
-		// Validation via 'cmb_Meta_Box_Sanitize' (with fallback filter)
+		$clean = new cmb_uix_Meta_Box_Sanitize( $this, $meta_value );
+		// Validation via 'cmb_uix_Meta_Box_Sanitize' (with fallback filter)
 		return $clean->{$this->type()}( $meta_value );
 	}
 
@@ -310,7 +310,7 @@ class cmb_Meta_Box_field {
 		}
 
 		// Or custom escaping filter can be used
-		$esc = apply_filters( 'cmb_types_esc_'. $this->type(), null, $meta_value, $this->args(), $this );
+		$esc = apply_filters( 'cmb_uix_types_esc_'. $this->type(), null, $meta_value, $this->args(), $this );
 		if ( null !== $esc ) {
 			return $esc;
 		}
@@ -337,7 +337,7 @@ class cmb_Meta_Box_field {
 	 * @return string Offset time string
 	 */
 	public function field_timezone_offset() {
-		return cmb_Meta_Box::timezone_offset( $this->field_timezone() );
+		return cmb_uix_Meta_Box::timezone_offset( $this->field_timezone() );
 	}
 
 	/**
@@ -373,11 +373,11 @@ class cmb_Meta_Box_field {
 		if ( is_callable( $this->args( 'show_on_cb' ) ) && ! call_user_func( $this->args( 'show_on_cb' ), $this ) )
 			return;
 
-		$classes    = 'cmb-type-'. sanitize_html_class( $this->type() );
-		$classes   .= ' cmb_id_'. sanitize_html_class( $this->id() );
-		$classes   .= $this->args( 'repeatable' ) ? ' cmb-repeat' : '';
+		$classes    = 'cmb-uix-type-'. sanitize_html_class( $this->type() );
+		$classes   .= ' cmb_uix_id_'. sanitize_html_class( $this->id() );
+		$classes   .= $this->args( 'repeatable' ) ? ' cmb-uix-repeat' : '';
 		// 'inline' flag, or _inline in the field type, set to true
-		$classes   .= $this->args( 'inline' ) ? ' cmb-inline' : '';
+		$classes   .= $this->args( 'inline' ) ? ' cmb-uix-inline' : '';
 		$is_side    = 'side' === $this->args( 'context' );
 
 		printf( "<tr class=\"%s\">\n", $classes );
@@ -401,7 +401,7 @@ class cmb_Meta_Box_field {
 
 		echo $this->args( 'before' );
 
-		$this_type = new cmb_Meta_Box_types( $this );
+		$this_type = new cmb_uix_Meta_Box_types( $this );
 		$this_type->render();
 
 		echo $this->args( 'after' );
@@ -444,7 +444,7 @@ class cmb_Meta_Box_field {
 		if ( ! isset( $args['date_format'] ) ) $args['date_format'] = 'm\/d\/Y';
 		if ( ! isset( $args['time_format'] ) ) $args['time_format'] = 'h:i A';
 		// Allow a filter override of the default value
-		$args['default']    = apply_filters( 'cmb_default_filter', $args['default'], $args, $this->object_type, $this->object_type );
+		$args['default']    = apply_filters( 'cmb_uix_default_filter', $args['default'], $args, $this->object_type, $this->object_type );
 		$args['allow']      = 'file' == $args['type'] && ! isset( $args['allow'] ) ? array( 'url', 'attachment' ) : array();
 		$args['save_id']    = 'file' == $args['type'] && ! ( isset( $args['save_id'] ) && ! $args['save_id'] );
 		// $args['multiple']   = isset( $args['multiple'] ) ? $args['multiple'] : ( 'multicheck' == $args['type'] ? true : false );

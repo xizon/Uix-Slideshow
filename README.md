@@ -23,6 +23,13 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
+#### = 1.0.8 =
+
+* Add dynamic form fields, meet the needs of custom fields.
+* Enhanced API compatibility for themes.
+
+
+
 #### = 1.0.7 =
 
 * Optimized binding theme picker.

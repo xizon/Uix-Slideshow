@@ -1,4 +1,11 @@
 <?php
+/* ------------------------------------
+ * Upgraded custom field types
+ * Author: UIUX Lab
+ * ------------------------------------
+*/
+
+
 /*
 Script Name:  Custom Metaboxes and Fields
 Contributors: WebDevStudios (@webdevstudios / webdevstudios.com)
@@ -7,7 +14,7 @@ Contributors: WebDevStudios (@webdevstudios / webdevstudios.com)
               Bill Erickson (@billerickson / billerickson.net)
               Andrew Norcross (@norcross / andrewnorcross.com)
 Description:  This will create metaboxes with custom fields that will blow your mind.
-Version:      1.2.0
+Version:      1.2.1
 */
 
 /**
@@ -35,27 +42,27 @@ Version:      1.2.0
 *************************************************************************/
 
 // Autoload helper classes
-spl_autoload_register('cmb_Meta_Box::autoload_helpers');
+spl_autoload_register('cmb_uix_Meta_Box::autoload_helpers');
 
-$meta_boxes = array();
-$meta_boxes = apply_filters( 'cmb_meta_boxes', $meta_boxes );
-foreach ( $meta_boxes as $meta_box ) {
-	$my_box = new cmb_Meta_Box( $meta_box );
+$meta_uix_boxes = array();
+$meta_uix_boxes = apply_filters( 'cmb_uix_meta_boxes', $meta_uix_boxes );
+foreach ( $meta_uix_boxes as $meta_box ) {
+	$my_box = new cmb_uix_Meta_Box( $meta_box );
 }
 
-define( 'CMB_META_BOX_URL', cmb_Meta_Box::get_meta_box_url() );
+define( 'CMB_UIX_META_BOX_URL', cmb_uix_Meta_Box::get_meta_box_url() );
 
 /**
  * Create meta boxes
  */
-class cmb_Meta_Box {
+class cmb_uix_Meta_Box {
 
 	/**
 	 * Current version number
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	const CMB_VERSION = '1.2.0';
+	const CMB_UIX_VERSION = '1.2.1';
 
 	/**
 	 * Metabox Config array
@@ -78,7 +85,7 @@ class cmb_Meta_Box {
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'show_on'    => array( 'key' => false, 'value' => false ), // Specific post IDs or page templates to display this metabox
-		'cmb_styles' => true, // Include cmb bundled stylesheet
+		'cmb_uix_styles' => true, // Include cmb bundled stylesheet
 		'fields'     => array(),
 	);
 
@@ -152,7 +159,7 @@ class cmb_Meta_Box {
 
 		$meta_box = self::set_mb_defaults( $meta_box );
 
-		$allow_frontend = apply_filters( 'cmb_allow_frontend', true, $meta_box );
+		$allow_frontend = apply_filters( 'cmb_uix_allow_frontend', true, $meta_box );
 
 		if ( ! is_admin() && ! $allow_frontend )
 			return;
@@ -166,9 +173,9 @@ class cmb_Meta_Box {
 
 		global $pagenow;
 
-		$show_filters = 'cmb_Meta_Box_Show_Filters';
+		$show_filters = 'cmb_uix_Meta_Box_Show_Filters';
 		foreach ( get_class_methods( $show_filters ) as $filter ) {
-			add_filter( 'cmb_show_on', array( $show_filters, $filter ), 10, 2 );
+			add_filter( 'cmb_uix_show_on', array( $show_filters, $filter ), 10, 2 );
 		}
 
 		// register our scripts and styles for cmb
@@ -242,7 +249,7 @@ class cmb_Meta_Box {
 		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
 		// scripts required for cmb
-		$scripts = array( 'jquery', 'jquery-ui-core', 'cmb-datepicker', /*'media-upload', */'cmb-timepicker' );
+		$scripts = array( 'jquery', 'jquery-ui-core', 'cmb-uix-datepicker', /*'media-upload', */'cmb-uix-timepicker' );
 		// styles required for cmb
 		$styles = array();
 
@@ -252,8 +259,8 @@ class cmb_Meta_Box {
 			$styles[] = 'wp-color-picker';
 			if ( ! is_admin() ) {
 				// we need to register colorpicker on the front-end
-			   wp_register_script( 'iris', admin_url( 'js/iris.min.js' ), array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), self::CMB_VERSION );
-		   	wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris' ), self::CMB_VERSION );
+			   wp_register_script( 'iris', admin_url( 'js/iris.min.js' ), array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), self::CMB_UIX_VERSION );
+		   	wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris' ), self::CMB_UIX_VERSION );
 				wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', array(
 					'clear'         => __( 'Clear', 'uix-slideshow' ),
 					'defaultString' => __( 'Default', 'uix-slideshow' ),
@@ -266,13 +273,13 @@ class cmb_Meta_Box {
 			$scripts[] = 'farbtastic';
 			$styles[] = 'farbtastic';
 		}
-		wp_register_script( 'cmb-datepicker', CMB_META_BOX_URL . 'js/jquery.datePicker.min.js' );
-		wp_register_script( 'cmb-timepicker', CMB_META_BOX_URL . 'js/jquery.timePicker.min.js' );
-		wp_register_script( 'cmb-scripts', CMB_META_BOX_URL .'js/cmb'. $min .'.js', $scripts, self::CMB_VERSION );
+		wp_register_script( 'cmb-uix-datepicker', CMB_UIX_META_BOX_URL . 'js/jquery.datePicker.min.js' );
+		wp_register_script( 'cmb-uix-timepicker', CMB_UIX_META_BOX_URL . 'js/jquery.timePicker.min.js' );
+		wp_register_script( 'cmb-uix-scripts', CMB_UIX_META_BOX_URL .'js/cmb'. $min .'.js', $scripts, self::CMB_UIX_VERSION );
 
 		wp_enqueue_media();
 
-		wp_localize_script( 'cmb-scripts', 'cmb_l10', apply_filters( 'cmb_localized_data', array(
+		wp_localize_script( 'cmb-uix-scripts', 'cmb_uix_l10', apply_filters( 'cmb_uix_localized_data', array(
 			'ajax_nonce'      => wp_create_nonce( 'ajax_nonce' ),
 			'script_debug'    => defined('SCRIPT_DEBUG') && SCRIPT_DEBUG,
 			'new_admin_style' => version_compare( $wp_version, '3.7', '>' ),
@@ -288,7 +295,7 @@ class cmb_Meta_Box {
 			'check_toggle'    => __( 'Select / Deselect All', 'uix-slideshow' ),
 		) ) );
 
-		wp_register_style( 'cmb-styles', CMB_META_BOX_URL . 'style'. $min .'.css', $styles );
+		wp_register_style( 'cmb-uix-styles', CMB_UIX_META_BOX_URL . 'style'. $min .'.css', $styles );
 
 		// Ok, we've enqueued our scripts/styles
 		self::$is_enqueued = true;
@@ -301,11 +308,11 @@ class cmb_Meta_Box {
 	public function do_scripts( $hook ) {
 		// only enqueue our scripts/styles on the proper pages
 		if ( $hook == 'post.php' || $hook == 'post-new.php' || $hook == 'page-new.php' || $hook == 'page.php' ) {
-			wp_enqueue_script( 'cmb-scripts' );
+			wp_enqueue_script( 'cmb-uix-scripts' );
 
 			// default is to show cmb styles on post pages
-			if ( $this->_meta_box['cmb_styles'] )
-				wp_enqueue_style( 'cmb-styles' );
+			if ( $this->_meta_box['cmb_uix_styles'] )
+				wp_enqueue_style( 'cmb-uix-styles' );
 		}
 	}
 
@@ -328,7 +335,7 @@ class cmb_Meta_Box {
 	public function add_metaboxes() {
 
 		foreach ( $this->_meta_box['pages'] as $page ) {
-			if ( apply_filters( 'cmb_show_on', true, $this->_meta_box ) )
+			if ( apply_filters( 'cmb_uix_show_on', true, $this->_meta_box ) )
 				add_meta_box( $this->_meta_box['id'], $this->_meta_box['title'], array( $this, 'post_metabox' ), $page, $this->_meta_box['context'], $this->_meta_box['priority']) ;
 		}
 	}
@@ -356,14 +363,14 @@ class cmb_Meta_Box {
 		if ( 'user' != self::set_mb_type( $this->_meta_box ) )
 			return;
 
-		if ( ! apply_filters( 'cmb_show_on', true, $this->_meta_box ) )
+		if ( ! apply_filters( 'cmb_uix_show_on', true, $this->_meta_box ) )
 			return;
 
-		wp_enqueue_script( 'cmb-scripts' );
+		wp_enqueue_script( 'cmb-uix-scripts' );
 
 		// default is to NOT show cmb styles on user profile page
-		if ( $this->_meta_box['cmb_styles'] != false )
-			wp_enqueue_style( 'cmb-styles' );
+		if ( $this->_meta_box['cmb_uix_styles'] != false )
+			wp_enqueue_style( 'cmb-uix-styles' );
 
 		self::show_form( $this->_meta_box );
 
@@ -391,8 +398,8 @@ class cmb_Meta_Box {
 
 		// Use nonce for verification
 		echo "\n<!-- Begin CMB Fields -->\n";
-		do_action( 'cmb_before_table', $meta_box, $object_id, $object_type );
-		echo '<table class="form-table cmb_metabox">';
+		do_action( 'cmb_uix_before_table', $meta_box, $object_id, $object_type );
+		echo '<table class="form-table cmb_uix_metabox">';
 
 		foreach ( $meta_box['fields'] as $field_args ) {
 
@@ -408,12 +415,12 @@ class cmb_Meta_Box {
 
 				$field_args['show_names'] = $meta_box['show_names'];
 				// Render default fields
-				$field = new cmb_Meta_Box_field( $field_args );
+				$field = new cmb_uix_Meta_Box_field( $field_args );
 				$field->render_field();
 			}
 		}
 		echo '</table>';
-		do_action( 'cmb_after_table', $meta_box, $object_id, $object_type );
+		do_action( 'cmb_uix_after_table', $meta_box, $object_id, $object_type );
 		echo "\n<!-- End CMB Fields -->\n";
 
 	}
@@ -426,7 +433,7 @@ class cmb_Meta_Box {
 			return;
 
 		$args['count']   = 0;
-		$field_group     = new cmb_Meta_Box_field( $args );
+		$field_group     = new cmb_uix_Meta_Box_field( $args );
 		$desc            = $field_group->args( 'description' );
 		$label           = $field_group->args( 'name' );
 		$sortable        = $field_group->options( 'sortable' ) ? ' sortable' : '';
@@ -438,9 +445,9 @@ class cmb_Meta_Box {
 		if ( $desc || $label ) {
 			echo '<tr><th>';
 				if ( $label )
-					echo '<h2 class="cmb-group-name">'. $label .'</h2>';
+					echo '<h2 class="cmb-uix-group-name">'. $label .'</h2>';
 				if ( $desc )
-					echo '<p class="cmb_metabox_description">'. $desc .'</p>';
+					echo '<p class="cmb_uix_metabox_description">'. $desc .'</p>';
 			echo '</th></tr>';
 		}
 
@@ -464,10 +471,10 @@ class cmb_Meta_Box {
 		echo '
 		<tr class="repeatable-grouping" data-iterator="'. $field_group->count() .'">
 			<td>
-				<table class="cmb-nested-table" style="width: 100%;">';
+				<table class="cmb-uix-nested-table" style="width: 100%;">';
 				if ( $field_group->options( 'group_title' ) ) {
 					echo '
-					<tr class="cmb-group-title">
+					<tr class="cmb-uix-group-title">
 						<th colspan="2">
 							', sprintf( '<h4>%1$s</h4>', $field_group->replace_hash( $field_group->options( 'group_title' ) ) ), '
 						<th>
@@ -478,7 +485,7 @@ class cmb_Meta_Box {
 				foreach ( array_values( $field_group->args( 'fields' ) ) as $field_args ) {
 					$field_args['show_names'] = $field_group->args( 'show_names' );
 					$field_args['context'] = $field_group->args( 'context' );
-					$field = new cmb_Meta_Box_field( $field_args, $field_group );
+					$field = new cmb_uix_Meta_Box_field( $field_args, $field_group );
 					$field->render_field();
 				}
 				echo '
@@ -518,6 +525,95 @@ class cmb_Meta_Box {
 			return $post_id;
 
 		self::save_fields( $this->_meta_box, $post_id, 'post' );
+		
+		
+		// -------------Custom Attributes
+
+		// Artwork
+		if ( isset( $_POST[ 'uix_plug_metabox__uix_products_artwork_attrs_title' ] ) ) {
+			$custom_attrs          = array();
+			$field_values_array_1  = $_POST[ 'uix_plug_metabox__uix_products_artwork_attrs_title' ];
+			$field_values_array_2  = $_POST[ 'uix_plug_metabox__uix_products_artwork_attrs_value' ];
+
+
+			foreach( $field_values_array_1 as $index => $value ) {	
+				if ( !empty( $value ) ) {
+					array_push( $custom_attrs, array(
+														'name'  => sanitize_text_field( $value ),
+														'value' => sanitize_text_field( $field_values_array_2[ $index ] )
+													) );		
+				}
+
+			}
+
+			update_post_meta( $post_id, 'uix_products_artwork_attrs', json_encode( $custom_attrs ) );
+
+		}
+		
+		// Theme or Plugin
+		if ( isset( $_POST[ 'uix_plug_metabox__uix_products_themeplugin_attrs_title' ] ) ) {
+			$custom_attrs          = array();
+			$field_values_array_1  = $_POST[ 'uix_plug_metabox__uix_products_themeplugin_attrs_title' ];
+			$field_values_array_2  = $_POST[ 'uix_plug_metabox__uix_products_themeplugin_attrs_value' ];
+
+
+			foreach( $field_values_array_1 as $index => $value ) {	
+				if ( !empty( $value ) ) {
+					array_push( $custom_attrs, array(
+														'name'  => sanitize_text_field( $value ),
+														'value' => sanitize_text_field( $field_values_array_2[ $index ] )
+													) );		
+				}
+
+			}
+
+			update_post_meta( $post_id, 'uix_products_themeplugin_attrs', json_encode( $custom_attrs ) );
+
+		}
+		
+		
+		/* 
+	     * Other Uix Plugin
+		 * Usage:
+		 
+			array(
+				'name'	=> __( 'Custom Attributes' ),
+				'desc'	=>  '',
+				'id'	=> 'uix_plugin_1_attrs', //uix_plugin_1_attrs, uix_plugin_2_attrs, ...
+				'type'	=> 'dynamic_attributes',
+				
+			),
+				
+		
+		
+		*/
+		for ( $k = 1; $k < 10; $k ++ ) {
+			if ( isset( $_POST[ 'uix_plug_metabox__uix_plugin_'.$k.'_attrs_title' ] ) ) {
+				$custom_attrs          = array();
+				$field_values_array_1  = $_POST[ 'uix_plug_metabox__uix_plugin_'.$k.'_attrs_title' ];
+				$field_values_array_2  = $_POST[ 'uix_plug_metabox__uix_plugin_'.$k.'_attrs_value' ];
+
+
+				foreach( $field_values_array_1 as $index => $value ) {	
+					if ( !empty( $value ) ) {
+						array_push( $custom_attrs, array(
+															'name'  => sanitize_text_field( $value ),
+															'value' => sanitize_text_field( $field_values_array_2[ $index ] )
+														) );		
+					}
+
+				}
+
+				update_post_meta( $post_id, 'uix_plugin_'.$k.'_attrs', json_encode( $custom_attrs ) );
+
+			}
+		}
+			
+		
+		
+		
+		
+		
 	}
 
 	/**
@@ -553,7 +649,7 @@ class cmb_Meta_Box {
 		// Set/get type
 		$object_type = self::set_object_type( $object_type ? $object_type	: self::set_mb_type( $meta_box ) );
 
-		if ( ! apply_filters( 'cmb_show_on', true, $meta_box ) )
+		if ( ! apply_filters( 'cmb_uix_show_on', true, $meta_box ) )
 			return;
 
 		// save field ids of those that are updated
@@ -565,7 +661,7 @@ class cmb_Meta_Box {
 				self::save_group( $field_args );
 			} else {
 				// Save default fields
-				$field = new cmb_Meta_Box_field( $field_args );
+				$field = new cmb_uix_Meta_Box_field( $field_args );
 				self::save_field( self::sanitize_field( $field ), $field );
 			}
 
@@ -575,7 +671,7 @@ class cmb_Meta_Box {
 		if ( $object_type == 'options-page' )
 			self::save_option( $object_id );
 
-		do_action( "cmb_save_{$object_type}_fields", $object_id, $meta_box['id'], self::$updated, $meta_box );
+		do_action( "cmb_uix_save_{$object_type}_fields", $object_id, $meta_box['id'], self::$updated, $meta_box );
 
 	}
 
@@ -586,7 +682,7 @@ class cmb_Meta_Box {
 		if ( ! isset( $args['id'], $args['fields'], $_POST[ $args['id'] ] ) || ! is_array( $args['fields'] ) )
 			return;
 
-		$field_group        = new cmb_Meta_Box_field( $args );
+		$field_group        = new cmb_uix_Meta_Box_field( $args );
 		$base_id            = $field_group->id();
 		$old                = $field_group->get_data();
 		$group_vals         = $_POST[ $base_id ];
@@ -596,7 +692,7 @@ class cmb_Meta_Box {
 
 		// $group_vals[0]['color'] = '333';
 		foreach ( array_values( $field_group->fields() ) as $field_args ) {
-			$field = new cmb_Meta_Box_field( $field_args, $field_group );
+			$field = new cmb_uix_Meta_Box_field( $field_args, $field_group );
 			$sub_id = $field->id( true );
 
 			foreach ( (array) $group_vals as $field_group->index => $post_vals ) {
@@ -840,19 +936,19 @@ class cmb_Meta_Box {
 			// Windows
 			$content_dir = str_replace( '/', DIRECTORY_SEPARATOR, WP_CONTENT_DIR );
 			$content_url = str_replace( $content_dir, WP_CONTENT_URL, dirname(__FILE__) );
-			$cmb_url = str_replace( DIRECTORY_SEPARATOR, '/', $content_url );
+			$cmb_uix_url = str_replace( DIRECTORY_SEPARATOR, '/', $content_url );
 
 		} else {
-		  $cmb_url = str_replace(
+		  $cmb_uix_url = str_replace(
 				array(WP_CONTENT_DIR, WP_PLUGIN_DIR),
 				array(WP_CONTENT_URL, WP_PLUGIN_URL),
 				dirname( __FILE__ )
 			);
 		}
 
-		$cmb_url = set_url_scheme( $cmb_url );
+		$cmb_uix_url = set_url_scheme( $cmb_uix_url );
 
-		return trailingslashit( apply_filters('cmb_meta_box_url', $cmb_url ) );
+		return trailingslashit( apply_filters('cmb_uix_meta_box_url', $cmb_uix_url ) );
 	}
 
 	/**
@@ -923,7 +1019,7 @@ class cmb_Meta_Box {
 
 	/**
 	 * Retrieve option value based on name of option.
-	 * @uses apply_filters() Calls 'cmb_override_option_get_$option_key' hook to allow
+	 * @uses apply_filters() Calls 'cmb_uix_override_option_get_$option_key' hook to allow
 	 * 	overwriting the option value to be retrieved.
 	 *
 	 * @since  1.0.1
@@ -933,9 +1029,9 @@ class cmb_Meta_Box {
 	 */
 	public static function _get_option( $option_key, $default = false ) {
 
-		$test_get = apply_filters( "cmb_override_option_get_$option_key", 'cmb_no_override_option_get', $default );
+		$test_get = apply_filters( "cmb_uix_override_option_get_$option_key", 'cmb_uix_no_override_option_get', $default );
 
-		if ( $test_get !== 'cmb_no_override_option_get' )
+		if ( $test_get !== 'cmb_uix_no_override_option_get' )
 			return $test_get;
 
 		// If no override, get the option
@@ -945,7 +1041,7 @@ class cmb_Meta_Box {
 	/**
 	 * Saves the option array
 	 * Needs to be run after finished using remove/update_option
-	 * @uses apply_filters() Calls 'cmb_override_option_save_$option_key' hook to allow
+	 * @uses apply_filters() Calls 'cmb_uix_override_option_save_$option_key' hook to allow
 	 * 	overwriting the option value to be stored.
 	 *
 	 * @since  1.0.1
@@ -956,9 +1052,9 @@ class cmb_Meta_Box {
 
 		$to_save = self::get_option( $option_key );
 
-		$test_save = apply_filters( "cmb_override_option_save_$option_key", 'cmb_no_override_option_save', $to_save );
+		$test_save = apply_filters( "cmb_uix_override_option_save_$option_key", 'cmb_uix_no_override_option_save', $to_save );
 
-		if ( $test_save !== 'cmb_no_override_option_save' )
+		if ( $test_save !== 'cmb_uix_no_override_option_save' )
 			return $test_save;
 
 		// If no override, update the option
@@ -1044,8 +1140,8 @@ class cmb_Meta_Box {
 }
 
 // Handle oembed Ajax
-add_action( 'wp_ajax_cmb_oembed_handler', array( 'cmb_Meta_Box_ajax', 'oembed_handler' ) );
-add_action( 'wp_ajax_nopriv_cmb_oembed_handler', array( 'cmb_Meta_Box_ajax', 'oembed_handler' ) );
+add_action( 'wp_ajax_cmb_uix_oembed_handler', array( 'cmb_uix_Meta_Box_ajax', 'oembed_handler' ) );
+add_action( 'wp_ajax_nopriv_cmb_uix_oembed_handler', array( 'cmb_uix_Meta_Box_ajax', 'oembed_handler' ) );
 
 /**
  * A helper function to get an option from a CMB options array
@@ -1054,8 +1150,8 @@ add_action( 'wp_ajax_nopriv_cmb_oembed_handler', array( 'cmb_Meta_Box_ajax', 'oe
  * @param  string  $field_id   Option array field key
  * @return array               Options array or specific field
  */
-function cmb_get_option( $option_key, $field_id = '' ) {
-	return cmb_Meta_Box::get_option( $option_key, $field_id );
+function cmb_uix_get_option( $option_key, $field_id = '' ) {
+	return cmb_uix_Meta_Box::get_option( $option_key, $field_id );
 }
 
 /**
@@ -1064,15 +1160,15 @@ function cmb_get_option( $option_key, $field_id = '' ) {
  * @param  array  $field_args  Field arguments
  * @param  int    $object_id   Object ID
  * @param  string $object_type Type of object being saved. (e.g., post, user, or comment)
- * @return object              cmb_Meta_Box_field object
+ * @return object              cmb_uix_Meta_Box_field object
  */
-function cmb_get_field( $field_args, $object_id = 0, $object_type = 'post' ) {
+function cmb_uix_get_field( $field_args, $object_id = 0, $object_type = 'post' ) {
 	// Default to the loop post ID
 	$object_id = $object_id ? $object_id : get_the_ID();
-	cmb_Meta_Box::set_object_id( $object_id );
-	cmb_Meta_Box::set_object_type( $object_type );
+	cmb_uix_Meta_Box::set_object_id( $object_id );
+	cmb_uix_Meta_Box::set_object_type( $object_type );
 	// Send back field object
-	return new cmb_Meta_Box_field( $field_args );
+	return new cmb_uix_Meta_Box_field( $field_args );
 }
 
 /**
@@ -1083,20 +1179,20 @@ function cmb_get_field( $field_args, $object_id = 0, $object_type = 'post' ) {
  * @param  string $object_type Type of object being saved. (e.g., post, user, comment, or options-page)
  * @return mixed               Maybe escaped value
  */
-function cmb_get_field_value( $field_args, $object_id = 0, $object_type = 'post' ) {
-	$field = cmb_get_field( $field_args, $object_id, $object_type );
+function cmb_uix_get_field_value( $field_args, $object_id = 0, $object_type = 'post' ) {
+	$field = cmb_uix_get_field( $field_args, $object_id, $object_type );
 	return $field->escaped_value();
 }
 
 /**
  * Loop and output multiple metaboxes
  * @since 1.0.0
- * @param array $meta_boxes Metaboxes config array
+ * @param array $meta_uix_boxes Metaboxes config array
  * @param int   $object_id  Object ID
  */
-function cmb_print_metaboxes( $meta_boxes, $object_id ) {
-	foreach ( (array) $meta_boxes as $meta_box ) {
-		cmb_print_metabox( $meta_box, $object_id );
+function cmb_uix_print_metaboxes( $meta_uix_boxes, $object_id ) {
+	foreach ( (array) $meta_uix_boxes as $meta_box ) {
+		cmb_uix_print_metabox( $meta_box, $object_id );
 	}
 }
 
@@ -1106,22 +1202,22 @@ function cmb_print_metaboxes( $meta_boxes, $object_id ) {
  * @param array $meta_box  Metabox config array
  * @param int   $object_id Object ID
  */
-function cmb_print_metabox( $meta_box, $object_id ) {
-	$cmb = new cmb_Meta_Box( $meta_box );
+function cmb_uix_print_metabox( $meta_box, $object_id ) {
+	$cmb = new cmb_uix_Meta_Box( $meta_box );
 	if ( $cmb ) {
 
-		cmb_Meta_Box::set_object_id( $object_id );
+		cmb_uix_Meta_Box::set_object_id( $object_id );
 
-		if ( ! wp_script_is( 'cmb-scripts', 'registered' ) )
+		if ( ! wp_script_is( 'cmb-uix-scripts', 'registered' ) )
 			$cmb->register_scripts();
 
-		wp_enqueue_script( 'cmb-scripts' );
+		wp_enqueue_script( 'cmb-uix-scripts' );
 
 		// default is to show cmb styles
-		if ( $meta_box['cmb_styles'] != false )
-			wp_enqueue_style( 'cmb-styles' );
+		if ( $meta_box['cmb_uix_styles'] != false )
+			wp_enqueue_style( 'cmb-uix-styles' );
 
-		cmb_Meta_Box::show_form( $meta_box );
+		cmb_uix_Meta_Box::show_form( $meta_box );
 	}
 
 }
@@ -1132,8 +1228,8 @@ function cmb_print_metabox( $meta_box, $object_id ) {
  * @param array $meta_box  Metabox config array
  * @param int   $object_id Object ID
  */
-function cmb_save_metabox_fields( $meta_box, $object_id ) {
-	cmb_Meta_Box::save_fields( $meta_box, $object_id );
+function cmb_uix_save_metabox_fields( $meta_box, $object_id ) {
+	cmb_uix_Meta_Box::save_fields( $meta_box, $object_id );
 }
 
 /**
@@ -1144,16 +1240,16 @@ function cmb_save_metabox_fields( $meta_box, $object_id ) {
  * @param  boolean $return    Whether to return or echo form
  * @return string             CMB html form markup
  */
-function cmb_metabox_form( $meta_box, $object_id, $echo = true ) {
+function cmb_uix_metabox_form( $meta_box, $object_id, $echo = true ) {
 
-	$meta_box = cmb_Meta_Box::set_mb_defaults( $meta_box );
+	$meta_box = cmb_uix_Meta_Box::set_mb_defaults( $meta_box );
 
 	// Make sure form should be shown
-	if ( ! apply_filters( 'cmb_show_on', true, $meta_box ) )
+	if ( ! apply_filters( 'cmb_uix_show_on', true, $meta_box ) )
 		return '';
 
 	// Make sure that our object type is explicitly set by the metabox config
-	cmb_Meta_Box::set_object_type( cmb_Meta_Box::set_mb_type( $meta_box ) );
+	cmb_uix_Meta_Box::set_object_type( cmb_uix_Meta_Box::set_mb_type( $meta_box ) );
 
 	// Save the metabox if it's been submitted
 	// check permissions
@@ -1161,20 +1257,20 @@ function cmb_metabox_form( $meta_box, $object_id, $echo = true ) {
 	if (
 		// check nonce
 		isset( $_POST['submit-cmb'], $_POST['object_id'], $_POST['wp_meta_box_nonce'] )
-		&& wp_verify_nonce( $_POST['wp_meta_box_nonce'], cmb_Meta_Box::nonce() )
+		&& wp_verify_nonce( $_POST['wp_meta_box_nonce'], cmb_uix_Meta_Box::nonce() )
 		&& $_POST['object_id'] == $object_id
 	)
-		cmb_save_metabox_fields( $meta_box, $object_id );
+		cmb_uix_save_metabox_fields( $meta_box, $object_id );
 
 	// Show specific metabox form
 
 	// Get cmb form
 	ob_start();
-	cmb_print_metabox( $meta_box, $object_id );
+	cmb_uix_print_metabox( $meta_box, $object_id );
 	$form = ob_get_contents();
 	ob_end_clean();
 
-	$form_format = apply_filters( 'cmb_frontend_form_format', '<form class="cmb-form" method="post" id="%s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%s">%s<input type="submit" name="submit-cmb" value="%s" class="button-primary"></form>', $object_id, $meta_box, $form );
+	$form_format = apply_filters( 'cmb_uix_frontend_form_format', '<form class="cmb-uix-form" method="post" id="%s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%s">%s<input type="submit" name="submit-cmb" value="%s" class="button-primary"></form>', $object_id, $meta_box, $form );
 
 	$form = sprintf( $form_format, $meta_box['id'], $object_id, $form, __( 'Save', 'uix-slideshow' ) );
 
@@ -1185,3 +1281,4 @@ function cmb_metabox_form( $meta_box, $object_id, $echo = true ) {
 }
 
 // End. That's it, folks! //
+

@@ -3,15 +3,15 @@
  * Custom Metaboxes and Fields
  *
  * Define the metabox and field configurations.
- * @param  array $meta_boxes
+ * @param  array $meta_uix_boxes
  * @return array
  *
  */
 
 
-function uix_slideshow_metaboxes( array $meta_boxes ) {
+function uix_slideshow_metaboxes( array $meta_uix_boxes ) {
 
-	$meta_boxes[] = array(
+	$meta_uix_boxes[] = array(
 		'id'			=> 'uix-slideshow-img',
 		'title'			=> __( 'Slider Image', 'uix-slideshow' ),
 		'pages'			=> array( 'uix-slideshow' ),
@@ -30,7 +30,7 @@ function uix_slideshow_metaboxes( array $meta_boxes ) {
 		),
 	);
 
-	$meta_boxes[] = array(
+	$meta_uix_boxes[] = array(
 		'id'			=> 'uix-slideshow-meta',
 		'title'			=> __( 'Slider Settings', 'uix-slideshow' ),
 		'pages'			=> array( 'uix-slideshow' ),
@@ -68,7 +68,7 @@ function uix_slideshow_metaboxes( array $meta_boxes ) {
 	);
 
 
-	$meta_boxes[] = array(
+	$meta_uix_boxes[] = array(
 		'id'			=> 'uix-slideshow-url-meta',
 		'title'			=> __( 'URL Settings', 'uix-slideshow' ),
 		'pages'			=> array( 'uix-slideshow' ),
@@ -107,9 +107,9 @@ function uix_slideshow_metaboxes( array $meta_boxes ) {
 
 
 
-	return $meta_boxes;
+	return $meta_uix_boxes;
 }
-add_filter( 'cmb_meta_boxes', 'uix_slideshow_metaboxes' );
+add_filter( 'cmb_uix_meta_boxes', 'uix_slideshow_metaboxes' );
 
 
 

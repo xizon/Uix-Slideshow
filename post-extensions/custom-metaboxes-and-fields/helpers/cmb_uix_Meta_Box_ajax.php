@@ -6,7 +6,7 @@
  *
  * @since  0.9.5
  */
-class cmb_Meta_Box_ajax {
+class cmb_uix_Meta_Box_ajax {
 
 	// A single instance of this class.
 	public static $instance    = null;
@@ -19,7 +19,7 @@ class cmb_Meta_Box_ajax {
 	/**
 	 * Creates or returns an instance of this class.
 	 * @since  0.1.0
-	 * @return cmb_Meta_Box_ajax A single instance of this class.
+	 * @return cmb_uix_Meta_Box_ajax A single instance of this class.
 	 */
 	public static function get() {
 		if ( self::$instance === null )
@@ -36,7 +36,7 @@ class cmb_Meta_Box_ajax {
 	public function oembed_handler() {
 
 		// verify our nonce
-		if ( ! ( isset( $_REQUEST['cmb_ajax_nonce'], $_REQUEST['oembed_url'] ) && wp_verify_nonce( $_REQUEST['cmb_ajax_nonce'], 'ajax_nonce' ) ) )
+		if ( ! ( isset( $_REQUEST['cmb_uix_ajax_nonce'], $_REQUEST['oembed_url'] ) && wp_verify_nonce( $_REQUEST['cmb_uix_ajax_nonce'], 'ajax_nonce' ) ) )
 			die();
 
 		// sanitize our search string
@@ -109,9 +109,9 @@ class cmb_Meta_Box_ajax {
 			self::$object_type = $args['object_type'];
 
 			// Gets ombed cache from our object's meta (vs postmeta)
-			add_filter( 'get_post_metadata', array( 'cmb_Meta_Box_ajax', 'hijack_oembed_cache_get' ), 10, 3 );
+			add_filter( 'get_post_metadata', array( 'cmb_uix_Meta_Box_ajax', 'hijack_oembed_cache_get' ), 10, 3 );
 			// Sets ombed cache in our object's meta (vs postmeta)
-			add_filter( 'update_post_metadata', array( 'cmb_Meta_Box_ajax', 'hijack_oembed_cache_set' ), 10, 4 );
+			add_filter( 'update_post_metadata', array( 'cmb_uix_Meta_Box_ajax', 'hijack_oembed_cache_set' ), 10, 4 );
 
 		}
 
@@ -128,7 +128,7 @@ class cmb_Meta_Box_ajax {
 
 		// Send back our embed
 		if ( $check_embed && $check_embed != $fallback )
-			return '<div class="embed_status">'. $check_embed .'<p class="cmb_remove_wrapper"><a href="#" class="cmb_remove_file_button" rel="'. $args['field_id'] .'">'. __( 'Remove Embed', 'uix-slideshow' ) .'</a></p></div>';
+			return '<div class="embed_status">'. $check_embed .'<p class="cmb_uix_remove_wrapper"><a href="#" class="cmb_uix_remove_file_button" rel="'. $args['field_id'] .'">'. __( 'Remove Embed', 'uix-slideshow' ) .'</a></p></div>';
 
 		// Otherwise, send back error info that no oEmbeds were found
 		return '<p class="ui-state-error-text">'. sprintf( __( 'No oEmbed Results Found for %s. View more info at', 'uix-slideshow' ), $fallback ) .' <a href="http://codex.wordpress.org/Embeds" target="_blank">codex.wordpress.org/Embeds</a>.</p>';
@@ -152,7 +152,7 @@ class cmb_Meta_Box_ajax {
 
 		// get cached data
 		$data = 'options-page' === self::$object_type
-			? cmb_Meta_Box::get_option( self::$object_id, self::$embed_args['cache_key'] )
+			? cmb_uix_Meta_Box::get_option( self::$object_id, self::$embed_args['cache_key'] )
 			: get_metadata( self::$object_type, self::$object_id, $meta_key, true );
 
 		return $data;
@@ -176,9 +176,9 @@ class cmb_Meta_Box_ajax {
 		// Cache the result to our metadata
 		if ( 'options-page' === self::$object_type ) {
 			// Set the option
-			cmb_Meta_Box::update_option( self::$object_id, self::$embed_args['cache_key'], $meta_value, array( 'type' => 'oembed' ) );
+			cmb_uix_Meta_Box::update_option( self::$object_id, self::$embed_args['cache_key'], $meta_value, array( 'type' => 'oembed' ) );
 			// Save the option
-			cmb_Meta_Box::save_option( self::$object_id );
+			cmb_uix_Meta_Box::save_option( self::$object_id );
 		} else {
 			update_metadata( self::$object_type, self::$object_id, $meta_key, $meta_value );
 		}

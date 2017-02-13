@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.0.7
+ * Version:     1.0.8
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -77,7 +77,7 @@ class UixSlideshow {
 	 *
 	 */
 	public static function includes() {
-		if ( ! class_exists( 'cmb_Meta_Box' ) ) {
+		if ( ! class_exists( 'cmb_uix_Meta_Box' ) ) {
 			require_once UIX_SLIDESHOW_PLUGIN_DIR.'post-extensions/custom-metaboxes-and-fields/init.php';
 		}
 	}
