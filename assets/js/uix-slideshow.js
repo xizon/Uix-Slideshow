@@ -38,6 +38,52 @@
 			})
 		}
 
+		
+		/* 
+		 * Button Color
+		 * --------------------------------
+		*/
+		 $( '.link-button' ).each( function(){
+
+			var $this              = $( this ),
+				hoverbg            = $this.data( 'color' ),
+				textcolor          = $this.data( 'tcolor' ),
+				defaultbg          = $this.data( 'default-bg' );
+
+			 if ( defaultbg != '' && typeof defaultbg !== typeof undefined ) {
+
+				$( this ).css( {
+					'background-color': 'transparent',
+					'border-color'    : defaultbg,
+				} );	 
+
+			 }
+			 
+			 if ( hoverbg != '' && typeof hoverbg !== typeof undefined ) {
+
+				$this.on( 'mouseenter', function( e ) {
+					e.preventDefault();
+					$( this ).css( {
+						'background-color': hoverbg,
+						'border-color'    : hoverbg,
+					} );
+
+					return false;
+				});
+				$this.on( 'mouseleave', function( e ) {
+					e.preventDefault();
+					$( this ).css( {
+						'background-color': 'transparent',
+						'border-color'    : defaultbg,
+					} );
+					return false;
+				});		 
+
+			 }
+
+		 });	
+
+
 
 	} );
 } ) ( jQuery );

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Mon Feb 13 2017 12:42:11 GMT+0800 (CST)\n"
+"POT-Revision-Date: Thu Feb 16 2017 22:11:31 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: ../uix-slideshow.php:397
 msgid ""
-"<strong>You need to create Uix Slideshow template files in your templates "
+"<strong>You could create Uix Slideshow template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
@@ -450,79 +450,108 @@ msgid "URL Settings"
 msgstr ""
 
 #: ../post-extensions/post-extensions-init.php:80 ../post-extensions/post-
-#: extensions-init.php:210
+#: extensions-init.php:265
 msgid "URL"
 msgstr ""
 
 #: ../post-extensions/post-extensions-init.php:81
 msgid ""
 "Enter a custom URL to link this slide to. Don't forget the http:// at the "
-"front!"
-msgstr ""
-
-#: ../post-extensions/post-extensions-init.php:87
-msgid "Button Label"
+"front! When the URL is not empty, the button will be displayed on the front-"
+"end page."
 msgstr ""
 
 #: ../post-extensions/post-extensions-init.php:88
-msgid "It defines the text on the button."
+msgid "Open Link In A New Window/Tab"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:91
+#: ../post-extensions/post-extensions-init.php:103
+msgid "Button Settings"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:110
+msgid "Color"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:118
+msgid "Hover Color"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:126
+msgid "Text Color"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:135
+msgid "Size"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:140
+msgid "Tiny"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:141
+msgid "Small"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:142
+msgid "Medium"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:143
+msgid "Large"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:150
+msgid "Text On The Button"
+msgstr ""
+
+#: ../post-extensions/post-extensions-init.php:154
 msgid "Check Out"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:95
-msgid "Target"
-msgstr ""
-
-#: ../post-extensions/post-extensions-init.php:96
-msgid "Open link in a new window/tab"
-msgstr ""
-
-#: ../post-extensions/post-extensions-init.php:160 ../shortcodes/core/tinymce-
+#: ../post-extensions/post-extensions-init.php:215 ../shortcodes/core/tinymce-
 #: plugin-lang.php:12
 msgid "Uix Slideshow"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:161
+#: ../post-extensions/post-extensions-init.php:216
 msgid "Slideshow Item"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:162
+#: ../post-extensions/post-extensions-init.php:217
 msgid "Add New Item"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:163 ../post-extensions/post-
-#: extensions-init.php:165
+#: ../post-extensions/post-extensions-init.php:218 ../post-extensions/post-
+#: extensions-init.php:220
 msgid "Add New Slideshow Item"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:164
+#: ../post-extensions/post-extensions-init.php:219
 msgid "Edit Slideshow Item"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:166
+#: ../post-extensions/post-extensions-init.php:221
 msgid "View Item"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:167
+#: ../post-extensions/post-extensions-init.php:222
 msgid "Search Slideshow"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:168
+#: ../post-extensions/post-extensions-init.php:223
 msgid "No slideshow items found"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:169
+#: ../post-extensions/post-extensions-init.php:224
 msgid "No slideshow items found in trash"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:208
+#: ../post-extensions/post-extensions-init.php:263
 msgid "Slide Image"
 msgstr ""
 
-#: ../post-extensions/post-extensions-init.php:211
+#: ../post-extensions/post-extensions-init.php:266
 msgid "Author"
 msgstr ""
 

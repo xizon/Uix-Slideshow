@@ -11,24 +11,6 @@
 
 function uix_slideshow_metaboxes( array $meta_uix_boxes ) {
 
-	$meta_uix_boxes[] = array(
-		'id'			=> 'uix-slideshow-img',
-		'title'			=> __( 'Slider Image', 'uix-slideshow' ),
-		'pages'			=> array( 'uix-slideshow' ),
-		'context'		=> 'normal',
-		'priority'		=> 'high',
-		'show_names'	    => false,
-		'fields'		    => array(
-			
-			
-			array(
-				'name' => '',
-				'id'   => 'uix_slideshow_img',
-				'type' => 'file',
-			),
-			
-		),
-	);
 
 	$meta_uix_boxes[] = array(
 		'id'			=> 'uix-slideshow-meta',
@@ -40,8 +22,14 @@ function uix_slideshow_metaboxes( array $meta_uix_boxes ) {
 		'fields'		=> array(
 		
 			array(
+				'name' => __( 'Slider Image', 'uix-slideshow' ),
+				'id'   => 'uix_slideshow_img',
+				'type' => 'file',
+			),
+		
+			array(
 				'name'	=> __( 'Caption', 'uix-slideshow' ),
-				'desc'	=>  '',
+				'desc'	=> __( 'When this field is not empty, it will be displayed on the front-end page.', 'uix-slideshow' ),
 				'id'	=> 'uix_slideshow_caption',
 				'type'	=> 'textarea_small',
 				
@@ -78,33 +66,89 @@ function uix_slideshow_metaboxes( array $meta_uix_boxes ) {
 		'fields'		    => array(
 			array(
 				'name'	=> __( 'URL', 'uix-slideshow' ),
-				'desc'	=>  __( 'Enter a custom URL to link this slide to. Don\'t forget the http:// at the front!', 'uix-slideshow' ),
+				'desc'	=>  __( 'Enter a custom URL to link this slide to. When the URL is not empty, the button will be displayed on the front-end page.', 'uix-slideshow' ),
 				'id'	=> 'uix_slideshow_url',
 				'type'	=> 'text',
+		        'default' => 'http://',
 				
 			),
-			array(
-				'name'	=> __( 'Button Label', 'uix-slideshow' ),
-				'desc'	=>  __( 'It defines the text on the button.', 'uix-slideshow' ),
-				'id'	=> 'uix_slideshow_button_text',
-				'type'	=> 'text',
-				'default' => __( 'Check Out', 'uix-slideshow' )
-				
-			),
+		
 			array(
 				'name'	=> __( 'Target', 'uix-slideshow' ),
-				'desc'	=>  __( 'Open link in a new window/tab', 'uix-slideshow' ),
+				'desc'	=> __( 'Open Link In A New Window/Tab', 'uix-slideshow' ),
 				'id'	=> 'uix_slideshow_target',
 				'type'	=> 'checkbox',
 				'default' => false
 				
 			),
 			
-			
 
 		),
 	);
 
+	
+	$meta_uix_boxes[] = array(
+		'id'			=> 'uix-slideshow-btn-meta',
+		'title'			=> __( 'Button Settings', 'uix-slideshow' ),
+		'pages'			=> array( 'uix-slideshow' ),
+		'context'		=> 'side',
+		'priority'		=> 'low',
+		'show_names'	    => true,
+		'fields'		    => array(
+			array(
+				'name'	=> __( 'Color', 'uix-slideshow' ),
+				'desc'	=>  __( '', 'uix-slideshow' ),
+				'id'	=> 'uix_slideshow_bcolor',
+				'type'	=> 'colorpicker',
+		        'default' => '#ffffff'
+				
+			),
+			array(
+				'name'	=> __( 'Hover Color', 'uix-slideshow' ),
+				'desc'	=>  __( '', 'uix-slideshow' ),
+				'id'	=> 'uix_slideshow_bhcolor',
+				'type'	=> 'colorpicker',
+		        'default' => '#333333'
+				
+			),
+			array(
+				'name'	=> __( 'Text Color', 'uix-slideshow' ),
+				'desc'	=>  __( '', 'uix-slideshow' ),
+				'id'	=> 'uix_slideshow_button_textcolor',
+				'type'	=> 'colorpicker',
+		        'default' => '#ffffff'
+				
+			),
+		
+			array(
+				'name'	=> __( 'Size', 'uix-slideshow' ),
+				'desc'	=>  __( '', 'uix-slideshow' ),
+				'id'	=> 'uix_slideshow_bsize',
+				'type'	=> 'select',
+				'options' => array(
+					'tiny'     => __( 'Tiny', 'uix-slideshow' ),
+					'small'    => __( 'Small', 'uix-slideshow' ),
+					'medium'   => __( 'Medium', 'uix-slideshow' ),
+		            'large'    => __( 'Large', 'uix-slideshow' ),
+				),
+				'default' => 'small',
+				
+			),
+		
+			array(
+				'name'	=> __( 'Text On The Button', 'uix-slideshow' ),
+				'desc'	=>  '',
+				'id'	=> 'uix_slideshow_button_text',
+				'type'	=> 'text',
+				'default' => __( 'Check Out', 'uix-slideshow' )
+				
+			),
+
+		
+			
+
+		),
+	);
 
 
 	return $meta_uix_boxes;
@@ -254,6 +298,7 @@ function uix_slideshow_taxonomy_cols_display( $columns, $post_id ) {
 
 
 			$url = esc_html( get_post_meta( get_the_ID(), 'uix_slideshow_url', true ) );
+			if ( $url == 'http://' || $url == 'https://' ) $url = '';
 			
 			if ( $url != '' ) {
 				echo '<a href="'.$url.'" target="_blank">'.$url.'</a>';

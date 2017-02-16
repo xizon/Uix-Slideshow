@@ -39,11 +39,39 @@ $uix_slideshow_query = new WP_Query(
                     // Get data
                     $caption       = get_post_meta( get_the_ID(), 'uix_slideshow_caption', true );
                     $button_text   = get_post_meta( get_the_ID(), 'uix_slideshow_button_text', true );
+	                $button_color  = get_post_meta( get_the_ID(), 'uix_slideshow_bcolor', true );
+	                $button_hcolor = get_post_meta( get_the_ID(), 'uix_slideshow_bhcolor', true );
+	                $button_tcolor = get_post_meta( get_the_ID(), 'uix_slideshow_button_textcolor', true );
+	                $button_size   = get_post_meta( get_the_ID(), 'uix_slideshow_bsize', true );
                     $url           = get_post_meta( get_the_ID(), 'uix_slideshow_url', true );
                     $url_target    = ( get_post_meta( get_the_ID(), 'uix_slideshow_target', true ) ) ? esc_attr( '_blank' ) : esc_attr( '_self' );
                     $title_color   = ( get_post_meta( get_the_ID(), 'uix_slideshow_title_color', true ) == '' ) ? esc_attr( '#ffffff' ) : esc_attr( get_post_meta( get_the_ID(), 'uix_slideshow_title_color', true ) );
                     $caption_color = ( get_post_meta( get_the_ID(), 'uix_slideshow_caption_color', true ) == '' ) ? esc_attr( '#ffffff' ) : esc_attr( get_post_meta( get_the_ID(), 'uix_slideshow_caption_color', true ) ); 
                 
+	                //url
+	                if ( $url == 'http://' || $url == 'https://' ) $url = '';
+
+					//button
+	                if ( empty( $button_color ) )   $button_color = '#ffffff';
+	                if ( empty( $button_hcolor ) )  $button_hcolor = '#333333';
+	                if ( empty( $button_tcolor ) )  $button_tcolor = '#ffffff';
+	                if ( empty( $button_size ) )    $button_size = 'small';
+	                $button_size_class = 'bsize-s';
+					switch ( $button_size ) {
+						case 'tiny':
+							$button_size_class = 'bsize-tiny';
+							break;
+						case 'small':
+							$button_size_class = 'bsize-s';
+							break;
+						case 'medium':
+							$button_size_class = 'bsize-m';
+							break;
+						case 'large':
+							$button_size_class = 'bsize-l';
+							break;	
+					}
+
 
                     ?>
 
@@ -71,14 +99,14 @@ $uix_slideshow_query = new WP_Query(
                                     <h2 class="level level-1"><span class="uix-slideshow-custom-title" style="color:<?php echo esc_attr( $title_color ); ?>"><?php the_title(); ?></span></h2>
                                     <?php } ?>
                                     
-                                    <?php if ( $caption ) { ?>
+                                    <?php if ( !empty( $caption ) ) { ?>
                                     <p class="caption level level-2">									
                                         <span class="uix-slideshowhow-custom-caption" style="color:<?php echo esc_attr( $caption_color ); ?>"><?php echo wp_kses( $caption, wp_kses_allowed_html( 'post' ) ); ?></span>
                                     </p>
                                     <?php } ?>
                                     
-                                    <?php if ( $url ) { ?>
-                                        <a class="link-button level level-3" href="<?php echo esc_url( $url ); ?>" title="<?php the_title_attribute(); ?>" target="<?php echo esc_attr( $url_target ); ?>"><?php echo wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ); ?></a>
+                                    <?php if ( !empty( $url ) ) { ?>
+                                        <a data-tcolor="<?php echo esc_attr( $button_tcolor ); ?>" data-default-bg="<?php echo esc_attr( $button_color ); ?>" data-color="<?php echo esc_attr( $button_hcolor ); ?>" class="link-button <?php echo esc_attr( $button_size_class ); ?> <?php echo esc_attr( UixSlideshow::color( $button_color ) ); ?> level level-3" href="<?php echo esc_url( $url ); ?>" title="<?php the_title_attribute(); ?>" target="<?php echo esc_attr( $url_target ); ?>"><span style="color:<?php echo esc_attr( $button_tcolor ); ?>"><?php echo wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ); ?></span></a>
                                     <?php } ?>
                                 
                             </div>

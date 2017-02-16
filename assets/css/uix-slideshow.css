@@ -89,6 +89,12 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
     filter: alpha(opacity=66);
     -moz-opacity: 0.66;
     opacity: 0.66;
+	text-decoration: none;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	outline: none;
 }
 
 .custom-slideshow-flex-direction-nav li a:hover {
@@ -96,7 +102,7 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
     -moz-opacity: 1;
     opacity: 1;
     color: #fff;
-    text-decoration: none;
+    
 }
 
 .custom-slideshow-flexslider:hover a.custom-slideshow-flex-prev {
@@ -229,6 +235,7 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 }
 
 
+
 /* ====================================================== 
    Primary                                
 /* ====================================================== */
@@ -257,7 +264,7 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 
 
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .text-container {
-	width: 980px;
+	max-width: 980px;
 	text-align: center;
 	margin: 0 auto;
 }
@@ -289,7 +296,7 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 	margin: 1em;
 	padding: .5em 1.25em;
 	border: none;
-	background: none;
+	background-color: transparent;
 	color: inherit;
 	vertical-align: middle;
 	position: relative;
@@ -299,6 +306,30 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
     font-weight: 400;
 	border: 2px solid #fff;
 	font-size: 1em;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	outline: none;
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out;
+
+}
+
+
+/* Sizes */
+.custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .link-button.bsize-tiny {
+	font-size: 0.8571428571em;
+}
+.custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .link-button.bsize-s {
+	font-size: 1em;
+}
+.custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .link-button.bsize-m {
+	font-size: 1.14285714286em;
+}
+.custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .link-button.bsize-l {
+	font-size: 1.28571428571em;
 }
 
 
@@ -309,10 +340,9 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 		padding: .4em 1em !important;
 	}
 
+	
+	
 }
-
-
-
 
 
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .slides-info .text-container .level {

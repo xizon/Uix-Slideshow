@@ -23,6 +23,13 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
+#### = 1.0.9 =
+
+* Add button settings, you could set up your button color and size.
+* Optimized core stylesheets for front-end.
+
+
+
 #### = 1.0.8 =
 
 * Add dynamic form fields, meet the needs of custom fields.

@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.0.8
+ * Version:     1.0.9
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -393,8 +393,8 @@ class UixSlideshow {
 		
 		if( !self::tempfile_exists() ) {
 			echo '
-				<div class="error notice">
-					<p>' . __( '<strong>You need to create Uix Slideshow template files in your templates directory. You can create the files on the WordPress admin panel.</strong>', 'uix-slideshow' ) . ' <a class="button button-primary" href="' . admin_url( "admin.php?page=".self::HELPER."&tab=temp" ) . '">' . __( 'Create now!', 'uix-slideshow' ) . '</a><br>' . __( 'As a workaround you can use FTP, access the Uix Slideshow template files path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-slideshow' ) . '</p>
+				<div class="notice notice-warning">
+					<p>' . __( '<strong>You could create Uix Slideshow template files in your templates directory. You can create the files on the WordPress admin panel.</strong>', 'uix-slideshow' ) . ' <a class="button button-primary" href="' . admin_url( "admin.php?page=".self::HELPER."&tab=temp" ) . '">' . __( 'Create now!', 'uix-slideshow' ) . '</a><br>' . __( 'As a workaround you can use FTP, access the Uix Slideshow template files path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-slideshow' ) . '</p>
 				</div>
 			';
 	
@@ -808,6 +808,19 @@ class UixSlideshow {
 		return $validPath;
 		
 	}
+	
+	
+	/**
+	 * Returns class name of color conversion
+	 * @string Likes: color-333333
+	 *
+	 */
+	public static function color( $str ) {
+		
+		return str_replace( '#', 'color-', $str );
+		
+	}
+
 
 }
 
