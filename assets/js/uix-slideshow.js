@@ -30,13 +30,53 @@
 			
 		});
 			
-
+        /*
 		function initslides( slider ) {
-			$each( slider.slides, function( i, item ) {
-				var el = $( item );
-				el.find( '+slides-info' ).css( {'margin-top': ( el.find( 'img' ).height() - el.find( '+container' ).height() ) / 2 + 'px' } );	
-			})
+			
+			var prefix = slider.data( 'prefix' ),
+				$logo  = $( '.brand' );
+			
+			slider.removeClass( prefix+'-flexslider-loading' );
+			
+			//Adjust position
+			if ( $( '.full-slideshow-header' ).length > 0 ) {
+				
+				var logo_h = $logo.height(),
+					logo_t = $logo.offset().top;
+				
+				$( window ).on('resize', function() {
+					
+					logo_h = $logo.height();
+					logo_t = $logo.offset().top;
+
+
+					$( slider.slides ).each( function( i, item ) {
+						 if ( logo_h > 0 && typeof logo_h !== typeof undefined ) {
+							 $( item ).find( '.slides-info' ).css( {'top': ( logo_h + logo_t ) + 'px' } );	
+						 }
+					})
+				});
+
+				$( slider.slides ).each( function( i, item ) {
+					 if ( logo_h > 0 && typeof logo_h !== typeof undefined ) {
+						 $( item ).find( '.slides-info' ).css( {'top': ( logo_h + logo_t ) + 'px' } );	
+					 }
+				})
+			}
+			
+			
+			//Prevent to <a> of page transitions
+			$( 'a' ).each( function() {
+				var attr = $( this ).attr( 'href' );
+				
+				if ( typeof attr === typeof undefined ) {
+					$( this ).attr( 'href', '#' );
+				}
+			});		
+			
+
 		}
+		*/
 
 		
 		/* 
