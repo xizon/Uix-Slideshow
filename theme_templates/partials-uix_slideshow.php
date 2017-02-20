@@ -56,19 +56,19 @@ $uix_slideshow_query = new WP_Query(
 	                if ( empty( $button_hcolor ) )  $button_hcolor = '#333333';
 	                if ( empty( $button_tcolor ) )  $button_tcolor = '#ffffff';
 	                if ( empty( $button_size ) )    $button_size = 'small';
-	                $button_size_class = 'bsize-s';
+	                $button_size_class = 'fsize-m';
 					switch ( $button_size ) {
 						case 'tiny':
-							$button_size_class = 'bsize-tiny';
-							break;
-						case 'small':
 							$button_size_class = 'bsize-s';
 							break;
+						case 'small':
+							$button_size_class = 'fsize-m';
+							break;
 						case 'medium':
-							$button_size_class = 'bsize-m';
+							$button_size_class = 'fsize-l';
 							break;
 						case 'large':
-							$button_size_class = 'bsize-l';
+							$button_size_class = 'fsize-xl';
 							break;	
 					}
 
@@ -96,17 +96,17 @@ $uix_slideshow_query = new WP_Query(
                         
                             <div class="text-container">
                                     <?php if ( get_the_title() ) { ?>
-                                    <h2 class="level level-1"><span class="uix-slideshow-custom-title" style="color:<?php echo esc_attr( $title_color ); ?>"><?php the_title(); ?></span></h2>
+                                    <h3 class="level level-1 fsize-default-title"><span class="uix-slideshow-custom-title" style="color:<?php echo esc_attr( $title_color ); ?>"><?php the_title(); ?></span></h3>
                                     <?php } ?>
                                     
                                     <?php if ( !empty( $caption ) ) { ?>
-                                    <p class="caption level level-2">									
-                                        <span class="uix-slideshowhow-custom-caption" style="color:<?php echo esc_attr( $caption_color ); ?>"><?php echo wp_kses( $caption, wp_kses_allowed_html( 'post' ) ); ?></span>
+                                    <p class="caption level level-2 fsize-default-caption">									
+                                        <span class="uix-slideshow-custom-caption" style="color:<?php echo esc_attr( $caption_color ); ?>"><?php echo wp_kses( $caption, wp_kses_allowed_html( 'post' ) ); ?></span>
                                     </p>
                                     <?php } ?>
                                     
                                     <?php if ( !empty( $url ) ) { ?>
-                                        <a data-tcolor="<?php echo esc_attr( $button_tcolor ); ?>" data-default-bg="<?php echo esc_attr( $button_color ); ?>" data-color="<?php echo esc_attr( $button_hcolor ); ?>" class="link-button <?php echo esc_attr( $button_size_class ); ?> <?php echo esc_attr( UixSlideshow::color( $button_color ) ); ?> level level-3" href="<?php echo esc_url( $url ); ?>" title="<?php the_title_attribute(); ?>" target="<?php echo esc_attr( $url_target ); ?>"><span style="color:<?php echo esc_attr( $button_tcolor ); ?>"><?php echo wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ); ?></span></a>
+                                        <a data-tcolor="<?php echo esc_attr( $button_tcolor ); ?>" data-default-bg="<?php echo esc_attr( $button_color ); ?>" data-color="<?php echo esc_attr( $button_hcolor ); ?>" class="uix-slideshow-custom-button <?php echo esc_attr( $button_size_class ); ?> <?php echo esc_attr( UixSlideshow::color( $button_color ) ); ?> level level-3" href="<?php echo esc_url( $url ); ?>" title="<?php the_title_attribute(); ?>" target="<?php echo esc_attr( $url_target ); ?>"><span style="color:<?php echo esc_attr( $button_tcolor ); ?>"><?php echo wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ); ?></span></a>
                                     <?php } ?>
                                 
                             </div>

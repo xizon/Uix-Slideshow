@@ -23,6 +23,11 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
+#### = 1.1.0 =
+
+* Fixed bug that the slider button was invalid and some of the options were invalid.
+
+
 #### = 1.0.9 =
 
 * Add button settings, you could set up your button color and size.
