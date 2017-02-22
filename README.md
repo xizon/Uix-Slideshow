@@ -15,7 +15,7 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 
 ### Description
 
-[![Uix Slideshow Live Demo](https://github.com/xizon/Uix-Slideshow/blob/master/assets/video-cover.jpg)](https://www.youtube.com/watch?v=ckjZ570mYiU "Uix Slideshow Live Demo")
+[![Uix Slideshow Live Demo](https://github.com/xizon/Uix-Slideshow/blob/master/screenshots/video-cover.jpg)](https://www.youtube.com/watch?v=ckjZ570mYiU "Uix Slideshow Live Demo")
 
 
 
@@ -96,13 +96,13 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ###Screenshot
 
-![](https://github.com/xizon/Uix-Slideshow/blob/master/assets/screenshot-1.jpg)
+![](https://github.com/xizon/Uix-Slideshow/blob/master/screenshots/screenshot-1.jpg)
 
-![](https://github.com/xizon/Uix-Slideshow/blob/master/assets/screenshot-2.jpg)
+![](https://github.com/xizon/Uix-Slideshow/blob/master/screenshots/screenshot-2.jpg)
 
-![](https://github.com/xizon/Uix-Slideshow/blob/master/assets/screenshot-3.jpg)
+![](https://github.com/xizon/Uix-Slideshow/blob/master/screenshots/screenshot-3.jpg)
 
-![](https://github.com/xizon/Uix-Slideshow/blob/master/assets/screenshot-4.jpg)
+![](https://github.com/xizon/Uix-Slideshow/blob/master/screenshots/screenshot-4.jpg)
 
 
 
