@@ -15,6 +15,10 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 
 ### Description
 
+[![Uix Slideshow Live Demo](https://github.com/xizon/Uix-Slideshow/blob/master/assets/video-cover.jpg)](https://www.youtube.com/watch?v=ckjZ570mYiU "Uix Slideshow Live Demo")
+
+
+
 This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme. **Using template file to embed your theme.**
 
 Insert slideshow anywhere on your site using a custom post type. Powered by jQuery Flexslider with some transition styles to choose from.

@@ -21,6 +21,9 @@ This plugin is a simple way to build, organize and display slideshow into any ex
 Insert slideshow anywhere on your site using a custom post type. Powered by jQuery Flexslider with some transition styles to choose from.
 
 
+https://www.youtube.com/watch?v=ckjZ570mYiU
+
+
 = Adding Uix Slideshow to Web Pages =
 
 There are two different ways you can add the Uix Slideshow widget to your site's pages:
