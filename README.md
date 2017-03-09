@@ -27,6 +27,12 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
+##### = 1.1.1 =
+
+* Compatible with low version PHP (5.3+)
+* Fixed some minor errors in the low version of PHP.
+
+
 #### = 1.1.0 =
 
 * Fixed bug that the slider button was invalid and some of the options were invalid.

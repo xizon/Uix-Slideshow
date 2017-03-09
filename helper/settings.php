@@ -105,35 +105,35 @@ function uix_slideshow_options_page(){
 	} 
 	
 	$tabs = array();
-	$tabs[] = [
+	$tabs[] = array(
 	    'tab'     =>  'about', 
 		'title'   =>  __( 'About', 'uix-slideshow' )
-	];
-	$tabs[] = [
+	);
+	$tabs[] = array(
 	    'tab'     =>  'usage', 
 		'title'   =>  __( 'How to use?', 'uix-slideshow' )
-	];
+	);
 	
-	$tabs[] = [
+	$tabs[] = array(
 	    'tab'     =>  'credits', 
 		'title'   =>  __( 'Credits', 'uix-slideshow' )
-	];
+	);
 	
-	$tabs[] = [
+	$tabs[] = array(
 	    'tab'     =>  'temp', 
 		'title'   =>  __( 'Template Files', 'uix-slideshow' )
-	];
+	);
 	
-	$tabs[] = [
+	$tabs[] = array(
 	    'tab'     =>  'general-settings', 
 		'title'   =>  __( '<i class="dashicons dashicons-admin-generic"></i> General Settings', 'uix-shortcodes' )
-	];
+	);
 	
 	if ( UixSlideshow::core_css_file_exists() ) {
-		$tabs[] = [
+		$tabs[] = array(
 			'tab'     =>  'custom-css', 
 			'title'   =>  __( '<i class="dashicons dashicons-welcome-view-site"></i> Custom CSS', 'uix-shortcodes' )
-		];
+		);
 	}
 	
 	
