@@ -20,7 +20,7 @@
 				slideshow         : ( uix_slideshow_vars.auto == 'true' ) ? 1 : 0,
 				animationLoop     : ( uix_slideshow_vars.animloop == 'true' ) ? 1 : 0,
 				start: initslides, //Fires when the slider loads the first slide
-				//before: initslides //Fires after each slider animation completes	
+				after: initslides //Fires after each slider animation completes.
 	
 			});
 			
@@ -28,19 +28,46 @@
 			
 		function initslides( slider ) {
 			
-			var prefix = slider.data( 'prefix' );
-			
 			slider.removeClass( prefix+'-flexslider-loading' );
 			
-			$( slider.slides ).each( function( i, item ) {
-	
-				var sw            = slider.width(),
-					$title        = $( item ).find( '.uix-slideshow-custom-title' ).closest( 'h3' ),
-					$caption      = $( item ).find( '.uix-slideshow-custom-caption' ).closest( 'p' ),
-					$btn          = $( item ).find( '.uix-slideshow-custom-button' ),
-					$level        = $( item ).find( '.uix-slideshow-custom-button' ),
-					dropclasses   = 'fsize-tiny fsize-s fsize-m fsize-l fsize-xl fsize-xxl fsize-xxxl';
-				
+			var prefix        = slider.data( 'prefix' );
+			var curSlide      = slider.find( '.'+prefix+'-flex-active-slide' ); /* Getting the current slide in FlexSlider */
+			var sw            = slider.width(),
+				$title        = $( curSlide ).find( '.uix-slideshow-custom-title' ).closest( 'h3' ),
+				$caption      = $( curSlide ).find( '.uix-slideshow-custom-caption' ).closest( 'p' ),
+				$btn          = $( curSlide ).find( '.uix-slideshow-custom-button' ),
+				$level        = $( curSlide ).find( '.uix-slideshow-custom-button' ),
+				dropclasses   = 'fsize-tiny fsize-s fsize-m fsize-l fsize-xl fsize-xxl fsize-xxxl';
+			
+            //console.log( $( curSlide ).index() );
+			
+			$title.removeClass( dropclasses );
+			$caption.removeClass( dropclasses );
+			$btn.removeClass( dropclasses );
+
+			if ( sw > 0 && typeof sw !== typeof undefined ) {
+				if ( sw <= 1280 && sw > 980 ) {
+					$title.addClass( 'fsize-xxxl' );
+					$caption.addClass( 'fsize-l' );
+					$btn.addClass( 'fsize-m' );
+
+				}
+				if ( sw <= 980 && sw > 768 ) {
+					$title.addClass( 'fsize-xxl' );
+					$caption.addClass( 'fsize-m' );
+					$btn.addClass( 'fsize-s' );
+				}
+				if ( sw <= 768 ) {
+					$title.addClass( 'fsize-xl' );
+					$caption.addClass( 'fsize-s' );
+					$btn.addClass( 'fsize-tiny' );
+				}	
+
+			}
+
+			$( window ).on( 'resize', function() {
+				sw = slider.width();
+
 				$title.removeClass( dropclasses );
 				$caption.removeClass( dropclasses );
 				$btn.removeClass( dropclasses );
@@ -49,52 +76,22 @@
 					if ( sw <= 1280 && sw > 980 ) {
 						$title.addClass( 'fsize-xxxl' );
 						$caption.addClass( 'fsize-l' );
-						$btn.addClass( 'fsize-m' );
-						
+						$btn.addClass( 'fsize-s' );
+
 					}
 					if ( sw <= 980 && sw > 768 ) {
 						$title.addClass( 'fsize-xxl' );
 						$caption.addClass( 'fsize-m' );
-						$btn.addClass( 'fsize-s' );
+						$btn.addClass( 'fsize-tiny' );
 					}
 					if ( sw <= 768 ) {
 						$title.addClass( 'fsize-xl' );
 						$caption.addClass( 'fsize-s' );
 						$btn.addClass( 'fsize-tiny' );
 					}	
-					
+
 				}
-				
-				$( window ).on('resize', function() {
-					sw = slider.width();
-					
-					$title.removeClass( dropclasses );
-					$caption.removeClass( dropclasses );
-					$btn.removeClass( dropclasses );
-					
-					if ( sw > 0 && typeof sw !== typeof undefined ) {
-						if ( sw <= 1280 && sw > 980 ) {
-							$title.addClass( 'fsize-xxxl' );
-							$caption.addClass( 'fsize-l' );
-							$btn.addClass( 'fsize-s' );
-
-						}
-						if ( sw <= 980 && sw > 768 ) {
-							$title.addClass( 'fsize-xxl' );
-							$caption.addClass( 'fsize-m' );
-							$btn.addClass( 'fsize-tiny' );
-						}
-						if ( sw <= 768 ) {
-							$title.addClass( 'fsize-xl' );
-							$caption.addClass( 'fsize-s' );
-							$btn.addClass( 'fsize-tiny' );
-						}	
-
-					}
-				});
-				
-
-			})
+			});
 			
 			
 			//Prevent to <a> of page transitions
