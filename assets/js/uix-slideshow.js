@@ -57,11 +57,17 @@
 					$caption.addClass( 'fsize-m' );
 					$btn.addClass( 'fsize-s' );
 				}
-				if ( sw <= 768 ) {
+				if ( sw <= 768 && sw > 480  ) {
 					$title.addClass( 'fsize-xl' );
 					$caption.addClass( 'fsize-s' );
 					$btn.addClass( 'fsize-tiny' );
 				}	
+
+				if ( sw <= 480 ) {
+					$title.addClass( 'fsize-l' );
+					$caption.addClass( 'fsize-tiny' );
+					$btn.addClass( 'fsize-tiny' );
+				}
 
 			}
 
@@ -84,11 +90,17 @@
 						$caption.addClass( 'fsize-m' );
 						$btn.addClass( 'fsize-tiny' );
 					}
-					if ( sw <= 768 ) {
+					if ( sw <= 768 && sw > 480  ) {
 						$title.addClass( 'fsize-xl' );
 						$caption.addClass( 'fsize-s' );
 						$btn.addClass( 'fsize-tiny' );
 					}	
+					
+					if ( sw <= 480 ) {
+						$title.addClass( 'fsize-l' );
+						$caption.addClass( 'fsize-tiny' );
+						$btn.addClass( 'fsize-tiny' );
+					}
 
 				}
 			});

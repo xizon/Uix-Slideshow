@@ -402,13 +402,18 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
  *
  * @Returns: button size, caption size, title size
  */
+
+/* default size */
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-default-title {
 	font-size: 36px;
 }
+
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-default-caption {
 	font-size: 16px;
 }
 
+
+/* tiny */
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-tiny {
 	font-size: 10px !important;
 }
@@ -416,7 +421,11 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 	margin: .4em !important;
 	padding: .2em .5em !important;
 }
+.custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-tiny .uix-slideshow-custom-caption {
+	display: none;
+}
 
+/* small */
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-s {
 	font-size: 12px !important;
 }
@@ -424,6 +433,8 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 	margin: .6em !important;
 	padding: .3em .8em !important;
 }
+
+/* medium */
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-m {
 	font-size: 14px !important;
 }
@@ -431,6 +442,8 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 	margin: .8em !important;
 	padding: .4em 1em !important;
 }
+
+/* large */
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-l {
 	font-size: 16px !important;
 }
@@ -438,6 +451,8 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 	margin: 1em !important;
 	padding: .5em 1.25em !important;
 }
+
+/* extra large */
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-xl {
 	font-size: 16px !important;
 }
@@ -445,6 +460,8 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 	margin: 1.2em !important;
 	padding: .7em 1.5em !important;
 }
+
+/* extra extra large */
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-xxl {
 	font-size: 20px !important;
 }
@@ -452,6 +469,9 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 	margin: 1.5em !important;
 	padding: 1em 2.5em !important;
 }
+
+
+/* extra extra extra large */
 .custom-slideshow-flexslider.primary .custom-slideshow-slides > .item .fsize-xxxl {
 	font-size: 26px !important;
 	

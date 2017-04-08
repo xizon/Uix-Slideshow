@@ -27,6 +27,12 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
+##### = 1.1.2 =
+
+* Optimized core stylesheets for front-end.
+* Optimized admin panel of Custom CSS.
+
+
 ##### = 1.1.1 =
 
 * Compatible with low version PHP (5.3+)

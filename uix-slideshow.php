@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.1.1
+ * Version:     1.1.2
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -246,7 +246,15 @@ class UixSlideshow {
 		'));
 	
 	
-        //helper
+        //Add sub links
+		add_submenu_page(
+			'edit.php?post_type=uix-slideshow',
+			__( 'Custom CSS', 'uix-slideshow' ),
+			__( 'Custom CSS', 'uix-slideshow' ),
+			'manage_options',
+			'admin.php?page='.self::HELPER.'&tab=custom-css'
+		);
+
 		add_submenu_page(
 			'edit.php?post_type=uix-slideshow',
 			__( 'Helper', 'uix-slideshow' ),
@@ -255,11 +263,6 @@ class UixSlideshow {
 			self::HELPER,
 			'uix_slideshow_options_page' 
 		);
-		
-		
-
-	
-		
 	 }
 	 
 	public static function uix_slideshow_options_page(){
@@ -790,7 +793,7 @@ class UixSlideshow {
 	 * Returns .js file name of custom script 
 	 *
 	 */
-	public static function core_js_file() {
+	public static function core_js_file( $type = 'uri' ) {
 		
 		$validPath    = self::plug_directory() .'assets/js/uix-slideshow.js';
 		$newFilePath  = get_stylesheet_directory() . '/uix-slideshow-custom.js';
@@ -804,6 +807,15 @@ class UixSlideshow {
 		if ( file_exists( $newFilePath2 ) ) {
 			$validPath = get_template_directory_uri() . '/assets/js/uix-slideshow-custom.js';
 		}
+		
+		if ( $type == 'name' ) {
+			if ( file_exists( $newFilePath ) || file_exists( $newFilePath2 ) ) {
+				$validPath = 'uix-slideshow-custom.js';
+			} else {
+				$validPath = 'uix-slideshow.js';
+			}
+		}
+		
 		
 		return $validPath;
 		
