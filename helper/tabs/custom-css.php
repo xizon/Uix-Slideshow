@@ -33,7 +33,6 @@ if ( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' 
 
 if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	
-
 	$newFilePath                 = get_stylesheet_directory() . '/uix-slideshow-custom.css';
 	$newFilePath2                = get_stylesheet_directory() . '/assets/css/uix-slideshow-custom.css';
 	$newJSFilePath               = get_stylesheet_directory() . '/uix-slideshow-custom.js';
@@ -43,29 +42,33 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	$org_jsname_uix_slideshow    = UixSlideshow::core_js_file( 'name' );
 	$org_jspath_uix_slideshow    = UixSlideshow::core_js_file();
 
-	if ( file_exists( $newFilePath ) || file_exists( $newFilePath2 ) || file_exists( $newJSFilePath ) || file_exists( $newJSFilePath2 ) ) {
-		$filetype = 'theme';
+	//CSS file directory
+	if ( file_exists( $newFilePath ) || file_exists( $newFilePath2 ) ) {
+		$cssfiletype = 'theme';
 		
-		//CSS file directory
 		$filepath = '';
 		if ( file_exists( $newFilePath2 ) ) {
 			$filepath = 'assets/css/';
 		}
+
 		
-		//Javascript file directory
+	} else {
+		$cssfiletype   = 'plugin';
+		$filepath   = 'assets/css/';	
+	}
+	
+	
+	//Javascript file directory
+	if ( file_exists( $newJSFilePath ) || file_exists( $newJSFilePath2 ) ) {
+		$JSfiletype = 'theme';
+		
 		$jsfilepath = '';
 		if ( file_exists( $newJSFilePath2 ) ) {
 			$jsfilepath = 'assets/js/';
 		}	
-		
-		
+			
 	} else {
-		$filetype   = 'plugin';
-		
-		//CSS file directory
-		$filepath   = 'assets/css/';
-		
-		//Javascript file directory
+		$JSfiletype   = 'plugin';
 		$jsfilepath = 'assets/js/';
 	}
 	
@@ -106,13 +109,13 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	// capture output from WP_Filesystem
 	ob_start();
 	
-		UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'admin.php?page='.UixSlideshow::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_slideshow, $filetype );
+		UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'admin.php?page='.UixSlideshow::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_slideshow, $cssfiletype );
 		$filesystem_uix_slideshow_out = ob_get_contents();
 	ob_end_clean();
 	
 	if ( empty( $filesystem_uix_slideshow_out ) ) {
 		
-		$style_org_code_uix_slideshow = UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'admin.php?page='.UixSlideshow::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_slideshow, $filetype );
+		$style_org_code_uix_slideshow = UixSlideshow::wpfilesystem_read_file( 'uix_slideshow_customcss', 'admin.php?page='.UixSlideshow::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_slideshow, $cssfiletype );
 		
 		echo '
 		
