@@ -94,7 +94,7 @@ function uix_slideshow_options_page(){
 }
 	
 	
-uix-bg-custom-blockquote {
+.uix-bg-custom-blockquote {
     background: #EBEBEB;
     border: 1px solid #F8F8F8;
     border-left: 7px solid #BEBEBE;
