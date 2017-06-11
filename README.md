@@ -27,49 +27,48 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
-##### = 1.1.2 =
+##### = 1.1.2 (May 22, 2017) =
 
 * Optimized core stylesheets for front-end.
 * Optimized admin panel of Custom CSS.
 
 
-##### = 1.1.1 =
+##### = 1.1.1 (April 8, 2017) =
 
 * Compatible with low version PHP (5.3+)
 * Fixed some minor errors in the low version of PHP.
 
 
-#### = 1.1.0 =
+##### = 1.1.0 (March 25, 2017) =
 
 * Fixed bug that the slider button was invalid and some of the options were invalid.
 
 
-#### = 1.0.9 =
+
+##### = 1.0.9 (March 12, 2017) =
 
 * Add button settings, you could set up your button color and size.
 * Optimized core stylesheets for front-end.
 
 
-
-#### = 1.0.8 =
+##### = 1.0.8 (March 4, 2017) =
 
 * Add dynamic form fields, meet the needs of custom fields.
 * Enhanced API compatibility for themes.
 
 
-
-#### = 1.0.7 =
+##### = 1.0.7 (March 1, 2017) =
 
 * Optimized binding theme picker.
 
 
-#### = 1.0.6 =
+##### = 1.0.6 (January 5, 2017) =
 
 * Fixed a bug that caused the slides to not be displayed.
 
 
 
-#### = 1.0.5 =
+##### = 1.0.5 (January 3, 2017) =
 
 * WordPress 4.7 compatible.
 * Enhanced scalability structure.
@@ -79,7 +78,7 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 
 
-#### = 1.0.1 =
+##### = 1.0.1 (December 22, 2016) =
 
 * Optimized for tablet display.
 * Improved event binding from the plugin main JavaScript file.
@@ -87,7 +86,7 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 
 
-#### = 1.0.0 =
+##### = 1.0.0 (September 20, 2016) =
 
 * First release.
 
@@ -104,7 +103,9 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 - WP 4.5.*
 - WP 4.6
 - WP 4.6.*
-- WP 4.7
+- WP 4.7.*
+- WP 4.8
+
 
 ###Screenshot
 
