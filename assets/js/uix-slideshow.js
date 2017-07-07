@@ -118,6 +118,22 @@
 
 		}
 
+	
+		/* 
+		 * Span Color
+		 * --------------------------------
+		*/
+		 $( '[data-span-color]' ).each( function(){
+
+			var color = $( this ).data( 'span-color' );
+			 if ( color != '' ) {
+				$( this ).css( {
+					'color'    : color,
+				} );	 
+			 }
+
+		 });		
+		
 		
 		/* 
 		 * Button Color

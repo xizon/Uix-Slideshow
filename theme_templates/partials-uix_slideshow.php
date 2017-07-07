@@ -96,17 +96,17 @@ $uix_slideshow_query = new WP_Query(
                         
                             <div class="text-container">
                                     <?php if ( get_the_title() ) { ?>
-                                    <h3 class="level level-1 fsize-default-title"><span class="uix-slideshow-custom-title" style="color:<?php echo esc_attr( $title_color ); ?>"><?php the_title(); ?></span></h3>
+                                    <h3 class="level level-1 fsize-default-title"><span class="uix-slideshow-custom-title" data-span-color="<?php echo esc_attr( $title_color ); ?>"><?php the_title(); ?></span></h3>
                                     <?php } ?>
                                     
                                     <?php if ( !empty( $caption ) ) { ?>
                                     <p class="caption level level-2 fsize-default-caption">									
-                                        <span class="uix-slideshow-custom-caption" style="color:<?php echo esc_attr( $caption_color ); ?>"><?php echo wp_kses( $caption, wp_kses_allowed_html( 'post' ) ); ?></span>
+                                        <span class="uix-slideshow-custom-caption" data-span-color="<?php echo esc_attr( $caption_color ); ?>"><?php echo wp_kses( $caption, wp_kses_allowed_html( 'post' ) ); ?></span>
                                     </p>
                                     <?php } ?>
                                     
                                     <?php if ( !empty( $url ) ) { ?>
-                                        <a data-tcolor="<?php echo esc_attr( $button_tcolor ); ?>" data-default-bg="<?php echo esc_attr( $button_color ); ?>" data-color="<?php echo esc_attr( $button_hcolor ); ?>" class="uix-slideshow-custom-button <?php echo esc_attr( $button_size_class ); ?> <?php echo esc_attr( UixSlideshow::color( $button_color ) ); ?> level level-3" href="<?php echo esc_url( $url ); ?>" title="<?php the_title_attribute(); ?>" target="<?php echo esc_attr( $url_target ); ?>"><span style="color:<?php echo esc_attr( $button_tcolor ); ?>"><?php echo wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ); ?></span></a>
+                                        <a data-tcolor="<?php echo esc_attr( $button_tcolor ); ?>" data-default-bg="<?php echo esc_attr( $button_color ); ?>" data-color="<?php echo esc_attr( $button_hcolor ); ?>" class="uix-slideshow-custom-button <?php echo esc_attr( $button_size_class ); ?> <?php echo esc_attr( UixSlideshow::color( $button_color ) ); ?> level level-3" href="<?php echo esc_url( $url ); ?>" title="<?php the_title_attribute(); ?>" target="<?php echo esc_attr( $url_target ); ?>"><span data-span-color="<?php echo esc_attr( $button_tcolor ); ?>"><?php echo wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ); ?></span></a>
                                     <?php } ?>
                                 
                             </div>

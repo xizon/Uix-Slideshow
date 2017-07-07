@@ -27,6 +27,12 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
+##### = 1.1.3 (July 7, 2017) =
+
+* Optimized core scripts(uix-slideshow.js) for front-end.
+* Optimized Uix Slideshow template.
+
+
 ##### = 1.1.2 (May 22, 2017) =
 
 * Optimized core stylesheets for front-end.
