@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.1.25
+ * Version:     1.2.0
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -77,9 +77,11 @@ class UixSlideshow {
 	 *
 	 */
 	public static function includes() {
-		if ( ! class_exists( 'cmb_uix_Meta_Box' ) ) {
-			require_once UIX_SLIDESHOW_PLUGIN_DIR.'post-extensions/custom-metaboxes-and-fields/init.php';
-		}
+		
+		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/custom-metaboxes/class-custom-metaboxes-init.php';
+		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/custom-metaboxes/class-custom-metaboxes-cmpt-uploadController.php';
+		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/options.php';
+
 	}
 	
 	
@@ -160,7 +162,8 @@ class UixSlideshow {
 		 ) 
 		 {
 				  
-		      wp_enqueue_style( self::PREFIX . '-slideshow-admin', self::plug_directory() .'style.css', false, self::ver(), 'all' );	
+		     wp_enqueue_style( self::PREFIX . '-slideshow-admin', self::plug_directory() .'admin/css/style.min.css', false, self::ver(), 'all' );
+			 wp_enqueue_script( self::PREFIX . '-slideshow-admin', self::plug_directory() .'admin/js/core.min.js', array( 'jquery' ), self::ver(), true );	 
 			
 		  }
 		
@@ -730,17 +733,6 @@ class UixSlideshow {
 
 	}
 
-	/*
-	 * Custom post extensions
-	 *
-	 *
-	 */
-	public static function post_ex() {
-	
-		require_once 'post-extensions/post-extensions-init.php';
-
-		
-	}	
 	
 	/**
 	 * Determine whether the css core file exists
@@ -832,9 +824,19 @@ class UixSlideshow {
 		return str_replace( '#', 'color-', $str );
 		
 	}
+	
+	/**
+	 * Filters content and keeps only allowable HTML elements.
+	 *
+	 */
+	public static function kses( $html ){
+		
+		return wp_kses( $html, wp_kses_allowed_html( 'post' ) );
+
+	}
 
 
 }
 
 add_action( 'plugins_loaded', array( 'UixSlideshow', 'init' ) );
-UixSlideshow::post_ex();
+

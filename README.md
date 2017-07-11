@@ -27,6 +27,16 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 ### Updates
 
+
+##### = 1.2.0 (July 11, 2017) =
+
+* Remove the "CMB" classes and files.
+* Using "Uix_Products_Uix_Custom_Metaboxes" class instead of "CMB" class. (More fast, simple and compatible).
+* Remove the "CMB" classes and files.
+* Rebuild part of the background file directory.
+
+
+
 ##### = 1.1.25 (July 7, 2017) =
 
 * Optimized core scripts(uix-slideshow.js) for front-end.
@@ -129,7 +139,6 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 
 #####I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
 
-- [Custom Metaboxes and Fields](https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress)
 - [Flexslider](https://github.com/woothemes/FlexSlider)
 
 ###How to use?

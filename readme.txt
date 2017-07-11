@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.1.25
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,15 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+
+= 1.2.0 (July 11, 2017) =
+
+* Remove the "CMB" classes and files.
+* Using "Uix_Slideshow_Uix_Custom_Metaboxes" class instead of "CMB" class. (More fast, simple and compatible).
+* Remove the "CMB" classes and files.
+* Rebuild part of the background file directory.
+
 
 = 1.1.25 (July 7, 2017) =
 

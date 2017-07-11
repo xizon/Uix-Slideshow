@@ -137,13 +137,15 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 						
 						var dialog_uix_slideshow = $( "#uix-slideshow-view-css-container, .uix-slideshow-dialog-mask" );  
 						
-						$( "#uix_slideshow_view_css" ).click( function() {
+						
+						$( "#uix_slideshow_view_css" ).on( "click", function( e ) {
+						    e.preventDefault();
 							dialog_uix_slideshow.show();
 						});
-						$( "#uix_slideshow_close_css" ).click( function() {
+						$( "#uix_slideshow_close_css" ).on( "click", function( e ) {
+						    e.preventDefault();
 							dialog_uix_slideshow.hide();
 						});
-					
 			
 					} );
 					
