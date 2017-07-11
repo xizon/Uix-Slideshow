@@ -68,6 +68,7 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 					var $this = jQuery( this ),
 						tid   = $this.data( 'target-id' );
 
+					
 					$this.find( '[data-value]' ).on( 'click', function() {
 					
 						//Do not use preventDefault()
@@ -191,6 +192,9 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 						$this.find( '> ul' ).find( 'li:first a' ).addClass( 'active' );
 						$this.find( '.item:first' ).show();
 
+						//Prevent duplicate function assigned
+						jQuery( this ).find( 'a' ).off( 'click' );
+						
 						// Bind the click event handler
 						jQuery( this ).on( 'click', 'a',
 						function(e) {
@@ -286,7 +290,6 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 		
 		
 
-		
 		/*! 
 		 * 
 		 * Upload Media Control
@@ -317,6 +320,10 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 
 					 //Delete pictrue   
 					 if ( _closebtn ){
+
+						//Prevent duplicate function assigned
+						jQuery( _closebtn ).off( 'click' );
+						 
 						jQuery( document ).on( 'click', _closebtn, function( event ){
 
 							event.preventDefault();
@@ -327,6 +334,7 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 
 							jQuery( this ).hide();
 							$this.show();
+							$this.data( 'click', 1 );
 
 
 						} );		
@@ -335,47 +343,65 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 
 				});
 
+				//Prevent duplicate function assigned
+				jQuery( selector ).off( 'click' ).data( 'click', 1 );
+
+				
 				jQuery( document ).on( 'click', selector, function( e ) {
 					e.preventDefault();
 
 					var $this     = jQuery( this ),
-					    pid       = $this.data( 'insert-preview' ),
+						pid       = $this.data( 'insert-preview' ),
 						rid       = $this.data( 'remove-btn' ),
 						tid       = $this.data( 'insert-img' );
 
 					var upload_frame, attachment, _closebtn = '#' + rid;
 
 
-					if( upload_frame ){
-						upload_frame.open();
-						return;
-					}
-					upload_frame = wp.media( {
-						title: 'Select Files',
-						button: {
-						text: 'Insert into post',
-					},
-						multiple: false
-					} );
-					upload_frame.on( 'select',function(){
-						attachment = upload_frame.state().get( 'selection' ).first().toJSON();
-						jQuery( '#' + tid ).val( attachment.url );
-						jQuery( '#' + pid ).find( 'img' ).attr( 'src',attachment.url );//image preview
-						jQuery( '#' + pid ).show();
-
-						if ( _closebtn ){
-							jQuery( _closebtn ).show();
-							$this.hide();
+					if ( $this.data( 'click' ) == 1 ) {
+						
+						if( upload_frame ){
+							upload_frame.open();
+							return;
 						}
+						upload_frame = wp.media( {
+							title: 'Select Files',
+							button: {
+							text: 'Insert into post',
+						},
+							multiple: false
+						} );
+						upload_frame.on( 'select',function(){
+							attachment = upload_frame.state().get( 'selection' ).first().toJSON();
+							jQuery( '#' + tid ).val( attachment.url );
+							jQuery( '#' + pid ).find( 'img' ).attr( 'src',attachment.url );//image preview
+							jQuery( '#' + pid ).show();
+
+							if ( _closebtn ){
+								jQuery( _closebtn ).show();
+								$this.hide();
+							}
 
 
-					} );
+						} );
 
-					upload_frame.open();
+						upload_frame.open();
+
+						
+						
+					}
+					
+					$this.data( 'click', 0 );
+
+
 
 
 					 //Delete pictrue   
 					 if ( _closebtn ){
+
+						//Prevent duplicate function assigned
+						jQuery( _closebtn ).off( 'click' );
+
 						jQuery( document ).on( 'click', _closebtn, function( event ){
 
 							event.preventDefault();
@@ -386,6 +412,7 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 
 							jQuery( this ).hide();
 							$this.show();
+							$this.data( 'click', 1 );
 
 
 						} );		
@@ -393,8 +420,8 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 					 }	
 
 
-				});
-			
+				});	
+				
 				
 			});
 			
@@ -402,6 +429,7 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 			//Chain method calls
 			return this;
 		},
+
 
 			
 		
@@ -430,8 +458,11 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 						maxField    = max,
 						fieldHTML   = $this.data( 'tmpl' );
 
+					//Prevent duplicate function assigned
+					$addButton.off( 'click' );
 
-					$addButton.on( 'click', function() {
+					$addButton.on( 'click', function( e ) {
+						e.preventDefault();
 						
 						if( x < maxField ){ 
 							x++;
@@ -442,6 +473,10 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 					});
 
 					//Remove per item
+					
+					//Prevent duplicate function assigned
+					jQuery( '.custom_attributes_field_remove_button' ).off( 'click' );
+					
 					jQuery( document ).on( 'click', '.custom_attributes_field_remove_button', function( e ) {
 						e.preventDefault();
 
