@@ -28,7 +28,7 @@ Insert slideshow anywhere on your site using a custom post type. Powered by jQue
 ### Updates
 
 
-##### = 1.2.0 (July 11, 2017) =
+##### = 1.2.1 (July 11, 2017) =
 
 * Remove the "CMB" classes and files.
 * Using "Uix_Products_Uix_Custom_Metaboxes" class instead of "CMB" class. (More fast, simple and compatible).
