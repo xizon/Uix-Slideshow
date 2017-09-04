@@ -11,31 +11,53 @@
 		uixslideshow_default:function () { 
 	
 			$( '[data-uix-slideshow="1"]' ).each( function()  {
-				var prefix = $( this ).data( 'prefix' );
+			
+				 var $this     = $( this ),
+					 activated = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
+					 prefix    = $this.data( 'prefix' );
+				
 
-				$( this ).flexslider({
-					namespace	      : prefix+'-flex-',
-					animation         : uix_slideshow_vars.animation+'',
-					selector          : '.'+prefix+'-slides > div.item',
-					controlNav        : ( uix_slideshow_vars.paging_nav == 'true' ) ? 1 : 0,
-					directionNav      : ( uix_slideshow_vars.arr_nav == 'true' ) ? 1 : 0,
-					smoothHeight      : ( uix_slideshow_vars.smoothheight == 'true' ) ? 1 : 0,
-					prevText          : uix_slideshow_vars.prev_txt,
-					nextText          : uix_slideshow_vars.next_txt,
-					animationSpeed    : uix_slideshow_vars.effect_duration,
-					slideshowSpeed    : uix_slideshow_vars.speed,
-					slideshow         : ( uix_slideshow_vars.auto == 'true' ) ? 1 : 0,
-					animationLoop     : ( uix_slideshow_vars.animloop == 'true' ) ? 1 : 0,
-					start: initslides, //Fires when the slider loads the first slide
-					after: initslides //Fires after each slider animation completes.
+				if ( typeof activated === typeof undefined || activated === 0 ) {
 
-				});
+					$this.flexslider({
+						namespace	      : prefix+'-flex-',
+						animation         : uix_slideshow_vars.animation+'',
+						selector          : '.'+prefix+'-slides > div.item',
+						controlNav        : ( uix_slideshow_vars.paging_nav == 'true' ) ? 1 : 0,
+						directionNav      : ( uix_slideshow_vars.arr_nav == 'true' ) ? 1 : 0,
+						smoothHeight      : ( uix_slideshow_vars.smoothheight == 'true' ) ? 1 : 0,
+						prevText          : uix_slideshow_vars.prev_txt,
+						nextText          : uix_slideshow_vars.next_txt,
+						animationSpeed    : uix_slideshow_vars.effect_duration,
+						slideshowSpeed    : uix_slideshow_vars.speed,
+						slideshow         : ( uix_slideshow_vars.auto == 'true' ) ? 1 : 0,
+						animationLoop     : ( uix_slideshow_vars.animloop == 'true' ) ? 1 : 0,
+						start: initslides, //Fires when the slider loads the first slide
+						after: initslides //Fires after each slider animation completes.
+
+					});
+
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );	
+				}	
+				
 
 			});
 
 			function initslides( slider ) {
 
 				slider.removeClass( prefix+'-flexslider-loading' );
+				
+				
+
+				//Prevent to <a> of page transitions
+				$( 'a' ).each( function() {
+					var attr = $( this ).attr( 'href' );
+
+					if ( typeof attr === typeof undefined ) {
+						$( this ).attr( 'href', '#' );
+					}
+				});	
 
 				var prefix        = slider.data( 'prefix' );
 				var curSlide      = slider.find( '.'+prefix+'-flex-active-slide' ); /* Getting the current slide in FlexSlider */
@@ -111,16 +133,7 @@
 
 					}
 				});
-
-
-				//Prevent to <a> of page transitions
-				$( 'a' ).each( function() {
-					var attr = $( this ).attr( 'href' );
-
-					if ( typeof attr === typeof undefined ) {
-						$( this ).attr( 'href', '#' );
-					}
-				});		
+	
 
 
 			}
@@ -132,12 +145,23 @@
 			*/
 			 $( '[data-span-color]' ).each( function(){
 
-				var color = $( this ).data( 'span-color' );
-				 if ( color != '' ) {
-					$( this ).css( {
-						'color'    : color,
-					} );	 
-				 }
+				 var $this     = $( this ),
+					 activated = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
+					 color     = $this.data( 'span-color' )
+
+
+				if ( typeof activated === typeof undefined || activated === 0 ) {
+
+					if ( color != '' ) {
+						$this.css( {
+							'color'    : color,
+						} );	 
+					 }
+
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );	
+				}
+			   
 
 			 });		
 
@@ -148,42 +172,51 @@
 			*/
 			 $( '.uix-slideshow-custom-button' ).each( function(){
 
-				var $this              = $( this ),
-					hoverbg            = $this.data( 'color' ),
-					textcolor          = $this.data( 'tcolor' ),
-					defaultbg          = $this.data( 'default-bg' );
+				var $this         = $( this ),
+					activated     = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
+					hoverbg       = $this.data( 'color' ),
+					textcolor     = $this.data( 'tcolor' ),
+					defaultbg     = $this.data( 'default-bg' );
 
-				 if ( defaultbg != '' && typeof defaultbg !== typeof undefined ) {
+				 
+				if ( typeof activated === typeof undefined || activated === 0 ) {
 
-					$( this ).css( {
-						'background-color': 'transparent',
-						'border-color'    : defaultbg,
-					} );	 
+				
+					 if ( defaultbg != '' && typeof defaultbg !== typeof undefined ) {
 
-				 }
-
-				 if ( hoverbg != '' && typeof hoverbg !== typeof undefined ) {
-
-					$this.on( 'mouseenter', function( e ) {
-						e.preventDefault();
-						$( this ).css( {
-							'background-color': hoverbg,
-							'border-color'    : hoverbg,
-						} );
-
-						return false;
-					});
-					$this.on( 'mouseleave', function( e ) {
-						e.preventDefault();
-						$( this ).css( {
+						$this.css( {
 							'background-color': 'transparent',
 							'border-color'    : defaultbg,
-						} );
-						return false;
-					});		 
+						} );	 
 
-				 }
+					 }
 
+					 if ( hoverbg != '' && typeof hoverbg !== typeof undefined ) {
+
+						$this.on( 'mouseenter', function( e ) {
+							e.preventDefault();
+							$( this ).css( {
+								'background-color': hoverbg,
+								'border-color'    : hoverbg,
+							} );
+
+							return false;
+						});
+						$this.on( 'mouseleave', function( e ) {
+							e.preventDefault();
+							$( this ).css( {
+								'background-color': 'transparent',
+								'border-color'    : defaultbg,
+							} );
+							return false;
+						});		 
+
+					 }
+
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );	
+				}
+ 
 			 });	
 
 					

@@ -39,6 +39,15 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+
+##### = 1.2.5 (September 5, 2017) =
+
+* Fixed a possible bug of duplication running script with Uix Page Builder.
+* Enhance the compatibility of each plug-in.
+* Optimized front-end default scripts.
+
+
+
 ##### = 1.2.2 (September 3, 2017) =
 
 * Re-defined the Uix Slideshow shortcode API.
