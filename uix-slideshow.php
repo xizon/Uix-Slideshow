@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.2.1
+ * Version:     1.2.2
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -37,16 +37,17 @@ class UixSlideshow {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
 		add_action( 'current_screen', array( __CLASS__, 'usage_notice' ) );
-		add_action( 'current_screen', array( __CLASS__, 'do_register_shortcodes' ) );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
 		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
-		add_action( 'wp_head', array( __CLASS__, 'do_my_shortcodes' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'image_sizes' ) );
 		
 
 	}
+	
+	
+	
 	
 
 	/**
@@ -81,6 +82,7 @@ class UixSlideshow {
 		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/custom-metaboxes/class-custom-metaboxes-init.php';
 		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/custom-metaboxes/class-custom-metaboxes-cmpt-uploadController.php';
 		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/options.php';
+		require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/shortcodes.php';
 
 	}
 	
@@ -308,36 +310,7 @@ class UixSlideshow {
 	}
 	
 	
-	/*
-	 * Register shortcodes
-	 *
-	 *
-	 */
-	public static function do_register_shortcodes() {
-	
-		  //Check if screen’s ID, base, post type, and taxonomy, among other data points
-		  $currentScreen = get_current_screen();
-	
-		  if( $currentScreen->base === "post" || self::inc_str( $currentScreen->base, '_page_' ) ) {
-			
-				require_once UIX_SLIDESHOW_PLUGIN_DIR.'shortcodes/backstage-init.php';
-		
-		  } 
-	
 
-	}
-	
-	/*
-	 * Register shortcodes of front-end
-	 *
-	 *
-	 */
-	public static function do_my_shortcodes() {
-	
-		  require_once UIX_SLIDESHOW_PLUGIN_DIR.'shortcodes/frontpage-init.php';
-	
-	}
-	
 
 	
 	

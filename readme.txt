@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,9 +96,14 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
 == Frequently Asked Questions ==
 
-= What's with the version numbers? =
+= FAQ 1: How to customize the Uix Slideshow templates by your theme location? =
 
-The version number is the date of the revision of the [guidelines](https://make.wordpress.org/themes/handbook/review/) used to create it.
+Occasionally you may wish to edit one of the templates that come with Uix Slideshow. Instead of editing the templates right in the plugin you should move them to your theme, so that your changes aren\'t lost when you update the Uix Slideshow plugin. As a workaround you can use FTP, access the Uix Slideshow template files path (/wp-content/plugins/uix-slideshow/theme_templates/) and upload files to your theme templates directory (/wp-content/themes/{your-theme}/).  
+
+= FAQ 2: How to customize page options and stylesheets? =
+
+Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow -> Settings -> Custom CSS"**
+
 
 
 == Screenshots ==
@@ -115,6 +120,13 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+
+= 1.2.2 (September 3, 2017) =
+
+* Re-defined the Uix Slideshow shortcode API.
+* Compatible with WP plugin "Uix Page Builder".
+* Optimized front-end default scripts.
 
 
 = 1.2.1 (July 11, 2017) =
