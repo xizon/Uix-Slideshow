@@ -31,7 +31,7 @@ There are two different ways you can add the Uix Slideshow widget to your site's
 (1) Shortcode - Embed a shortcode into the editor of any post, page, or custom post type. 
   
 
-  Use `[uix_slideshow_output show="-1"]` to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter. Show all items if value is '-1'.
+  Use `[uix_slideshow_output]` to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter.
 
 
   Go to your WordPress admin panel, edit or create a new post (or page). You’ll see a Uix Slideshow button in the toolbar.
@@ -79,7 +79,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
   (1) Shortcode - Embed a shortcode into the editor of any post, page, or custom post type. 
       
-     Use `[uix_slideshow_output show="-1"]` to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter. Show all items if value is '-1'.
+     Use `[uix_slideshow_output]` to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter.
 
 
       
@@ -126,7 +126,8 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 * Fixed a possible bug of duplication running script with Uix Page Builder.
 * Enhance the compatibility of each plug-in.
 * Optimized front-end default scripts.
-
+* Fixed a shortcode showing the number of errors.
+* Removed the number of short code display attributes.
  
  
 = 1.2.2 (September 3, 2017) =

@@ -79,9 +79,9 @@ class UixSlideshow {
 	 */
 	public static function includes() {
 		
-		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/custom-metaboxes/class-custom-metaboxes-init.php';
-		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/custom-metaboxes/class-custom-metaboxes-cmpt-uploadController.php';
-		require_once UIX_SLIDESHOW_PLUGIN_DIR.'admin/options.php';
+		require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/admin/custom-metaboxes/class-custom-metaboxes-init.php';
+		require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/admin/custom-metaboxes/class-custom-metaboxes-cmpt-uploadController.php';
+		require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/admin/options.php';
 		require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/shortcodes.php';
 
 	}
@@ -164,8 +164,8 @@ class UixSlideshow {
 		 ) 
 		 {
 				  
-		     wp_enqueue_style( self::PREFIX . '-slideshow-admin', self::plug_directory() .'admin/css/style.min.css', false, self::ver(), 'all' );
-			 wp_enqueue_script( self::PREFIX . '-slideshow-admin', self::plug_directory() .'admin/js/core.min.js', array( 'jquery' ), self::ver(), true );	 
+		     wp_enqueue_style( self::PREFIX . '-slideshow-admin', self::plug_directory() .'includes/admin/css/style.min.css', false, self::ver(), 'all' );
+			 wp_enqueue_script( self::PREFIX . '-slideshow-admin', self::plug_directory() .'includes/admin/js/core.min.js', array( 'jquery' ), self::ver(), true );	 
 			
 		  }
 		

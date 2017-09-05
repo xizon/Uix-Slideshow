@@ -51,13 +51,10 @@ if ( !class_exists( 'UixSlideshow_Shortcode' ) ) {
 		 */
 		public static function func( $atts, $content = null ) {
 			extract( shortcode_atts( array( 
-				  'show' => '-1',
+				 
 			 ), $atts ) );
 
 			 global $post;
-			 global $uix_slider_per;
-
-			$uix_slider_per = $show;
 
 			// capture output from the widgets
 			ob_start();

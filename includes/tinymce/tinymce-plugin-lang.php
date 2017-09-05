@@ -11,7 +11,6 @@ function uix_slideshow_custom_tinymce_plugin_translation() {
     $strings = array(
         'lang_1' => __( 'Uix Slideshow', 'uix_slideshow' ),
 		'lang_2' => __( 'Insert Uix Slideshow', 'uix_slideshow' ),
-		'lang_3' => __( 'Show at most (Show all items if value is "-1")', 'uix_slideshow' ),
 
 		
     );

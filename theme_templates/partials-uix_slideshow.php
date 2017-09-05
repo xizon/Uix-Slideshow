@@ -19,7 +19,7 @@ if ( ! class_exists( 'UixSlideshow' ) ) {
 $uix_slideshow_query = new WP_Query(
 	array(
 		'post_type'      => 'uix-slideshow',
-		'posts_per_page' => -1, //lists all of the posts.
+		'posts_per_page' => -1,
 		'no_found_rows'  => true
 	)
 );

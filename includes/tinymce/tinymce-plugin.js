@@ -136,21 +136,7 @@ var custom_uploader;
 				title: ed.getLang( 'uix_slideshow_custom_tinymce_plugin.lang_1' ),
 				image 	: url + '/icon.png',
 				onclick: function() {
-					ed.windowManager.open( {
-						title: ed.getLang( 'uix_slideshow_custom_tinymce_plugin.lang_2' ),
-						body: [
-							{
-								type: 'textbox',
-								name: 'uix_slideshow_show',
-								label: ed.getLang( 'uix_slideshow_custom_tinymce_plugin.lang_3' ),
-								value: '-1'
-							},
-							
-						],
-						onsubmit: function( e ) {
-							ed.insertContent( '[uix_slideshow_output show="' + e.data.uix_slideshow_show + '"]');
-						}
-					});
+					ed.insertContent( '[uix_slideshow_output]');
 				}
 
 			});

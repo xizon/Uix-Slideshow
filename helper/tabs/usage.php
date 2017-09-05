@@ -12,9 +12,6 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)</h4>', 'uix-slideshow' ); ?>
         </p>  
         <p>
-           <img src="<?php echo UixSlideshow::plug_directory(); ?>helper/img/plug.jpg" alt="">
-        </p> 
-        <p>
            <?php _e( '<h4 class="uix-bg-custom-title">2. You need to create Uix Slideshow template files in your templates directory. You can create the files on the WordPress admin panel.</h4>', 'uix-slideshow' ); ?>
      
         </p>  
@@ -69,7 +66,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
            <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;(1) <strong>Shortcode</strong> - Embed a shortcode into the editor of any post, page, or custom post type.', 'uix-slideshow' ); ?>
         </p>  
         <p>
-           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use <code>[uix_slideshow_output show="-1"]</code> to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter. Show all items if value is "-1". Go to your WordPress admin panel, edit or create a new post (or page). You’ll see our tiny little button in the toolbar, preceded by a separator:', 'uix-slideshow' ); ?>
+           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use <code>[uix_slideshow_output]</code> to add it to your Post, Widgets or Page content. Now this shortcode has one attributes. Uix Slideshow show at most can be customized using the "show" parameter. Go to your WordPress admin panel, edit or create a new post (or page). You’ll see our tiny little button in the toolbar, preceded by a separator:', 'uix-slideshow' ); ?>
         </p> 
         
          <p>
