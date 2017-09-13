@@ -69,9 +69,11 @@ if ( !class_exists( 'UixSlideshow_Shortcode' ) ) {
 			ob_end_clean();
 
 
-		   $return_string = $out;
-
-		   return UixSlideshow::do_callback( $return_string );
+		   $return_string = UixSlideshow::do_callback( $out );
+			
+			//Themes can filter this by using the "uix_slideshow_shortcode_filter" filter.
+		    return apply_filters( 'uix_slideshow_shortcode_filter', $return_string );
+	
 		}
 		
 		

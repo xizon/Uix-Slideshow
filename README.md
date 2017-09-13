@@ -40,6 +40,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
+##### = 1.2.6 (September 13, 2017) =
+
+* Added new uix_slideshow_shortcode_filter filter to function that displays Uix Slideshow shortcode.
+
+
 ##### = 1.2.5 (September 5, 2017) =
 
 * Fixed a possible bug of duplication running script with Uix Page Builder.
