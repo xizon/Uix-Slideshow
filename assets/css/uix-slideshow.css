@@ -578,12 +578,12 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
     direction: ltr !important;
 }
 
-.custom-slideshow-flex-control-paging li {
+.rtl .custom-slideshow-flex-control-paging li {
     margin-right: auto;
 	margin-left: 10px;
 }
 
-.custom-slideshow-flex-control-thumbs li {
+.rtl .custom-slideshow-flex-control-thumbs li {
     float: right;
 }
 
