@@ -40,6 +40,13 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
+##### = 1.2.7 (September 17, 2017) =
+
+* Optimized the directory and file structure, delete the unnecessary files and codes.
+* Improve the Uix Slideshow assistant(helper) experience in admin panel.
+* Resolved the possible permissions issues to create a template files.
+
+
 ##### = 1.2.6 (September 13, 2017) =
 
 * Added new uix_slideshow_shortcode_filter filter to function that displays Uix Slideshow shortcode.
@@ -47,7 +54,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ##### = 1.2.5 (September 5, 2017) =
 
-* Fixed a possible bug of duplication running script with Uix Page Builder.
+* Fixed a possible bug of duplication running script with Uix Slideshow.
 * Enhance the compatibility of each plug-in.
 * Optimized front-end default scripts.
 * Fixed a shortcode showing the number of errors.
@@ -58,7 +65,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ##### = 1.2.2 (September 3, 2017) =
 
 * Re-defined the Uix Slideshow shortcode API.
-* Compatible with WP plugin "Uix Page Builder".
+* Compatible with WP plugin "Uix Slideshow".
 * Optimized front-end default scripts.
 
 
@@ -158,7 +165,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 4.8
 
 
-###Screenshot
+### Screenshot
 
 ![](https://github.com/xizon/Uix-Slideshow/blob/master/screenshots/screenshot-1.jpg)
 
@@ -170,18 +177,16 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 
 
-###Credits
+### Credits
 
-#####I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
+##### I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
 
 - [Flexslider](https://github.com/woothemes/FlexSlider)
 
-###How to use?
+### How to use?
 
 1.After activating your theme, you can see a prompt pointed out as absolutely critical. Go to **"Appearance -> Install Plugins"**.
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
-
-![](https://github.com/xizon/Uix-Slideshow/blob/master/helper/img/plug.jpg)
 
 
 2.You need to create Uix Slideshow template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Slideshow template files path (`/wp-content/plugins/uix-slideshow/theme_templates/`) and upload files to your theme templates directory (`/wp-content/themes/{your-theme}/`).  

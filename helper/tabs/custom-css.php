@@ -80,22 +80,48 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
         <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
         <?php wp_nonce_field( 'uix_slideshow_customcss' ); ?>
         
-    
-		<p class="uix-bg-custom-desc">
-		   <?php _e( '1) Making a new Cascading Style Sheet (CSS) document which name to <strong>uix-slideshow-custom.css</strong> to your templates directory ( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}/assets/css/</code> ). You can connect to your site via an FTP client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet instead of the "<a href="'.$org_csspath_uix_slideshow.'" target="_blank"><strong>uix-slideshow.css</strong></a>" to your WordPress Theme. Of course, Uix Slideshow\'s function of "Custom CSS" is still valid.', 'uix-slideshow' ); ?>
+          <?php if ( UixSlideshow::theme_core_css_file_exists() ) :  ?>
+				<p class="uix-bg-custom-info-msg">
+					<i class="dashicons dashicons-smiley"></i> <?php _e( 'You have already used custom stylesheet files.', 'uix-slideshow' ); ?>
+				</p>  
+          <?php else:  ?>
+				
+				<p class="uix-bg-custom-desc">
 
-		</p>    
-		<p class="uix-bg-custom-desc">
-		   <?php _e( '2) Making a new javascrpt (.js) document which name to <strong>uix-slideshow-custom.js</strong> to your templates directory ( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}/assets/js/</code> ). Once you have created an existing JS file, Uix Slideshow will use it as a default script instead of the "<a href="'.$org_jspath_uix_slideshow.'" target="_blank"><strong>uix-slideshow.js</strong></a>" to your WordPress Theme.', 'uix-slideshow' ); ?>
 
-		</p>    
-            
+				   <?php
+				   printf( __( '- Making a new Cascading Style Sheet (CSS) document which name to <strong>uix-slideshow-custom.css</strong> to your templates directory ( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}/assets/css/</code> ). You can connect to your site via an FTP client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet instead of the <a href="%1$s" target="_blank">%2$s</a> to your WordPress Theme. Of course, Uix Slideshow\'s function of "Custom CSS" is still valid.', 'uix-slideshow' ), $org_csspath_uix_slideshow, $org_cssname_uix_slideshow );   
+				   ?>
+
+				</p>    
+          
+          <?php endif;  ?>      
+
+      
+      
+          <?php if ( UixSlideshow::theme_core_js_file_exists() ) :  ?>
+				<p class="uix-bg-custom-info-msg">
+					<i class="dashicons dashicons-smiley"></i> <?php _e( 'You have already used custom JavaScript files.', 'uix-slideshow' ); ?>
+				</p>  
+          <?php else:  ?>  
+				<p class="uix-bg-custom-desc">
+
+				   <?php
+				   printf( __( '- Making a new javascrpt (.js) document which name to <strong>uix-slideshow-custom.js</strong> to your templates directory ( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}/assets/js/</code> ). Once you have created an existing JS file, Uix Slideshow will use it as a default script instead of the "<a href="%1$s" target="_blank">%2$s</a>" to your WordPress Theme.', 'uix-slideshow' ), $org_jspath_uix_slideshow, $org_jsname_uix_slideshow );   
+				   ?>
+
+				</p>    
+          
+          <?php endif;  ?>    
+      
+       
         <table class="form-table">
           <tr>
             <th scope="row">
               <?php _e( 'Paste your CSS code', 'uix-slideshow' ); ?>
               <hr>
               <p class="uix-bg-custom-desc-note"><?php _e( 'You could add new styles code to your website, without modifying original .css files.', 'uix-slideshow' ); ?></p>
+              <p class="uix-bg-custom-desc-note"><?php _e( 'Add <code>.rtl .your-classname { .. }</code> to build RTL stylesheets.', 'uix-slideshow' ); ?></p>
             </th>
             <td>
               <textarea name="uix_slideshow_opt_cssnewcode" class="regular-text" rows="25" style="width:98%;"><?php echo esc_textarea( get_option( 'uix_slideshow_opt_cssnewcode' ) ); ?></textarea>
@@ -119,48 +145,24 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 		
 		echo '
 		
-		         <p>'.__( 'CSS file root directory:', 'uix-slideshow' ).' 
-				     <a href="javascript:" id="uix_slideshow_view_css" >'.$org_csspath_uix_slideshow.'</a>
-					 <div class="uix-slideshow-dialog-mask"></div>
-					 <div class="uix-slideshow-dialog" id="uix-slideshow-view-css-container">  
+		         <div class="uix-popwin-dialog-wrapper">
+				     '.esc_html__( 'CSS file root directory:', 'uix-slideshow' ).' 
+				     <a href="javascript:" class="uix-popwin-viewcss-btn">'.$org_csspath_uix_slideshow.'</a>
+					 <div class="uix-popwin-dialog-mask"></div>
+					 <div class="uix-popwin-dialog">  
 						<textarea rows="15" style=" width:95%;" class="regular-text">'.$style_org_code_uix_slideshow.'</textarea>
-						<a href="javascript:" id="uix_slideshow_close_css" class="close button button-primary">'.__( 'Close', 'uix-slideshow' ).'</a>  
+						<a href="javascript:" class="close button button-primary">'.esc_html__( 'Close', 'uix-slideshow' ).'</a>  
 					</div>
-				 </p><hr />
-				<script type="text/javascript">
-					
-				( function($) {
-					
-					"use strict";
-					
-					$( function() {
-						
-						var dialog_uix_slideshow = $( "#uix-slideshow-view-css-container, .uix-slideshow-dialog-mask" );  
-						
-						
-						$( "#uix_slideshow_view_css" ).on( "click", function( e ) {
-						    e.preventDefault();
-							dialog_uix_slideshow.show();
-						});
-						$( "#uix_slideshow_close_css" ).on( "click", function( e ) {
-						    e.preventDefault();
-							dialog_uix_slideshow.hide();
-						});
-			
-					} );
-					
-				} ) ( jQuery );
-				
-				</script>
+				 </div>
 		
 		';	
 
 	} else {
 		
 		echo '
-		         <p>'.__( 'CSS file root directory:', 'uix-slideshow' ).' 
+		         <div>'.esc_html__( 'CSS file root directory:', 'uix-slideshow' ).' 
 				     <a href="'.$org_csspath_uix_slideshow.'" target="_blank">'.$org_csspath_uix_slideshow.'</a>
-				 </p><hr />
+				 </div>
 
 		';	
 		
@@ -168,6 +170,8 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	}
 ?>
         
+        
+        <hr>
         
         <?php submit_button(); ?>
 

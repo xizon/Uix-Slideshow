@@ -1,6 +1,22 @@
+/*
+
+	 Uix Slideshow
+	 Plugin URI: https://uiux.cc/wp-plugins/uix-slideshow/
+	 Author: UIUX Lab
+	 Author URI: https://uiux.cc
+	 License: GPLv2 or later
+
+	
+	TABLE OF CONTENTS
+	---------------------------
+	
+	1. Basic  
+    2. Primary      
+
+*/
 
 /* ====================================================== 
-   Basic                                
+   1. Basic                                
 /* ====================================================== */
 
 .custom-slideshow-flexslider-loading {
@@ -259,7 +275,7 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
 
 
 /* ====================================================== 
-   Primary                                
+   2. Primary                                
 /* ====================================================== */
 
 .custom-slideshow-flexslider.primary {
@@ -535,3 +551,39 @@ html[xmlns] .custom-slideshow-flexslider .custom-slideshow-slides {
         transform: translate3d(-100%, 0, 0);
     }
 }
+
+
+
+/*
+
+	 Uix Slideshow (RTL)
+	 Plugin URI: https://uiux.cc/wp-plugins/uix-slideshow/
+	 Author: UIUX Lab
+	 Author URI: https://uiux.cc
+	 License: GPLv2 or later
+
+	
+	TABLE OF CONTENTS
+	---------------------------
+	
+	1. Basic   
+
+*/
+
+/* ====================================================== 
+   1. Basic                                
+/* ====================================================== */
+.rtl .flexslider,
+.rtl .custom-slideshow-flexslider {
+    direction: ltr !important;
+}
+
+.custom-slideshow-flex-control-paging li {
+    margin-right: auto;
+	margin-left: 10px;
+}
+
+.custom-slideshow-flex-control-thumbs li {
+    float: right;
+}
+

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-05 05:34+0000\n"
+"POT-Creation-Date: 2017-09-19 12:41+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 14:41:58 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -27,39 +27,48 @@ msgstr ""
 msgid "Uix Slideshow Settings"
 msgstr ""
 
-#: uix-slideshow.php:242 uix-slideshow.php:307
+#: uix-slideshow.php:242 uix-slideshow.php:323
 msgid "Settings"
 msgstr ""
 
-#: uix-slideshow.php:257 uix-slideshow.php:258
-msgid "Custom CSS"
-msgstr ""
-
-#: uix-slideshow.php:265 uix-slideshow.php:266
-msgid "Helper"
-msgstr ""
-
-#: uix-slideshow.php:308 uix-slideshow.php:361 helper/settings.php:132
+#: uix-slideshow.php:257 uix-slideshow.php:258 uix-slideshow.php:324
+#: uix-slideshow.php:377 helper/settings.php:60
 msgid "How to use?"
 msgstr ""
 
-#: uix-slideshow.php:360
+#: uix-slideshow.php:265 uix-slideshow.php:266 helper/settings.php:70
+msgid "Template Files"
+msgstr ""
+
+#: uix-slideshow.php:273 uix-slideshow.php:274
+msgid "Custom CSS"
+msgstr ""
+
+#: uix-slideshow.php:281
+msgid "Helper"
+msgstr ""
+
+#: uix-slideshow.php:282 helper/settings.php:56
+msgid "About"
+msgstr ""
+
+#: uix-slideshow.php:376
 msgid ""
 "Do you want to create a slideshow website with WordPress?  Learn how to add "
 "slideshow to your themes."
 msgstr ""
 
-#: uix-slideshow.php:376
+#: uix-slideshow.php:392
 msgid ""
 "<strong>You could create Uix Slideshow template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: uix-slideshow.php:376 helper/tabs/usage.php:19
+#: uix-slideshow.php:392 helper/tabs/usage.php:27
 msgid "Create now!"
 msgstr ""
 
-#: uix-slideshow.php:376 helper/tabs/temp.php:73
+#: uix-slideshow.php:392 helper/tabs/temp.php:61
 msgid ""
 "As a workaround you can use FTP, access the Uix Slideshow template files "
 "path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and "
@@ -67,62 +76,50 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: uix-slideshow.php:469
+#: uix-slideshow.php:485
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-slideshow.php:541 uix-slideshow.php:616
+#: uix-slideshow.php:604
+msgid "Operation successfully completed!"
+msgstr ""
+
+#: uix-slideshow.php:614
 msgid ""
-"<div class=\"notice notice-success\"><p>Operation successfully completed!</p>"
-"</div>"
+"There was a problem copying your template files:</strong> Please check your "
+"server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-slideshow.php:543
+#: uix-slideshow.php:622
 msgid ""
-"<div class=\"notice notice-error\"><p><strong>There was a problem copying "
-"your template files:</strong> Please check your server settings. You can "
-"upload files to theme templates directory using FTP.</p></div>"
+"There was a problem removing your template files:</strong> Please check your "
+"server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-slideshow.php:548
-msgid ""
-"<div class=\"notice notice-error\"><p><strong>There was a problem removing "
-"your template files:</strong> Please check your server settings. You can "
-"upload files to theme templates directory using FTP.</p></div>"
+#: uix-slideshow.php:625
+msgid "Remove successful!"
 msgstr ""
 
-#: uix-slideshow.php:551
-msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
-msgstr ""
-
-#: helper/settings.php:8
+#: helper/settings.php:34
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: helper/settings.php:114
+#: helper/settings.php:42
 msgid "Uix Slideshow Helper"
 msgstr ""
 
-#: helper/settings.php:128
-msgid "About"
-msgstr ""
-
-#: helper/settings.php:137
+#: helper/settings.php:65
 msgid "Credits"
 msgstr ""
 
-#: helper/settings.php:142
-msgid "Template Files"
-msgstr ""
-
-#: helper/settings.php:147
+#: helper/settings.php:75
 msgid "<i class=\"dashicons dashicons-admin-generic\"></i> General Settings"
 msgstr ""
 
-#: helper/settings.php:153
+#: helper/settings.php:81
 msgid "<i class=\"dashicons dashicons-welcome-view-site\"></i> Custom CSS"
 msgstr ""
 
@@ -145,21 +142,58 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
-#: helper/tabs/custom-css.php:96
+#: helper/tabs/custom-css.php:85
+msgid "You have already used custom stylesheet files."
+msgstr ""
+
+#: helper/tabs/custom-css.php:93
+#, php-format
+msgid ""
+"- Making a new Cascading Style Sheet (CSS) document which name to <strong>"
+"uix-slideshow-custom.css</strong> to your templates directory ( <code>/wp-"
+"content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}"
+"/assets/css/</code> ). You can connect to your site via an FTP client, make "
+"the changes and then upload the file back to the server. Once you have "
+"created an existing CSS file, Uix Slideshow will use it as a default style "
+"sheet instead of the <a href=\"%1$s\" target=\"_blank\">%2$s</a> to your "
+"WordPress Theme. Of course, Uix Slideshow's function of \"Custom CSS\" is "
+"still valid."
+msgstr ""
+
+#: helper/tabs/custom-css.php:104
+msgid "You have already used custom JavaScript files."
+msgstr ""
+
+#: helper/tabs/custom-css.php:110
+#, php-format
+msgid ""
+"- Making a new javascrpt (.js) document which name to <strong>uix-slideshow-"
+"custom.js</strong> to your templates directory ( <code>/wp-"
+"content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}"
+"/assets/js/</code> ). Once you have created an existing JS file, Uix "
+"Slideshow will use it as a default script instead of the \"<a href=\"%1$s\" "
+"target=\"_blank\">%2$s</a>\" to your WordPress Theme."
+msgstr ""
+
+#: helper/tabs/custom-css.php:121
 msgid "Paste your CSS code"
 msgstr ""
 
-#: helper/tabs/custom-css.php:98
+#: helper/tabs/custom-css.php:123
 msgid ""
 "You could add new styles code to your website, without modifying original ."
 "css files."
 msgstr ""
 
-#: helper/tabs/custom-css.php:122 helper/tabs/custom-css.php:161
+#: helper/tabs/custom-css.php:124
+msgid "Add <code>.rtl .your-classname { .. }</code> to build RTL stylesheets."
+msgstr ""
+
+#: helper/tabs/custom-css.php:149 helper/tabs/custom-css.php:163
 msgid "CSS file root directory:"
 msgstr ""
 
-#: helper/tabs/custom-css.php:127
+#: helper/tabs/custom-css.php:154
 msgid "Close"
 msgstr ""
 
@@ -235,41 +269,48 @@ msgstr ""
 msgid "Animate the height of the slider smoothly for slides of varying height."
 msgstr ""
 
-#: helper/tabs/temp.php:44
-msgid ""
-"Are you sure?\\nIt is possible based on your theme of the plugin templates. "
-"When you create them again, the default plugin template will be used."
-msgstr ""
-
-#: helper/tabs/temp.php:50
+#: helper/tabs/temp.php:43
 msgid ""
 "Uix Slideshow template files already exists. Remove Uix Slideshow template "
 "files in your templates directory:"
 msgstr ""
 
-#: helper/tabs/temp.php:52
+#: helper/tabs/temp.php:45
 msgid ""
 "As a workaround you can use FTP, access path <code>/wp-content/themes/{your-"
 "theme}/</code> and remove Uix Slideshow template files."
 msgstr ""
 
-#: helper/tabs/temp.php:56 helper/tabs/temp.php:78
+#: helper/tabs/temp.php:49 helper/tabs/temp.php:71
 msgid "Template files list:"
 msgstr ""
 
-#: helper/tabs/temp.php:60
+#: helper/tabs/temp.php:53
+msgid ""
+"Are you sure?\\nIt is possible based on your theme of the plugin templates. "
+"When you create them again, the default plugin template will be used."
+msgstr ""
+
+#: helper/tabs/temp.php:53
 msgid "Remove Uix Slideshow Template Files"
 msgstr ""
 
-#: helper/tabs/temp.php:71
+#: helper/tabs/temp.php:59
 msgid "Copy Uix Slideshow template files in your templates directory:"
 msgstr ""
 
-#: helper/tabs/temp.php:82
+#: helper/tabs/temp.php:66
+msgid ""
+"Hi, there! It’s just a custom template file in the theme folder. Of course "
+"you doesn’t need to create it, you can use of the default page template or "
+"your own custom template file directly."
+msgstr ""
+
+#: helper/tabs/temp.php:77
 msgid "Click This Button to Copy Uix Slideshow Files"
 msgstr ""
 
-#: helper/tabs/usage.php:11
+#: helper/tabs/usage.php:19
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">1. After activating your theme, you can "
 "see a prompt pointed out as absolutely critical. Go to <strong>\"Appearance -"
@@ -278,14 +319,14 @@ msgid ""
 "content/plugins/) And upload files there.)</h4>"
 msgstr ""
 
-#: helper/tabs/usage.php:15
+#: helper/tabs/usage.php:23
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">2. You need to create Uix Slideshow "
 "template files in your templates directory. You can create the files on the "
 "WordPress admin panel.</h4>"
 msgstr ""
 
-#: helper/tabs/usage.php:23
+#: helper/tabs/usage.php:31
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;As a workaround you can use FTP, access the Uix "
 "Slideshow template files path <code>/wp-content/plugins/uix-"
@@ -293,7 +334,7 @@ msgid ""
 "directory <code>/wp-content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: helper/tabs/usage.php:27
+#: helper/tabs/usage.php:35
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;Please check if you have the 1 template file <code>"
 "\"partials-uix_slideshow.php\"</code> in your templates directory. If you "
@@ -301,13 +342,13 @@ msgid ""
 "content/plugins/uix-slideshow/theme_templates/\" to your templates directory."
 msgstr ""
 
-#: helper/tabs/usage.php:36
+#: helper/tabs/usage.php:44
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">3. Create uix slideshow item and publish "
 "slideshow then.</h4>"
 msgstr ""
 
-#: helper/tabs/usage.php:43
+#: helper/tabs/usage.php:51
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">4. You can pretty much custom every aspect "
 "of the look and feel of this page by modifying the <code>*.php</code> "
@@ -315,14 +356,14 @@ msgid ""
 "Best Practices for Editing WordPress Template Files:</h4>"
 msgstr ""
 
-#: helper/tabs/usage.php:46
+#: helper/tabs/usage.php:54
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;(1) WordPress comes with a theme and plugin editor "
 "as part of the core functionality. You can find it in your install by going "
 "to <strong>\"Appearance > Editor\"</strong> from your sidebar."
 msgstr ""
 
-#: helper/tabs/usage.php:54
+#: helper/tabs/usage.php:62
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;(2) You can connect to your site via an <strong>"
 "FTP</strong> client, download a copy of the file you want to change, make "
@@ -330,24 +371,24 @@ msgid ""
 "file that’s on the server."
 msgstr ""
 
-#: helper/tabs/usage.php:59
+#: helper/tabs/usage.php:67
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">5. Adding Uix Slideshow to Web Pages.</h4>"
 msgstr ""
 
-#: helper/tabs/usage.php:62
+#: helper/tabs/usage.php:70
 msgid ""
 "There are two different ways you can add the Uix Slideshow widget to your "
 "site's pages:"
 msgstr ""
 
-#: helper/tabs/usage.php:66
+#: helper/tabs/usage.php:74
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;(1) <strong>Shortcode</strong> - Embed a shortcode "
 "into the editor of any post, page, or custom post type."
 msgstr ""
 
-#: helper/tabs/usage.php:69
+#: helper/tabs/usage.php:77
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use <code>[uix_slideshow_output]</code> "
 "to add it to your Post, Widgets or Page content. Now this shortcode has one "
@@ -357,52 +398,31 @@ msgid ""
 "separator:"
 msgstr ""
 
-#: helper/tabs/usage.php:77
+#: helper/tabs/usage.php:85
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;(2) <strong>Template tags</strong> - Add a simple "
 "PHP function to one of your theme's template files."
 msgstr ""
 
-#: helper/tabs/usage.php:80
+#: helper/tabs/usage.php:88
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Place <code>&lt;?php get_template_part( "
 "'partials', 'uix_slideshow' ); ?&gt;</code> in your templates."
 msgstr ""
 
-#: helper/tabs/usage.php:85
+#: helper/tabs/usage.php:93
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">6. The Uix Slideshow plugin allows users "
 "to easily customize to themes. Go to <strong>\"Uix Slideshow -> Settings -> "
 "General Settings\"</strong>.</h4>"
 msgstr ""
 
-#: helper/tabs/usage.php:91
+#: helper/tabs/usage.php:99
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">7. You can overview the original styles to "
 "overwrite it. It will be on creating new styles to your website, without "
 "modifying original <code>.css</code> files. Go to <strong>\"Uix Slideshow -> "
 "Settings -> Custom CSS\"</strong>.</h4>"
-msgstr ""
-
-#: helper/tabs/usage.php:95
-msgid ""
-"There is a second way, make a new Cascading Style Sheet (CSS) document which "
-"name to <strong>uix-slideshow-custom.css</strong> to your templates "
-"directory ( <code>/wp-content/themes/{your-theme}/</code> or <code>/wp-"
-"content/themes/{your-theme}/assets/css/</code> ). You can connect to your "
-"site via an FTP client, make the changes and then upload the file back to "
-"the server. Once you have created an existing CSS file, Uix Slideshow will "
-"use it as a default style sheet to your WordPress Theme. Of course, Uix "
-"Slideshow's function of \"Custom CSS\" is still valid."
-msgstr ""
-
-#: helper/tabs/usage.php:99
-msgid ""
-"<b>Note:<b> Making a new javascrpt (.js) document which name to <strong>uix-"
-"slideshow-custom.js</strong> to your templates directory ( <code>/wp-"
-"content/themes/{your-theme}/</code> or <code>/wp-content/themes/{your-theme}"
-"/assets/js/</code> ). Once you have created an existing JS file, Uix "
-"Slideshow will use it as a default script to your WordPress Theme."
 msgstr ""
 
 #: includes/admin/options.php:14

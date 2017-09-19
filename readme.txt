@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,9 +46,9 @@ There are two different ways you can add the Uix Slideshow widget to your site's
 
 You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original .css files. Go to "Uix Slideshow" in the WordPress Administration Screens, then link to a specific tab like "Custom CSS".
 
-> There is a second way, make a new Cascading Style Sheet (CSS) document which name to <strong>"uix-slideshow-custom.css"</strong> to your templates directory ( "/wp-content/themes/{your-theme}/" or "/wp-content/themes/{your-theme}/assets/css/" ). You can connect to your site via an FTP client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet to your WordPress Theme. Of course, Uix Slideshow's function of "Custom CSS" is still valid.
+> There is a second way, make a new Cascading Style Sheet (CSS) document which name to **"uix-slideshow-custom.css"** to your templates directory ( "/wp-content/themes/{your-theme}/" or "/wp-content/themes/{your-theme}/assets/css/" ). You can connect to your site via an FTP client, make the changes and then upload the file back to the server. Once you have created an existing CSS file, Uix Slideshow will use it as a default style sheet to your WordPress Theme. Of course, Uix Slideshow's function of "Custom CSS" is still valid.
 
-> Note: Making a new javascrpt (.js) document which name to <strong>"uix-slideshow-custom.js"</strong> to your templates directory ( "/wp-content/themes/{your-theme}/" or "/wp-content/themes/{your-theme}/assets/js/" ). Once you have created an existing JS file, Uix Slideshow will use it as a default script to your WordPress Theme.
+> Note: Making a new javascrpt (.js) document which name to **"uix-slideshow-custom.js"** to your templates directory ( "/wp-content/themes/{your-theme}/" or "/wp-content/themes/{your-theme}/assets/js/" ). Once you have created an existing JS file, Uix Slideshow will use it as a default script to your WordPress Theme.
 
   
   
@@ -121,6 +121,15 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 == Changelog ==
 
+= 1.2.7 (September 17, 2017) =
+
+* Optimized the directory and file structure, delete the unnecessary files and codes.
+* Improve the Uix Slideshow assistant(helper) experience in admin panel.
+* Resolved the possible permissions issues to create a template files.
+
+
+
+
 = 1.2.6 (September 13, 2017) =
 
 * Added new uix_slideshow_shortcode_filter filter to function that displays Uix Slideshow shortcode.
@@ -128,7 +137,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 = 1.2.5 (September 5, 2017) =
 
-* Fixed a possible bug of duplication running script with Uix Page Builder.
+* Fixed a possible bug of duplication running script with Uix Slideshow.
 * Enhance the compatibility of each plug-in.
 * Optimized front-end default scripts.
 * Fixed a shortcode showing the number of errors.
@@ -138,7 +147,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 = 1.2.2 (September 3, 2017) =
 
 * Re-defined the Uix Slideshow shortcode API.
-* Compatible with WP plugin "Uix Page Builder".
+* Compatible with WP plugin "Uix Slideshow".
 * Optimized front-end default scripts.
 
 
