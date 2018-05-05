@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 4.9
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -120,6 +120,13 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 
 == Changelog ==
+
+
+= 1.2.8 (May 3, 2018) =
+
+* Fix: Fixed a bug with custom styles and child themes that if site uses a child theme when you create a custom css/js file in child theme folder, the plugin tries to connect style with path located in the parent theme folder.
+* Tweak: Updated some third-party plugins to the latest version.
+
 
 = 1.2.7 (September 17, 2017) =
 

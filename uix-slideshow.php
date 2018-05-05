@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.2.7
+ * Version:     1.2.8
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -96,8 +96,8 @@ class UixSlideshow {
 	public static function frontpage_scripts() {
 	
 		// Add flexslider
-		wp_enqueue_script( 'flexslider', self::plug_directory() .'assets/js/jquery.flexslider.min.js', array( 'jquery' ), '2.6.2', true );	
-		wp_enqueue_style( 'flexslider', self::plug_directory() .'assets/css/flexslider.css', false, '2.6.2', 'all' );
+		wp_enqueue_script( 'flexslider', self::plug_directory() .'assets/js/jquery.flexslider.min.js', array( 'jquery' ), '2.7.0', true );	
+		wp_enqueue_style( 'flexslider', self::plug_directory() .'assets/css/flexslider.min.css', false, '2.7.0', 'all' );
 		
 		// Easing
 		wp_enqueue_script( 'jquery-easing', self::plug_directory() .'assets/js/jquery.easing.js', array( 'jquery' ), '1.3', false );	
@@ -690,7 +690,7 @@ class UixSlideshow {
 			  $contentdir = UIX_SLIDESHOW_PLUGIN_DIR.$path; 
 		  } 
 		  if ( $type == 'theme' ) {
-			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+			  $contentdir = trailingslashit( get_stylesheet_directory() ).$path; 
 		  } 
 		  
 		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir ) ) {
@@ -716,7 +716,7 @@ class UixSlideshow {
 			  $contentdir = UIX_SLIDESHOW_PLUGIN_DIR.$path; 
 		  } 
 		  if ( $type == 'theme' ) {
-			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+			  $contentdir = trailingslashit( get_stylesheet_directory() ).$path; 
 		  } 	  
 		
 		  
@@ -748,7 +748,7 @@ class UixSlideshow {
 			  $contentdir = UIX_SLIDESHOW_PLUGIN_DIR.$path; 
 		  } 
 		  if ( $type == 'theme' ) {
-			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+			  $contentdir = trailingslashit( get_stylesheet_directory() ).$path; 
 		  } 	  
 		
 		  
@@ -881,12 +881,12 @@ class UixSlideshow {
 		$newFilePath2 = get_stylesheet_directory() . '/assets/css/uix-slideshow-custom.css';
 	
 		if ( file_exists( $newFilePath ) ) {
-			$validPath = get_template_directory_uri() . '/uix-slideshow-custom.css';
+			$validPath = get_stylesheet_directory_uri() . '/uix-slideshow-custom.css';
 		}
 		
 	
 		if ( file_exists( $newFilePath2 ) ) {
-			$validPath = get_template_directory_uri() . '/assets/css/uix-slideshow-custom.css';
+			$validPath = get_stylesheet_directory_uri() . '/assets/css/uix-slideshow-custom.css';
 		}
 		
 		if ( $type == 'name' ) {
@@ -913,12 +913,12 @@ class UixSlideshow {
 		$newFilePath2 = get_stylesheet_directory() . '/assets/js/uix-slideshow-custom.js';
 	
 		if ( file_exists( $newFilePath ) ) {
-			$validPath = get_template_directory_uri() . '/uix-slideshow-custom.js';
+			$validPath = get_stylesheet_directory_uri() . '/uix-slideshow-custom.js';
 		}
 		
 	
 		if ( file_exists( $newFilePath2 ) ) {
-			$validPath = get_template_directory_uri() . '/assets/js/uix-slideshow-custom.js';
+			$validPath = get_stylesheet_directory_uri() . '/assets/js/uix-slideshow-custom.js';
 		}
 		
 		if ( $type == 'name' ) {
