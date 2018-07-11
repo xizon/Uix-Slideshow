@@ -515,4 +515,4 @@ var UixSlideshow_uixCustomMetaboxes = function( obj ) {
 
 var UixSlideshow_customMetaboxesInit = new UixSlideshow_uixCustomMetaboxes();
 UixSlideshow_customMetaboxesInit.getInstance(); 
-			
+

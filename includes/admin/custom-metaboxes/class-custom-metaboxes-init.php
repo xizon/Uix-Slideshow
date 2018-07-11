@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @class 		: Uix_Slideshow_Uix_Custom_Metaboxes
  * @dependence  : Uix Custom Metaboxes
- * @version		: 1.0 (July 9, 2017)
+ * @version		: 1.1 (July 11, 2018)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  * @license     : MIT
@@ -84,6 +84,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 					wp_enqueue_script( 'jquery-ui-datepicker' );
 				    wp_enqueue_script( 'wp-color-picker' );
 				    wp_enqueue_style( 'wp-color-picker' );
+				    wp_enqueue_script( 'wp-color-picker-alpha', UixSlideshow::plug_directory() .'includes/admin/js/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), '2.1.2', true );
 
 			  }
 
