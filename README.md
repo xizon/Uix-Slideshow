@@ -39,6 +39,12 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.3.0 (July 13, 2018) =
+
+* Fix: Fixed an issue when your theme uses more meta boxes.
+
+
+
 ##### = 1.2.9 (July 11, 2018) =
 
 * Fix: Fixed issue where color picker does not display.

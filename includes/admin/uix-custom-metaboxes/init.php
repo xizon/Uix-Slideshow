@@ -4,11 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Custom Metaboxes
+ * Uix Custom Metaboxes
  *
- * @class 		: Uix_Slideshow_Uix_Custom_Metaboxes
- * @dependence  : Uix Custom Metaboxes
- * @version		: 1.1 (July 11, 2018)
+ * @class 		: Uix_Slideshow_Custom_Metaboxes
+ * @version		: 1.2 (July 13, 2018)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  * @license     : MIT
@@ -17,25 +16,44 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 
-
-if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
+if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 	
-	class Uix_Slideshow_Uix_Custom_Metaboxes {
+	class Uix_Slideshow_Custom_Metaboxes {
 		
+		
+		/**
+		* Custom Meta Boxes Version
+		*
+		*/
+		private static $ver = 1.2;	
 		
 		/**
 		* Holds meta box parameters
 		*
 		*/
-		public static $vars = null;
+		private static $vars = null;
+		
+		
+		/**
+		* Holds meta box parameters of all post types
+		*
+		*/
+		public static $all_config = array();
+			
+		
 
 
 		/**
 		* Initialize the custom meta box
 		*
 		*/
-		public function __construct() {
-
+		public function __construct( $vars ) {
+			
+			self::$vars = $vars;
+			
+			//Push parameters of different post types
+			array_push( self::$all_config, self::$vars );
+			
 			// If we are not in admin area exit.
 			if ( ! is_admin() ) return;
 
@@ -47,50 +65,53 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 			add_action( 'save_post', array( __CLASS__, 'save' ) );
 			
 			
-			// Enqueue WP core scripts in the backstage
-			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'wp_core' ) );
+			//Enqueue scripts and styles in the backstage
+			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
+			
+			
 			
 
 		}
+
+
 		
-		// Singleton
-		static function get_instance() {
-			static $inst = null;
-			if( $inst == null ) {
-				$inst = new self();
-			}
-
-			return $inst;
-		}
-
-
 		/*
-		 * Enqueue scripts and styles  in the backstage
+		 * Enqueue scripts and styles in the backstage
 		 *
 		 *
 		 */
-		public static function wp_core() {
-
-			 //Check if screen’s ID, base, post type, and taxonomy, among other data points
-			 $currentScreen = get_current_screen();
-
-			 if ( 
-				 UixSlideshow::inc_str( $currentScreen->id, 'uix_slideshow' ) || 
-				 UixSlideshow::inc_str( $currentScreen->id, 'uix-slideshow' ) || 
-				 UixSlideshow::inc_str( $currentScreen->base, '_page_' )
-			 ) 
-			 {
+		public static function backstage_scripts() {
 		
-					wp_enqueue_script( 'jquery-ui-datepicker' );
-				    wp_enqueue_script( 'wp-color-picker' );
-				    wp_enqueue_style( 'wp-color-picker' );
-				    wp_enqueue_script( 'wp-color-picker-alpha', UixSlideshow::plug_directory() .'includes/admin/js/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), '2.1.2', true );
+			  //Check if screen ID
+			  $currentScreen = get_current_screen();
+		
+			  if ( $currentScreen->base === "post" || //page,post,custom post type
+				   $currentScreen->base === "widgets" || 
+				   $currentScreen->base === "customize" || 
+				   UixShortcodes::inc_str( $currentScreen->base, '_page_' ) 
+				 ) 
+			  {
+    
+				
+					wp_enqueue_style( 'uix-custom-metaboxes', UixShortcodes::plug_directory() .'includes/admin/uix-custom-metaboxes/css/uix-custom-metaboxes.min.css', false, self::$ver, 'all' );
+					//RTL		
+					if ( is_rtl() ) {
+						wp_enqueue_style( 'uix-custom-metaboxes-rtl', UixShortcodes::plug_directory() .'includes/admin/uix-custom-metaboxes/css/uix-custom-metaboxes.min-rtl.css', false, self::$ver, 'all' );
+					} 
+				  
+				  
+					wp_enqueue_script( 'uix-custom-metaboxes', UixShortcodes::plug_directory() .'includes/admin/uix-custom-metaboxes/js/uix-custom-metaboxes.min.js', array( 'jquery' ), self::$ver, true );
+					
+				  
 
+					//Colorpicker
+					wp_enqueue_style( 'wp-color-picker' );
+					wp_enqueue_script( 'wp-color-picker' );	
+	
 			  }
-
-
+			
+	
 		}
-		
 		
 
 		/**
@@ -101,35 +122,42 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		*/
 		public static function add() {
 			
-			$args = self::$vars;
+			$all_args = self::$all_config;
+			
+			if ( !is_array( $all_args ) ) return;
 			
 			
-			if ( !is_array( $args ) ) return;
 			
-			
-			//Creating the Custom Field Box
-			foreach ( $args as $v ) {
-
-
-				$id        = ( isset( $v[ 'config' ][ 'id' ] ) ) ? esc_attr( $v[ 'config' ][ 'id' ] ) : 'uix_slideshow_custom_meta-default';
-				$title     = ( isset( $v[ 'config' ][ 'title' ] ) ) ? esc_html( $v[ 'config' ][ 'title' ] ) : esc_html__( 'Group Title', 'uix-slideshow' );
-				$screen    = ( isset( $v[ 'config' ][ 'screen' ] ) ) ? esc_attr( $v[ 'config' ][ 'screen' ] ) : 'page';
-				$context   = ( isset( $v[ 'config' ][ 'context' ] ) ) ? esc_attr( $v[ 'config' ][ 'context' ] ) : 'normal';
-				$priority  = ( isset( $v[ 'config' ][ 'priority' ] ) ) ? esc_attr( $v[ 'config' ][ 'priority' ] ) : 'high';
-				$fields    = $v[ 'config' ][ 'fields' ];
-
+			foreach ( $all_args as $args ) {
 				
-				add_meta_box( 
-					$id, 
-					$title, 
-					array( __CLASS__, 'register_meta_boxes' ), 
-					$screen, 
-					$context, 
-					$priority,
-					$fields
-				);
+				//Creating the Custom Field Box
+				foreach ( $args as $v ) {
 
-			}
+
+					$id        = ( isset( $v[ 'config' ][ 'id' ] ) ) ? esc_attr( $v[ 'config' ][ 'id' ] ) : 'uix_shortcodes_custom_meta-default';
+					$title     = ( isset( $v[ 'config' ][ 'title' ] ) ) ? esc_html( $v[ 'config' ][ 'title' ] ) : esc_html__( 'Group Title', 'uix-shortcodes' );
+					$screen    = ( isset( $v[ 'config' ][ 'screen' ] ) ) ? esc_attr( $v[ 'config' ][ 'screen' ] ) : 'page';
+					$context   = ( isset( $v[ 'config' ][ 'context' ] ) ) ? esc_attr( $v[ 'config' ][ 'context' ] ) : 'normal';
+					$priority  = ( isset( $v[ 'config' ][ 'priority' ] ) ) ? esc_attr( $v[ 'config' ][ 'priority' ] ) : 'high';
+					$fields    = $v[ 'config' ][ 'fields' ];
+
+
+					add_meta_box( 
+						$id, 
+						$title, 
+						array( __CLASS__, 'register_meta_boxes' ), 
+						$screen, 
+						$context, 
+						$priority,
+						$fields
+					);
+
+				}	
+				
+				
+			}//end $all_args
+
+
 			
 			
 	
@@ -143,32 +171,38 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		*/
 		public static function field_ids() {
 			
-			$args = self::$vars;
+			$all_args = self::$all_config;
 			
-			if ( !is_array( $args ) ) return;
+			if ( !is_array( $all_args ) ) return;
 			
 			$ids  = array();
-		
-			foreach ( $args as $v ) {
-
-				$fields_all_id   = self::array_get_by_key( $v[ 'config' ][ 'fields' ], 'id' );
-				$fields_all_type = self::array_get_by_key( $v[ 'config' ][ 'fields' ], 'type' );
-				
-				foreach ( $fields_all_id as $key => $v ) {
-					
-					$cur_type = isset( $fields_all_type[ $key ] ) ? $fields_all_type[ $key ] : 'text';
-					
-					array_push( $ids, array( 
-						'id'   => $v,
-						'type' => $cur_type,
-					) );
-				}
-				
-				
-			}
 			
+			foreach ( $all_args as $args ) {
+				
+				
 
+				foreach ( $args as $v ) {
+
+					$fields_all_id   = self::array_get_by_key( $v[ 'config' ][ 'fields' ], 'id' );
+					$fields_all_type = self::array_get_by_key( $v[ 'config' ][ 'fields' ], 'type' );
+
+					foreach ( $fields_all_id as $key => $v ) {
+
+						$cur_type = isset( $fields_all_type[ $key ] ) ? $fields_all_type[ $key ] : 'text';
+
+						array_push( $ids, array( 
+							'id'   => $v,
+							'type' => $cur_type,
+						) );
+					}
+
+
+				}	
+				
+			}//end $all_args	
 			
+	
+
 			return $ids;
 			
 			
@@ -188,17 +222,24 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		*/
 		public static function post_types() {
 			
-			$args = self::$vars;
+			$all_args = self::$all_config;
 			
-			if ( !is_array( $args ) ) return;
+			if ( !is_array( $all_args ) ) return;
 			
 			$post_types = array();
 			
+			foreach ( $all_args as $args ) {
+				
+				
+				foreach ( $args as $v ) {
+					array_push( $post_types, $v[ 'config' ][ 'screen' ] );	
+				}
+	
+				
+			}//end $all_args
 			
-			foreach ( $args as $v ) {
-				array_push( $post_types, $v[ 'config' ][ 'screen' ] );	
-			}
-			
+		
+
 			
 			return self::array_multi_to_single( $post_types );
 			
@@ -238,10 +279,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		*/
 		public static function register_meta_boxes( $post, $metabox ) {
 			
-			$args = self::$vars;
-			
-			if ( !is_array( $args ) ) return;
-			
+	
 			$fields = $metabox[ 'args' ];
 		
 			
@@ -252,8 +290,8 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 			
 			?>
 			<!-- Begin Fields -->
-			<div class="custom_metabox_wrapper">
-				<table class="form-table custom_metabox">
+			<div class="uix-cmb__wrapper">
+				<table class="form-table uix-cmb">
 
 
 					<?php
@@ -263,7 +301,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 
 							$type          = $v[ 'type' ];
 							$id            = esc_attr( $v[ 'id' ] );
-							$title         = ( isset( $v[ 'title' ] ) ) ? $v[ 'title' ] : esc_html__( 'Field Title', 'uix-slideshow' );
+							$title         = ( isset( $v[ 'title' ] ) ) ? $v[ 'title' ] : esc_html__( 'Field Title', 'uix-shortcodes' );
 							$placeholder   = ( isset( $v[ 'placeholder' ] ) ) ? $v[ 'placeholder' ] : '';
 							$options       = ( isset( $v[ 'options' ] ) ) ? $v[ 'options' ] : '';
 							$desc          = ( isset( $v[ 'desc' ] ) ) ? $v[ 'desc' ] : '';
@@ -496,10 +534,10 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_editor( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -540,10 +578,10 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_textarea( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -557,7 +595,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 
 					   <textarea placeholder="<?php echo esc_attr( $placeholder ); ?>" rows="<?php echo absint( $rows ); ?>" cols="40" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>"><?php echo esc_textarea( $default ); ?></textarea>
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 						<?php } ?>
 
 				</td>
@@ -572,16 +610,16 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_text( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
-					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="custom_normal_text" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
+					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__normal-text" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -596,10 +634,10 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_date( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -613,9 +651,9 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 			
 						?>   
 				   
-					   <input data-format="<?php echo esc_attr( $format ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="custom_short_text custom_date_selector" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
+					   <input data-format="<?php echo esc_attr( $format ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__short-text uix-cmb__date-selector" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<span class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></span>
+							<span class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></span>
 						<?php } ?>
 			
 				</td>
@@ -633,16 +671,16 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_url( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
-					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="custom_normal_text" value="<?php echo esc_url( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
+					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__normal-text" value="<?php echo esc_url( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -657,14 +695,14 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_number( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
-					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="custom_short_text" value="<?php echo ( empty( $default ) ) ? 0 : floatval( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
+					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__short-text" value="<?php echo ( empty( $default ) ) ? 0 : floatval( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php 
 						if ( is_array ( $options ) && isset( $options[ 'units' ] ) ) {
 							echo esc_html( $options[ 'units' ] );
@@ -672,7 +710,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 						?>					   
 					   
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -689,10 +727,10 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_price( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -701,9 +739,9 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 							echo esc_html( $options[ 'units' ] );
 						} 
 						?>	
-					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="custom_short_text" value="<?php echo ( empty( $default ) ) ? 0 : floatval( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
+					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__short-text" value="<?php echo ( empty( $default ) ) ? 0 : floatval( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<span class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></span>
+							<span class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></span>
 						<?php } ?>
 			
 				</td>
@@ -719,15 +757,15 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_image( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
 				   
-						<div class="custom_metabox_upload_wrapper">
+						<div class="uix-cmb__upload-wrapper">
 							<?php
 							Uix_Slideshow_UploadMedia::add( array(
 								'title'          => '',
@@ -741,7 +779,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 						
 				   
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -757,16 +795,16 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_color( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
-					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="custom_color_selector" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
+					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__color-selector" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -785,20 +823,20 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_checkbox( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
 
-					<div class="custom_checkbox_selector">
+					<div class="uix-cmb__checkbox-selector">
 					
 						<label>
 							<input name="<?php echo esc_attr( $id ); ?>" type="checkbox" value="1" <?php checked( $default, 1 ); ?>>
 							<?php if ( !empty ( $desc_primary ) ) { ?>
-								<span class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></span>
+								<span class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></span>
 							<?php } ?>
 							
 						</label>
@@ -832,10 +870,10 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_multi_checkbox( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -845,7 +883,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 			?>
 
 				
-					<div class="custom_multi_checkbox_selector">
+					<div class="uix-cmb__multi-checkbox-selector">
 					
 							<?php 
 			
@@ -871,9 +909,9 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 
 									?>
 									
-									<label class="<?php echo ( $br ) ? 'custom_label_block' : ''; ?>">
+									<label class="<?php if ( $br ) { echo 'uix-cmb__label'; } else { echo ''; }; ?>">
 										<input name="<?php echo esc_attr( $id ); ?>[]" type="checkbox" value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?>>
-										<?php echo UixSlideshow::kses( $value ); ?>
+										<?php echo UixShortcodes::kses( $value ); ?>
 									</label>
 					
 									<?php
@@ -888,7 +926,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 					</div>
 					
 					<?php if ( !empty ( $desc_primary ) ) { ?>
-						<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+						<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 					<?php } ?>
 		
 
@@ -906,10 +944,10 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_select( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -943,7 +981,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 
 									?>
 									
-									<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?> ><?php echo UixSlideshow::kses( $value ); ?></option>
+									<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?> ><?php echo UixShortcodes::kses( $value ); ?></option>
 					
 									<?php
 									$i++;
@@ -956,7 +994,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 
 					
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -974,15 +1012,15 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_radio( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 		?>
 			<tr>
-				<th class="custom_metabox_title">
-					<label><?php echo UixSlideshow::kses( $title ); ?></label>
+				<th class="uix-cmb__title">
+					<label><?php echo UixShortcodes::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
 				   
-					  <div class="radio custom_radio_selector" data-target-id="<?php echo esc_attr( $id ); ?>">
+					  <div class="radio uix-cmb__radio-selector" data-target-id="<?php echo esc_attr( $id ); ?>">
 
 							
 						<?php 
@@ -1040,11 +1078,11 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 								
 								
 								<?php if ( $radio_type == 'normal' ) { ?>
-									<label data-value="<?php echo esc_attr( $key ); ?>" data-toggle-id="<?php echo esc_attr( $toggle_id ); ?>" class="<?php echo ( $br ) ? 'custom_label_block' : ''; ?> custom_radio_text custom_toggle_selector <?php echo ( $default == esc_attr( $key ) || empty( $default ) ) ? esc_attr( 'active' ) : ''; ?>"><input type="radio" name="<?php echo esc_attr( $id ); ?>_r" value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?>/><?php echo UixSlideshow::kses( $value ); ?></label>
+									<label data-value="<?php echo esc_attr( $key ); ?>" data-toggle-id="<?php echo esc_attr( $toggle_id ); ?>" class="<?php if ( $br ) { echo 'uix-cmb__label'; } else { echo ''; }; ?> uix-cmb__radio-text uix-cmb__toggle-selector <?php if ( $default == esc_attr( $key ) || empty( $default ) ) { echo 'active'; } else { echo ''; }; ?>"><input type="radio" name="<?php echo esc_attr( $id ); ?>_r" value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?>/><?php echo UixShortcodes::kses( $value ); ?></label>
 								<?php } ?>
 									
 								<?php if ( $radio_type == 'image' ) { ?>
-									<span data-value="<?php echo esc_attr( $key ); ?>" class="img <?php echo ( $default == esc_attr( $key ) || empty( $default ) ) ? esc_attr( 'active' ) : ''; ?>">
+									<span data-value="<?php echo esc_attr( $key ); ?>" class="img <?php if ( $default == esc_attr( $key ) || empty( $default ) ) { echo 'active'; } else { echo ''; }; ?>">
 									  <img alt="" src="<?php echo esc_url( $value ); ?>">
 									</span>
 								<?php } ?>	
@@ -1055,8 +1093,8 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 								<?php if ( !empty( $toggle_id ) ) { ?>
 									
 									    <?php if ( $toggle_ipt_type == 'number' ) { ?>
-											<span class="custom_toggle_selector_target" id="<?php echo esc_attr( $toggle_id ); ?>" style="display:none;" >
-												<input type="text" class="custom_short_text" value="<?php echo floatval( $toggle_ipt_default ); ?>" name="<?php echo esc_attr( $toggle_ipt_id ); ?>" id="<?php echo esc_attr( $toggle_ipt_id ); ?>"><?php echo esc_html( $toggle_ipt_units ); ?>
+											<span class="uix-cmb__toggle-target" id="<?php echo esc_attr( $toggle_id ); ?>" style="display:none;" >
+												<input type="text" class="uix-cmb__short-text" value="<?php echo floatval( $toggle_ipt_default ); ?>" name="<?php echo esc_attr( $toggle_ipt_id ); ?>" id="<?php echo esc_attr( $toggle_ipt_id ); ?>"><?php echo esc_html( $toggle_ipt_units ); ?>
 
 											</span>
 										<?php } ?>
@@ -1078,7 +1116,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 
 					
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -1099,9 +1137,9 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 				foreach( $_data as $value ) {
 				?>
 					<li>
-						<strong><?php echo UixSlideshow::kses( $value[ 'name' ] ); ?></strong>
+						<strong><?php echo UixShortcodes::kses( $value[ 'name' ] ); ?></strong>
 						<span>
-							<?php echo UixSlideshow::kses( $value[ 'value' ] ); ?>
+							<?php echo UixShortcodes::kses( $value[ 'value' ] ); ?>
 						</span>
 					</li>
 				<?php
@@ -1113,8 +1151,8 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 		public static function addfield_custom_attrs( $id, $title, $desc, $default, $options = '', $placeholder = '', $desc_primary = '' ) {
 			
 			$project_custom_attrs = json_decode( $default, true );
-			$label_title          = esc_html__( 'Title', 'uix-slideshow' );
-			$label_value          = esc_html__( 'Value', 'uix-slideshow' );
+			$label_title          = esc_html__( 'Title', 'uix-shortcodes' );
+			$label_value          = esc_html__( 'Value', 'uix-shortcodes' );
 			if ( is_array ( $options )  && isset( $options[ 'label_title' ] ) ) {
 				$label_title = $options[ 'label_title' ];
 			}
@@ -1124,20 +1162,20 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 			}
 			
 			$temp = '
-				<div class="custom_metabox_text_div">
-					<label class="custom_metabox_text_p">
-						<p class="custom_metabox_description">
+				<div class="uix-cmb__text--div">
+					<label class="uix-cmb__text--p">
+						<p class="uix-cmb__description">
 							'.esc_html( $label_title ).'
 						</p>
-						<input class="custom_metabox_text_small" name="'.esc_attr( $id ).'_attrs_title[]" value="{name}"><span class="important2">*</span>&nbsp;&nbsp;
+						<input class="uix-cmb__text--small" name="'.esc_attr( $id ).'_attrs_title[]" value="{name}"><span class="important2">*</span>&nbsp;&nbsp;
 					</label>
 
 
-					<label class="custom_metabox_text_p">
-						<p class="custom_metabox_description">
+					<label class="uix-cmb__text--p">
+						<p class="uix-cmb__description">
 							'.esc_html( $label_value ).'
 						</p>
-						<input class="custom_metabox_text_medium" name="'.esc_attr( $id ).'_attrs_value[]" value="{value}"><a href="javascript:void(0);" class="custom_attributes_field_remove_button" title="'.esc_attr__( 'Remove field', 'uix-slideshow' ).'"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABHElEQVQ4y7VV2w2CQBBc/YBODHZhiA34+IECiKDWonVoM4r/BLQIxZ9zSWaTjfJWJ5nkgNvhdnfujqgcFtNnHpkp8wmmeOdjTissmTemaeCVuagTGjD3KuDEXDFHWI2Fccg8q3l7xH5AxO7MoGqS+nnEfCBmV5amiE2oPVzEFLFz3QCpWUDdESE2k0b5qmaDHoJFTAwNj2ADgwb0xRoaB4K3DDrYFw40EoJhzZtRTUsKbDznfxH8RcpjnbI0JfxCcKObIrY597TNkHnRtrGw0Q1M2hXbd2MTTg2Dvel2EJuiEUXsrO5wiBrSH2JledXhIFtopywRYwc4sIWNbm5UzUSstvZz1KPJg1lZmlRzBXiwQYLUcowP+FZ6BbwA8yaEV41zJXcAAAAASUVORK5CYII="/></a>
+						<input class="uix-cmb__text--medium" name="'.esc_attr( $id ).'_attrs_value[]" value="{value}"><a href="javascript:void(0);" class="uix-cmb__custom-attributes-field__removebtn" title="'.esc_attr__( 'Remove field', 'uix-shortcodes' ).'"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABHElEQVQ4y7VV2w2CQBBc/YBODHZhiA34+IECiKDWonVoM4r/BLQIxZ9zSWaTjfJWJ5nkgNvhdnfujqgcFtNnHpkp8wmmeOdjTissmTemaeCVuagTGjD3KuDEXDFHWI2Fccg8q3l7xH5AxO7MoGqS+nnEfCBmV5amiE2oPVzEFLFz3QCpWUDdESE2k0b5qmaDHoJFTAwNj2ADgwb0xRoaB4K3DDrYFw40EoJhzZtRTUsKbDznfxH8RcpjnbI0JfxCcKObIrY597TNkHnRtrGw0Q1M2hXbd2MTTg2Dvel2EJuiEUXsrO5wiBrSH2JledXhIFtopywRYwc4sIWNbm5UzUSstvZz1KPJg1lZmlRzBXiwQYLUcowP+FZ6BbwA8yaEV41zJXcAAAAASUVORK5CYII="/></a>
 					</label>
 				</div>
 			';
@@ -1155,29 +1193,29 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 				<th colspan="2">
 					
 					<!-- Begin Fields -->
-					<div class="custom_metabox_wrapper custom_attributes_field_wrapper" data-append-id="<?php echo esc_attr( $id ); ?>_append" data-tmpl='<?php echo esc_attr( $temp_attr ); ?>'>
+					<div class="uix-cmb__wrapper uix-cmb__custom-attributes-field" data-append-id="<?php echo esc_attr( $id ); ?>_append" data-tmpl='<?php echo esc_attr( $temp_attr ); ?>'>
 					
 					
 					
-						<table class="form-table custom_metabox">
+						<table class="form-table uix-cmb">
 
 
 							<tr>
-								<th class="custom_metabox_title">
-									<label><?php echo UixSlideshow::kses( $title ); ?></label>
+								<th class="uix-cmb__title">
+									<label><?php echo UixShortcodes::kses( $title ); ?></label>
 									<?php if ( !empty ( $desc ) ) { ?>
-										<p class="custom_metabox_title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
+										<p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
 									<?php } ?>
 								</th>
 								<td>
 
-									   <a href="javascript:void(0);" class="custom_attributes_field_add_button"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAADGElEQVRIiZWV32scVRTHP+fMbGKT0CIaapJWhJSmD8UHLeZhDfjSSja1LUGrT6II/gOCj1bxUf8GEUVQrFrtbpEgKDXxR9Xqg1JQlFpM1qhFRbaJ2cz9+jC728lmZrd+H2a45575nu855547Rg9cnZ3euR6X5lx2XGgvMNra+t3gSpC9OxCF2uh7S/8UcVie8beH7hvZXE+eRnoKGOolAmgIXow2hl64bWGh0TfAr5V7p4PzFjDRh7gbv5iF+bGzn3yRNXp2UX+gfDI4H+WSC5S+Wo9t2CP5+frRmQezxk4Gy8fKhy3YOSDO4SYEkShljsxwt/z6Gk0FKhO1xQ86AeqzM6OKuAS6Je+bIKE772bo5KMArJ1+Fb75ErfcEAB/hNLGgT3vXLjqAMH1bBE5gAQaHmFwcj+Dk/sJwztRfpnauNWbA88A+Oqx6d1mPNHLW6YtZZeErHcE4Mn67MyoJ4pPAIP9vCkuRxFuUszx2OSVrD61FbYWMkgksoKFCErPlAmwtJlmXY2XKrHQVJY9UcDvmkY7hknDGIYoTR3suJWmDtJM6RFKm91oEL6+QGSWna4DMTDW4TcIiRh55HEGbr+jMPddR+bgyNwWW/PKZf6++Bnu0XV+Y9zJOff/u9pFEHFs2IrQPgATuBuN118m7BhC1vZLS7TrcKr6r4Uqm99/h2GdqY7WGrh5pyctLMegn4F9bemRObr4ebpsdTZINDFoBdi89C369MPrgyYDh8i7c7fLLrPaFhNpFrEbsTmxeXo1ZGSZpddFez/2dH9baU01T2RViq6v4trekFcUqPre6vkfML3Wy9NkdLfe1OcomL2yu7b4kwNEwU4B68W+YBtrNFfrNFfr+L9r/Qb7GklyiqyslbnyPGant0klrUgSQmt6wc2I3IuOszCbHz/78RnI/HDGa0tvS3o+NwMgdqcURZSiiLiYHIPn2uRbMmhj+Wj5YcNeov+/uBvXTDw2Vlt8M2v0bq+J6tIbZroH7NyNMguqyA91k0OfW2GlUj6E2Qmc+xGTwM2trT8xfkS8jzgzXlv8qojjP3mDIzt0pTbdAAAAAElFTkSuQmCC" alt="<?php echo esc_attr__( 'Add a custom attribute', 'uix-slideshow' ); ?>"/></a>
+									   <a href="javascript:void(0);" class="uix-cmb__custom-attributes-field__addbtn"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAADGElEQVRIiZWV32scVRTHP+fMbGKT0CIaapJWhJSmD8UHLeZhDfjSSja1LUGrT6II/gOCj1bxUf8GEUVQrFrtbpEgKDXxR9Xqg1JQlFpM1qhFRbaJ2cz9+jC728lmZrd+H2a45575nu855547Rg9cnZ3euR6X5lx2XGgvMNra+t3gSpC9OxCF2uh7S/8UcVie8beH7hvZXE+eRnoKGOolAmgIXow2hl64bWGh0TfAr5V7p4PzFjDRh7gbv5iF+bGzn3yRNXp2UX+gfDI4H+WSC5S+Wo9t2CP5+frRmQezxk4Gy8fKhy3YOSDO4SYEkShljsxwt/z6Gk0FKhO1xQ86AeqzM6OKuAS6Je+bIKE772bo5KMArJ1+Fb75ErfcEAB/hNLGgT3vXLjqAMH1bBE5gAQaHmFwcj+Dk/sJwztRfpnauNWbA88A+Oqx6d1mPNHLW6YtZZeErHcE4Mn67MyoJ4pPAIP9vCkuRxFuUszx2OSVrD61FbYWMkgksoKFCErPlAmwtJlmXY2XKrHQVJY9UcDvmkY7hknDGIYoTR3suJWmDtJM6RFKm91oEL6+QGSWna4DMTDW4TcIiRh55HEGbr+jMPddR+bgyNwWW/PKZf6++Bnu0XV+Y9zJOff/u9pFEHFs2IrQPgATuBuN118m7BhC1vZLS7TrcKr6r4Uqm99/h2GdqY7WGrh5pyctLMegn4F9bemRObr4ebpsdTZINDFoBdi89C369MPrgyYDh8i7c7fLLrPaFhNpFrEbsTmxeXo1ZGSZpddFez/2dH9baU01T2RViq6v4trekFcUqPre6vkfML3Wy9NkdLfe1OcomL2yu7b4kwNEwU4B68W+YBtrNFfrNFfr+L9r/Qb7GklyiqyslbnyPGant0klrUgSQmt6wc2I3IuOszCbHz/78RnI/HDGa0tvS3o+NwMgdqcURZSiiLiYHIPn2uRbMmhj+Wj5YcNeov+/uBvXTDw2Vlt8M2v0bq+J6tIbZroH7NyNMguqyA91k0OfW2GlUj6E2Qmc+xGTwM2trT8xfkS8jzgzXlv8qojjP3mDIzt0pTbdAAAAAElFTkSuQmCC" alt="<?php echo esc_attr__( 'Add a custom attribute', 'uix-shortcodes' ); ?>"/></a>
 
 								</td>
 							</tr>	
 
 							<tr>
-								<th class="custom_metabox_title"></th>
+								<th class="uix-cmb__title"></th>
 								<td>
 
 									<?php
@@ -1205,7 +1243,7 @@ if ( !class_exists( 'Uix_Slideshow_Uix_Custom_Metaboxes' ) ) {
 					<!-- End Fields -->
 				
 					<?php if ( !empty ( $desc_primary ) ) { ?>
-						<p class="custom_metabox_description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
+						<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
 					<?php } ?>
 				
 				
