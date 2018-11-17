@@ -39,6 +39,12 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.3.1 (November 17, 2018) =
+
+* Fix: Fixed some style compatibility issues with the Flexslider plugin.
+
+
+
 ##### = 1.3.0 (July 13, 2018) =
 
 * Fix: Fixed an issue when your theme uses more meta boxes.
@@ -180,6 +186,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 4.7.*
 - WP 4.8.*
 - WP 4.9.*
+- WP 5.0.0 Beta
 
 
 ### Screenshot
