@@ -39,6 +39,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.3.2 (November 30, 2018) =
+
+* Fix: Fixed a bug for create_function() is deprecated in PHP 7.2.
+
+
 ##### = 1.3.1 (November 17, 2018) =
 
 * Fix: Fixed some style compatibility issues with the Flexslider plugin.
