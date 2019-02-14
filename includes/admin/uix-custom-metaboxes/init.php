@@ -88,19 +88,19 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 			  if ( $currentScreen->base === "post" || //page,post,custom post type
 				   $currentScreen->base === "widgets" || 
 				   $currentScreen->base === "customize" || 
-				   UixShortcodes::inc_str( $currentScreen->base, '_page_' ) 
+				   UixSlideshow::inc_str( $currentScreen->base, '_page_' ) 
 				 ) 
 			  {
     
 				
-					wp_enqueue_style( 'uix-custom-metaboxes', UixShortcodes::plug_directory() .'includes/admin/uix-custom-metaboxes/css/uix-custom-metaboxes.min.css', false, self::$ver, 'all' );
+					wp_enqueue_style( 'uix-custom-metaboxes', UixSlideshow::plug_directory() .'includes/admin/uix-custom-metaboxes/css/uix-custom-metaboxes.min.css', false, self::$ver, 'all' );
 					//RTL		
 					if ( is_rtl() ) {
-						wp_enqueue_style( 'uix-custom-metaboxes-rtl', UixShortcodes::plug_directory() .'includes/admin/uix-custom-metaboxes/css/uix-custom-metaboxes.min-rtl.css', false, self::$ver, 'all' );
+						wp_enqueue_style( 'uix-custom-metaboxes-rtl', UixSlideshow::plug_directory() .'includes/admin/uix-custom-metaboxes/css/uix-custom-metaboxes.min-rtl.css', false, self::$ver, 'all' );
 					} 
 				  
 				  
-					wp_enqueue_script( 'uix-custom-metaboxes', UixShortcodes::plug_directory() .'includes/admin/uix-custom-metaboxes/js/uix-custom-metaboxes.min.js', array( 'jquery' ), self::$ver, true );
+					wp_enqueue_script( 'uix-custom-metaboxes', UixSlideshow::plug_directory() .'includes/admin/uix-custom-metaboxes/js/uix-custom-metaboxes.min.js', array( 'jquery' ), self::$ver, true );
 					
 				  
 
@@ -539,9 +539,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -583,9 +583,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -599,7 +599,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 
 					   <textarea placeholder="<?php echo esc_attr( $placeholder ); ?>" rows="<?php echo absint( $rows ); ?>" cols="40" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>"><?php echo esc_textarea( $default ); ?></textarea>
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 						<?php } ?>
 
 				</td>
@@ -615,15 +615,15 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
 					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__normal-text" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -639,9 +639,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -657,7 +657,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 				   
 					   <input data-format="<?php echo esc_attr( $format ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__short-text uix-cmb__date-selector" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<span class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></span>
+							<span class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></span>
 						<?php } ?>
 			
 				</td>
@@ -676,15 +676,15 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
 					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__normal-text" value="<?php echo esc_url( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -700,9 +700,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -714,7 +714,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 						?>					   
 					   
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -732,9 +732,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -745,7 +745,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 						?>	
 					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__short-text" value="<?php echo ( empty( $default ) ) ? 0 : floatval( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<span class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></span>
+							<span class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></span>
 						<?php } ?>
 			
 				</td>
@@ -762,9 +762,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -783,7 +783,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 						
 				   
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -800,15 +800,15 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
 					   <input placeholder="<?php echo esc_attr( $placeholder ); ?>" type="text" class="uix-cmb__color-selector" value="<?php echo esc_attr( $default ); ?>" name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>">
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -828,9 +828,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -840,7 +840,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 						<label>
 							<input name="<?php echo esc_attr( $id ); ?>" type="checkbox" value="1" <?php checked( $default, 1 ); ?>>
 							<?php if ( !empty ( $desc_primary ) ) { ?>
-								<span class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></span>
+								<span class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></span>
 							<?php } ?>
 							
 						</label>
@@ -875,9 +875,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -915,7 +915,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 									
 									<label class="<?php if ( $br ) { echo 'uix-cmb__label'; } else { echo ''; }; ?>">
 										<input name="<?php echo esc_attr( $id ); ?>[]" type="checkbox" value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?>>
-										<?php echo UixShortcodes::kses( $value ); ?>
+										<?php echo UixSlideshow::kses( $value ); ?>
 									</label>
 					
 									<?php
@@ -930,7 +930,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 					</div>
 					
 					<?php if ( !empty ( $desc_primary ) ) { ?>
-						<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+						<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 					<?php } ?>
 		
 
@@ -949,9 +949,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -985,7 +985,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 
 									?>
 									
-									<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?> ><?php echo UixShortcodes::kses( $value ); ?></option>
+									<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?> ><?php echo UixSlideshow::kses( $value ); ?></option>
 					
 									<?php
 									$i++;
@@ -998,7 +998,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 
 					
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -1017,9 +1017,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		?>
 			<tr>
 				<th class="uix-cmb__title">
-					<label><?php echo UixShortcodes::kses( $title ); ?></label>
+					<label><?php echo UixSlideshow::kses( $title ); ?></label>
 					<?php if ( !empty ( $desc ) ) { ?>
-					    <p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+					    <p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 					<?php } ?>
 				</th>
 				<td>
@@ -1082,7 +1082,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 								
 								
 								<?php if ( $radio_type == 'normal' ) { ?>
-									<label data-value="<?php echo esc_attr( $key ); ?>" data-toggle-id="<?php echo esc_attr( $toggle_id ); ?>" class="<?php if ( $br ) { echo 'uix-cmb__label'; } else { echo ''; }; ?> uix-cmb__radio-text uix-cmb__toggle-selector <?php if ( $default == esc_attr( $key ) || empty( $default ) ) { echo 'active'; } else { echo ''; }; ?>"><input type="radio" name="<?php echo esc_attr( $id ); ?>_r" value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?>/><?php echo UixShortcodes::kses( $value ); ?></label>
+									<label data-value="<?php echo esc_attr( $key ); ?>" data-toggle-id="<?php echo esc_attr( $toggle_id ); ?>" class="<?php if ( $br ) { echo 'uix-cmb__label'; } else { echo ''; }; ?> uix-cmb__radio-text uix-cmb__toggle-selector <?php if ( $default == esc_attr( $key ) || empty( $default ) ) { echo 'active'; } else { echo ''; }; ?>"><input type="radio" name="<?php echo esc_attr( $id ); ?>_r" value="<?php echo esc_attr( $key ); ?>" <?php echo esc_html( $checked ); ?>/><?php echo UixSlideshow::kses( $value ); ?></label>
 								<?php } ?>
 									
 								<?php if ( $radio_type == 'image' ) { ?>
@@ -1120,7 +1120,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 
 					
 						<?php if ( !empty ( $desc_primary ) ) { ?>
-							<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+							<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 						<?php } ?>
 			
 				</td>
@@ -1141,9 +1141,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 				foreach( $_data as $value ) {
 				?>
 					<li>
-						<strong><?php echo UixShortcodes::kses( $value[ 'name' ] ); ?></strong>
+						<strong><?php echo UixSlideshow::kses( $value[ 'name' ] ); ?></strong>
 						<span>
-							<?php echo UixShortcodes::kses( $value[ 'value' ] ); ?>
+							<?php echo UixSlideshow::kses( $value[ 'value' ] ); ?>
 						</span>
 					</li>
 				<?php
@@ -1206,9 +1206,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 
 							<tr>
 								<th class="uix-cmb__title">
-									<label><?php echo UixShortcodes::kses( $title ); ?></label>
+									<label><?php echo UixSlideshow::kses( $title ); ?></label>
 									<?php if ( !empty ( $desc ) ) { ?>
-										<p class="uix-cmb__title_desc"><?php echo UixShortcodes::kses( $desc ); ?></p>
+										<p class="uix-cmb__title_desc"><?php echo UixSlideshow::kses( $desc ); ?></p>
 									<?php } ?>
 								</th>
 								<td>
@@ -1247,7 +1247,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 					<!-- End Fields -->
 				
 					<?php if ( !empty ( $desc_primary ) ) { ?>
-						<p class="uix-cmb__description"><?php echo UixShortcodes::kses( $desc_primary ); ?></p>
+						<p class="uix-cmb__description"><?php echo UixSlideshow::kses( $desc_primary ); ?></p>
 					<?php } ?>
 				
 				

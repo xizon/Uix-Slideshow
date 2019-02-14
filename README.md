@@ -1,7 +1,7 @@
 # Uix Slideshow
 This is a WordPress Plugin. This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.
 
-Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
+Copyright (c) 2019 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Donate Me](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PYZLU7UZNQ6CE)
 
@@ -38,6 +38,12 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 
 ### Updates
+
+
+##### = 1.3.3 (February 14, 2019) =
+
+* Fix: Fixed a bug for plugin.
+
 
 ##### = 1.3.2 (November 30, 2018) =
 
