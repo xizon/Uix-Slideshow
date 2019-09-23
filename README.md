@@ -40,6 +40,12 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
+##### = 1.3.4 (September 18, 2019) =
+
+* Tweak: Enhance the functionality of the uix custom metabox.
+* Tweak: MCEEditor upgrade in form component.
+
+
 ##### = 1.3.3 (February 14, 2019) =
 
 * Fix: Fixed a bug for plugin.

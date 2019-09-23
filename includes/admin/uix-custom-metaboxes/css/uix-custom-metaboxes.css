@@ -2,28 +2,152 @@
  * ************************************************
  * Uix Custom Metaboxes
  *
- * @version		: 1.2 (July 13, 2018)
+ * @version		: 1.3 (September 17, 2019)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  * @license     : MIT
  *
  *************************************************
  */
+/*
+ * 1. Editor
+ * 2. Basic
+ * 3. Botton
+ * 4. Radio
+ * 5. Tabs
+ * 6. Upload Media Control
+ * 7. Toggle
+ * 8. Custom Attributes
+ * 9. Date Picker
+*/
 
-/*---- Basic ----*/
-.uix-cmb__wrapper {
+
+
+/* 
+ ---------------------------
+ 1. Editor
+ ---------------------------
+ */ 
+
+
+.uix-slideshow-cmb__mce-editor {
+    border: 1px solid #D3D3D3;
+}
+
+.uix-slideshow-cmb__mce-editor--multi {
+    width: calc(100% - 20px);
+}
+
+
+
+/* 
+ ---------------------------
+ 2. Basic
+ ---------------------------
+ */ 
+.uix-slideshow-cmb__wrapper {
 	width: 99%;
 	overflow: hidden;
 }
 
 
-.uix-cmb__text--div {
+.uix-slideshow-cmb__text--div {
 	clear: both;
 	width: 99%;
 }
 
 
-.uix-cmb__text--p {
+
+.uix-slideshow-cmb__text--div--toggle {
+    position: relative;
+    border: solid 1px #ddd;
+    outline: 3px solid #f5f5f5;
+    background-color: #fdfdfd;  
+    overflow: hidden;
+    margin-bottom: 15px;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;  
+}
+
+.uix-slideshow-cmb__text--div--toggle--child {
+    margin-left:15px; 
+    width: calc(100% - 23px);  
+}
+
+
+
+.uix-slideshow-cmb__text--div--toggle .uix-slideshow-cmb__custom-attributes-field__removebtn {
+    right: 3px;
+    top: 3px;
+}
+
+.uix-slideshow-cmb__text--div--toggle:hover {
+    border-color: #333;
+    outline-color: #7d7d7d;
+}
+
+.uix-slideshow-cmb__text--div--toggle:hover .uix-slideshow-cmb__text--div--toggle__trigger svg {
+    -webkit-transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+}
+
+
+.uix-slideshow-cmb__text--div--toggle__trigger svg {
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+    fill: #848484;
+}
+
+.uix-slideshow-cmb__text--div--toggle__trigger {
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+    color: #848484;
+}
+
+.uix-slideshow-cmb__text--div--toggle__trigger.active {
+    filter: alpha(opacity=30);  
+    -moz-opacity: 0.3;   
+    opacity: 0.3;
+    border-bottom: 1px dotted #bdb8b8;
+    background: #DCDCDC;
+
+}
+
+.uix-slideshow-cmb__text--div--toggle__trigger.active svg {
+    width: 15px;
+    height: 15px;
+}
+
+.uix-slideshow-cmb__text--div--toggle__trigger:hover {
+    color: #23282d;
+}
+
+.uix-slideshow-cmb__text--div--toggle__div {
+    display: none;
+    padding: 15px 25px 15px 15px;
+}
+
+.uix-slideshow-cmb__text--div--toggle.active .uix-slideshow-cmb__text--div--toggle__div {
+    display: block;
+}
+
+
+
+.uix-slideshow-cmb__text--p {
 	color: #626262;
 	font-weight: 600;
 	display: block;
@@ -34,64 +158,77 @@
 	position: relative;
 }
 
+.uix-slideshow-cmb__text--row {
+	color: #626262;
+	font-weight: 600;
+	display: block;
+	margin-bottom: 10px;
+	position: relative;
+}
 
 
-#side-sortables .uix-cmb__text--p {
+#side-sortables .uix-slideshow-cmb__text--p {
 	float: none;
 	width: 100%;
 	border-right: none;
 }
 
-#side-sortables .uix-cmb__text--p input {
+#side-sortables .uix-slideshow-cmb__text--p input {
 	width: 190px !important;
 }
 
-#side-sortables .uix-cmb__text--p:first-child input {
+#side-sortables .uix-slideshow-cmb__text--p:first-child input {
 	width: 150px !important;
 }
 
 
-#side-sortables .uix-cmb__text--div {
+#side-sortables .uix-slideshow-cmb__text--div {
 	border-bottom: 1px solid #E9E9E9;
 	margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
-	.uix-cmb__text--p {
+	.uix-slideshow-cmb__text--p {
 		float: none;
 		width: 100%;
 		border-right: none;
 	}
 
-	.uix-cmb__text--p input {
+	.uix-slideshow-cmb__text--p input {
 		width: 190px !important;
 	}
 
-	.uix-cmb__text--p:first-child input {
+	.uix-slideshow-cmb__text--p:first-child input {
 		width: 150px !important;
 	}
 
-	.uix-cmb__text--div {
+	.uix-slideshow-cmb__text--div {
 		border-bottom: 1px solid #E9E9E9;
 		margin-bottom: 10px;
 	}	
 }
 
 
-td .uix-cmb__text--p:last-child {
+td .uix-slideshow-cmb__text--p:last-child {
 	border: none;
 }
 
-.uix-cmb__text--small {
+.uix-slideshow-cmb__text--small {
 	width: 150px !important;
 	margin-right: 10px;
 }
-.uix-cmb__text--medium {
+.uix-slideshow-cmb__text--medium {
 	width: 250px !important;
 	margin-right: 10px;
 }
 
-table.uix-cmb th.uix-cmb__title {
+.uix-slideshow-cmb__text--fullwidth {
+	width: calc(100% - 20px) !important;
+	margin-right: 10px;
+}
+
+
+table.uix-slideshow-cmb th.uix-slideshow-cmb__title {
 	width: 18%;	
 }
 
@@ -100,7 +237,7 @@ table.uix-cmb th.uix-cmb__title {
 	margin-left: -10px;
 }
 
-#side-sortables .uix-cmb__normal-text {
+#side-sortables .uix-slideshow-cmb__normal-text {
 	max-width: 95%;
 }
 
@@ -127,38 +264,38 @@ table.uix-cmb th.uix-cmb__title {
 	border-bottom: 1px solid #E9E9E9;
 }
 
-#side-sortables .uix-cmb__description {
+#side-sortables .uix-slideshow-cmb__description {
 	padding-right: 10px;
 }
 
-#side-sortables .uix-cmb__radio-selector label {
+#side-sortables .uix-slideshow-cmb__radio-selector label {
 	display: block;
 	padding: 5px 0;
 }
 
 
-table.uix-cmb input,
-table.uix-cmb textarea {
+table.uix-slideshow-cmb input,
+table.uix-slideshow-cmb textarea {
     font-size: 14px;
     padding: 5px;
 }
 
-table.uix-cmb input[type=text],
-table.uix-cmb textarea {
+table.uix-slideshow-cmb input[type=text],
+table.uix-slideshow-cmb textarea {
     width: 97%;
 }
 
-table.uix-cmb input[type=text].uix-cmb__short-text {
+table.uix-slideshow-cmb input[type=text].uix-slideshow-cmb__short-text {
     width: 110px;
     margin-right: 10px;
 }
 
-table.uix-cmb textarea.textarea_code {
+table.uix-slideshow-cmb textarea.textarea_code {
     font-family: Consolas,Monaco,monospace;
     line-height: 16px;
 }
 
-table.uix-cmb tr th {
+table.uix-slideshow-cmb tr th {
     text-align: right;
 }
 
@@ -166,24 +303,24 @@ table.uix-cmb tr th {
 
 
 @media (max-width: 768px) {
-    table.uix-cmb tr th {
+    table.uix-slideshow-cmb tr th {
         text-align: left;
         width: 99%!important;
         padding-bottom: 10px!important;
     }
 
 
-    table.uix-cmb input[type=text].uix-cmb__short-text {
+    table.uix-slideshow-cmb input[type=text].uix-slideshow-cmb__short-text {
         float: left;
     }
 }
 
-table.uix-cmb .uix-cmb__radio-text {
+table.uix-slideshow-cmb .uix-slideshow-cmb__radio-text {
     display: inline-block;
     margin-right: 15px;
 }
 
-p.uix-cmb__description {
+p.uix-slideshow-cmb__description {
     color: #AAA;
     font-style: italic;
     margin: 2px 0!important;
@@ -191,7 +328,7 @@ p.uix-cmb__description {
 
 
 
-p.uix-cmb__title_desc {
+p.uix-slideshow-cmb__title_desc {
     margin: 5px 0 2px!important;
     font-weight: normal;
     font-size: 12px;
@@ -199,16 +336,16 @@ p.uix-cmb__title_desc {
     color: #505050;
 }
 
-span.uix-cmb__description {
+span.uix-slideshow-cmb__description {
     color: #AAA;
     font-style: italic;
 }
 
-table.uix-cmb input {
+table.uix-slideshow-cmb input {
 	max-width: 99%;
 }
 
-table.uix-cmb img {
+table.uix-slideshow-cmb img {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 0;
@@ -219,7 +356,7 @@ table.uix-cmb img {
     max-width: 95%;
 }
 
-table.uix-cmb code {
+table.uix-slideshow-cmb code {
     border: 1px solid #B1B1B1;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -230,13 +367,19 @@ table.uix-cmb code {
 }
 
 
-table.uix-cmb .uix-cmb__label {
+table.uix-slideshow-cmb .uix-slideshow-cmb__label {
 	display: block;
 	padding: 5px 0;
 }
 
-/*---- Button ----*/
-.uix-cmb__btn {
+
+
+/* 
+ ---------------------------
+ 3. Button
+ ---------------------------
+ */ 
+.uix-slideshow-cmb__btn {
     margin-right: 3px;
     text-decoration: none;
     font-size: 11px;
@@ -247,23 +390,54 @@ table.uix-cmb .uix-cmb__label {
     margin-bottom: 3px;
 }
 
-.uix-cmb__btn i {
-    font-size: 16px;
-    line-height: 1.2;
+.uix-slideshow-cmb__btn svg {
+    fill: #0073aa;
+    opacity: 0.57;
+    width: 20px;
+    height: 20px;
     vertical-align: middle;
+    margin-right: 5px;
 }
 
 
-/*---- Radio ----*/
-.uix-cmb__radio-selector {
+.uix-slideshow-cmb__removebtn {
+	display: inline-block;
+	padding: 5px;
+	width: 25px;
+	height: 25px;
+    background: #d51212;
+    text-decoration: none;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+	-webkit-box-shadow: 1.5px 2.598px 8px 0px rgba(213, 18, 18, 0.39);
+	-moz-box-shadow: 1.5px 2.598px 8px 0px rgba(213, 18, 18, 0.39);
+	box-shadow: 1.5px 2.598px 8px 0px rgba(213, 18, 18, 0.39);
+    text-align: center;
+}
+.uix-slideshow-cmb__removebtn svg {
+    margin: 0;
+    fill: #fff;
+    width: 30px;
+    height: 30px;
+    transform: translate(-2.5px,-2.5px);
+}
+
+/* 
+ ---------------------------
+ 4. Radio
+ ---------------------------
+ */ 
+
+.uix-slideshow-cmb__radio-selector {
 	padding-top: 5px;
 }
 
-.uix-cmb__radio-selector {
+.uix-slideshow-cmb__radio-selector {
     min-height: 30px;
 }
 
-.uix-cmb__radio-selector span {
+.uix-slideshow-cmb__radio-selector span {
     display: inline-block;
     margin: 3px 4px;
     border: 1px solid #C3C3C3;
@@ -282,13 +456,13 @@ table.uix-cmb .uix-cmb__label {
     position: relative;
 }
 
-.uix-cmb__radio-selector span.multi {
+.uix-slideshow-cmb__radio-selector span.multi {
     margin-right: 12px;
     padding-right: 12px;
 }
 
-.uix-cmb__radio-selector span:hover,
-.uix-cmb__radio-selector span.active {
+.uix-slideshow-cmb__radio-selector span:hover,
+.uix-slideshow-cmb__radio-selector span.active {
     border-color: #d7d7d7;
     color: #4E4E4E;
     background: #EEEEEE;
@@ -297,7 +471,7 @@ table.uix-cmb .uix-cmb__label {
     box-shadow: 0 2px 1px rgba(0,0,0,.1) inset;
 }
 
-.uix-cmb__radio-selector span.img {
+.uix-slideshow-cmb__radio-selector span.img {
     border: none;
     padding: 0;
     background: none;
@@ -306,7 +480,7 @@ table.uix-cmb .uix-cmb__label {
     box-shadow: none;
 }
 
-.uix-cmb__radio-selector span.img img {
+.uix-slideshow-cmb__radio-selector span.img img {
     margin: 0 10px 10px 0;
     border: 3px solid #fff;
     cursor: pointer;
@@ -316,20 +490,20 @@ table.uix-cmb .uix-cmb__label {
     transition: .1s ease-in-out;
 }
 
-.uix-cmb__radio-selector span.img:hover img {
+.uix-slideshow-cmb__radio-selector span.img:hover img {
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.uix-cmb__radio-selector span.img.active img {
+.uix-slideshow-cmb__radio-selector span.img.active img {
     border-color: #C33;
     -webkit-box-shadow: 0 1px 15px rgba(0,0,0,.2);
     -moz-box-shadow: 0 1px 15px rgba(0,0,0,.2);
     box-shadow: 0 1px 15px rgba(0,0,0,.2);
 }
 
-.uix-cmb__radio-selector span .fa {
+.uix-slideshow-cmb__radio-selector span .fa {
     font-size: 12px;
     position: absolute;
     top: -5px;
@@ -338,18 +512,23 @@ table.uix-cmb .uix-cmb__label {
     border: 1px solid #E0E0E0;
 }
 
-.uix-cmb__radio-selector span .fa.no {
+.uix-slideshow-cmb__radio-selector span .fa.no {
     color: #C8C8C8;
 }
 
-.uix-cmb__radio-selector span.active .fa.no {
+.uix-slideshow-cmb__radio-selector span.active .fa.no {
     color: #FFFFFF;
     background: #7CD450;
     border-color: #76BE61;
 }
 	
-/*---- Tabs ----*/
-.uix-cmb__tabsgroup-selector {
+
+/* 
+ ---------------------------
+ 5. Tabs
+ ---------------------------
+ */ 
+.uix-slideshow-cmb__tabsgroup-selector {
     margin: 1em 0;
     padding: 0;
 }
@@ -361,7 +540,7 @@ table.uix-cmb .uix-cmb__label {
     position: absolute;
 }
 
-.uix-cmb__tabsgroup-selector .group_control {
+.uix-slideshow-cmb__tabsgroup-selector .group_control {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -373,14 +552,14 @@ table.uix-cmb .uix-cmb__label {
     margin-top: -7px;
 }
 
-.uix-cmb__tabsgroup-selector .group_control:after {
+.uix-slideshow-cmb__tabsgroup-selector .group_control:after {
     content: '';
     display: table;
     line-height: 0;
     clear: both;
 }
 
-.uix-cmb__tabsgroup-selector .group_control li {
+.uix-slideshow-cmb__tabsgroup-selector .group_control li {
     background: #FFFFFF;
     border-width: 1px 1px 0;
     float: left;
@@ -389,13 +568,13 @@ table.uix-cmb .uix-cmb__label {
     position: relative;
 }
 
-.uix-cmb__tabsgroup-selector .group_control li i {
+.uix-slideshow-cmb__tabsgroup-selector .group_control li i {
     font-size: 13px;
     vertical-align: middle;
     line-height: 1.4;
 }
 
-.uix-cmb__tabsgroup-selector .group_control li a {
+.uix-slideshow-cmb__tabsgroup-selector .group_control li a {
     background: #F4F4F4;
     cursor: pointer;
     padding: 3px .4em 4px;
@@ -411,29 +590,34 @@ table.uix-cmb .uix-cmb__label {
     text-decoration: none;
 }
 
-.uix-cmb__tabsgroup-selector .group_control li a.active {
+.uix-slideshow-cmb__tabsgroup-selector .group_control li a.active {
     color: #333;
 }
 
-.uix-cmb__tabsgroup-selector .group_control li a:focus {
+.uix-slideshow-cmb__tabsgroup-selector .group_control li a:focus {
     outline: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
 
-/*---- Upload Media Control ----*/
-.uix-cmb__upload-wrapper {
+
+/* 
+ ---------------------------
+ 6. Upload Media Control
+ ---------------------------
+ */ 
+.uix-slideshow-cmb__upload-wrapper {
 	position: relative;
 	width: calc( 99% - 20px );
 	max-width: 450px;
 }
-.uix-cmb__upload-wrapper .uix-cmb__btn--upload-container {
+.uix-slideshow-cmb__upload-wrapper .uix-slideshow-cmb__btn--upload-container {
 	padding: 10px 10px 10px 0;
 	
 }
 
-.uix-cmb__upload-wrapper input {
+.uix-slideshow-cmb__upload-wrapper input {
 	border: none;
 	outline: none;
 	background: rgba(0,0,0,0);
@@ -451,7 +635,7 @@ table.uix-cmb .uix-cmb__label {
 
 
 
-.uix-cmb__upload-wrapper .uix-cmb__btn {
+.uix-slideshow-cmb__upload-wrapper .uix-slideshow-cmb__btn {
 	display: block;
 	font-size: 12px;
 	padding: 10px 15px !important;
@@ -464,7 +648,7 @@ table.uix-cmb .uix-cmb__label {
 }
 
 
-.uix-cmb__upload-wrapper .uix-cmb__btn i {
+.uix-slideshow-cmb__upload-wrapper .uix-slideshow-cmb__btn i {
     font-size: 16px;
     line-height: 1.2;
     vertical-align: middle;
@@ -476,79 +660,31 @@ table.uix-cmb .uix-cmb__label {
 }
 
 
-.uix-cmb__upload-wrapper .remove-btn {
-    display: block;
-	font-size: 12px;
-	line-height: 1 !important;
-	padding: 5px 10px !important;
-	width: 15px;
-	display: block;
-	overflow: hidden;
-	height: 20px;
-	text-transform: capitalize;
+.uix-slideshow-cmb__upload-wrapper .uix-slideshow-cmb__removebtn {
 	position: absolute;
 	left: 0;
 	top: 5px;
-	text-indent: -9999em;
 }
 
 
 
-.uix-cmb__upload-wrapper .remove-btn:after {
-	display: block;
-	content: 'x';
-	font-family: sans-serif;
-	font-size: 12px;
-	font-weight: 400;
-	padding: 5px;
-	width: 10px;
-	height: 10px;
-	line-height: 10px;
-	text-indent: 0;
-	position: absolute;
-	left: 0;
-	top: 5px;
-    background: #d51212;
-    color: #fff;
-    text-decoration: none;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    border: 1px solid #ba0202;
-	-webkit-box-shadow: 1.5px 2.598px 8px 0px rgba(213, 18, 18, 0.39);
-	-moz-box-shadow: 1.5px 2.598px 8px 0px rgba(213, 18, 18, 0.39);
-	box-shadow: 1.5px 2.598px 8px 0px rgba(213, 18, 18, 0.39);
-}
-
-.uix-cmb__upload-wrapper .remove-btn:focus {
-	outline: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-
-
-.uix-cmb__upload-wrapper .uix-cmb__upload-preview {
+.uix-slideshow-cmb__upload-wrapper .uix-slideshow-cmb__upload-preview {
     margin: 0;
 }
 
 
-.uix-cmb__upload-wrapper .uix-cmb__upload-preview img {
+.uix-slideshow-cmb__upload-wrapper .uix-slideshow-cmb__upload-preview img {
     max-height: 150px;
 }
 
-.uix-cmb__btn--upload-container {
+.uix-slideshow-cmb__btn--upload-container {
     position: relative;
     width: 99%;
     overflow: hidden;
 }
 
 
-.uix-cmb__btn--upload-container .remove-btn {
-    line-height: 35px;
-}
-
-.uix-cmb__btn--upload-container:before {
+.uix-slideshow-cmb__btn--upload-container:before {
     display: block;
     content: "";
 	/*Fixed upload input width*/
@@ -556,72 +692,128 @@ table.uix-cmb .uix-cmb__label {
     padding-top: 4px;
 }
 
-.uix-cmb__btn--upload {
+.uix-slideshow-cmb__btn--upload {
     margin: 5px 5px 0 0;
 }
 
-.uix-cmb__btn--upload:focus {
+.uix-slideshow-cmb__btn--upload:focus {
     outline: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
 
-.uix-cmb__upload-preview {
+.uix-slideshow-cmb__upload-preview {
     display: none;
     margin: 6px 0;
 }
 
-.uix-cmb__upload-preview a:hover img {
+.uix-slideshow-cmb__upload-preview a:hover img {
     border: 1px solid #666;
     -webkit-box-shadow: 0 1px 15px rgba(0,0,0,.5);
     -moz-box-shadow: 0 1px 15px rgba(0,0,0,.5);
     box-shadow: 0 1px 15px rgba(0,0,0,.5);
 }
 
-.uix-cmb__upload-preview img {
+.uix-slideshow-cmb__upload-preview img {
     max-width: 99%;
     max-height: 70px;
 }
 
 
-/*---- Toggle Elements ----*/
-.uix-cmb__toggle-target input,
-.uix-cmb__toggle-target textarea,
-.uix-cmb__toggle-target input:focus,
-.uix-cmb__toggle-target textarea:focus {
-	background: rgba(255,255,255,0);
-	outline: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-	border: none;
-}
-
-.uix-cmb__toggle-target .uix-cmb__short-text {
-	width: 55px !important;
+/* 
+ ---------------------------
+ 7. Toggle
+ ---------------------------
+ */ 
+.uix-slideshow-cmb__toggle-target {
+    display: block;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 
-/*---- Custom Attributes ----*/
-.uix-cmb__custom-attributes-field table td {
+/* 
+ ---------------------------
+ 8. Custom Attributes
+ ---------------------------
+ */ 
+.uix-slideshow-cmb__custom-attributes-field table td {
 	text-align: left;
 	padding-bottom: 0;
 }
 
+.uix-slideshow-cmb__custom-attributes-field__addbtn__wrapper {
+    display: block;
+    clear: both;
+    padding-top: 10px;
+    height: 50px;
+}
 
-#side-sortables .uix-cmb__custom-attributes-field__addbtn {
+.uix-slideshow-cmb__custom-attributes-field__addbtn svg,
+.uix-slideshow-cmb__custom-attributes-field__removebtn svg {
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+}
+
+.uix-slideshow-cmb__custom-attributes-field__addbtn {
+    text-decoration: none;
+    color: #0073aa;
+    border: 1px solid #D8F7FF;
+	-webkit-border-radius: 2px; 
+	-moz-border-radius: 2px; 
+	border-radius: 2px;
+    padding: 10px 15px;
+    background: #ECF9FF;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.uix-slideshow-cmb__custom-attributes-field__addbtn svg {
+    fill: #0073aa;
+    opacity: 0.57;   
+}
+
+
+
+.uix-slideshow-cmb__custom-attributes-field__removebtn svg {
+    fill: #ddd;
+    margin-right: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.uix-slideshow-cmb__custom-attributes-field__removebtn svg:hover {
+    fill: #f00;
+}
+
+.uix-slideshow-cmb__custom-attributes-field__removebtn {
+    text-decoration: none;
+	-webkit-border-radius: 2px; 
+	-moz-border-radius: 2px; 
+	border-radius: 2px;
+    padding: 3px;
+}
+
+
+#side-sortables .uix-slideshow-cmb__custom-attributes-field__addbtn {
 	padding-top: 10px;
 }
 
 @media (max-width: 768px) {
 
-	.uix-cmb__custom-attributes-field__addbtn {
+	.uix-slideshow-cmb__custom-attributes-field__addbtn {
 		padding-top: 10px;
 	}
 }
 
-.uix-cmb__custom-attributes-field__removebtn {
+.uix-slideshow-cmb__custom-attributes-field__removebtn {
 	position: absolute;
 	right: -20px; 
 	top: 30px;
@@ -629,7 +821,8 @@ table.uix-cmb .uix-cmb__label {
 
 
 
-#side-sortables .uix-cmb__custom-attributes-field__removebtn {
+
+#side-sortables .uix-slideshow-cmb__custom-attributes-field__removebtn {
 	right: auto;
 	left: 200px;
 }
@@ -637,39 +830,19 @@ table.uix-cmb .uix-cmb__label {
 
 @media (max-width: 768px) {
 
-	.uix-cmb__custom-attributes-field__removebtn {
+	.uix-slideshow-cmb__custom-attributes-field__removebtn {
 		right: auto;
 		left: 200px;
 	}
 }
 
 
-.uix-cmb__custom-attributes-field__addbtn img,
-.uix-cmb__custom-attributes-field__removebtn img {
-	-webkit-box-shadow: none !important;
-	-moz-box-shadow: none !important;
-	box-shadow: none !important;
-	border: none !important;
-	background: none !important;
-}
 
-.uix-cmb__custom-attributes-field__addbtn:hover img,
-.uix-cmb__custom-attributes-field__removebtn:hover img {
-	filter: alpha(opacity=80);  
-	-moz-opacity: 0.8;   
-	opacity: 0.8; 
-}
-
-.uix-cmb__custom-attributes-field__addbtn:focus,
-.uix-cmb__custom-attributes-field__removebtn:focus {
-	outline: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-
-
-/*---- Date Picker ----*/
+/* 
+ ---------------------------
+ 9. Date Picker
+ ---------------------------
+ */ 
 /*! jQuery UI - v1.12.1 - 2016-09-14
 * http://jqueryui.com
 * Copyright (c) 2013 jQuery Foundation and other contributors Licensed MIT */
@@ -711,9 +884,24 @@ table.uix-cmb .uix-cmb__label {
 }
 
 
-.ui-datepicker .ui-icon.ui-icon-circle-triangle-e {
-	margin-left: -45px !important;
+
+.ui-datepicker .ui-icon.ui-icon-circle-triangle-e,
+.ui-datepicker .ui-icon.ui-icon-circle-triangle-w {
+    width: 20px !important;
+    height: 20px !important;
+    margin-left: 0 !important;  
+    margin-right: 0 !important; 
+    font-family: Arial, "sans-serif" !important;
+    cursor: pointer !important;
 }
+
+.ui-datepicker .ui-icon.ui-icon-circle-triangle-w {
+    margin-left: -15px !important;
+}
+.ui-datepicker .ui-icon.ui-icon-circle-triangle-e {
+    margin-left: -5px !important;
+}
+
 
 .ui-datepicker .ui-datepicker-header {
 	background: none !important;
