@@ -13,7 +13,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'credits' ) {
         <p>
         
         <ul>
-            <li><a href="https://github.com/woothemes/FlexSlider" target="_blank" rel="nofollow">Flexslider</a></li>
+            <li><a href="https://github.com/xizon/uix-kit" target="_blank" rel="nofollow">Uix Kit</a></li>
 
         </ul>
         

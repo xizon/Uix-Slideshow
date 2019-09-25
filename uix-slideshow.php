@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.3.4
+ * Version:     1.3.5
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -101,13 +101,6 @@ class UixSlideshow {
 	 */
 	public static function frontpage_scripts() {
 	
-		// Add flexslider
-		wp_enqueue_script( 'flexslider', self::plug_directory() .'assets/js/jquery.flexslider.min.js', array( 'jquery' ), '2.7.0', true );	
-		wp_enqueue_style( 'flexslider', self::plug_directory() .'assets/css/flexslider.min.css', false, '2.7.0', 'all' );
-		
-		// Easing
-		wp_enqueue_script( 'jquery-easing', self::plug_directory() .'assets/js/jquery.easing.js', array( 'jquery' ), '1.3', false );	
-	
 
 		if ( self::core_css_file_exists() ) {
 			
@@ -123,11 +116,10 @@ class UixSlideshow {
 		$uix_slideshow_opt_animation       = get_option( 'uix_slideshow_opt_animation', 'slide' );
 		$uix_slideshow_opt_auto            = get_option( 'uix_slideshow_opt_auto', true );
 		$uix_slideshow_opt_speed           = get_option( 'uix_slideshow_opt_speed', 10000 );
-		$uix_slideshow_opt_effect_duration = get_option( 'uix_slideshow_opt_effect_duration', 600 );
-		$uix_slideshow_opt_smoothheight    = get_option( 'uix_slideshow_opt_smoothheight', true );
 		$uix_slideshow_opt_paging_nav      = get_option( 'uix_slideshow_opt_paging_nav', true );
 		$uix_slideshow_opt_arr_nav         = get_option( 'uix_slideshow_opt_arr_nav', true );
 		$uix_slideshow_opt_animloop        = get_option( 'uix_slideshow_opt_animloop', true );
+        $uix_slideshow_opt_drag            = get_option( 'uix_slideshow_opt_drag', false );
 		$uix_slideshow_opt_prev_txt        = get_option( 'uix_slideshow_opt_prev_txt', '<span class=\'custom-slideshow-flex-dir custom-slideshow-flex-dir-prev\'></span>' );
 		$uix_slideshow_opt_next_txt        = get_option( 'uix_slideshow_opt_next_txt', '<span class=\'custom-slideshow-flex-dir custom-slideshow-flex-dir-next\'></span>' );
 	
@@ -136,11 +128,10 @@ class UixSlideshow {
 			'animation'        =>  $uix_slideshow_opt_animation,
 			'auto'             =>  ( $uix_slideshow_opt_auto ) ? 'true' : 'false',
 			'speed'            =>  $uix_slideshow_opt_speed,
-			'effect_duration'  =>  $uix_slideshow_opt_effect_duration,
-			'smoothheight'     =>  ( $uix_slideshow_opt_smoothheight ) ? 'true' : 'false',
 			'paging_nav'       =>  ( $uix_slideshow_opt_paging_nav ) ? 'true' : 'false',
 			'arr_nav'          =>  ( $uix_slideshow_opt_arr_nav ) ? 'true' : 'false',
 			'animloop'         =>  ( $uix_slideshow_opt_animloop ) ? 'true' : 'false',
+            'draggable'        =>  ( $uix_slideshow_opt_drag ) ? 'true' : 'false',
 			'prev_txt'         =>  str_replace( '"', '\'', $uix_slideshow_opt_prev_txt ),
 			'next_txt'         =>  str_replace( '"', '\'', $uix_slideshow_opt_next_txt )
 		);
@@ -431,7 +422,7 @@ class UixSlideshow {
 	 */
 	public static function tempfile_exists() {
 
-	      if( !file_exists( get_stylesheet_directory() . '/partials-uix_slideshow.php' ) ) {
+	      if( !file_exists( get_stylesheet_directory() . '/tmpl-uix_slideshow.php' ) ) {
 			  return false;
 		  } else {
 			  return true;
@@ -530,7 +521,7 @@ class UixSlideshow {
 		   if ( $ajax ) {
 				ob_start();
 
-					self::wpfilesystem_read_file( $nonceaction, $nonce, self::get_theme_template_dir_name().'/', 'partials-uix_slideshow.php', 'plugin' );
+					self::wpfilesystem_read_file( $nonceaction, $nonce, self::get_theme_template_dir_name().'/', 'tmpl-uix_slideshow.php', 'plugin' );
 					$out = ob_get_contents();
 				ob_end_clean();
 
@@ -841,12 +832,21 @@ class UixSlideshow {
 	 *
 	 */
 	public static function core_css_file_exists() {
-		  $FilePath     = self::plug_filepath() .'assets/css/uix-slideshow.css';
-		  if ( self::theme_core_css_file_exists() || file_exists( $FilePath ) ) {
-			  return true;
-		  } else {
-			  return false;
-		  }	
+
+        if ( self::old_version_135() ) {
+            //Compatible with versions of this plugin < `1.3.5`
+            
+            $filePath     = self::plug_filepath() .'assets/css/migrate-1.3.5/uix-slideshow.css';
+        } else {
+            $filePath     = self::plug_filepath() .'assets/css/uix-slideshow.css';
+        }
+        
+        if ( self::theme_core_css_file_exists() || file_exists( $filePath ) ) {
+            return true;
+        } else {
+            return false;
+        }	   
+        
 	}
 	
 	
@@ -884,7 +884,15 @@ class UixSlideshow {
 	 */
 	public static function core_css_file( $type = 'uri' ) {
 		
-		$validPath    = self::plug_directory() .'assets/css/uix-slideshow.css';
+        if ( self::old_version_135() ) {
+            //Compatible with versions of this plugin < `1.3.5`
+            
+            $validPath    = self::plug_directory() .'assets/css/migrate-1.3.5/uix-slideshow.css';
+        } else {
+            $validPath    = self::plug_directory() .'assets/css/uix-slideshow.css';
+        } 
+        
+        
 		$newFilePath  = get_stylesheet_directory() . '/uix-slideshow-custom.css';
 		$newFilePath2 = get_stylesheet_directory() . '/assets/css/uix-slideshow-custom.css';
 	
@@ -916,7 +924,20 @@ class UixSlideshow {
 	 */
 	public static function core_js_file( $type = 'uri' ) {
 		
-		$validPath    = self::plug_directory() .'assets/js/uix-slideshow.js';
+		
+        
+        if ( self::old_version_135() ) {
+            //Compatible with versions of this plugin < `1.3.5`
+            
+            $validPath    = self::plug_directory() .'assets/js/migrate-1.3.5/uix-slideshow.js';
+            
+        } else {
+            
+            $validPath    = self::plug_directory() .'assets/js/uix-slideshow.js';
+            
+        } 
+        
+        
 		$newFilePath  = get_stylesheet_directory() . '/uix-slideshow-custom.js';
 		$newFilePath2 = get_stylesheet_directory() . '/assets/js/uix-slideshow-custom.js';
 	
@@ -963,6 +984,25 @@ class UixSlideshow {
 		return wp_kses( $html, wp_kses_allowed_html( 'post' ) );
 
 	}
+    
+	
+	/**
+	 * Compatible with versions of this plugin < `1.3.5`
+	 *
+	 */
+	public static function old_version_135() {
+		
+		if ( file_exists( get_stylesheet_directory() . '/partials-uix_slideshow.php' ) ) {
+            return true;
+        } else {
+            return false;
+        }
+
+	}
+     
+    
+    
+    
 
 
 }

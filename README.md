@@ -39,6 +39,14 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.3.5 (September 24, 2019) =
+
+* Remove: Removed the plugin `jquery.flexslider` using native js instead.
+* New: Added effect "Scale".
+* Dev: Added filter `add_filter( 'uix_slideshow_custom_metaboxes_vars', 'mytheme_modify_vars' );` for current Custom Metaboxes.
+* Tweak: The transition effect is controlled by CSS3, and the styles can be modified directly through the admin panel.
+
+
 
 ##### = 1.3.4 (September 18, 2019) =
 
@@ -234,7 +242,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 2.You need to create Uix Slideshow template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Slideshow template files path (`/wp-content/plugins/uix-slideshow/theme_templates/`) and upload files to your theme templates directory (`/wp-content/themes/{your-theme}/`).  
 
 
-Please check if you have the **1** template file `partials-uix_slideshow.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-slideshow/theme_templates/"** to your templates directory.
+Please check if you have the **1** template file `tmpl-uix_slideshow.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-slideshow/theme_templates/"** to your templates directory.
 
 ![](https://github.com/xizon/Uix-Slideshow/blob/master/helper/img/temp.jpg)
 
@@ -266,7 +274,7 @@ There are two different ways you can add the Uix Slideshow widget to your site's
   
 　(2)  **Template tags** - Add a simple PHP function to one of your theme's template files. 
 
-　　Place `<?php get_template_part( 'partials', 'uix_slideshow' ); ?>` in your templates.
+　　Place `<?php get_template_part( 'tmpl', 'uix_slideshow' ); ?>` in your templates.
 
 
 

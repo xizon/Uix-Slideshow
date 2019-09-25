@@ -48,10 +48,13 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		public function __construct( $vars ) {
 			
 			self::$vars = $vars;
+            
 			
 			//Push parameters of different post types
 			array_push( self::$all_config, self::$vars );
-			
+	
+            
+            
 			// If we are not in admin area exit.
 			if ( ! is_admin() ) return;
 
@@ -156,7 +159,9 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		*/
 		public static function add() {
 			
-			$all_args = self::$all_config;
+			$all_args = apply_filters( 'uix_slideshow_custom_metaboxes_vars', self::$all_config );
+            
+            
 			
 			if ( !is_array( $all_args ) ) return;
 			
@@ -205,7 +210,8 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		*/
 		public static function field_ids() {
 			
-			$all_args = self::$all_config;
+			$all_args = apply_filters( 'uix_slideshow_custom_metaboxes_vars', self::$all_config );
+
 			
 			if ( !is_array( $all_args ) ) return;
 			
@@ -256,7 +262,7 @@ if ( !class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 		*/
 		public static function post_types() {
 			
-			$all_args = self::$all_config;
+			$all_args = apply_filters( 'uix_slideshow_custom_metaboxes_vars', self::$all_config );
 			
 			if ( !is_array( $all_args ) ) return;
 			

@@ -32,7 +32,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
    
         </p>  
         <p>
-           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;Please check if you have the 1 template file <code>"partials-uix_slideshow.php"</code> in your templates directory. If you can\'t find these files, then just copy them from the directory "/wp-content/plugins/uix-slideshow/theme_templates/" to your templates directory.', 'uix-slideshow' ); ?>
+           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;Please check if you have the 1 template file <code>"tmpl-uix_slideshow.php"</code> in your templates directory. If you can\'t find these files, then just copy them from the directory "/wp-content/plugins/uix-slideshow/theme_templates/" to your templates directory.', 'uix-slideshow' ); ?>
            
           
         </p>  
@@ -85,7 +85,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
            <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;(2) <strong>Template tags</strong> - Add a simple PHP function to one of your theme\'s template files.', 'uix-slideshow' ); ?>
         </p> 
         <p>
-           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Place <code>&lt;?php get_template_part( \'partials\', \'uix_slideshow\' ); ?&gt;</code> in your templates.', 'uix-slideshow' ); ?>
+           <?php _e( '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Place <code>&lt;?php get_template_part( \'tmpl\', \'uix_slideshow\' ); ?&gt;</code> in your templates.', 'uix-slideshow' ); ?>
         </p> 
 
         

@@ -1,7 +1,16 @@
+/* ===================================== */
+/* ===================================== */
+/* ===================================== */
+/* ===================================== */
+/* !! The old versions migrated to version 1.3.5 (inclusive)  */
+/* ===================================== */
+/* ===================================== */
+/* ===================================== */
+/* ===================================== */
 /*
 
 	 Uix Slideshow
-	 Plugin URI: https://uiux.cc/wp-plugins/uix-slideshow/
+	 Plugin URI: https://uiux.cc/wp-plugins/custom-slideshow-flexslider/
 	 Author: UIUX Lab
 	 Author URI: https://uiux.cc
 	 License: GPLv2 or later
@@ -22,11 +31,12 @@
  ---------------------------
  */
 
-.uix-slideshow__wrapper {
+.custom-slideshow-flexslider__wrapper {
     position: relative;
+    height: auto;
 }
 /* Prevent content overflow*/
-.uix-slideshow {
+.custom-slideshow-flexslider {
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -35,15 +45,15 @@
 
 
 /* Loading */
-.uix-slideshow.is-loaded::after,
-.uix-slideshow.is-loaded .uix-slideshow__inner .uix-slideshow__item img {
+.custom-slideshow-flexslider.is-loaded::after,
+.custom-slideshow-flexslider.is-loaded .custom-slideshow-slides .item img {
     -moz-transition-delay: 1.2s;
     -o-transition-delay: 1.2s;
     -webkit-transition-delay: 1.2s;
     transition-delay: 1.2s;
 }
 
-.uix-slideshow::after {
+.custom-slideshow-flexslider::after {
     display: block;
     position: absolute;
     z-index: 1;
@@ -60,26 +70,26 @@
     background: url("data:image/gif;base64,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") no-repeat left top;
 }
 
-.uix-slideshow.is-loaded::after {
+.custom-slideshow-flexslider.is-loaded::after {
     opacity: 0;
 }
 
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item img {
+.custom-slideshow-flexslider .custom-slideshow-slides .item img {
     opacity: 0;
 }
-.uix-slideshow.is-loaded .uix-slideshow__inner .uix-slideshow__item img {
+.custom-slideshow-flexslider.is-loaded .custom-slideshow-slides .item img {
     opacity: 1;
 }
 
 
 /* Inner */
-.uix-slideshow .uix-slideshow__inner {
+.custom-slideshow-flexslider .custom-slideshow-slides {
 	/* Don't set overflow to "hidden"*/
 	position: relative;
 	z-index: 1;
 	height: 100%;
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item {
+.custom-slideshow-flexslider .custom-slideshow-slides .item {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -93,7 +103,7 @@
     transition: all 0.6s ease;
 	/* New XL container for Bootstrap 4.x*/
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt {
+.custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info {
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -106,11 +116,11 @@
 	margin-top: 100px;
 	opacity: 0;
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt h3 {
+.custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info h3 {
 	margin-bottom: 0;
     font-size: 30px;
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt {
+.custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info {
 	width: 1140px;
     max-width: calc( 100% - 70px);
 	position: absolute;
@@ -122,33 +132,33 @@
 	/* Prevent layers from hiding the underlying elements*/
 	pointer-events: none;
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt > div {
+.custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info > div {
 	pointer-events: auto;
 }
 
 @media all and (min-width: 1430px) {
-    .uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt {
+    .custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info {
         width: 1278px;
     }
 } 
 
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item img {
+.custom-slideshow-flexslider .custom-slideshow-slides .item img {
 	width: 100%;
     pointer-events: none;
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item.leave {
+.custom-slideshow-flexslider .custom-slideshow-slides .item.leave {
 	opacity: 0;
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item.leave .uix-slideshow__txt {
+.custom-slideshow-flexslider .custom-slideshow-slides .item.leave .slides-info {
 	margin-top: 100px;
 	opacity: 0;
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item.is-active {
+.custom-slideshow-flexslider .custom-slideshow-slides .item.is-active {
 	/* Allow button clicks*/
 	z-index: 2;
 	opacity: 1;
 }
-.uix-slideshow .uix-slideshow__inner .uix-slideshow__item.is-active .uix-slideshow__txt {
+.custom-slideshow-flexslider .custom-slideshow-slides .item.is-active .slides-info {
 	margin-top: 0;
 	opacity: 1;
     -moz-transition-delay: 0.6s;
@@ -160,87 +170,87 @@
 
 /* Tests native CSS3 and HTML5 features are available*/
 /*---- Effect: Scale ----*/
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item {
 	opacity: 0;
 	transform: scale(0.8);
 }
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item.prev {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item.prev {
 	transform: translateX(200px) scale(0.8);
 }
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item.next {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item.next {
 	transform: translateX(-200px) scale(0.8);
 }
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item.leave {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item.leave {
 	opacity: 0;
 }
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item.leave.prev {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item.leave.prev {
 	transform: translateX(-200px) scale(0.8);
 }
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item.leave.next {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item.leave.next {
 	transform: translateX(200px) scale(0.8);
 }
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item.is-active {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item.is-active {
     -moz-transition-delay: 0.6s;
     -o-transition-delay: 0.6s;
     -webkit-transition-delay: 0.6s;
     transition-delay: 0.6s;
 	opacity: 1;
 }
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item.is-active.prev {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item.is-active.prev {
 	transform: translateX(0) scale(1);
 }
-.uix-slideshow.uix-slideshow--eff-scale .uix-slideshow__inner .uix-slideshow__item.is-active.next {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-scale .custom-slideshow-slides .item.is-active.next {
 	transform: translateX(0) scale(1);
 }
 
 
 /*---- Effect: Slide ----*/
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item {
     transform: translateX(0);
     opacity: 1;
 }
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item.prev {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item.prev {
 	transform: translateX(100%);
 }
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item.next {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item.next {
 	transform: translateX(-100%);
 }
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item.leave {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item.leave {
 	
 }
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item.leave.prev {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item.leave.prev {
 	transform: translateX(-100%);
 }
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item.leave.next {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item.leave.next {
 	transform: translateX(100%);
 }
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item.is-active {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item.is-active {
     -moz-transition-delay: 0s;
     -o-transition-delay: 0s;
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
 }
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item.is-active.prev {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item.is-active.prev {
 	transform: translateX(0);
 }
-.uix-slideshow.uix-slideshow--eff-slide .uix-slideshow__inner .uix-slideshow__item.is-active.next {
+.custom-slideshow-flexslider.custom-slideshow-flexslider--eff-slide .custom-slideshow-slides .item.is-active.next {
 	transform: translateX(0);
 }
 
 
 
 @media all and (max-width: 768px) {
-    .uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt h3 {
+    .custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info h3 {
         font-size: 20px;
         margin-bottom: 6px;
     }
-    .uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt p {
+    .custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info p {
         font-size: 14px;
         margin-bottom: 0;
         padding-bottom: 0;    
     }
-    .uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt h3, 
-    .uix-slideshow .uix-slideshow__inner .uix-slideshow__item .uix-slideshow__txt p {
+    .custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info h3, 
+    .custom-slideshow-flexslider .custom-slideshow-slides .item .slides-info p {
         line-height: 1.2;
     }
 }
@@ -251,13 +261,13 @@
  2. Pagination dots
  ---------------------------
  */
-.uix-slideshow__pagination {
+.custom-slideshow-flexslider__pagination {
 	position: absolute;
     width: 100%;
 	transform: translateY(-40px);
 	z-index: 2;
 }
-.uix-slideshow__pagination ul {
+.custom-slideshow-flexslider__pagination ul {
 	list-style: none;
 	left: 0;
 	bottom: 0;
@@ -270,13 +280,13 @@
 	position: relative;
 	transform: translateY(10px);
 }
-.uix-slideshow__pagination ul li {
+.custom-slideshow-flexslider__pagination ul li {
 	/*Fighting the Space Between Inline Block Elements*/
 	display: inline-block;
 	/*require*/
 	margin: 0 5px;
 }
-.uix-slideshow__pagination ul li a {
+.custom-slideshow-flexslider__pagination ul li a {
 	width: 12px;
 	height: 12px;
 	display: block;
@@ -290,8 +300,8 @@
     -webkit-transition: all 0.6s ease;
     transition: all 0.6s ease;  
 }
-.uix-slideshow__pagination ul li a:hover, 
-.uix-slideshow__pagination ul li a.is-active {
+.custom-slideshow-flexslider__pagination ul li a:hover, 
+.custom-slideshow-flexslider__pagination ul li a.is-active {
 	background: white;
 	width: 25px;
 }
@@ -302,7 +312,8 @@
  3. Next/Prev buttons
  ---------------------------
  */
-.uix-slideshow__arrows {
+
+.custom-slideshow-flexslider__arrows {
 	position: absolute;
     top: 50%;
     background: #f00;
@@ -319,14 +330,15 @@
 
 }
 
-.uix-slideshow__wrapper:hover .uix-slideshow__arrows {
+
+.custom-slideshow-flexslider__wrapper:hover .custom-slideshow-flexslider__arrows {
     opacity: 0.9;
     -moz-opacity: 0.9;
     filter: alpha(opacity=90);
 }
 
 
-.uix-slideshow__arrows a {
+.custom-slideshow-flexslider__arrows a {
 	width: 13px;
 	height: 19px;
 	position: absolute;
@@ -340,18 +352,26 @@
 	-moz-background-size: cover;
 	background-size: cover;
 }
-.uix-slideshow__arrows .uix-slideshow__arrows--prev {
+
+.custom-slideshow-flexslider__arrows .custom-slideshow-flex-dir-prev,
+.custom-slideshow-flexslider__arrows .custom-slideshow-flexslider__arrows--prev {
 	left: 15px;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATCAMAAAB86XelAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABIUExURQAAAP39/fz8/P39/fz8/P39/f////////////////////z8/P39/f39/f////z8/Pz8/P39/f////39/f////39/fz8/P39/YN5p+wAAAAXdFJOUwC067LvpQMUAQIT7bqwEm/xrQ+YP6ZoKfy0MwAAAE1JREFUGNOtzTkSgDAMQ1Gzx2xh1/1vCo6Dx/T87o0KEeX4asniFaORJ8CYgHJTVAmzR68oBMMHnUOtoCjAkZ/C6TcKzb9cXgltEu4PbhnzB8RDVJJJAAAAAElFTkSuQmCC);
 }
-.uix-slideshow__arrows .uix-slideshow__arrows--prev.is-disabled {
+
+.custom-slideshow-flexslider__arrows .custom-slideshow-flex-dir-prev.is-disabled,
+.custom-slideshow-flexslider__arrows .custom-slideshow-flexslider__arrows--prev.is-disabled {
 	visibility: hidden;
 }
-.uix-slideshow__arrows .uix-slideshow__arrows--next {
+
+.custom-slideshow-flexslider__arrows .custom-slideshow-flex-dir-next,
+.custom-slideshow-flexslider__arrows .custom-slideshow-flexslider__arrows--next {
 	right: 15px;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATCAMAAAB86XelAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABIUExURQAAAP39/fz8/P39/fz8/P39/f////////////////////z8/P39/f39/f////z8/Pz8/P39/f////39/f////39/fz8/P39/YN5p+wAAAAXdFJOUwC067LvpQMUAQIT7bqwEm/xrQ+YP6ZoKfy0MwAAAEtJREFUGNOdyUkSgCAQBMFxA1Hcl/7/TwUiBluO1i2jRMTcTnLGY3MEYFLuNZhzYqMcCo6RldIWbD88o7Dwu3pC9x9iV0KaLwKPjAcf0wfEe8y+XQAAAABJRU5ErkJggg==);
 }
-.uix-slideshow__arrows .uix-slideshow__arrows--next.is-disabled {
+
+.custom-slideshow-flexslider__arrows .custom-slideshow-flex-dir-next.is-disabled,
+.custom-slideshow-flexslider__arrows .custom-slideshow-flexslider__arrows--next.is-disabled {
 	visibility: hidden;
 }
 
@@ -401,21 +421,21 @@
 }
 
 /* medium */
-.uix-slideshow-custom-button.bsize-m {
+.uix-slideshow-custom-button.fsize-m {
 	margin: .8em 0 !important;
 	padding: .4em 1em !important;
     font-size: 14px !important;
 }
 
 /* large */
-.uix-slideshow-custom-button.bsize-l {
+.uix-slideshow-custom-button.fsize-l {
 	margin: 1em 0 !important;
 	padding: .5em 1.25em !important;
     font-size: 16px !important;
 }
 
 /* extra large */
-.uix-slideshow-custom-button.bsize-xl {
+.uix-slideshow-custom-button.fsize-xl {
 	margin: 1.2em 0 !important;
 	padding: .7em 1.5em !important;
     font-size: 16px !important;
@@ -426,7 +446,7 @@
 /*
 
 	 Uix Slideshow (RTL)
-	 Plugin URI: https://uiux.cc/wp-plugins/uix-slideshow/
+	 Plugin URI: https://uiux.cc/wp-plugins/custom-slideshow-flexslider/
 	 Author: UIUX Lab
 	 Author URI: https://uiux.cc
 	 License: GPLv2 or later
@@ -445,7 +465,7 @@
  1. Initialize the slider style
  ---------------------------
  */
-.rtl .uix-slideshow .uix-slideshow__inner .uix-slideshow__item {
+.rtl .custom-slideshow-flexslider .custom-slideshow-slides .item {
     left: auto;
     right: 0;
 }
@@ -455,7 +475,7 @@
  2. Pagination dots
  ---------------------------
  */
-.rtl .uix-slideshow__pagination ul {
+.rtl .custom-slideshow-flexslider__pagination ul {
     left: auto;
     right: 0;
 }
@@ -465,12 +485,12 @@
  3. Next/Prev buttons
  ---------------------------
  */
-.rtl .uix-slideshow__arrows .uix-slideshow__arrows--prev {
+.rtl .custom-slideshow-flexslider__arrows .custom-slideshow-flexslider__arrows--prev {
     left: auto;
     right: 15px;
 }
 
-.rtl .uix-slideshow__arrows .uix-slideshow__arrows--next {
+.rtl .custom-slideshow-flexslider__arrows .custom-slideshow-flexslider__arrows--next {
     right: auto;
     left: 15px;
     text-align: left;

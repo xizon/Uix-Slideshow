@@ -44,6 +44,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 	//CSS file directory
 	if ( file_exists( $newFilePath ) || file_exists( $newFilePath2 ) ) {
+        //---for theme
 		$cssfiletype = 'theme';
 		
 		$filepath = '';
@@ -53,13 +54,25 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 		
 	} else {
+        //---for plugin
 		$cssfiletype   = 'plugin';
 		$filepath   = 'assets/css/';	
+        
+        if ( UixSlideshow::old_version_135() ) {
+            //Compatible with versions of this plugin < `1.3.5`
+            
+            $filepath   = 'assets/css/migrate-1.3.5/';
+        } else {
+            $filepath   = 'assets/css/';
+        } 
+        
+        
 	}
 	
 	
 	//Javascript file directory
 	if ( file_exists( $newJSFilePath ) || file_exists( $newJSFilePath2 ) ) {
+        //---for theme
 		$JSfiletype = 'theme';
 		
 		$jsfilepath = '';
@@ -68,8 +81,17 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 		}	
 			
 	} else {
+        //---for plugin
 		$JSfiletype   = 'plugin';
-		$jsfilepath = 'assets/js/';
+
+        if ( UixSlideshow::old_version_135() ) {
+            //Compatible with versions of this plugin < `1.3.5`
+            
+            $jsfilepath   = 'assets/js/migrate-1.3.5/';
+        } else {
+            $jsfilepath   = 'assets/js/';
+        } 
+        
 	}
 	
 		
@@ -82,7 +104,10 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
         
           <?php if ( UixSlideshow::theme_core_css_file_exists() ) :  ?>
 				<p class="uix-bg-custom-info-msg">
-					<i class="dashicons dashicons-smiley"></i> <?php _e( 'You have already used custom stylesheet files.', 'uix-slideshow' ); ?>
+					<i class="dashicons dashicons-smiley"></i> 
+                    <?php
+				   printf( __( 'You have already used custom Stylesheet files: <a href="%1$s" target="_blank">%2$s</a>', 'uix-slideshow' ), $org_csspath_uix_slideshow, $org_cssname_uix_slideshow );   
+				   ?> 
 				</p>  
           <?php else:  ?>
 				
@@ -101,7 +126,11 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
       
           <?php if ( UixSlideshow::theme_core_js_file_exists() ) :  ?>
 				<p class="uix-bg-custom-info-msg">
-					<i class="dashicons dashicons-smiley"></i> <?php _e( 'You have already used custom JavaScript files.', 'uix-slideshow' ); ?>
+					<i class="dashicons dashicons-smiley"></i>
+                    <?php
+				   printf( __( 'You have already used custom JavaScript files: <a href="%1$s" target="_blank">%2$s</a>', 'uix-slideshow' ), $org_jspath_uix_slideshow, $org_jsname_uix_slideshow );   
+				   ?>
+                    
 				</p>  
           <?php else:  ?>  
 				<p class="uix-bg-custom-desc">

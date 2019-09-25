@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 5.2
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,7 @@ There are two different ways you can add the Uix Slideshow widget to your site's
 
 (2) Template tags - Add a simple PHP function to one of your theme's template files. 
 
-  Place `<?php get_template_part( 'partials', 'uix_slideshow' ); ?>` in your templates.
+  Place `<?php get_template_part( 'tmpl', 'uix_slideshow' ); ?>` in your templates.
   
   
   
@@ -60,7 +60,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
 2. You need to create Uix Slideshow template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Slideshow template files path (/wp-content/plugins/uix-slideshow/theme_templates/) and upload files to your theme templates directory (/wp-content/themes/{your-theme}/).  
 
-   Please check if you have the 1 template file 'partials-uix_slideshow.php' in your templates directory. If you can't find these files, then just copy them from the directory '/wp-content/plugins/uix-slideshow/theme_templates/' to your templates directory.
+   Please check if you have the 1 template file 'tmpl-uix_slideshow.php' in your templates directory. If you can't find these files, then just copy them from the directory '/wp-content/plugins/uix-slideshow/theme_templates/' to your templates directory.
 
 3. Create uix slideshow item and publish slideshow then.
 
@@ -87,7 +87,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
   
   (2) Template tags - Add a simple PHP function to one of your theme's template files. 
   
-      Place `<?php get_template_part( 'partials', 'uix_slideshow' ); ?>` in your templates.
+      Place `<?php get_template_part( 'tmpl', 'uix_slideshow' ); ?>` in your templates.
  
 6. The Uix Slideshow plugin allows users to easily customize to themes. Go to "Uix Slideshow -> Settings -> General Settings". 
 
@@ -120,6 +120,15 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 
 == Changelog ==
+
+
+= 1.3.5 (September 24, 2019) =
+
+* Remove: Removed the plugin `jquery.flexslider` using native js instead.
+* New: Added effect "Scale".
+* Dev: Added filter `add_filter( 'uix_slideshow_custom_metaboxes_vars', 'mytheme_modify_vars' );` for current Custom Metaboxes.
+* Tweak: The transition effect is controlled by CSS3, and the styles can be modified directly through the admin panel.
+
 
 = 1.3.4 (September 18, 2019) =
 

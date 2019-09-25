@@ -60,9 +60,9 @@ if ( !class_exists( 'UixSlideshow_Shortcode' ) ) {
 			ob_start();
 
 				if( !UixSlideshow::tempfile_exists() ) {
-					require_once UIX_SLIDESHOW_PLUGIN_DIR. 'theme_templates/partials-uix_slideshow.php';
+					require_once UIX_SLIDESHOW_PLUGIN_DIR. 'theme_templates/tmpl-uix_slideshow.php';
 				} else {
-					require_once get_stylesheet_directory() . '/partials-uix_slideshow.php';
+					require_once get_stylesheet_directory() . '/tmpl-uix_slideshow.php';
 				}
 
 				$out = ob_get_contents();

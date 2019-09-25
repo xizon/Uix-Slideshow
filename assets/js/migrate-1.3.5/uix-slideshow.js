@@ -1,3 +1,14 @@
+/* ===================================== */
+/* ===================================== */
+/* ===================================== */
+/* ===================================== */
+/* !! The old versions migrated to version 1.3.5 (inclusive)  */
+/* ===================================== */
+/* ===================================== */
+/* ===================================== */
+/* ===================================== */
+
+
 ( function($) {
     'use strict';
 
@@ -60,11 +71,11 @@
 			*/
 			 $( '.uix-slideshow-custom-button' ).each( function(){
 
+			
 				var $this         = $( this ),
 					activated     = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 					textcolor     = $this.data( 'tcolor' ),
-					defaultbg     = $this.data( 'default-bg' ),
-                    defaultBorder = $this.data( 'default-border' );
+					defaultbg     = $this.data( 'default-bg' );
 
 				 
 				if ( typeof activated === typeof undefined || activated === 0 ) {
@@ -73,19 +84,12 @@
 					 if ( defaultbg != '' && typeof defaultbg !== typeof undefined ) {
 
 						$this.css( {
-							'background-color': defaultbg
+							'background-color': 'transparent',
+							'border-color'    : defaultbg,
 						} );	 
 
 					 }
-                    
-					 if ( defaultBorder != '' && typeof defaultBorder !== typeof undefined ) {
 
-						$this.css( {
-							'border-color'    : defaultBorder
-						} );	 
-
-					 }
-                    
 
 					//Prevents front-end javascripts that are activated in the background to repeat loading.
 					$this.data( 'activated', 1 );	
@@ -215,11 +219,33 @@
                 $sliderWrapper.each( function()  {
 
                     var $this                    = $( this ),
-                        $items                   = $this.find( '.uix-slideshow__item' ),
+                        $items                   = $this.find( '.item' ),
                         $first                   = $items.first(),
                         nativeItemW,
                         nativeItemH;
 
+                    
+                    
+                    //------
+                    var addPagination = uix_slideshow_vars.paging_nav;
+                    var addControlsArrows = uix_slideshow_vars.arr_nav;
+                    var prevTxt = uix_slideshow_vars.prev_txt;
+                    var nextTxt = uix_slideshow_vars.next_txt;
+                    var eff = uix_slideshow_vars.animation;
+                    
+                    $this.wrap( '<div class="custom-slideshow-flexslider__wrapper"></div>' );
+                    
+                    
+                    $this.addClass( 'custom-slideshow-flexslider--eff-' + eff );
+                    
+                    if ( addPagination ) {
+                        $( '<div class="custom-slideshow-flexslider__pagination my-a-slider-pagination-1"></div>' ).insertAfter( $this );
+                    }
+                    if ( addControlsArrows ) {
+                        $( '<div class="custom-slideshow-flexslider__arrows my-a-slider-arrows-1"><a href="#" class="custom-slideshow-flexslider__arrows--prev">'+prevTxt+'</a><a href="#" class="custom-slideshow-flexslider__arrows--next">'+nextTxt+'</a></div>' ).insertAfter( $this );
+                    }
+
+                    
                     
                     //Images loaded
                     //-------------------------------------	
@@ -311,6 +337,13 @@
                         var dataAuto                 = $this.data( 'auto' ),
                             dataTiming               = $this.data( 'timing' ),
                             dataLoop                 = $this.data( 'loop' );
+                        
+                        
+                        //----
+                        dataAuto = uix_slideshow_vars.auto == 'true' ? true : false;
+                        dataTiming = uix_slideshow_vars.speed;
+                        dataLoop = uix_slideshow_vars.animloop == 'true' ? true : false;
+      
 
                         if ( typeof dataAuto === typeof undefined ) dataAuto = false;	
                         if ( typeof dataTiming === typeof undefined ) dataTiming = 10000;
@@ -357,7 +390,7 @@
              */
             function sliderAutoPlay( playTimes, timing, loop, slider ) {	
 
-                var items = slider.find( '.uix-slideshow__item' ),
+                var items = slider.find( '.item' ),
                     total = items.length;
 
                 slider[0].animatedSlides = setInterval( function() {
@@ -393,7 +426,7 @@
             function addItemsToStage( slider, nativeItemW, nativeItemH ) {
 
                 var $this                    = slider,
-                    $items                   = $this.find( '.uix-slideshow__item' ),
+                    $items                   = $this.find( '.item' ),
                     $first                   = $items.first(),
                     itemsTotal               = $items.length,
                     dataControlsPagination   = $this.data( 'controls-pagination' ),
@@ -401,10 +434,15 @@
                     dataLoop                 = $this.data( 'loop' ),
                     dataDraggable            = $this.data( 'draggable' ),
                     dataDraggableCursor      = $this.data( 'draggable-cursor' );
+                
+                
+                //-----
+                dataLoop = uix_slideshow_vars.animloop == 'true' ? true : false;
+                dataDraggable = uix_slideshow_vars.draggable == 'true' ? true : false;
 
 
-                if ( typeof dataControlsPagination === typeof undefined ) dataControlsPagination = '.uix-slideshow__pagination';
-                if ( typeof dataControlsArrows === typeof undefined || dataControlsArrows == false ) dataControlsArrows = '.uix-slideshow__arrows';
+                if ( typeof dataControlsPagination === typeof undefined ) dataControlsPagination = '.my-a-slider-pagination-1';
+                if ( typeof dataControlsArrows === typeof undefined || dataControlsArrows == false ) dataControlsArrows = '.my-a-slider-arrows-1';
                 if ( typeof dataLoop === typeof undefined ) dataLoop = false;
                 if ( typeof dataDraggable === typeof undefined ) dataDraggable = false;
                 if ( typeof dataDraggableCursor === typeof undefined ) dataDraggableCursor = 'move';
@@ -413,7 +451,7 @@
                 //If arrows does not exist on the page, it will be added by default, 
                 //and the drag and drop function will be activated.
                 if ( $( dataControlsArrows ).length == 0 ) {
-                    $( 'body' ).prepend( '<div style="display:none;" class="uix-slideshow__arrows '+dataControlsArrows.replace('#','').replace('.','')+'"><a href="#" class="uix-slideshow__arrows--prev"></a><a href="#" class="uix-slideshow__arrows--next"></a></div>' );
+                    $( 'body' ).prepend( '<div style="display:none;" class="uix-slideshow__arrows '+dataControlsArrows.replace('#','').replace('.','')+'"><a href="#" class="custom-slideshow-flexslider__arrows--prev"></a><a href="#" class="custom-slideshow-flexslider__arrows--next"></a></div>' );
                 }
 
 
@@ -436,7 +474,7 @@
 
                     _dotActive = ( i == 0 ) ? 'class="is-active"' : '';
 
-                    _dot += '<li><a '+_dotActive+' data-index="'+i+'" href="javascript:"></a></li>';
+                    _dot += '<li><a '+_dotActive+' data-index="'+i+'" href="#"></a></li>';
                 }
                 _dot += '</ul>';
 
@@ -467,10 +505,10 @@
 
                 //Next/Prev buttons
                 //-------------------------------------		
-                var _prev = $( dataControlsArrows ).find( '.uix-slideshow__arrows--prev' ),
-                    _next = $( dataControlsArrows ).find( '.uix-slideshow__arrows--next' );
+                var _prev = $( dataControlsArrows ).find( '.custom-slideshow-flexslider__arrows--prev' ),
+                    _next = $( dataControlsArrows ).find( '.custom-slideshow-flexslider__arrows--next' );
 
-                $( dataControlsArrows ).find( 'a' ).attr( 'href', 'javascript:' );
+                $( dataControlsArrows ).find( 'a' ).attr( 'href', '#' );
 
                 $( dataControlsArrows ).find( 'a' ).removeClass( 'is-disabled' );
                 if ( !dataLoop ) {
@@ -632,7 +670,7 @@
              */
             function sliderUpdates( elementIndex, slider, dir ) {
 
-                var $items                   = slider.find( '.uix-slideshow__item' ),
+                var $items                   = slider.find( '.item' ),
                     $current                 = $items.eq( elementIndex ),
                     total                    = $items.length,
                     dataCountTotal           = slider.data( 'count-total' ),
@@ -641,11 +679,14 @@
                     dataControlsArrows       = slider.data( 'controls-arrows' ),	
                     dataLoop                 = slider.data( 'loop' );
 
+                //-----
+                dataLoop = uix_slideshow_vars.animloop == 'true' ? true : false;
+
 
                 if ( typeof dataCountTotal === typeof undefined ) dataCountTotal = 'p.count em.count';
                 if ( typeof dataCountCur === typeof undefined ) dataCountCur = 'p.count em.current';
-                if ( typeof dataControlsPagination === typeof undefined ) dataControlsPagination = '.uix-slideshow__pagination';
-                if ( typeof dataControlsArrows === typeof undefined ) dataControlsArrows = '.uix-slideshow__arrows';
+                if ( typeof dataControlsPagination === typeof undefined ) dataControlsPagination = '.my-a-slider-pagination-1';
+                if ( typeof dataControlsArrows === typeof undefined || dataControlsArrows == false ) dataControlsArrows = '.my-a-slider-arrows-1';
                 if ( typeof dataLoop === typeof undefined ) dataLoop = false;
 
 
@@ -665,8 +706,8 @@
                     if ( elementIndex < 0 ) elementIndex = total-1;	
                 } else {
                     $( dataControlsArrows ).find( 'a' ).removeClass( 'is-disabled' );
-                    if ( elementIndex == total - 1 ) $( dataControlsArrows ).find( '.uix-slideshow__arrows--next' ).addClass( 'is-disabled' );
-                    if ( elementIndex == 0 ) $( dataControlsArrows ).find( '.uix-slideshow__arrows--prev' ).addClass( 'is-disabled' );
+                    if ( elementIndex == total - 1 ) $( dataControlsArrows ).find( '.custom-slideshow-flexslider__arrows--next' ).addClass( 'is-disabled' );
+                    if ( elementIndex == 0 ) $( dataControlsArrows ).find( '.custom-slideshow-flexslider__arrows--prev' ).addClass( 'is-disabled' );
                 }
 
                 // To determine if it is a touch screen.
@@ -683,12 +724,12 @@
                     if ( !dataLoop ) {
                         //first item
                         if ( elementIndex == 0 ) {
-                            $( dataControlsArrows ).find( '.uix-slideshow__arrows--prev' ).addClass( 'is-disabled' );
+                            $( dataControlsArrows ).find( '.custom-slideshow-flexslider__arrows--prev' ).addClass( 'is-disabled' );
                         }
 
                         //last item
                         if ( elementIndex == total - 1 ) {
-                            $( dataControlsArrows ).find( '.uix-slideshow__arrows--next' ).addClass( 'is-disabled' );
+                            $( dataControlsArrows ).find( '.custom-slideshow-flexslider__arrows--next' ).addClass( 'is-disabled' );
                         }	
                     }
 
@@ -711,7 +752,7 @@
                 //Add transition class to each item
                 $items.removeClass( 'leave prev next' );
                 $items.addClass( dirIndicatorClass );
-                slider.find( '.uix-slideshow__item.is-active' ).removeClass( 'is-active' ).addClass( 'leave ' + dirIndicatorClass );
+                slider.find( '.item.is-active' ).removeClass( 'is-active' ).addClass( 'leave ' + dirIndicatorClass );
                 $items.eq( elementIndex ).addClass( 'is-active ' + dirIndicatorClass ).removeClass( 'leave' );
 
 
@@ -747,7 +788,7 @@
 
                     video.addEventListener( 'loadedmetadata', function( e ) {
 
-                        $sliderWrapper.css( 'height', this.videoHeight*(slider.closest( '.uix-slideshow__outline' ).width()/this.videoWidth) + 'px' );	
+                        $sliderWrapper.css( 'height', this.videoHeight*(slider.closest( '.custom-slideshow-flexslider' ).width()/this.videoWidth) + 'px' );	
 
                     }, false);	
 
@@ -764,7 +805,7 @@
 
                         img.onload = function() {
 
-                            $sliderWrapper.css( 'height', slider.closest( '.uix-slideshow__outline' ).width()*(this.height/this.width) + 'px' );		
+                            $sliderWrapper.css( 'height', slider.closest( '.custom-slideshow-flexslider' ).width()*(this.height/this.width) + 'px' );		
 
                         };
 
