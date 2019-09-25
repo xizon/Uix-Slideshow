@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2019-09-25 09:51+0000\n"
+"POT-Creation-Date: 2019-09-25 13:45+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 14:41:58 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -23,52 +23,52 @@ msgstr ""
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: uix-slideshow.php:238
+#: uix-slideshow.php:240
 msgid "Uix Slideshow Settings"
 msgstr ""
 
-#: uix-slideshow.php:239 uix-slideshow.php:322
+#: uix-slideshow.php:241 uix-slideshow.php:324
 msgid "Settings"
 msgstr ""
 
-#: uix-slideshow.php:256 uix-slideshow.php:257 uix-slideshow.php:323
-#: uix-slideshow.php:376 helper/settings.php:60
+#: uix-slideshow.php:258 uix-slideshow.php:259 uix-slideshow.php:325
+#: uix-slideshow.php:378 helper/settings.php:60
 msgid "How to use?"
 msgstr ""
 
-#: uix-slideshow.php:264 uix-slideshow.php:265 helper/settings.php:70
+#: uix-slideshow.php:266 uix-slideshow.php:267 helper/settings.php:70
 msgid "Template Files"
 msgstr ""
 
-#: uix-slideshow.php:272 uix-slideshow.php:273
+#: uix-slideshow.php:274 uix-slideshow.php:275
 msgid "Custom CSS"
 msgstr ""
 
-#: uix-slideshow.php:280
+#: uix-slideshow.php:282
 msgid "Helper"
 msgstr ""
 
-#: uix-slideshow.php:281 helper/settings.php:56
+#: uix-slideshow.php:283 helper/settings.php:56
 msgid "About"
 msgstr ""
 
-#: uix-slideshow.php:375
+#: uix-slideshow.php:377
 msgid ""
 "Do you want to create a slideshow website with WordPress?  Learn how to add "
 "slideshow to your themes."
 msgstr ""
 
-#: uix-slideshow.php:391
+#: uix-slideshow.php:393
 msgid ""
 "<strong>You could create Uix Slideshow template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: uix-slideshow.php:391 helper/tabs/usage.php:27
+#: uix-slideshow.php:393 helper/tabs/usage.php:27
 msgid "Create now!"
 msgstr ""
 
-#: uix-slideshow.php:391 helper/tabs/temp.php:61
+#: uix-slideshow.php:393 helper/tabs/temp.php:61
 msgid ""
 "As a workaround you can use FTP, access the Uix Slideshow template files "
 "path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and "
@@ -76,30 +76,30 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: uix-slideshow.php:484
+#: uix-slideshow.php:486
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-slideshow.php:603
+#: uix-slideshow.php:605
 msgid "Operation successfully completed!"
 msgstr ""
 
-#: uix-slideshow.php:613
+#: uix-slideshow.php:615
 msgid ""
 "There was a problem copying your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-slideshow.php:621
+#: uix-slideshow.php:623
 msgid ""
 "There was a problem removing your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-slideshow.php:624
+#: uix-slideshow.php:626
 msgid "Remove successful!"
 msgstr ""
 
@@ -251,87 +251,99 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: helper/tabs/general-settings.php:55 helper/tabs/custom-css.php:27
+#: helper/tabs/general-settings.php:60 helper/tabs/custom-css.php:27
 msgid "Settings saved."
 msgstr ""
 
-#: helper/tabs/general-settings.php:77
+#: helper/tabs/general-settings.php:82
 msgid "Effect"
 msgstr ""
 
-#: helper/tabs/general-settings.php:85
+#: helper/tabs/general-settings.php:90
 msgid "Slide"
 msgstr ""
 
-#: helper/tabs/general-settings.php:92
+#: helper/tabs/general-settings.php:97
 msgid "Fade"
 msgstr ""
 
-#: helper/tabs/general-settings.php:99
+#: helper/tabs/general-settings.php:104
 msgid "Scale"
 msgstr ""
 
-#: helper/tabs/general-settings.php:110
-msgid "Delay Between Images"
+#: helper/tabs/general-settings.php:114
+msgid "Speed of Images Appereance"
 msgstr ""
 
-#: helper/tabs/general-settings.php:115
+#: helper/tabs/general-settings.php:119 helper/tabs/general-settings.php:140
 msgid "ms"
 msgstr ""
 
-#: helper/tabs/general-settings.php:126
+#: helper/tabs/general-settings.php:122
+#, php-format
+msgid ""
+"(The default effect uses <a href=\"%1$s\" target=\"_blank\">Custom CSS</a> "
+"instead of this option. You can modify the default JavaScript file to make "
+"it valid.)"
+msgstr ""
+
+#: helper/tabs/general-settings.php:135
+msgid "Delay Between Images"
+msgstr ""
+
+#: helper/tabs/general-settings.php:151
 msgid "Previous Button Text"
 msgstr ""
 
-#: helper/tabs/general-settings.php:139
+#: helper/tabs/general-settings.php:164
 msgid "Next Button Text"
 msgstr ""
 
-#: helper/tabs/general-settings.php:152
+#: helper/tabs/general-settings.php:177
 msgid "Automatically Transition"
 msgstr ""
 
-#: helper/tabs/general-settings.php:158
+#: helper/tabs/general-settings.php:183
 msgid "Setup a slideshow for the slider to animate automatically."
 msgstr ""
 
-#: helper/tabs/general-settings.php:168
+#: helper/tabs/general-settings.php:193
 msgid "Show Arrow Navigation"
 msgstr ""
 
-#: helper/tabs/general-settings.php:174
+#: helper/tabs/general-settings.php:199
 msgid "Create previous/next arrow navigation."
 msgstr ""
 
-#: helper/tabs/general-settings.php:184
+#: helper/tabs/general-settings.php:209
 msgid "Show Paging Navigation"
 msgstr ""
 
-#: helper/tabs/general-settings.php:190
+#: helper/tabs/general-settings.php:215
 msgid "Create navigation for paging control of each slide."
 msgstr ""
 
-#: helper/tabs/general-settings.php:201
+#: helper/tabs/general-settings.php:226
 msgid "Animation Loop"
 msgstr ""
 
-#: helper/tabs/general-settings.php:207
+#: helper/tabs/general-settings.php:232
 msgid "Gives the slider a seamless infinite loop."
 msgstr ""
 
-#: helper/tabs/general-settings.php:217
+#: helper/tabs/general-settings.php:242
 msgid "Draggable"
 msgstr ""
 
-#: helper/tabs/general-settings.php:223
+#: helper/tabs/general-settings.php:248
 msgid "Allow drag-drop swipe navigation of the slider with mouse."
 msgstr ""
 
-#: helper/tabs/general-settings.php:235
+#: helper/tabs/general-settings.php:260
 msgid "Custom Parameters"
 msgstr ""
 
-#: helper/tabs/general-settings.php:240
+#: helper/tabs/general-settings.php:265
 msgid "Can be used for your custom slide parameters."
 msgstr ""
 

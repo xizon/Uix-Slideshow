@@ -26,7 +26,11 @@ if ( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' 
         $uix_slideshow_opt_drag 	         = isset( $_POST['uix_slideshow_opt_drag'] ) ? sanitize_text_field( $_POST[ 'uix_slideshow_opt_drag' ] ) : 0;
 		
 	
-		
+		$uix_slideshow_opt_effect_duration 	     = intval( $_POST[ 'uix_slideshow_opt_effect_duration' ] );
+		if ( !$uix_slideshow_opt_effect_duration ) {
+			$uix_slideshow_opt_effect_duration = 600;
+		}
+        
 		$uix_slideshow_opt_speed 	             = intval( $_POST[ 'uix_slideshow_opt_speed' ] );
 		if ( !$uix_slideshow_opt_speed ) {
 			$uix_slideshow_opt_speed = 10000;
@@ -42,6 +46,7 @@ if ( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' 
 		// Save the posted value in the database
 		update_option( 'uix_slideshow_opt_animation', $uix_slideshow_opt_animation );
 		update_option( 'uix_slideshow_opt_auto', $uix_slideshow_opt_auto );
+        update_option( 'uix_slideshow_opt_effect_duration', $uix_slideshow_opt_effect_duration );
 		update_option( 'uix_slideshow_opt_speed', $uix_slideshow_opt_speed );
 		update_option( 'uix_slideshow_opt_arr_nav', $uix_slideshow_opt_arr_nav );
 		update_option( 'uix_slideshow_opt_paging_nav', $uix_slideshow_opt_paging_nav );
@@ -104,7 +109,27 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'general-settings' ) {
           </tr>
             
             
-
+          <tr>
+            <th scope="row">
+              <?php _e( 'Speed of Images Appereance', 'uix-slideshow' ); ?>
+            </th>
+             <td>
+                <p>
+                    <label>
+                        <input name="uix_slideshow_opt_effect_duration" type="number" step="100" min="0" value="<?php echo esc_attr( get_option( 'uix_slideshow_opt_effect_duration', 600 ) ); ?>" class="small-text" /> <?php _e( 'ms', 'uix-slideshow' ); ?>
+                        &nbsp;
+                       <?php
+                       printf( __( '(The default effect uses <a href="%1$s" target="_blank">Custom CSS</a> instead of this option. You can modify the default JavaScript file to make it valid.)', 'uix-slideshow' ), admin_url( 'admin.php?page='.UixSlideshow::HELPER.'&tab=custom-css' ) );   
+                       ?>               
+                        
+                        
+                    </label>
+                </p>
+               
+            </td>         
+            
+          </tr>   
+            
            <tr>
             <th scope="row">
               <?php _e( 'Delay Between Images', 'uix-slideshow' ); ?>

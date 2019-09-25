@@ -28,6 +28,7 @@ $uix_slideshow_query = new WP_Query(
 
 $uix_slideshow_opt_animation       = get_option( 'uix_slideshow_opt_animation', 'slide' );
 $uix_slideshow_opt_auto            = get_option( 'uix_slideshow_opt_auto', true );
+$uix_slideshow_opt_effect_duration = get_option( 'uix_slideshow_opt_effect_duration', 600 );
 $uix_slideshow_opt_speed           = get_option( 'uix_slideshow_opt_speed', 10000 );
 $uix_slideshow_opt_paging_nav      = get_option( 'uix_slideshow_opt_paging_nav', true );
 $uix_slideshow_opt_arr_nav         = get_option( 'uix_slideshow_opt_arr_nav', true );
@@ -37,9 +38,12 @@ $uix_slideshow_opt_prev_txt        = get_option( 'uix_slideshow_opt_prev_txt', '
 $uix_slideshow_opt_next_txt        = get_option( 'uix_slideshow_opt_next_txt', '<span class=\'custom-slideshow-flex-dir custom-slideshow-flex-dir-next\'></span>' );
 
 
+
+
 $translation_array = array(
     'animation'        =>  $uix_slideshow_opt_animation,
     'auto'             =>  ( $uix_slideshow_opt_auto ) ? 'true' : 'false',
+    'duration'         =>  $uix_slideshow_opt_effect_duration,
     'speed'            =>  $uix_slideshow_opt_speed,
     'paging_nav'       =>  ( $uix_slideshow_opt_paging_nav ) ? 'true' : 'false',
     'arr_nav'          =>  ( $uix_slideshow_opt_arr_nav ) ? 'true' : 'false',
@@ -62,6 +66,7 @@ $translation_array = array(
           data-draggable-cursor="move"	   
           data-auto="<?php echo esc_attr( $translation_array[ 'auto' ] ); ?>"
           data-loop="<?php echo esc_attr( $translation_array[ 'animloop' ] ); ?>"
+          data-speed="<?php echo esc_attr( $translation_array[ 'duration' ] ); ?>"
           data-timing="<?php echo esc_attr( $translation_array[ 'speed' ] ); ?>" 
           data-count-total="false"
           data-count-now="false"

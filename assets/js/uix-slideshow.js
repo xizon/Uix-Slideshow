@@ -131,9 +131,6 @@
  *************************************
  * Uix Slidershow
  *
- * @param  {Number} speed     - The speed of movement between elements.
- * @param  {JSON} bg          - Specify the background display. Default value: { enable: true, xPos: '50%' }
- * @return {Void}
  *
  *************************************
  */    
@@ -243,7 +240,7 @@
                     $this[0].animatedSlides;
 
 
-                    
+                    //The speed of movement between elements.
                     animDelay = getTransitionDuration( $first[0] );
 
                     
