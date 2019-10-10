@@ -12,18 +12,21 @@
 	
 			$( '[data-uix-slideshow="1"]' ).each( function()  {
 			
-				 var $this     = $( this ),
-					 activated = $this.data( 'activated' );//In order to avoid duplication of the running script with Uix Page Builder ( required );
-				
-
-				if ( typeof activated === typeof undefined || activated === 0 ) {
-
-					$this.UixSlideshow();
-
-					//Prevents front-end javascripts that are activated in the background to repeat loading.
-					$this.data( 'activated', 1 );	
-				}	
-				
+				 var $this     = $( this );
+                
+                $this.UixSlideshow({
+                    
+                    //Get parameter configuration from the data-* attribute of HTML
+                    auto              : $this.data( 'auto' ),
+                    timing            : $this.data( 'timing' ),
+                    loop              : $this.data( 'loop' ),
+                    countTotalID      : $this.data( 'count-total' ),
+                    countCurID        : $this.data( 'count-now' ),
+                    paginationID      : $this.data( 'controls-pagination' ),
+                    arrowsID          : $this.data( 'controls-arrows' ),
+                    draggable         : $this.data( 'draggable' ),
+                    draggableCursor   : $this.data( 'draggable-cursor' )
+                });
 
 			});
 
@@ -131,6 +134,15 @@
  *************************************
  * Uix Slidershow
  *
+ * @param  {Boolean} auto                  - Setup a slideshow for the slider to animate automatically.
+ * @param  {Number} timing                 - Autoplay interval.
+ * @param  {Boolean} loop                  - Gives the slider a seamless infinite loop.
+ * @param  {String} countTotalID           - Total number ID or class of counter.
+ * @param  {String} countCurID             - Current number ID or class of counter.
+ * @param  {String} paginationID           - Navigation ID for paging control of each slide.
+ * @param  {String} arrowsID               - Previous/Next arrow navigation ID.
+ * @param  {Boolean} draggable             - Allow drag and drop on the slider.
+ * @param  {String} draggableCursor        - Drag & Drop Change icon/cursor while dragging.
  *
  *************************************
  */    
@@ -139,7 +151,18 @@
     $.fn.UixSlideshow = function( options ) {
  
         // This is the easiest way to have default options.
-        var settings = $.extend({}, options );
+        var settings = $.extend({
+			auto              : false,
+            timing            : 10000,
+			loop              : false,
+            countTotalID      : 'p.count em.count',
+            countCurID        : 'p.count em.current',
+            paginationID      : '.uix-advanced-slider__pagination',
+            arrowsID          : '.uix-advanced-slider__arrows',
+            draggable         : false,
+            draggableCursor   : 'move'
+        }, options );
+ 
  
         this.each( function() {
 			
@@ -168,7 +191,8 @@
 
 
             /*
-             * Get the CSS property
+             * Get the CSS animation/transition duration for a DOM element
+             * Useful for matching CSS animations and JS events
              *
              * @private
              * @description This function can be used separately in HTML pages or custom JavaScript.
@@ -176,7 +200,7 @@
              * @return {String|JSON}   - The value of property.
              */
             function getTransitionDuration( el ) {
-
+                
                 if ( typeof el === typeof undefined ) {
                     return 0;
                 }
@@ -185,6 +209,7 @@
                 var style    = window.getComputedStyle(el),
                     duration = style.webkitTransitionDuration,
                     delay    = style.webkitTransitionDelay;
+                
 
                 if ( typeof duration != typeof undefined ) {
                     // fix miliseconds vs seconds
@@ -196,10 +221,10 @@
                     return 0;
                 }
 
-            }
+            }   
 
-            
-            
+           
+        
 
             /*
              * Initialize slideshow
@@ -215,125 +240,152 @@
                         $items                   = $this.find( '.uix-slideshow__item' ),
                         $first                   = $items.first(),
                         nativeItemW,
-                        nativeItemH;
+                        nativeItemH,
+                        activated                = $this.data( 'activated' ); 
+				
+				
+                
+                    if ( typeof activated === typeof undefined || activated === 0 ) {
+                        
+                        var dataAuto                = settings.auto, 
+                            dataTiming              = settings.timing, 
+                            dataLoop                = settings.loop, 
+                            dataControlsPagination  = settings.paginationID, 
+                            dataControlsArrows      = settings.arrowsID,
+                            dataDraggable           = settings.draggable,
+                            dataDraggableCursor     = settings.draggableCursor,                     
+                            dataCountTotal          = settings.countTotalID,
+                            dataCountCur            = settings.countCurID;    
 
-                    
-                    //Images loaded
-                    //-------------------------------------	
-                    var images = [];
-                    $items.each( function()  {
-                        var imgURL   = $( this ).find( 'img' ).attr( 'src' );
-                        if ( typeof imgURL != typeof undefined ) {
-                            images.push( imgURL );
-                        }
-                    });
-                    
-                    loader( images, loadImage, function () {
-                        $sliderWrapper.addClass( 'is-loaded' );
-                    });	
-
-
-
-                    //Autoplay times
-                    var playTimes;
-                    //A function called "timer" once every second (like a digital watch).
-                    $this[0].animatedSlides;
-
-
-                    //The speed of movement between elements.
-                    animDelay = getTransitionDuration( $first[0] );
-
-                    
-
-                    //Initialize the first item container
-                    //-------------------------------------		
-                    $items.addClass( 'next' );
-
-                    setTimeout( function() {
-                        $first.addClass( 'is-active' );
-                    }, animDelay );
-
-
-                    if ( $first.find( 'video' ).length > 0 ) {
-
-                        //Returns the dimensions (intrinsic height and width ) of the video
-                        var video    = document.getElementById( $first.find( 'video' ).attr( 'id' ) ),
-                            videoURL = $first.find( 'source:first' ).attr( 'src' );
-
-                        video.addEventListener( 'loadedmetadata', function( e ) {
-                            $this.css( 'height', this.videoHeight*($this.width()/this.videoWidth) + 'px' );	
-
-                            nativeItemW = this.videoWidth;
-                            nativeItemH = this.videoHeight;	
-
-                            //Initialize all the items to the stage
-                            addItemsToStage( $this, nativeItemW, nativeItemH );
-
-                        }, false);	
-
-                        video.src = videoURL;
-
-
-                    } else {
-
-                        var imgURL   = $first.find( 'img' ).attr( 'src' );
-
-                        if ( typeof imgURL != typeof undefined ) {
-                            var img = new Image();
-
-                            img.onload = function() {
-                                $this.css( 'height', $this.width()*(this.height/this.width) + 'px' );		
-
-                                nativeItemW = this.width;
-                                nativeItemH = this.height;	
-
-                                //Initialize all the items to the stage
-                                addItemsToStage( $this, nativeItemW, nativeItemH );
-
-                            };
-
-                            img.src = imgURL;
-                        }
-
-
-
-                    }	
-
-
-
-                    //Autoplay Slider
-                    //-------------------------------------		
-                    if ( !resize ) {
-
-                        var dataAuto                 = $this.data( 'auto' ),
-                            dataTiming               = $this.data( 'timing' ),
-                            dataLoop                 = $this.data( 'loop' );
-
+                        
                         if ( typeof dataAuto === typeof undefined ) dataAuto = false;	
                         if ( typeof dataTiming === typeof undefined ) dataTiming = 10000;
-                        if ( typeof dataLoop === typeof undefined ) dataLoop = false;
+                        if ( typeof dataLoop === typeof undefined ) dataLoop = false; 
+                        if ( typeof dataControlsPagination === typeof undefined ) dataControlsPagination = '.uix-advanced-slider__pagination';
+                        if ( typeof dataControlsArrows === typeof undefined || dataControlsArrows == false ) dataControlsArrows = '.uix-advanced-slider__arrows';
+                        if ( typeof dataDraggable === typeof undefined ) dataDraggable = false;
+                        if ( typeof dataDraggableCursor === typeof undefined || dataDraggableCursor == false ) dataDraggableCursor = 'move';
+                        if ( typeof dataCountTotal === typeof undefined ) dataCountTotal = 'p.count em.count';
+                        if ( typeof dataCountCur === typeof undefined ) dataCountCur = 'p.count em.current';      
+
+                        
+                        //Images loaded
+                        //-------------------------------------	
+                        var images = [];
+                        $items.each( function()  {
+                            var imgURL   = $( this ).find( 'img' ).attr( 'src' );
+                            if ( typeof imgURL != typeof undefined ) {
+                                images.push( imgURL );
+                            }
+                        });
+
+                        loader( images, loadImage, function () {
+                            $sliderWrapper.addClass( 'is-loaded' );
+                        });	
+                        
+                        
+
+                        //Autoplay times
+                        var playTimes;
+                        //A function called "timer" once every second (like a digital watch).
+                        $this[0].animatedSlides;
 
 
-                        if ( dataAuto && !isNaN( parseFloat( dataTiming ) ) && isFinite( dataTiming ) ) {
+                        setTimeout( function(){
 
-                            sliderAutoPlay( playTimes, dataTiming, dataLoop, $this );
+                            //The speed of movement between elements.
+                            // Avoid the error that getTransitionDuration takes 0
+                            animDelay = getTransitionDuration( $first[0] );
 
-                            $this.on({
-                                mouseenter: function() {
-                                    clearInterval( $this[0].animatedSlides );
-                                },
-                                mouseleave: function() {
-                                    sliderAutoPlay( playTimes, dataTiming, dataLoop, $this );
-                                }
-                            });	
-
-                        }
-
-
-                    }
+                        }, 100 );  
 
 
 
+                        //Initialize the first item container
+                        //-------------------------------------		
+                        $items.addClass( 'next' );
+                        setTimeout( function() {
+                            $first.addClass( 'is-active' );
+                        }, animDelay );  
+
+
+                        if ( $first.find( 'video' ).length > 0 ) {
+
+                            //Returns the dimensions (intrinsic height and width ) of the video
+                            var video    = document.getElementById( $first.find( 'video' ).attr( 'id' ) ),
+                                videoURL = $first.find( 'source:first' ).attr( 'src' );
+
+                            video.addEventListener( 'loadedmetadata', function( e ) {
+                                $this.css( 'height', this.videoHeight*($this.width()/this.videoWidth) + 'px' );	
+
+                                nativeItemW = this.videoWidth;
+                                nativeItemH = this.videoHeight;	
+
+                                //Initialize all the items to the stage
+                                addItemsToStage( $this, nativeItemW, nativeItemH, dataControlsPagination, dataControlsArrows, dataLoop, dataDraggable, dataDraggableCursor, dataCountTotal, dataCountCur );
+
+                            }, false);	
+
+                            video.src = videoURL;
+
+
+                        } else {
+
+                            var imgURL   = $first.find( 'img' ).attr( 'src' );
+
+                            if ( typeof imgURL != typeof undefined ) {
+                                var img = new Image();
+
+                                img.onload = function() {
+                                    $this.css( 'height', $this.width()*(this.height/this.width) + 'px' );		
+
+                                    nativeItemW = this.width;
+                                    nativeItemH = this.height;	
+
+                                    //Initialize all the items to the stage
+                                    addItemsToStage( $this, nativeItemW, nativeItemH, dataControlsPagination, dataControlsArrows, dataLoop, dataDraggable, dataDraggableCursor, dataCountTotal, dataCountCur );
+
+                                };
+
+                                img.src = imgURL;
+                            }
+
+
+
+                        }	
+
+
+
+                        //Autoplay Slider
+                        //-------------------------------------		
+                        if ( !resize ) {
+
+
+
+                            if ( dataAuto && !isNaN( parseFloat( dataTiming ) ) && isFinite( dataTiming ) ) {
+
+                                sliderAutoPlay( playTimes, dataTiming, dataLoop, $this, dataCountTotal, dataCountCur, dataControlsPagination, dataControlsArrows );
+
+                                $this.on({
+                                    mouseenter: function() {
+                                        clearInterval( $this[0].animatedSlides );
+                                    },
+                                    mouseleave: function() {
+                                        sliderAutoPlay( playTimes, dataTiming, dataLoop, $this, dataCountTotal, dataCountCur, dataControlsPagination, dataControlsArrows );
+                                    }
+                                });	
+
+                            }
+
+
+                        }   
+
+                        //Prevents front-end javascripts that are activated with AJAX to repeat loading.
+                        $this.data( 'activated', 1 );
+
+                    }//endif activated
+  
+                    
 
                 });
 
@@ -346,13 +398,17 @@
             /*
              * Trigger slider autoplay
              *
-             * @param  {Function} playTimes      - Number of times.
-             * @param  {Number} timing           - Autoplay interval.
-             * @param  {Boolean} loop            - Determine whether to loop through each item.
-             * @param  {Object} slider           - Selector of the slider .
-             * @return {Void}                    - The constructor.
+             * @param  {Function} playTimes            - Number of times.
+             * @param  {Number} timing                 - Autoplay interval.
+             * @param  {Boolean} loop                  - Gives the slider a seamless infinite loop.
+             * @param  {Object} slider                 - Selector of the slider .
+             * @param  {String} countTotalID           - Total number ID or class of counter.
+             * @param  {String} countCurID             - Current number ID or class of counter.
+             * @param  {String} paginationID           - Navigation ID for paging control of each slide.
+             * @param  {String} arrowsID               - Previous/Next arrow navigation ID.
+             * @return {Void}                          - The constructor.
              */
-            function sliderAutoPlay( playTimes, timing, loop, slider ) {	
+            function sliderAutoPlay( playTimes, timing, loop, slider, countTotalID, countCurID, paginationID, arrowsID ) {	
 
                 var items = slider.find( '.uix-slideshow__item' ),
                     total = items.length;
@@ -364,11 +420,11 @@
 
 
                     if ( !loop ) {
-                        if ( playTimes < total && playTimes >= 0 ) sliderUpdates( playTimes, $sliderWrapper, 'next' );
+                        if ( playTimes < total && playTimes >= 0 ) sliderUpdates( playTimes, $sliderWrapper, 'next', countTotalID, countCurID, paginationID, arrowsID, loop );
                     } else {
                         if ( playTimes == total ) playTimes = 0;
                         if ( playTimes < 0 ) playTimes = total-1;		
-                        sliderUpdates( playTimes, $sliderWrapper, 'next' );
+                        sliderUpdates( playTimes, $sliderWrapper, 'next', countTotalID, countCurID, paginationID, arrowsID, loop );
                     }
 
 
@@ -382,45 +438,44 @@
             /*
              * Initialize all the items to the stage
              *
-             * @param  {Object} slider           - Current selector of each slider.
-             * @param  {Number} nativeItemW      - Returns the intrinsic width of the image/video.
-             * @param  {Number} nativeItemH      - Returns the intrinsic height of the image/video.
+             * @param  {Object} slider                 - Current selector of each slider.
+             * @param  {Number} nativeItemW            - Returns the intrinsic width of the image/video.
+             * @param  {Number} nativeItemH            - Returns the intrinsic height of the image/video.
+             * @param  {String} paginationID           - Navigation ID for paging control of each slide.
+             * @param  {String} arrowsID               - Previous/Next arrow navigation ID.
+             * @param  {Boolean} loop                  - Gives the slider a seamless infinite loop. 
+             * @param  {Boolean} draggable             - Allow drag and drop on the slider.
+             * @param  {String} draggableCursor        - Drag & Drop Change icon/cursor while dragging.
+             * @param  {String} countTotalID           - Total number ID or class of counter.
+             * @param  {String} countCurID             - Current number ID or class of counter.
              * @return {Void}
              */
-            function addItemsToStage( slider, nativeItemW, nativeItemH ) {
+            function addItemsToStage( slider, nativeItemW, nativeItemH, paginationID, arrowsID, loop, draggable, draggableCursor, countTotalID, countCurID ) {
 
                 var $this                    = slider,
                     $items                   = $this.find( '.uix-slideshow__item' ),
                     $first                   = $items.first(),
-                    itemsTotal               = $items.length,
-                    dataControlsPagination   = $this.data( 'controls-pagination' ),
-                    dataControlsArrows       = $this.data( 'controls-arrows' ),
-                    dataLoop                 = $this.data( 'loop' ),
-                    dataDraggable            = $this.data( 'draggable' ),
-                    dataDraggableCursor      = $this.data( 'draggable-cursor' );
-
-
-                if ( typeof dataControlsPagination === typeof undefined ) dataControlsPagination = '.uix-slideshow__pagination';
-                if ( typeof dataControlsArrows === typeof undefined || dataControlsArrows == false ) dataControlsArrows = '.uix-slideshow__arrows';
-                if ( typeof dataLoop === typeof undefined ) dataLoop = false;
-                if ( typeof dataDraggable === typeof undefined ) dataDraggable = false;
-                if ( typeof dataDraggableCursor === typeof undefined ) dataDraggableCursor = 'move';
+                    itemsTotal               = $items.length;
 
 
                 //If arrows does not exist on the page, it will be added by default, 
                 //and the drag and drop function will be activated.
-                if ( $( dataControlsArrows ).length == 0 ) {
-                    $( 'body' ).prepend( '<div style="display:none;" class="uix-slideshow__arrows '+dataControlsArrows.replace('#','').replace('.','')+'"><a href="#" class="uix-slideshow__arrows--prev"></a><a href="#" class="uix-slideshow__arrows--next"></a></div>' );
+                if ( $( arrowsID ).length == 0 ) {
+                    $( 'body' ).prepend( '<div style="display:none;" class="uix-slideshow__arrows '+arrowsID.replace('#','').replace('.','')+'"><a href="#" class="uix-slideshow__arrows--prev"></a><a href="#" class="uix-slideshow__arrows--next"></a></div>' );
                 }
-
 
 
 
                 //Prevent bubbling
                 if ( itemsTotal == 1 ) {
-                    $( dataControlsPagination ).hide();
-                    $( dataControlsArrows ).hide();
+                    $( paginationID ).hide();
+                    $( arrowsID ).hide();
                 }
+                
+                
+                //Add identifiers for the first and last items
+                $items.last().addClass( 'last' );
+                $items.first().addClass( 'first' );
 
 
 
@@ -437,10 +492,19 @@
                 }
                 _dot += '</ul>';
 
-                if ( $( dataControlsPagination ).html() == '' ) $( dataControlsPagination ).html( _dot );
+                if ( $( paginationID ).html() == '' ) $( paginationID ).html( _dot );
 
-                $( dataControlsPagination ).find( 'li a' ).off( 'click' ).on( 'click', function( e ) {
+                $( paginationID ).find( 'li a' ).off( 'click' ).on( 'click', function( e ) {
                     e.preventDefault();
+                    
+                    //Prevent buttons' events from firing multiple times
+                    var $btn = $( this );
+                    if ( $btn.attr( 'aria-disabled' ) == 'true' ) return false;
+                    $( paginationID ).find( 'li a' ).attr( 'aria-disabled', 'true' );
+                    setTimeout( function() {
+                        $( paginationID ).find( 'li a' ).attr( 'aria-disabled', 'false' );
+                    }, animDelay );
+                    
 
                     if ( !$( this ).hasClass( 'is-active' ) ) {
 
@@ -452,7 +516,7 @@
                         }
 
 
-                        sliderUpdates( $( this ).attr( 'data-index' ), $this, curDir );
+                        sliderUpdates( $( this ).attr( 'data-index' ), $this, curDir, countTotalID, countCurID, paginationID, arrowsID, loop );
 
                         //Pause the auto play event
                         clearInterval( $this[0].animatedSlides );	
@@ -464,21 +528,29 @@
 
                 //Next/Prev buttons
                 //-------------------------------------		
-                var _prev = $( dataControlsArrows ).find( '.uix-slideshow__arrows--prev' ),
-                    _next = $( dataControlsArrows ).find( '.uix-slideshow__arrows--next' );
+                var _prev = $( arrowsID ).find( '.uix-slideshow__arrows--prev' ),
+                    _next = $( arrowsID ).find( '.uix-slideshow__arrows--next' );
 
-                $( dataControlsArrows ).find( 'a' ).attr( 'href', 'javascript:' );
+                $( arrowsID ).find( 'a' ).attr( 'href', 'javascript:' );
 
-                $( dataControlsArrows ).find( 'a' ).removeClass( 'is-disabled' );
-                if ( !dataLoop ) {
+                $( arrowsID ).find( 'a' ).removeClass( 'is-disabled' );
+                if ( !loop ) {
                     _prev.addClass( 'is-disabled' );
                 }
 
 
                 _prev.off( 'click' ).on( 'click', function( e ) {
                     e.preventDefault();
+                    
+                    //Prevent buttons' events from firing multiple times
+                    if ( _prev.attr( 'aria-disabled' ) == 'true' ) return false;
+                    _prev.attr( 'aria-disabled', 'true' );
+                    setTimeout( function() {
+                        _prev.attr( 'aria-disabled', 'false' );
+                    }, animDelay );
+                    
 
-                    sliderUpdates( parseFloat( $items.filter( '.is-active' ).index() ) - 1, $this, 'prev' );
+                    sliderUpdates( parseFloat( $items.filter( '.is-active' ).index() ) - 1, $this, 'prev', countTotalID, countCurID, paginationID, arrowsID, loop );
 
                     //Pause the auto play event
                     clearInterval( $this[0].animatedSlides );
@@ -487,8 +559,17 @@
 
                 _next.off( 'click' ).on( 'click', function( e ) {
                     e.preventDefault();
+                    
+                    
+                    //Prevent buttons' events from firing multiple times
+                    if ( _next.attr( 'aria-disabled' ) == 'true' ) return false;
+                   _next.attr( 'aria-disabled', 'true' );
+                    setTimeout( function() {
+                        _next.attr( 'aria-disabled', 'false' );
+                    }, animDelay );
+                    
 
-                    sliderUpdates( parseFloat( $items.filter( '.is-active' ).index() ) + 1, $this, 'next' );
+                    sliderUpdates( parseFloat( $items.filter( '.is-active' ).index() ) + 1, $this, 'next', countTotalID, countCurID, paginationID, arrowsID, loop );
 
 
                     //Pause the auto play event
@@ -505,7 +586,7 @@
 
 
                 //Make the cursor a move icon when a user hovers over an item
-                if ( dataDraggable && dataDraggableCursor != '' && dataDraggableCursor != false ) $dragDropTrigger.css( 'cursor', dataDraggableCursor );
+                if ( draggable && draggableCursor != '' && draggableCursor != false ) $dragDropTrigger.css( 'cursor', draggableCursor );
 
 
                 //Mouse event
@@ -524,7 +605,7 @@
 
                     } else {
 
-                        if ( dataDraggable ) {
+                        if ( draggable ) {
                             $( this ).data( 'origin_mouse_x', parseInt( e.pageX ) );
                             $( this ).data( 'origin_mouse_y', parseInt( e.pageY ) );	
                         }
@@ -576,7 +657,7 @@
                         } else {
 
 
-                            if ( dataDraggable ) {
+                            if ( draggable ) {
                                 //right
                                 if ( e.pageX > origin_mouse_x ) {				
                                     if ( $items.filter( '.is-active' ).index() > 0 ) _prev.trigger( 'click' );
@@ -622,34 +703,28 @@
             /*
              * Transition Between Slides
              *
-             * @param  {Number} elementIndex     - Index of current slider.
-             * @param  {Object} slider           - Selector of the slider .
-             * @param  {String} dir              - Switching direction indicator.
+             * @param  {Number} elementIndex           - Index of current slider.
+             * @param  {Object} slider                 - Selector of the slider .
+             * @param  {String} dir                    - Switching direction indicator.
+             * @param  {String} countTotalID           - Total number ID or class of counter.
+             * @param  {String} countCurID             - Current number ID or class of counter.
+             * @param  {String} paginationID           - Navigation ID for paging control of each slide.
+             * @param  {String} arrowsID               - Previous/Next arrow navigation ID.
+             * @param  {Boolean} loop                  - Gives the slider a seamless infinite loop.
              * @return {Void}
              */
-            function sliderUpdates( elementIndex, slider, dir ) {
+            function sliderUpdates( elementIndex, slider, dir, countTotalID, countCurID, paginationID, arrowsID, loop ) {
 
                 var $items                   = slider.find( '.uix-slideshow__item' ),
                     $current                 = $items.eq( elementIndex ),
-                    total                    = $items.length,
-                    dataCountTotal           = slider.data( 'count-total' ),
-                    dataCountCur             = slider.data( 'count-now' ),
-                    dataControlsPagination   = slider.data( 'controls-pagination' ),
-                    dataControlsArrows       = slider.data( 'controls-arrows' ),	
-                    dataLoop                 = slider.data( 'loop' );
+                    total                    = $items.length;
 
-
-                if ( typeof dataCountTotal === typeof undefined ) dataCountTotal = 'p.count em.count';
-                if ( typeof dataCountCur === typeof undefined ) dataCountCur = 'p.count em.current';
-                if ( typeof dataControlsPagination === typeof undefined ) dataControlsPagination = '.uix-slideshow__pagination';
-                if ( typeof dataControlsArrows === typeof undefined ) dataControlsArrows = '.uix-slideshow__arrows';
-                if ( typeof dataLoop === typeof undefined ) dataLoop = false;
 
 
                 //Prevent bubbling
                 if ( total == 1 ) {
-                    $( dataControlsPagination ).hide();
-                    $( dataControlsArrows ).hide();
+                    $( paginationID ).hide();
+                    $( arrowsID ).hide();
                     return false;
                 }
 
@@ -657,13 +732,13 @@
 
                 //Transition Interception
                 //-------------------------------------
-                if ( dataLoop ) {
+                if ( loop ) {
                     if ( elementIndex == total ) elementIndex = 0;
                     if ( elementIndex < 0 ) elementIndex = total-1;	
                 } else {
-                    $( dataControlsArrows ).find( 'a' ).removeClass( 'is-disabled' );
-                    if ( elementIndex == total - 1 ) $( dataControlsArrows ).find( '.uix-slideshow__arrows--next' ).addClass( 'is-disabled' );
-                    if ( elementIndex == 0 ) $( dataControlsArrows ).find( '.uix-slideshow__arrows--prev' ).addClass( 'is-disabled' );
+                    $( arrowsID ).find( 'a' ).removeClass( 'is-disabled' );
+                    if ( elementIndex == total - 1 ) $( arrowsID ).find( '.uix-slideshow__arrows--next' ).addClass( 'is-disabled' );
+                    if ( elementIndex == 0 ) $( arrowsID ).find( '.uix-slideshow__arrows--prev' ).addClass( 'is-disabled' );
                 }
 
                 // To determine if it is a touch screen.
@@ -677,15 +752,15 @@
                     if ( elementIndex < 0 ) elementIndex = 0;	
 
                     //Prevent bubbling
-                    if ( !dataLoop ) {
+                    if ( !loop ) {
                         //first item
                         if ( elementIndex == 0 ) {
-                            $( dataControlsArrows ).find( '.uix-slideshow__arrows--prev' ).addClass( 'is-disabled' );
+                            $( arrowsID ).find( '.uix-slideshow__arrows--prev' ).addClass( 'is-disabled' );
                         }
 
                         //last item
                         if ( elementIndex == total - 1 ) {
-                            $( dataControlsArrows ).find( '.uix-slideshow__arrows--next' ).addClass( 'is-disabled' );
+                            $( arrowsID ).find( '.uix-slideshow__arrows--next' ).addClass( 'is-disabled' );
                         }	
                     }
 
@@ -701,9 +776,9 @@
 
 
                 //Add transition class to Controls Pagination
-                $( dataControlsPagination ).find( 'li a' ).removeClass( 'leave' );
-                $( dataControlsPagination ).find( 'li a.is-active' ).removeClass( 'is-active' ).addClass( 'leave');
-                $( dataControlsPagination ).find( 'li a[data-index="'+elementIndex+'"]' ).addClass( 'is-active').removeClass( 'leave' );
+                $( paginationID ).find( 'li a' ).removeClass( 'leave' );
+                $( paginationID ).find( 'li a.is-active' ).removeClass( 'is-active' ).addClass( 'leave');
+                $( paginationID ).find( 'li a[data-index="'+elementIndex+'"]' ).addClass( 'is-active').removeClass( 'leave' );
 
                 //Add transition class to each item
                 $items.removeClass( 'leave prev next' );
@@ -716,8 +791,8 @@
 
                 //Display counter
                 //-------------------------------------
-                $( dataCountTotal ).text( total );
-                $( dataCountCur ).text( parseFloat( elementIndex ) + 1 );		
+                $( countTotalID ).text( total );
+                $( countCurID ).text( parseFloat( elementIndex ) + 1 );		
 
 
                 //Reset the default height of item
