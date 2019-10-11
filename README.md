@@ -40,10 +40,10 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
-##### = 1.3.7 (October 11, 2019) =
+##### = 1.3.8 (October 11, 2019) =
 
 * Tweak: Optimized the css and js of migrate to 1.3.5+.
-
+* Fix:Fixed issue with initialization height.
 
 
 ##### = 1.3.6 (October 9, 2019) =

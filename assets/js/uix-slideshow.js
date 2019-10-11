@@ -797,7 +797,7 @@
 
                 //Reset the default height of item
                 //-------------------------------------	
-                itemDefaultInit( $current );		
+                itemDefaultInit( slider, $current );		
 
 
 
@@ -806,20 +806,21 @@
             /*
              * Initialize the default height of item
              *
-             * @param  {Object} slider           - Current selector of each slider.
+             * @param  {Object} slider                 - Selector of the slider .
+             * @param  {Object} currentLlement         - Current selector of each slider.
              * @return {Void}
              */
-            function itemDefaultInit( slider ) {
+            function itemDefaultInit( slider, currentLlement ) {
 
-                if ( slider.find( 'video' ).length > 0 ) {
+                if ( currentLlement.find( 'video' ).length > 0 ) {
 
                     //Returns the dimensions (intrinsic height and width ) of the video
-                    var video    = document.getElementById( slider.find( 'video' ).attr( 'id' ) ),
-                        videoURL = slider.find( 'source:first' ).attr( 'src' );
+                    var video    = document.getElementById( currentLlement.find( 'video' ).attr( 'id' ) ),
+                        videoURL = currentLlement.find( 'source:first' ).attr( 'src' );
 
                     video.addEventListener( 'loadedmetadata', function( e ) {
 
-                        $sliderWrapper.css( 'height', this.videoHeight*(slider.closest( '.uix-slideshow__outline' ).width()/this.videoWidth) + 'px' );	
+                        slider.css( 'height', this.videoHeight*(currentLlement.closest( '.uix-slideshow__outline' ).width()/this.videoWidth) + 'px' );	
 
                     }, false);	
 
@@ -828,7 +829,7 @@
 
                 } else {
 
-                    var imgURL   = slider.find( 'img' ).attr( 'src' );
+                    var imgURL   = currentLlement.find( 'img' ).attr( 'src' );
 
 
                     if ( typeof imgURL != typeof undefined ) {
@@ -836,7 +837,7 @@
 
                         img.onload = function() {
 
-                            $sliderWrapper.css( 'height', slider.closest( '.uix-slideshow__outline' ).width()*(this.height/this.width) + 'px' );		
+                            slider.css( 'height', currentLlement.closest( '.uix-slideshow__outline' ).width()*(this.height/this.width) + 'px' );		
 
                         };
 
@@ -846,7 +847,6 @@
 
 
                 }	
-
 
 
             }
