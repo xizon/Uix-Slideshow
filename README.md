@@ -40,6 +40,12 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
+##### = 1.3.7 (October 11, 2019) =
+
+* Tweak: Optimized the css and js of migrate to 1.3.5+.
+
+
+
 ##### = 1.3.6 (October 9, 2019) =
 
 * Fix: Prevents front-end javascripts of Slider that are activated with AJAX to repeat loading.

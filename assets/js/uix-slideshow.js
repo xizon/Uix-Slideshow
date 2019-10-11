@@ -590,7 +590,7 @@
 
 
                 //Mouse event
-                $dragDropTrigger.on( 'mousedown.ADVANCED_SLIDER touchstart.ADVANCED_SLIDER', function( e ) {
+                $dragDropTrigger.on( 'mousedown.UIX_SLIDESHOW touchstart.UIX_SLIDESHOW', function( e ) {
 
                     //Do not use "e.preventDefault()" to avoid prevention page scroll on drag in IOS and Android
 
@@ -613,7 +613,7 @@
 
                     }
 
-                    $dragDropTrigger.on( 'mouseup.ADVANCED_SLIDER touchmove.ADVANCED_SLIDER', function( e ) {
+                    $dragDropTrigger.on( 'mouseup.UIX_SLIDESHOW touchmove.UIX_SLIDESHOW', function( e ) {
 
 
                         $( this ).removeClass( 'is-dragging' );
@@ -650,7 +650,7 @@
 
 
                             if ( Math.abs( deltaX ) >= 50 || Math.abs( deltaY ) >= 50 ) {
-                                $dragDropTrigger.off( 'touchmove.ADVANCED_SLIDER' );
+                                $dragDropTrigger.off( 'touchmove.UIX_SLIDESHOW' );
                             }	
 
 
@@ -678,7 +678,7 @@
 
                                 }	
 
-                                $dragDropTrigger.off( 'mouseup.ADVANCED_SLIDER' );
+                                $dragDropTrigger.off( 'mouseup.UIX_SLIDESHOW' );
 
                             }	
 
@@ -688,12 +688,12 @@
 
 
 
-                    } );//end: mouseup.ADVANCED_SLIDER touchmove.ADVANCED_SLIDER
+                    } );//end: mouseup.UIX_SLIDESHOW touchmove.UIX_SLIDESHOW
 
 
 
 
-                } );// end: mousedown.ADVANCED_SLIDER touchstart.ADVANCED_SLIDER
+                } );// end: mousedown.UIX_SLIDESHOW touchstart.UIX_SLIDESHOW
 
             }
 
