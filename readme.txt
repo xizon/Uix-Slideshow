@@ -5,8 +5,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
-Tested up to: 5.2
-Stable tag: 1.3.8
+Tested up to: 5.3
+Stable tag: 1.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -120,6 +120,16 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 
 == Changelog ==
+
+
+
+
+= 1.3.9 (November 11, 2019) =
+
+* Fix: Fixed button trigger event for uploading image control.
+* Dev: New loop fields control for richer release types.
+* Tweak: Optimized scalability for components such as uploads.
+
 
 
 = 1.3.8 (October 11, 2019) =

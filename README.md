@@ -40,6 +40,14 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
+##### = 1.3.9 (November 11, 2019) =
+
+* Fix: Fixed button trigger event for uploading image control.
+* Dev: New loop fields control for richer release types.
+* Tweak: Optimized scalability for components such as uploads.
+
+
+
 ##### = 1.3.8 (October 11, 2019) =
 
 * Tweak: Optimized the css and js of migrate to 1.3.5+.
@@ -227,6 +235,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 4.9.*
 - WP 5.1.*
 - WP 5.2.*
+- WP 5.3.*
 
 
 ### Screenshot
