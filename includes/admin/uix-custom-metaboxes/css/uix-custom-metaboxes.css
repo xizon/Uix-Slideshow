@@ -775,7 +775,7 @@ table.uix-slideshow-cmb .uix-slideshow-cmb__label {
  8. Custom Attributes
  ---------------------------
  */ 
-.uix-slideshow-cmb__custom-attributes-field__append__wrapper {
+.uix-slideshow-cmb__custom-attributes-field {
     padding-top: 3px;
 }
 
