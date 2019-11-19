@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.3.9
+ * Version:     1.4.0
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -233,26 +233,33 @@ class UixSlideshow {
 	 *
 	 */
 	 public static function options_admin_menu() {
-	
-	    //settings
-		$hook = add_submenu_page(
-			'edit.php?post_type=uix-slideshow',
-			__( 'Uix Slideshow Settings', 'uix-slideshow' ),
-			__( 'Settings', 'uix-slideshow' ),
-			'manage_options',
-			'uix-slideshow-custom-submenu-page',
-			array( __CLASS__, 'uix_slideshow_options_page' )
-		);
-		
-		add_action("load-{$hook}", function( $caps ) {
-			header( "Location: " . admin_url( "admin.php?page=".self::HELPER."&tab=general-settings" ) );
-			exit;
-		 });
+
+//		$hook = add_submenu_page(
+//			'edit.php?post_type=uix-slideshow',
+//			__( 'Uix Slideshow Settings', 'uix-slideshow' ),
+//			__( 'Settings', 'uix-slideshow' ),
+//			'manage_options',
+//			'uix-slideshow-custom-submenu-page',
+//			array( __CLASS__, 'uix_slideshow_options_page' )
+//		);
+//		
+//		add_action("load-{$hook}", function( $caps ) {
+//			header( "Location: " . admin_url( "admin.php?page=".self::HELPER."&tab=general-settings" ) );
+//			exit;
+//        });
 		 
 		 
-	
 	
         //Add sub links
+		add_submenu_page(
+			'edit.php?post_type=uix-slideshow',
+			__( 'Settings', 'uix-slideshow' ),
+			__( 'Settings', 'uix-slideshow' ),
+			'manage_options',
+			admin_url( "admin.php?page=".self::HELPER."&tab=general-settings" )
+		);	     
+         
+         
 		add_submenu_page(
 			'edit.php?post_type=uix-slideshow',
 			__( 'How to use?', 'uix-slideshow' ),

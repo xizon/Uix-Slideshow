@@ -40,6 +40,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
+##### = 1.4.0 (November 19, 2019) =
+
+* New: Add drag sorting for Uix Custom Metaboxes' Image Gallery.
+
+
 ##### = 1.3.9 (November 11, 2019) =
 
 * Fix: Fixed button trigger event for uploading image control.
