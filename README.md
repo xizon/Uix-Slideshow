@@ -39,6 +39,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.4.2 (November 20, 2019) =
+
+* Fix: Correct the path error of Setting after the corresponding theme.
+
+
 
 ##### = 1.4.1 (November 19, 2019) =
 
