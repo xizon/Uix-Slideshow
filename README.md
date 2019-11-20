@@ -40,9 +40,10 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
-##### = 1.4.0 (November 19, 2019) =
+##### = 1.4.1 (November 19, 2019) =
 
 * New: Add drag sorting for Uix Custom Metaboxes' Image Gallery.
+* Fix: Fixed a bug for ReferenceError: tinyMCE is not defined when using editor metabox.
 
 
 ##### = 1.3.9 (November 11, 2019) =
