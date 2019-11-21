@@ -214,15 +214,17 @@ class UixSlideshow {
         foreach ($filenames as $filename) {
 
             // Copy
-            $dir1 = $wp_filesystem->find_folder($filepath);
-            $file1 = trailingslashit($dir1).$filename;
+            if ( ! file_exists( $systempath . $filename ) ) {
+                $dir1 = $wp_filesystem->find_folder($filepath);
+                $file1 = trailingslashit($dir1).$filename;
 
-            $dir2 = $wp_filesystem->find_folder($systempath);
-            $file2 = trailingslashit($dir2).$filename;
+                $dir2 = $wp_filesystem->find_folder($systempath);
+                $file2 = trailingslashit($dir2).$filename;
 
-            $filecontent = $wp_filesystem->get_contents($file1);
+                $filecontent = $wp_filesystem->get_contents($file1);
 
-            $wp_filesystem->put_contents($file2, $filecontent, FS_CHMOD_FILE);
+                $wp_filesystem->put_contents($file2, $filecontent, FS_CHMOD_FILE);   
+            }
         }  
         
 		
