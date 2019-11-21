@@ -199,9 +199,12 @@ class UixSlideshow {
 
         if ( !$wp_filesystem->is_dir( $systempath ) ) {
             $wp_filesystem->mkdir( $systempath, FS_CHMOD_DIR );
+        }//endif is_dir( $systempath ) 
+            
+        if ( $wp_filesystem->is_dir( $systempath ) ) {
             
             //Only execute one-time scripts
-            $transient = self::PREFIX . '-slideshow-admin-languages_onetime_check';
+            $transient = self::PREFIX . '-slideshow-lang_files_onetime_check';
             if ( !get_transient( $transient ) ) {
 
                 set_transient( $transient, 'locked', 1800 ); // lock function for 30 Minutes
