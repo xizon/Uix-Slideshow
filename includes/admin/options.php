@@ -22,10 +22,10 @@ if ( class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
                     array(
                         'id'             =>  'uix_slideshow_img',
                         'type'           =>  'image',
-                        'title'          =>  esc_html__( 'Slider Image', 'uix-slideshow' ),
+                        'title'          =>  esc_html__( 'Slider Image or Video', 'uix-slideshow' ),
                         'options'     =>  array( 
                                                 'label_controller_up_remove'  => esc_html__( 'Remove', 'uix-slideshow' ),
-                                                'label_controller_up_add'     => esc_html__( 'Select an image', 'uix-slideshow' )
+                                                'label_controller_up_add'     => esc_html__( 'Select a file', 'uix-slideshow' )
                                           )
                     ),
 

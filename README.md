@@ -39,6 +39,13 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+
+##### = 1.4.3 (December 31, 2019) =
+
+* New: Added support for video formats.
+
+
+
 ##### = 1.4.25 (November 20, 2019) =
 
 * Fix: Correct the path error of Setting after the corresponding theme.

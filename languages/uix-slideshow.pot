@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2019-11-13 16:03+0000\n"
+"POT-Creation-Date: 2019-12-31 06:37+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 14:41:58 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -23,52 +23,48 @@ msgstr ""
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: uix-slideshow.php:240
-msgid "Uix Slideshow Settings"
-msgstr ""
-
-#: uix-slideshow.php:241 uix-slideshow.php:324
+#: uix-slideshow.php:316 uix-slideshow.php:317 uix-slideshow.php:391
 msgid "Settings"
 msgstr ""
 
-#: uix-slideshow.php:258 uix-slideshow.php:259 uix-slideshow.php:325
-#: uix-slideshow.php:378 helper/settings.php:60
+#: uix-slideshow.php:325 uix-slideshow.php:326 uix-slideshow.php:392
+#: uix-slideshow.php:445 helper/settings.php:60
 msgid "How to use?"
 msgstr ""
 
-#: uix-slideshow.php:266 uix-slideshow.php:267 helper/settings.php:70
+#: uix-slideshow.php:333 uix-slideshow.php:334 helper/settings.php:70
 msgid "Template Files"
 msgstr ""
 
-#: uix-slideshow.php:274 uix-slideshow.php:275
+#: uix-slideshow.php:341 uix-slideshow.php:342
 msgid "Custom CSS"
 msgstr ""
 
-#: uix-slideshow.php:282
+#: uix-slideshow.php:349
 msgid "Helper"
 msgstr ""
 
-#: uix-slideshow.php:283 helper/settings.php:56
+#: uix-slideshow.php:350 helper/settings.php:56
 msgid "About"
 msgstr ""
 
-#: uix-slideshow.php:377
+#: uix-slideshow.php:444
 msgid ""
 "Do you want to create a slideshow website with WordPress?  Learn how to add "
 "slideshow to your themes."
 msgstr ""
 
-#: uix-slideshow.php:393
+#: uix-slideshow.php:460
 msgid ""
 "<strong>You could create Uix Slideshow template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: uix-slideshow.php:393 helper/tabs/usage.php:27
+#: uix-slideshow.php:460 helper/tabs/usage.php:27
 msgid "Create now!"
 msgstr ""
 
-#: uix-slideshow.php:393 helper/tabs/temp.php:61
+#: uix-slideshow.php:460 helper/tabs/temp.php:61
 msgid ""
 "As a workaround you can use FTP, access the Uix Slideshow template files "
 "path <code>/wp-content/plugins/uix-slideshow/theme_templates/</code> and "
@@ -76,30 +72,30 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: uix-slideshow.php:486
+#: uix-slideshow.php:553
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-slideshow.php:605
+#: uix-slideshow.php:672
 msgid "Operation successfully completed!"
 msgstr ""
 
-#: uix-slideshow.php:615
+#: uix-slideshow.php:682
 msgid ""
 "There was a problem copying your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-slideshow.php:623
+#: uix-slideshow.php:690
 msgid ""
 "There was a problem removing your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-slideshow.php:626
+#: uix-slideshow.php:693
 msgid "Remove successful!"
 msgstr ""
 
@@ -123,27 +119,74 @@ msgstr ""
 msgid "<i class=\"dashicons dashicons-welcome-view-site\"></i> Custom CSS"
 msgstr ""
 
+#: includes/admin/post-type-init.php:54
+msgid "Uix Slideshow"
+msgstr ""
+
+#: includes/admin/post-type-init.php:55
+msgid "Slideshow Item"
+msgstr ""
+
+#: includes/admin/post-type-init.php:56
+msgid "Add New Item"
+msgstr ""
+
+#: includes/admin/post-type-init.php:57 includes/admin/post-type-init.php:59
+msgid "Add New Slideshow Item"
+msgstr ""
+
+#: includes/admin/post-type-init.php:58
+msgid "Edit Slideshow Item"
+msgstr ""
+
+#: includes/admin/post-type-init.php:60
+msgid "View Item"
+msgstr ""
+
+#: includes/admin/post-type-init.php:61
+msgid "Search Slideshow"
+msgstr ""
+
+#: includes/admin/post-type-init.php:62
+msgid "No slideshow items found"
+msgstr ""
+
+#: includes/admin/post-type-init.php:63
+msgid "No slideshow items found in trash"
+msgstr ""
+
+#: includes/admin/post-type-init.php:104
+msgid "Slide Image"
+msgstr ""
+
+#: includes/admin/post-type-init.php:106 includes/admin/options.php:78
+#: includes/admin/uix-custom-metaboxes/init.php:131
+msgid "URL"
+msgstr ""
+
+#: includes/admin/post-type-init.php:107
+msgid "Author"
+msgstr ""
+
 #: includes/admin/options.php:16
 msgid "Slider Settings"
 msgstr ""
 
 #: includes/admin/options.php:25
-msgid "Slider Image"
+msgid "Slider Image or Video"
 msgstr ""
 
 #: includes/admin/options.php:27
-#: includes/admin/uix-custom-metaboxes/init.php:1034
-#: includes/admin/uix-custom-metaboxes/init.php:1607
-#: includes/admin/uix-custom-metaboxes/init.php:1816
-#: includes/admin/uix-custom-metaboxes/init.php:2176
-#: includes/admin/uix-custom-metaboxes/init.php:2181
+#: includes/admin/uix-custom-metaboxes/init.php:1047
+#: includes/admin/uix-custom-metaboxes/init.php:1620
+#: includes/admin/uix-custom-metaboxes/init.php:1829
+#: includes/admin/uix-custom-metaboxes/init.php:2189
+#: includes/admin/uix-custom-metaboxes/init.php:2194
 msgid "Remove"
 msgstr ""
 
 #: includes/admin/options.php:28
-#: includes/admin/uix-custom-metaboxes/init.php:1035
-#: includes/admin/uix-custom-metaboxes/init.php:2182
-msgid "Select an image"
+msgid "Select a file"
 msgstr ""
 
 #: includes/admin/options.php:35
@@ -163,107 +206,58 @@ msgstr ""
 msgid "Caption Color"
 msgstr ""
 
-#: includes/admin/options.php:70
+#: includes/admin/options.php:68
 msgid "URL Settings"
 msgstr ""
 
-#: includes/admin/options.php:80 includes/admin/options.php:266
-#: includes/admin/uix-custom-metaboxes/init.php:125
-msgid "URL"
-msgstr ""
-
-#: includes/admin/options.php:81
+#: includes/admin/options.php:79
 msgid "http://"
 msgstr ""
 
-#: includes/admin/options.php:82
+#: includes/admin/options.php:80
 msgid ""
 "Enter a custom URL to link this slide to. When the URL is not empty, the "
 "button will be displayed on the front-end page."
 msgstr ""
 
-#: includes/admin/options.php:89
+#: includes/admin/options.php:87
 msgid "Open Link In A New Window/Tab."
 msgstr ""
 
-#: includes/admin/options.php:108
+#: includes/admin/options.php:106
 msgid "Button Settings"
 msgstr ""
 
-#: includes/admin/options.php:117
+#: includes/admin/options.php:115
 msgid "Background/Border Color"
 msgstr ""
 
-#: includes/admin/options.php:124
+#: includes/admin/options.php:122
 msgid "Text Color"
 msgstr ""
 
-#: includes/admin/options.php:135
+#: includes/admin/options.php:133
 msgid "Tiny"
 msgstr ""
 
-#: includes/admin/options.php:136
+#: includes/admin/options.php:134
 msgid "Small"
 msgstr ""
 
-#: includes/admin/options.php:137
+#: includes/admin/options.php:135
 msgid "Medium"
 msgstr ""
 
-#: includes/admin/options.php:138
+#: includes/admin/options.php:136
 msgid "Large"
 msgstr ""
 
-#: includes/admin/options.php:150
+#: includes/admin/options.php:148
 msgid "Text On The Button"
 msgstr ""
 
-#: includes/admin/options.php:151
+#: includes/admin/options.php:149
 msgid "Check Out"
-msgstr ""
-
-#: includes/admin/options.php:216
-msgid "Uix Slideshow"
-msgstr ""
-
-#: includes/admin/options.php:217
-msgid "Slideshow Item"
-msgstr ""
-
-#: includes/admin/options.php:218
-msgid "Add New Item"
-msgstr ""
-
-#: includes/admin/options.php:219 includes/admin/options.php:221
-msgid "Add New Slideshow Item"
-msgstr ""
-
-#: includes/admin/options.php:220
-msgid "Edit Slideshow Item"
-msgstr ""
-
-#: includes/admin/options.php:222
-msgid "View Item"
-msgstr ""
-
-#: includes/admin/options.php:223
-msgid "Search Slideshow"
-msgstr ""
-
-#: includes/admin/options.php:224
-msgid "No slideshow items found"
-msgstr ""
-
-#: includes/admin/options.php:225
-msgid "No slideshow items found in trash"
-msgstr ""
-
-#: includes/admin/options.php:264
-msgid "Slide Image"
-msgstr ""
-
-#: includes/admin/options.php:267
-msgid "Author"
 msgstr ""
 
 #: helper/tabs/general-settings.php:60 helper/tabs/custom-css.php:27
@@ -594,120 +588,125 @@ msgid ""
 "choose from."
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:120
+#: includes/admin/uix-custom-metaboxes/init.php:126
 msgid "Select Files"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:121
+#: includes/admin/uix-custom-metaboxes/init.php:127
 msgid "Insert"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:122
+#: includes/admin/uix-custom-metaboxes/init.php:128
 msgid "Insert Image"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:123
+#: includes/admin/uix-custom-metaboxes/init.php:129
 msgid "Remove link"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:124
+#: includes/admin/uix-custom-metaboxes/init.php:130
 msgid "Insert/Edit link"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:126
+#: includes/admin/uix-custom-metaboxes/init.php:132
 msgid "Link Text"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:127
+#: includes/admin/uix-custom-metaboxes/init.php:133
 msgid "Open link in a new tab"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:128
+#: includes/admin/uix-custom-metaboxes/init.php:134
 msgid "Syntax Highlight Code"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:129
+#: includes/admin/uix-custom-metaboxes/init.php:135
 msgid "Language"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:130
-#: includes/admin/uix-custom-metaboxes/init.php:1853
+#: includes/admin/uix-custom-metaboxes/init.php:136
+#: includes/admin/uix-custom-metaboxes/init.php:1866
 msgid "-"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:131
+#: includes/admin/uix-custom-metaboxes/init.php:137
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:172
+#: includes/admin/uix-custom-metaboxes/init.php:178
 msgid "Group Title"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:387
-#: includes/admin/uix-custom-metaboxes/init.php:1440
+#: includes/admin/uix-custom-metaboxes/init.php:400
+#: includes/admin/uix-custom-metaboxes/init.php:1453
 msgid "Field Title"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:1605
-#: includes/admin/uix-custom-metaboxes/init.php:1810
+#: includes/admin/uix-custom-metaboxes/init.php:1048
+#: includes/admin/uix-custom-metaboxes/init.php:2195
+msgid "Select image or video"
+msgstr ""
+
+#: includes/admin/uix-custom-metaboxes/init.php:1618
+#: includes/admin/uix-custom-metaboxes/init.php:1823
 msgid "Title"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:1606
-#: includes/admin/uix-custom-metaboxes/init.php:1811
+#: includes/admin/uix-custom-metaboxes/init.php:1619
+#: includes/admin/uix-custom-metaboxes/init.php:1824
 msgid "Value"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:1608
-#: includes/admin/uix-custom-metaboxes/init.php:1817
+#: includes/admin/uix-custom-metaboxes/init.php:1621
+#: includes/admin/uix-custom-metaboxes/init.php:1830
 msgid "Add New"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:1812
+#: includes/admin/uix-custom-metaboxes/init.php:1825
 msgid "Subtitle"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:1813
+#: includes/admin/uix-custom-metaboxes/init.php:1826
 msgid "ID"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:1814
+#: includes/admin/uix-custom-metaboxes/init.php:1827
 msgid "Level"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:1815
+#: includes/admin/uix-custom-metaboxes/init.php:1828
 msgid "Class Name"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:1971
+#: includes/admin/uix-custom-metaboxes/init.php:1984
 msgid "Untitled"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:2171
+#: includes/admin/uix-custom-metaboxes/init.php:2184
 msgid "Files"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:2172
+#: includes/admin/uix-custom-metaboxes/init.php:2185
 msgid "Text"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:2174
+#: includes/admin/uix-custom-metaboxes/init.php:2187
 msgid "Custom Content"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:2175
+#: includes/admin/uix-custom-metaboxes/init.php:2188
 msgid "Upload Your Files"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:2177
+#: includes/admin/uix-custom-metaboxes/init.php:2190
 msgid "Add Files"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:2178
+#: includes/admin/uix-custom-metaboxes/init.php:2191
 msgid "Add Text"
 msgstr ""
 
-#: includes/admin/uix-custom-metaboxes/init.php:2185
+#: includes/admin/uix-custom-metaboxes/init.php:2198
 msgid "Enable Lightbox for this gallery?"
 msgstr ""
 
