@@ -40,7 +40,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
-##### = 1.4.3 (December 31, 2019) =
+##### = 1.4.35 (December 31, 2019) =
 
 * New: Added support for video formats.
 
