@@ -314,6 +314,12 @@
                             //Returns the dimensions (intrinsic height and width ) of the video
                             var video    = document.getElementById( $first.find( 'video' ).attr( 'id' ) ),
                                 videoURL = $first.find( 'source:first' ).attr( 'src' );
+                          
+                            if ( typeof videoURL === typeof undefined ) videoURL = $first.find( 'video' ).attr( 'src' );
+                            $first.find( 'video' ).css({
+                                'width': $this.width() + 'px'
+                            });
+                            
 
                             video.addEventListener( 'loadedmetadata', function( e ) {
                                 $this.css( 'height', this.videoHeight*($this.width()/this.videoWidth) + 'px' );	
@@ -817,7 +823,14 @@
                     //Returns the dimensions (intrinsic height and width ) of the video
                     var video    = document.getElementById( currentLlement.find( 'video' ).attr( 'id' ) ),
                         videoURL = currentLlement.find( 'source:first' ).attr( 'src' );
+                    
+                    if ( typeof videoURL === typeof undefined ) videoURL = currentLlement.find( 'video' ).attr( 'src' );
 
+                    currentLlement.find( 'video' ).css({
+                        'width': currentLlement.closest( '.uix-slideshow__outline' ).width() + 'px'
+                    });   
+                    
+                    
                     video.addEventListener( 'loadedmetadata', function( e ) {
 
                         slider.css( 'height', this.videoHeight*(currentLlement.closest( '.uix-slideshow__outline' ).width()/this.videoWidth) + 'px' );	

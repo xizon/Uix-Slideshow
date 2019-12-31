@@ -127,7 +127,27 @@ $translation_array = array(
                         }
                         
                         if ( isset( $thumb ) ) {
-                            echo '<img src="'.$thumb.'" alt="">';
+                            
+            
+                            //check file type
+                            $is_video = false;
+                            $file_type = pathinfo( $image_src,PATHINFO_EXTENSION );
+
+                            if( $file_type == 'mp4' || 
+                                $file_type == 'avi' || 
+                                $file_type == 'wmv' || 
+                                $file_type == 'flv' || 
+                                $file_type == 'mpg'
+                            ) {
+                                $is_video = true;
+                            } 
+                            
+                            if ( $is_video ) {
+                                echo '<video id="'.esc_attr( $image_id ).'_video" src="'.$image_src.'" autoplay></video>';
+                            } else {
+                                echo '<img src="'.$thumb.'" alt="">';
+                            }
+                            
                         } 
                         
                         ?>
