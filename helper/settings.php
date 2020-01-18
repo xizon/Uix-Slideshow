@@ -82,6 +82,11 @@ function uix_slideshow_options_page(){
 		);
 	}
 	
+	$tabs[] = array(
+		'tab'     =>  'for-developer', 
+		'title'   =>  __( '<i class="dashicons dashicons-networking"></i> For Theme Developer', 'uix-slideshow' )
+	);		
+    
 	
 	?>
     <h2 class="nav-tab-wrapper">

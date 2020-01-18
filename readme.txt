@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 5.3
-Stable tag: 1.4.35
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ This plugin is a simple way to build, organize and display slideshow into any ex
 
 This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme. **Using template file to embed your theme.**
 
-Insert slideshow anywhere on your site using a custom post type. Powered by jQuery Flexslider with some transition styles to choose from.
+Insert slideshow anywhere on your site using a custom post type.
 
 
 https://www.youtube.com/watch?v=ckjZ570mYiU
@@ -120,6 +120,13 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 
 == Changelog ==
+
+
+= 1.5.0 (January 18, 2020) =
+
+* New: Added Custom Meta Boxes API documentation to admin menu.
+* New: Added zh_CN language support.
+
 
 = 1.4.35 (December 31, 2019) =
 

@@ -1,15 +1,14 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2020-01-18 05:36+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 14:41:58 GMT+0800 (CST)\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"PO-Revision-Date: 2020-01-18 05:42+0000\n"
+"Last-Translator: chuckie <uiuxlab@gmail.com>\n"
+"Language-Team: Chinese (China)\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,52 +20,53 @@ msgstr ""
 "_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
 "esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
-"X-Generator: Loco https://localise.biz/"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
 
 #: uix-slideshow.php:316 uix-slideshow.php:317 uix-slideshow.php:401
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 #: uix-slideshow.php:325 uix-slideshow.php:326 uix-slideshow.php:402
 #: uix-slideshow.php:455 helper/settings.php:60
 msgid "How to use?"
-msgstr ""
+msgstr "如何使用?"
 
 #: uix-slideshow.php:333 uix-slideshow.php:334 helper/settings.php:70
 msgid "Template Files"
-msgstr ""
+msgstr "模板文件"
 
 #: uix-slideshow.php:341 uix-slideshow.php:342
 msgid "Custom CSS"
-msgstr ""
+msgstr "自定义CSS"
 
 #: uix-slideshow.php:350 uix-slideshow.php:351
 msgid "For Theme Developer"
-msgstr ""
+msgstr "开发者文档"
 
 #: uix-slideshow.php:359
 msgid "Helper"
-msgstr ""
+msgstr "助手"
 
 #: uix-slideshow.php:360 helper/settings.php:56
 msgid "About"
-msgstr ""
+msgstr "关于插件"
 
 #: uix-slideshow.php:454
 msgid ""
 "Do you want to create a slideshow website with WordPress?  Learn how to add "
 "slideshow to your themes."
-msgstr ""
+msgstr "您是否要使用WordPress创建产品网站？ 了解如何将幻灯片添加到主题中。"
 
 #: uix-slideshow.php:470
 msgid ""
 "<strong>You could create Uix Slideshow template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
-msgstr ""
+msgstr "<strong>您可以在模板目录中创建Uix幻灯片模板文件。 您可以在WordPress管理面板上创建文件.</strong>"
 
 #: uix-slideshow.php:470 helper/tabs/usage.php:27
 msgid "Create now!"
-msgstr ""
+msgstr "立即创建!"
 
 #: uix-slideshow.php:470 helper/tabs/temp.php:61
 msgid ""
@@ -75,6 +75,9 @@ msgid ""
 "upload files to your theme templates directory <code>/wp-"
 "content/themes/{your-theme}/</code>. "
 msgstr ""
+"解决方法是，可以使用FTP，访问Uix幻灯片模板文件路径<code>/wp-content/plugins/uix-"
+"slideshow/theme_templates/</code>，然后将文件上传到主题模板目录<code>/wp-"
+"content/themes/{your-theme}/</code>。"
 
 #: uix-slideshow.php:563
 #, php-format
@@ -82,107 +85,109 @@ msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
+"<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
+"write-blog\"></i> 编辑这个模板</a>"
 
 #: uix-slideshow.php:682
 msgid "Operation successfully completed!"
-msgstr ""
+msgstr "操作成功!"
 
 #: uix-slideshow.php:692
 msgid ""
 "There was a problem copying your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
-msgstr ""
+msgstr "<strong>复制模板文件时出现问题</strong>：请检查您的服务器设置。 您可以使用FTP将文件上传到主题模板目录。"
 
 #: uix-slideshow.php:700
 msgid ""
 "There was a problem removing your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
-msgstr ""
+msgstr "<strong>删除模板文件时出现问题</strong>：请检查服务器设置。 您可以使用FTP将文件上传到主题模板目录。"
 
 #: uix-slideshow.php:703
 msgid "Remove successful!"
-msgstr ""
+msgstr "删除成功!"
 
 #: helper/settings.php:34
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
+msgstr "您没有足够的权限访问此页面。"
 
 #: helper/settings.php:42
 msgid "Uix Slideshow Helper"
-msgstr ""
+msgstr "帮助说明"
 
 #: helper/settings.php:65
 msgid "Credits"
-msgstr ""
+msgstr "鸣谢"
 
 #: helper/settings.php:75
 msgid "<i class=\"dashicons dashicons-admin-generic\"></i> General Settings"
-msgstr ""
+msgstr "<i class=\"dashicons dashicons-admin-generic\"></i> 基础设置"
 
 #: helper/settings.php:81
 msgid "<i class=\"dashicons dashicons-welcome-view-site\"></i> Custom CSS"
-msgstr ""
+msgstr "<i class=\"dashicons dashicons-welcome-view-site\"></i> 自定义CSS"
 
 #: helper/settings.php:87
 msgid "<i class=\"dashicons dashicons-networking\"></i> For Theme Developer"
-msgstr ""
+msgstr "<i class=\"dashicons dashicons-networking\"></i> 开发者文档"
 
 #: includes/admin/post-type-init.php:54
 msgid "Uix Slideshow"
-msgstr ""
+msgstr "Uix幻灯片"
 
 #: includes/admin/post-type-init.php:55
 msgid "Slideshow Item"
-msgstr ""
+msgstr "幻灯片"
 
 #: includes/admin/post-type-init.php:56
 msgid "Add New Item"
-msgstr ""
+msgstr "添加新幻灯片"
 
 #: includes/admin/post-type-init.php:57 includes/admin/post-type-init.php:59
 msgid "Add New Slideshow Item"
-msgstr ""
+msgstr "添加新幻灯片"
 
 #: includes/admin/post-type-init.php:58
 msgid "Edit Slideshow Item"
-msgstr ""
+msgstr "编辑"
 
 #: includes/admin/post-type-init.php:60
 msgid "View Item"
-msgstr ""
+msgstr "查看"
 
 #: includes/admin/post-type-init.php:61
 msgid "Search Slideshow"
-msgstr ""
+msgstr "搜索"
 
 #: includes/admin/post-type-init.php:62
 msgid "No slideshow items found"
-msgstr ""
+msgstr "没找到内容"
 
 #: includes/admin/post-type-init.php:63
 msgid "No slideshow items found in trash"
-msgstr ""
+msgstr "垃圾箱无内容"
 
 #: includes/admin/post-type-init.php:104
 msgid "Slide Image"
-msgstr ""
+msgstr "幻灯片图片"
 
 #: includes/admin/post-type-init.php:106 includes/admin/options.php:78
 #: includes/admin/uix-custom-metaboxes/init.php:131
 msgid "URL"
-msgstr ""
+msgstr "地址"
 
 #: includes/admin/post-type-init.php:107
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #: includes/admin/options.php:16
 msgid "Slider Settings"
-msgstr ""
+msgstr "幻灯片设置"
 
 #: includes/admin/options.php:25
 msgid "Slider Image or Video"
-msgstr ""
+msgstr "幻灯片图片或视频"
 
 #: includes/admin/options.php:27
 #: includes/admin/uix-custom-metaboxes/init.php:1047
@@ -191,32 +196,32 @@ msgstr ""
 #: includes/admin/uix-custom-metaboxes/init.php:2189
 #: includes/admin/uix-custom-metaboxes/init.php:2194
 msgid "Remove"
-msgstr ""
+msgstr "删除"
 
 #: includes/admin/options.php:28
 msgid "Select a file"
-msgstr ""
+msgstr "选择文件"
 
 #: includes/admin/options.php:35
 msgid "Caption"
-msgstr ""
+msgstr "描述"
 
 #: includes/admin/options.php:36
 msgid ""
 "When this field is not empty, it will be displayed on the front-end page."
-msgstr ""
+msgstr "当此字段不为空时，它将显示在前端页面上。"
 
 #: includes/admin/options.php:45
 msgid "Title Color"
-msgstr ""
+msgstr "标题颜色"
 
 #: includes/admin/options.php:52
 msgid "Caption Color"
-msgstr ""
+msgstr "描述文本颜色"
 
 #: includes/admin/options.php:68
 msgid "URL Settings"
-msgstr ""
+msgstr "地址设置"
 
 #: includes/admin/options.php:79
 msgid "http://"
@@ -226,75 +231,75 @@ msgstr ""
 msgid ""
 "Enter a custom URL to link this slide to. When the URL is not empty, the "
 "button will be displayed on the front-end page."
-msgstr ""
+msgstr "输入自定义URL以将此幻灯片链接到。 如果URL不为空，则该按钮将显示在前端页面上。"
 
 #: includes/admin/options.php:87
 msgid "Open Link In A New Window/Tab."
-msgstr ""
+msgstr "新窗口打开"
 
 #: includes/admin/options.php:106
 msgid "Button Settings"
-msgstr ""
+msgstr "按钮设置"
 
 #: includes/admin/options.php:115
 msgid "Background/Border Color"
-msgstr ""
+msgstr "背景/边框颜色"
 
 #: includes/admin/options.php:122
 msgid "Text Color"
-msgstr ""
+msgstr "文本颜色"
 
 #: includes/admin/options.php:133
 msgid "Tiny"
-msgstr ""
+msgstr "迷你"
 
 #: includes/admin/options.php:134
 msgid "Small"
-msgstr ""
+msgstr "小"
 
 #: includes/admin/options.php:135
 msgid "Medium"
-msgstr ""
+msgstr "中"
 
 #: includes/admin/options.php:136
 msgid "Large"
-msgstr ""
+msgstr "大"
 
 #: includes/admin/options.php:148
 msgid "Text On The Button"
-msgstr ""
+msgstr "按钮文本"
 
 #: includes/admin/options.php:149
 msgid "Check Out"
-msgstr ""
+msgstr "查看"
 
 #: helper/tabs/general-settings.php:60 helper/tabs/custom-css.php:27
 msgid "Settings saved."
-msgstr ""
+msgstr "设置已保存."
 
 #: helper/tabs/general-settings.php:82
 msgid "Effect"
-msgstr ""
+msgstr "效果"
 
 #: helper/tabs/general-settings.php:90
 msgid "Slide"
-msgstr ""
+msgstr "幻灯片"
 
 #: helper/tabs/general-settings.php:97
 msgid "Fade"
-msgstr ""
+msgstr "渐隐"
 
 #: helper/tabs/general-settings.php:104
 msgid "Scale"
-msgstr ""
+msgstr "缩放"
 
 #: helper/tabs/general-settings.php:114
 msgid "Speed of Images Appereance"
-msgstr ""
+msgstr "图像出现速度"
 
 #: helper/tabs/general-settings.php:119 helper/tabs/general-settings.php:140
 msgid "ms"
-msgstr ""
+msgstr "毫秒"
 
 #: helper/tabs/general-settings.php:122
 #, php-format
@@ -303,66 +308,68 @@ msgid ""
 "instead of this option. You can modify the default JavaScript file to make "
 "it valid.)"
 msgstr ""
+"（默认效果使用<a href=\"%1$s\" target=\"_blank\">自定义CSS </a>"
+"代替此选项。您可以修改默认的JavaScript文件使其有效。）"
 
 #: helper/tabs/general-settings.php:135
 msgid "Delay Between Images"
-msgstr ""
+msgstr "图像之间的延迟"
 
 #: helper/tabs/general-settings.php:151
 msgid "Previous Button Text"
-msgstr ""
+msgstr "上翻页(按钮文本)"
 
 #: helper/tabs/general-settings.php:164
 msgid "Next Button Text"
-msgstr ""
+msgstr "下翻页(按钮文本)"
 
 #: helper/tabs/general-settings.php:177
 msgid "Automatically Transition"
-msgstr ""
+msgstr "自动过渡"
 
 #: helper/tabs/general-settings.php:183
 msgid "Setup a slideshow for the slider to animate automatically."
-msgstr ""
+msgstr "设置幻灯片自动播放动画。"
 
 #: helper/tabs/general-settings.php:193
 msgid "Show Arrow Navigation"
-msgstr ""
+msgstr "显示前后箭头导航"
 
 #: helper/tabs/general-settings.php:199
 msgid "Create previous/next arrow navigation."
-msgstr ""
+msgstr "创建上翻/下翻箭头导航。"
 
 #: helper/tabs/general-settings.php:209
 msgid "Show Paging Navigation"
-msgstr ""
+msgstr "显示分页导航"
 
 #: helper/tabs/general-settings.php:215
 msgid "Create navigation for paging control of each slide."
-msgstr ""
+msgstr "为每个幻灯片的分页控制创建导航。"
 
 #: helper/tabs/general-settings.php:226
 msgid "Animation Loop"
-msgstr ""
+msgstr "循环动画"
 
 #: helper/tabs/general-settings.php:232
 msgid "Gives the slider a seamless infinite loop."
-msgstr ""
+msgstr "为滑块提供无缝的无限循环。"
 
 #: helper/tabs/general-settings.php:242
 msgid "Draggable"
-msgstr ""
+msgstr "可拖拽"
 
 #: helper/tabs/general-settings.php:248
 msgid "Allow drag-drop swipe navigation of the slider with mouse."
-msgstr ""
+msgstr "允许使用鼠标对滑块进行拖放式滑动导航"
 
 #: helper/tabs/general-settings.php:260
 msgid "Custom Parameters"
-msgstr ""
+msgstr "自定义参数"
 
 #: helper/tabs/general-settings.php:265
 msgid "Can be used for your custom slide parameters."
-msgstr ""
+msgstr "可用于您的自定义参数。"
 
 #: helper/tabs/for-developer.php:11
 msgid ""
@@ -372,25 +379,28 @@ msgid ""
 "the Uix Slideshow plugin. This document will show you how to safely custom "
 "meta boxes to your theme."
 msgstr ""
+"有时，您可能希望自定义编辑Uix幻灯片随附的meta boxes。 "
+"与其直接在插件中编辑模板，不如将模板移至您的主题，以便更新Uix幻灯片插件时所做的更改不会丢失。 本文档将向您展示如何安全地自定义主题的meta "
+"boxes。"
 
 #: helper/tabs/for-developer.php:16
 msgid ""
 "(1) Added filter for current Custom Metaboxes. Add the following code to "
 "your theme or plugin:"
-msgstr ""
+msgstr "（1）为当前的自定义元框添加了过滤器。 将以下代码添加到主题或插件："
 
 #: helper/tabs/for-developer.php:68
 msgid "(2) How to call in a PHP page"
-msgstr ""
+msgstr "(2) 如何在PHP页面中使用"
 
 #: helper/tabs/for-developer.php:105
 msgid "(3) Custom Meta Boxes API"
-msgstr ""
+msgstr "(3) Custom Meta Boxes 接口文档"
 
 #: helper/tabs/for-developer.php:109
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">Online Documentation</a>"
-msgstr ""
+msgstr "<a href=\"%1$s\" target=\"_blank\">在线文档</a>"
 
 #: helper/tabs/usage.php:19
 msgid ""
@@ -400,6 +410,9 @@ msgid ""
 "Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-"
 "content/plugins/) And upload files there.)</h4>"
 msgstr ""
+"<h4 class=\"uix-bg-custom-title\">1. 激活主题后你会看到重要提示，进入 <strong>\"外观 -> "
+"安装插件\"</strong>.\n"
+"或者上传插件到你的WordPress目录, 并激活它, 路径为 (/wp-content/plugins/)</h4>"
 
 #: helper/tabs/usage.php:23
 msgid ""
@@ -407,6 +420,8 @@ msgid ""
 "template files in your templates directory. You can create the files on the "
 "WordPress admin panel.</h4>"
 msgstr ""
+"<h4 class=\"uix-bg-custom-title\">2. 您需要在模板目录中创建Uix幻灯片模板文件。 "
+"您可以在WordPress管理面板上创建文件。</h4>"
 
 #: helper/tabs/usage.php:31
 msgid ""
@@ -415,6 +430,9 @@ msgid ""
 "slideshow/theme_templates/</code> and upload files to your theme templates "
 "directory <code>/wp-content/themes/{your-theme}/</code>. "
 msgstr ""
+"&nbsp;&nbsp;&nbsp;&nbsp;可以使用FTP，访问Uix幻灯片模板文件路径<code>/wp-content/plugins/uix-"
+"slideshow/theme_templates/</code>，然后将文件上传到主题模板目录<code>/wp-"
+"content/themes/{your-theme}/</code>。"
 
 #: helper/tabs/usage.php:35
 msgid ""
@@ -423,12 +441,15 @@ msgid ""
 "find these files, then just copy them from the directory \"/wp-"
 "content/plugins/uix-slideshow/theme_templates/\" to your templates directory."
 msgstr ""
+"&nbsp;&nbsp;&nbsp;&nbsp;请检查您是否有1个模板文件 <code>\"tmpl-uix_slideshow.php\"</code>"
+"在您的模板目录中。 如果找不到这些文件，则只需从目录中复制它们到 \"/wp-content/plugins/uix-"
+"slideshow/theme_templates/\" 目录下即可。"
 
 #: helper/tabs/usage.php:44
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">3. Create uix slideshow item and publish "
 "slideshow then.</h4>"
-msgstr ""
+msgstr "<h4 class=\"uix-bg-custom-title\">3. 创建一个新的幻灯片，然后发布它.</h4>"
 
 #: helper/tabs/usage.php:51
 msgid ""
@@ -437,6 +458,9 @@ msgid ""
 "template files <strong>(Access the path to the themes directory)</strong> . "
 "Best Practices for Editing WordPress Template Files:</h4>"
 msgstr ""
+"<h4 class=\"uix-bg-custom-title\">4. 您可以通过修改 <code>*.php</code>"
+"模板文件来自定义此页面的外观和风格的各个方面<strong>(访问主题目录的路径)</strong> . 编辑WordPress模板文件的最佳做法:"
+"</h4>"
 
 #: helper/tabs/usage.php:54
 msgid ""
@@ -444,6 +468,8 @@ msgid ""
 "as part of the core functionality. You can find it in your install by going "
 "to <strong>\"Appearance > Editor\"</strong> from your sidebar."
 msgstr ""
+"&nbsp;&nbsp;&nbsp;&nbsp;(1) WordPress随附主题和插件编辑器，作为核心功能的一部分。 您可以通过边栏中的<strong>"
+"“外观>编辑” </ strong>在安装中找到它。"
 
 #: helper/tabs/usage.php:62
 msgid ""
@@ -451,24 +477,25 @@ msgid ""
 "FTP</strong> client, download a copy of the file you want to change, make "
 "the changes and then upload the file back to the server, overwriting the "
 "file that’s on the server."
-msgstr ""
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;(2) 可以使用FTP，将文件上传到主题模板目录。"
 
 #: helper/tabs/usage.php:67
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">5. Adding Uix Slideshow to Web Pages.</h4>"
-msgstr ""
+msgstr "<h4 class=\"uix-bg-custom-title\">5. 将Uix幻灯片添加到网页.</h4>"
 
 #: helper/tabs/usage.php:70
 msgid ""
 "There are two different ways you can add the Uix Slideshow widget to your "
 "site's pages:"
-msgstr ""
+msgstr "您可以通过两种不同的方式将Uix幻灯片小部件添加到网站页面："
 
 #: helper/tabs/usage.php:74
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;(1) <strong>Shortcode</strong> - Embed a shortcode "
 "into the editor of any post, page, or custom post type."
 msgstr ""
+"&nbsp;&nbsp;&nbsp;&nbsp;（1）<strong>短代码</ strong>-将短代码嵌入到任何帖子，页面或自定义帖子类型的编辑器中。"
 
 #: helper/tabs/usage.php:77
 msgid ""
@@ -479,18 +506,23 @@ msgid ""
 "page). You’ll see our tiny little button in the toolbar, preceded by a "
 "separator:"
 msgstr ""
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用短代码 <code>[uix_slideshow_output]</code>"
+"将其添加到您的帖子，小部件或页面内容中。 此短代码具有一个属性。 可以使用“ show”参数自定义Uix幻灯片的输出数量。 "
+"进入WordPress管理面板，编辑或创建新帖子（或页面）。 您会在工具栏中看到插件的小按钮："
 
 #: helper/tabs/usage.php:85
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;(2) <strong>Template tags</strong> - Add a simple "
 "PHP function to one of your theme's template files."
-msgstr ""
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;(2) <strong>模板标签</ strong>-向主题模板文件添加简单的PHP函数。"
 
 #: helper/tabs/usage.php:88
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Place <code>&lt;?php get_template_part( "
 "'tmpl', 'uix_slideshow' ); ?&gt;</code> in your templates."
 msgstr ""
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主题文件中插入代码 <code>&lt;?php "
+"get_template_part( 'tmpl', 'uix_slideshow' ); ?&gt;</code>"
 
 #: helper/tabs/usage.php:93
 msgid ""
@@ -498,6 +530,8 @@ msgid ""
 "to easily customize to themes. Go to <strong>\"Uix Slideshow -> Settings -> "
 "General Settings\"</strong>.</h4>"
 msgstr ""
+"<h4 class=\"uix-bg-custom-title\">6. 插件使用户可以轻松地为主题启用“定制页面”。 进入<strong>"
+"\"Uix幻灯片 -> 设置 -> 基础设置\"</strong>.</h4>"
 
 #: helper/tabs/usage.php:99
 msgid ""
@@ -506,13 +540,16 @@ msgid ""
 "modifying original <code>.css</code> files. Go to <strong>\"Uix Slideshow -> "
 "Settings -> Custom CSS\"</strong>.</h4>"
 msgstr ""
+"<h4 class=\"uix-bg-custom-title\">7. 您可以无需修改<code>.css</code> "
+"文件，在不修改原始样式的情况下为您的网站创建新样式. 进入 <strong>\"Uix幻灯片 -> 设置 -> 自定义CSS\"</strong>."
+"</h4>"
 
 #: helper/tabs/custom-css.php:109
 #, php-format
 msgid ""
 "You have already used custom Stylesheet files: <a href=\"%1$s\" "
 "target=\"_blank\">%2$s</a>"
-msgstr ""
+msgstr "您已经使用了自定义样式表文件: <a href=\"%1$s\" target=\"_blank\">%2$s</a>"
 
 #: helper/tabs/custom-css.php:118
 #, php-format
@@ -527,13 +564,18 @@ msgid ""
 "WordPress Theme. Of course, Uix Slideshow's function of \"Custom CSS\" is "
 "still valid."
 msgstr ""
+"- 制作一个新的样式表（CSS）文档，其名称为 <strong>uix-slideshow-custom.css</strong>并上传到你的主题目录 "
+"( <code>/wp-content/themes/{your-theme}/</code> 或者<code>/wp-"
+"content/themes/{your-theme}/assets/css/</code> ). "
+"您可以通过FTP客户端连接到站点，进行更改，然后将文件上传回服务器。 创建现有CSS文件后，Uix幻灯片会将其用作默认样式 <a "
+"href=\"%1$s\" target=\"_blank\">%2$s</a>。 当然，Uix幻灯片的“自定义CSS”功能仍然有效。"
 
 #: helper/tabs/custom-css.php:131
 #, php-format
 msgid ""
 "You have already used custom JavaScript files: <a href=\"%1$s\" "
 "target=\"_blank\">%2$s</a>"
-msgstr ""
+msgstr "您已经使用了自定义JavaScript文件: <a href=\"%1$s\" target=\"_blank\">%2$s</a>"
 
 #: helper/tabs/custom-css.php:139
 #, php-format
@@ -545,75 +587,81 @@ msgid ""
 "Slideshow will use it as a default script instead of the \"<a href=\"%1$s\" "
 "target=\"_blank\">%2$s</a>\" to your WordPress Theme."
 msgstr ""
+"- 制作一个新的javascript（.js）文档，将其命名为 <strong>uix-slideshow-custom.js</strong>"
+"并上传到主题目录 ( <code>/wp-content/themes/{your-theme}/</code> 或者 <code>/wp-"
+"content/themes/{your-theme}/assets/js/</code> ). 创建现有JS文件后，Uix幻灯片会将其用作默认脚本  "
+"\"<a href=\"%1$s\" target=\"_blank\">%2$s</a>\"。"
 
 #: helper/tabs/custom-css.php:150
 msgid "Paste your CSS code"
-msgstr ""
+msgstr "粘贴CSS代码"
 
 #: helper/tabs/custom-css.php:152
 msgid ""
 "You could add new styles code to your website, without modifying original ."
 "css files."
-msgstr ""
+msgstr "您可以在您的网站上添加新样式代码，而无需修改原始.css文件。"
 
 #: helper/tabs/custom-css.php:153
 msgid "Add <code>.rtl .your-classname { .. }</code> to build RTL stylesheets."
-msgstr ""
+msgstr "添加 <code>.rtl .your-classname { .. }</code> 建立RTL样式表。"
 
 #: helper/tabs/custom-css.php:178 helper/tabs/custom-css.php:192
 msgid "CSS file root directory:"
-msgstr ""
+msgstr "CSS文件的根目录："
 
 #: helper/tabs/custom-css.php:183
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: helper/tabs/temp.php:43
 msgid ""
 "Uix Slideshow template files already exists. Remove Uix Slideshow template "
 "files in your templates directory:"
-msgstr ""
+msgstr "Uix幻灯片模板文件已存在。 在模板目录中删除Uix产品库模板文件："
 
 #: helper/tabs/temp.php:45
 msgid ""
 "As a workaround you can use FTP, access path <code>/wp-content/themes/{your-"
 "theme}/</code> and remove Uix Slideshow template files."
 msgstr ""
+"作为一种解决方法，您可以使用FTP，访问路径<code>/wp-content/themes/{your-theme}/</code>"
+"并删除Uix幻灯片模板文件。"
 
 #: helper/tabs/temp.php:49 helper/tabs/temp.php:71
 msgid "Template files list:"
-msgstr ""
+msgstr "模板文件列表: "
 
 #: helper/tabs/temp.php:53
 msgid ""
 "Are you sure?\\nIt is possible based on your theme of the plugin templates. "
 "When you create them again, the default plugin template will be used."
-msgstr ""
+msgstr "您确定吗？\\n可以根据您的插件模板主题进行设置。 再次创建它们时，将使用默认的插件模板。"
 
 #: helper/tabs/temp.php:53
 msgid "Remove Uix Slideshow Template Files"
-msgstr ""
+msgstr "删除Uix幻灯片模板文件"
 
 #: helper/tabs/temp.php:59
 msgid "Copy Uix Slideshow template files in your templates directory:"
-msgstr ""
+msgstr "将Uix幻灯片模板文件复制到您的模板目录中："
 
 #: helper/tabs/temp.php:66
 msgid ""
 "Hi, there! It’s just a custom template file in the theme folder. Of course "
 "you doesn’t need to create it, you can use of the default page template or "
 "your own custom template file directly."
-msgstr ""
+msgstr "嗨，您好！ 它只是主题文件夹中的自定义模板文件。 当然，您无需创建它，您可以直接使用默认页面模板或您自己的自定义模板文件。"
 
 #: helper/tabs/temp.php:77
 msgid "Click This Button to Copy Uix Slideshow Files"
-msgstr ""
+msgstr "单击此按钮以复制Uix幻灯片模板文件"
 
 #: helper/tabs/credits.php:11
 msgid ""
 "I would like to give special thanks to credits. The following is a guide to "
 "the list of credits for this plugin:"
-msgstr ""
+msgstr "特别鸣谢："
 
 #: helper/tabs/about.php:10
 msgid ""
@@ -622,42 +670,46 @@ msgid ""
 "theme.</strong> <br>Insert slideshow anywhere on your site using a custom "
 "post type."
 msgstr ""
+"This plugin is a simple way to build, organize and display slideshow into "
+"any existing WordPress theme. <strong>Using template file to embed your "
+"theme.</strong> <br>Insert slideshow anywhere on your site using a custom "
+"post type."
 
 #: includes/admin/uix-custom-metaboxes/init.php:126
 msgid "Select Files"
-msgstr ""
+msgstr "选择文件"
 
 #: includes/admin/uix-custom-metaboxes/init.php:127
 msgid "Insert"
-msgstr ""
+msgstr "插入"
 
 #: includes/admin/uix-custom-metaboxes/init.php:128
 msgid "Insert Image"
-msgstr ""
+msgstr "插入图片"
 
 #: includes/admin/uix-custom-metaboxes/init.php:129
 msgid "Remove link"
-msgstr ""
+msgstr "删除链接"
 
 #: includes/admin/uix-custom-metaboxes/init.php:130
 msgid "Insert/Edit link"
-msgstr ""
+msgstr "插入/编辑链接"
 
 #: includes/admin/uix-custom-metaboxes/init.php:132
 msgid "Link Text"
-msgstr ""
+msgstr "链接文本"
 
 #: includes/admin/uix-custom-metaboxes/init.php:133
 msgid "Open link in a new tab"
-msgstr ""
+msgstr "新窗口打开"
 
 #: includes/admin/uix-custom-metaboxes/init.php:134
 msgid "Syntax Highlight Code"
-msgstr ""
+msgstr "代码高亮"
 
 #: includes/admin/uix-custom-metaboxes/init.php:135
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 #: includes/admin/uix-custom-metaboxes/init.php:136
 #: includes/admin/uix-custom-metaboxes/init.php:1866
@@ -666,40 +718,40 @@ msgstr ""
 
 #: includes/admin/uix-custom-metaboxes/init.php:137
 msgid "Are you sure you want to delete?"
-msgstr ""
+msgstr "确定删除？"
 
 #: includes/admin/uix-custom-metaboxes/init.php:178
 msgid "Group Title"
-msgstr ""
+msgstr "组标题"
 
 #: includes/admin/uix-custom-metaboxes/init.php:400
 #: includes/admin/uix-custom-metaboxes/init.php:1453
 msgid "Field Title"
-msgstr ""
+msgstr "字段标题"
 
 #: includes/admin/uix-custom-metaboxes/init.php:1048
 #: includes/admin/uix-custom-metaboxes/init.php:2195
 msgid "Select image or video"
-msgstr ""
+msgstr "选择图片或视频"
 
 #: includes/admin/uix-custom-metaboxes/init.php:1618
 #: includes/admin/uix-custom-metaboxes/init.php:1823
 msgid "Title"
-msgstr ""
+msgstr "文本"
 
 #: includes/admin/uix-custom-metaboxes/init.php:1619
 #: includes/admin/uix-custom-metaboxes/init.php:1824
 msgid "Value"
-msgstr ""
+msgstr "值"
 
 #: includes/admin/uix-custom-metaboxes/init.php:1621
 #: includes/admin/uix-custom-metaboxes/init.php:1830
 msgid "Add New"
-msgstr ""
+msgstr "新增"
 
 #: includes/admin/uix-custom-metaboxes/init.php:1825
 msgid "Subtitle"
-msgstr ""
+msgstr "父标题"
 
 #: includes/admin/uix-custom-metaboxes/init.php:1826
 msgid "ID"
@@ -707,49 +759,49 @@ msgstr ""
 
 #: includes/admin/uix-custom-metaboxes/init.php:1827
 msgid "Level"
-msgstr ""
+msgstr "级别"
 
 #: includes/admin/uix-custom-metaboxes/init.php:1828
 msgid "Class Name"
-msgstr ""
+msgstr "类别名称"
 
 #: includes/admin/uix-custom-metaboxes/init.php:1984
 msgid "Untitled"
-msgstr ""
+msgstr "无标题"
 
 #: includes/admin/uix-custom-metaboxes/init.php:2184
 msgid "Files"
-msgstr ""
+msgstr "图片或视频"
 
 #: includes/admin/uix-custom-metaboxes/init.php:2185
 msgid "Text"
-msgstr ""
+msgstr "文本"
 
 #: includes/admin/uix-custom-metaboxes/init.php:2187
 msgid "Custom Content"
-msgstr ""
+msgstr "自定义文本内容"
 
 #: includes/admin/uix-custom-metaboxes/init.php:2188
 msgid "Upload Your Files"
-msgstr ""
+msgstr "上传图片"
 
 #: includes/admin/uix-custom-metaboxes/init.php:2190
 msgid "Add Files"
-msgstr ""
+msgstr "添加图片/视频"
 
 #: includes/admin/uix-custom-metaboxes/init.php:2191
 msgid "Add Text"
-msgstr ""
+msgstr "添加文本"
 
 #: includes/admin/uix-custom-metaboxes/init.php:2198
 msgid "Enable Lightbox for this gallery?"
-msgstr ""
+msgstr "启用灯箱效果?"
 
 #. Description of the plugin
 msgid ""
 "This plugin is a simple way to build, organize and display slideshow into "
 "any existing WordPress theme."
-msgstr ""
+msgstr "该插件可以简单将将幻灯片显示或自定义到任何现有WordPress主题。"
 
 #. URI of the plugin
 msgid "https://uiux.cc/wp-plugins/uix-slideshow/"

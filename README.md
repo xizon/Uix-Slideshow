@@ -39,6 +39,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.5.0 (January 18, 2020) =
+
+* New: Added Custom Meta Boxes API documentation to admin menu.
+* New: Added zh_CN language support.
+
 
 ##### = 1.4.35 (December 31, 2019) =
 
