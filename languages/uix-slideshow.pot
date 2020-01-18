@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Slides 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2020-01-18 05:36+0000\n"
+"POT-Creation-Date: 2020-01-18 05:51+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 14:41:58 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -226,6 +226,10 @@ msgstr ""
 msgid ""
 "Enter a custom URL to link this slide to. When the URL is not empty, the "
 "button will be displayed on the front-end page."
+msgstr ""
+
+#: includes/admin/options.php:86
+msgid "Target"
 msgstr ""
 
 #: includes/admin/options.php:87

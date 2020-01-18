@@ -83,7 +83,7 @@ if ( class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
                     array(
                         'id'            =>  'uix_slideshow_target',
                         'type'          =>  'checkbox',
-                        'title'         =>  esc_html__( 'Target', 'uiuxlabtheme' ),
+                        'title'         =>  esc_html__( 'Target', 'uix-slideshow' ),
                         'desc_primary'   =>  UixSlideshow::kses( __( 'Open Link In A New Window/Tab.', 'uix-slideshow' ) ),
 
                     ),
