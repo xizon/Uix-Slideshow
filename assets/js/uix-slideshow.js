@@ -132,7 +132,8 @@
 
 /* 
  *************************************
- * Uix Slidershow
+ * Uix Slidershow	
+ * @ Version 1.1 (July 30, 2020)
  *
  * @param  {Boolean} auto                  - Setup a slideshow for the slider to animate automatically.
  * @param  {Number} timing                 - Autoplay interval.
@@ -722,7 +723,6 @@
             function sliderUpdates( elementIndex, slider, dir, countTotalID, countCurID, paginationID, arrowsID, loop ) {
 
                 var $items                   = slider.find( '.uix-slideshow__item' ),
-                    $current                 = $items.eq( elementIndex ),
                     total                    = $items.length;
 
 
@@ -772,6 +772,12 @@
 
 
                 }
+				
+
+				// call the current item
+				//-------------------------------------
+				var $current = $items.eq( elementIndex );	
+
 
 
                 //Determine the direction and add class to switching direction indicator.

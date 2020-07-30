@@ -39,6 +39,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.5.1 (July 30, 2020) =
+
+* Fix: Fixed issue with initialization height for Slider.
+
+
 ##### = 1.5.0 (January 18, 2020) =
 
 * New: Added Custom Meta Boxes API documentation to admin menu.
@@ -259,6 +264,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 5.1.*
 - WP 5.2.*
 - WP 5.3.*
+- WP 5.4.*
 
 
 ### Screenshot
