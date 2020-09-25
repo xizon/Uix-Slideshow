@@ -39,6 +39,12 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.5.2 (September 25, 2020) =
+
+* Tweak: Compatible with WP 5.5.*.
+* Fix: Modified the style display of the module.
+
+
 ##### = 1.5.1 (July 30, 2020) =
 
 * Fix: Fixed issue with initialization height for Slider.
@@ -265,6 +271,8 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 5.2.*
 - WP 5.3.*
 - WP 5.4.*
+- WP 5.5.*
+
 
 
 ### Screenshot
