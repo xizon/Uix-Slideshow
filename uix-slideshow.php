@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.5.2
+ * Version:     1.5.3
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later

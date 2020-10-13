@@ -39,6 +39,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.5.3 (October 13, 2020) =
+
+* Tweak: Optimized the language support and media insertion of the editor for Uix Custom Meta Boxes.
+
+
 ##### = 1.5.2 (September 25, 2020) =
 
 * Tweak: Compatible with WP 5.5.*.
