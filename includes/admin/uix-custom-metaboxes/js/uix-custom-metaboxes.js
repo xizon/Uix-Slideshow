@@ -2,7 +2,7 @@
  * ************************************************
  * Uix Custom Metaboxes
  *
- * @version		: 1.7 (October 13, 2020)
+ * @version		: 1.8 (October 21, 2020)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  * @license     : MIT
@@ -108,22 +108,76 @@ var UixSlideshowCustomMetaboxes = function( obj ) {
 		 */
 		radio: function( selector ) {
 
-	
 			jQuery( document ).ready( function() {
-				
+	
 				jQuery( selector ).each(function(){
 
 					var $this = jQuery( this ),
 						tid   = $this.data( 'target-id' );
+					
+					
+					//get all switch ids
+					var allSwitchIds = '';
+					$this.find( '[data-switch-ids]' ).each( function()  {
+						allSwitchIds += jQuery( this ).attr( 'data-switch-ids' );
+					});
 
+					//Switch with radios
+					var switchFun = function( curSel ) {
+						
+						$this.find( '[data-switch-ids]' ).each( function()  {
+							var _targetID      = jQuery( this ).attr( 'data-switch-ids' ),
+								_targetIDs     = UixSlideshowGetRealIds( _targetID  );
+
+							if ( _targetIDs != '' ) {
+								var	_$wrapper = jQuery( _targetIDs ).closest( 'tr' );
+								_$wrapper.hide();	
+							}
+
+
+						});
+
+						//
+						if ( allSwitchIds != '' ) {
+							jQuery( UixSlideshowGetRealIds( allSwitchIds  ) ).closest( 'tr' ).hide();
+						}
+						
+						
+						
+						//
+						var switchTargetID = curSel.attr( 'data-switch-ids' ),
+							switchTargetIDs = UixSlideshowGetRealIds( switchTargetID  );
+
+						if ( switchTargetIDs != '' ) {
+							jQuery( switchTargetIDs ).closest( 'tr' ).show();
+						}
+
+
+					};
+
+					if ( $this.find( '[data-switch-ids]' ).length > 0 ) {
+						switchFun( $this.find( '[data-switch-ids]' ).first() );
+					}
+					
 					
 					$this.find( '[data-value]' ).on( 'click', function() {
 					
 						//Do not use preventDefault()
+						//---------
 						var _curValue = jQuery( this ).attr( 'data-value' );
 						$this.find( '[data-value]' ).removeClass( 'active' );
 						jQuery( '#' + tid ).val( _curValue );
 						jQuery( this ).addClass( 'active' );
+						
+						
+						//Switch with radios
+						//---------
+						if ( $this.find( '[data-switch-ids]' ).length > 0 ) {
+							switchFun( jQuery( this ) );
+						}
+						
+
+
 						
 					} );	
 
@@ -131,7 +185,6 @@ var UixSlideshowCustomMetaboxes = function( obj ) {
 			
 				
 			});
-			
 
 			//Chain method calls
 			return this;
@@ -1346,5 +1399,45 @@ var UixSlideshowGUID = UixSlideshowGUID || ( () => {
     },
 	t
 })();
+
+
+
+/*! 
+ * ************************************
+ * Get the real form ID from the associated attribute "data-targetid"
+ *
+ * Note: Used for controls "toggle", "checkbox", "radio"
+ *
+ * @param  {string} targetID          - All id of the target control. Like this: uix_pb_???_??, uix_pb_???_??, uix_pb_???_??,
+ * @return {string}                   - Converted value matching this (clone) control ID. Note that the prefix has a "#".
+                                            Like this: [name="cus_field_???1"],
+											           [name="cus_field_???2"],
+													   [name="cus_field_???3"],
+ 
+ 
+ 
+ *	 
+ *************************************
+ */	
+function UixSlideshowGetRealIds( targetID ) {
+	
+	var result = '';
+	if ( typeof targetID !== typeof undefined && targetID != '' ) {
+
+		targetID = targetID.replace(/,\s*$/, '' );
+		var ids = targetID.split( ',' );
+
+		for ( var i = 0; i < ids.length; i++ ) {
+
+			if ( ids[i] != '' ) {
+				result += '[name="' + ids[i] + '"],';
+			}
+
+		}//end for
+		result = result.replace(/,\s*$/, '' );
+
+	}	
+	return result;
+}
 
 
