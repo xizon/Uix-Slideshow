@@ -40,7 +40,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
-##### = 1.5.4 (October 21, 2020) =
+##### = 1.5.5 (October 21, 2020) =
 
 * Fix: Optimized the color transparency control, compatible with WP 5.5.0 and above.
 * Tweak: Expand and optimize Uix Custom Meta Boxes.

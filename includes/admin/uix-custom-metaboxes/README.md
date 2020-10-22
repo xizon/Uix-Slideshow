@@ -35,7 +35,6 @@ Provides a compatible solution for some personalized themes that require custom 
 
 ```sh
 require_once {your_directory}/uix-custom-metaboxes/init.php';
-require_once {your_directory}/uix-custom-metaboxes/controller-upload.php';
 ```
 
 
@@ -51,7 +50,7 @@ if ( class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 			'config' => array( 
 				'id'         =>  'yourtheme_metaboxes-1', 
 				'title'      =>  esc_html__( '[Demo] Normal Fields', 'your-theme' ),
-				'screen'     =>  'page', 
+				'screen'     =>  'uix-slideshow', // page, post, uix_products, uix-slideshow, ...
 				'context'    =>  'normal',
 				'priority'   =>  'high',
 				'fields' => array( 
@@ -282,7 +281,7 @@ if ( class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 			'config' => array( 
 				'id'         =>  'yourtheme_metaboxes-2', 
 				'title'      =>  esc_html__( '[Demo] Appearance Fields', 'your-theme' ),
-				'screen'     =>  'page',
+				'screen'     =>  'uix-slideshow', // page, post, uix_products, uix-slideshow, ...
 				'context'    =>  'normal',
 				'priority'   =>  'high',
 				'fields' => array( 
@@ -668,6 +667,7 @@ if ( !function_exists( 'mytheme_uix_slideshow_publish_page' ) ) {
 
 ##### = 1.8 (October 21, 2020) =
 
+* Tweak: Refactored structure of the custom metaboxes controller.
 * Tweak: Beautify the appearance of the editor.
 * New: Added the switch using radios, which can control the hide and display of other fields.
 * New: Added color selector transparency settings.

@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Tested up to: 5.5.1
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,7 +121,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 == Changelog ==
 
-= 1.5.4 (October 21, 2020) =
+= 1.5.5 (October 21, 2020) =
 
 * Fix: Optimized the color transparency control, compatible with WP 5.5.0 and above.
 * Tweak: Expand and optimize Uix Custom Meta Boxes.

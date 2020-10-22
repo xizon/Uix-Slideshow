@@ -904,7 +904,7 @@ UixSlideshowCustomMetaboxesInit.getInstance();
 							
 						}
 
-						ed.addButton( 'uix_slideshow_image', {
+						ed.addButton('uix_slideshow_image', {
 						  icon: 'mce-ico mce-i-image',
 						  tooltip: uix_slideshow_custom_metaboxes_lang.ed_image,
 						  onclick: uix_slideshow_mce_insertImage
