@@ -40,6 +40,12 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
+##### = 1.6.0 (October 26, 2020) =
+
+* Fix: Fixed an issue where the title of the custom post type was empty and could not be published when publishing.
+
+
+
 ##### = 1.5.5 (October 21, 2020) =
 
 * Fix: Optimized the color transparency control, compatible with WP 5.5.0 and above.
