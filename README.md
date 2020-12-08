@@ -39,6 +39,10 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.6.1 (December 8, 2020) =
+
+* Tweak: Upgraded the uploading control.
+
 
 ##### = 1.6.0 (October 26, 2020) =
 
