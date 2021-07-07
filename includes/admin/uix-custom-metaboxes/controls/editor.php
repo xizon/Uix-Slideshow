@@ -3,15 +3,15 @@
 * Field Type: Editor
 *
 * @print: 
-* echo UixSlideshow::kses( get_post_meta( get_the_ID(), 'cus_page_ex_demoname_appear_3', true ) );
+* echo UixSlideshowCmb::kses( get_post_meta( get_the_ID(), 'cus_page_ex_demoname_appear_3', true ) );
 *
 */
-class UixSlideshowFormType_Editor extends Uix_Slideshow_Custom_Metaboxes {
+class UixSlideshowCmbFormType_Editor extends Uix_Slideshow_Custom_Metaboxes {
 	
 	public static function add( $id = '', $title = '', $desc = '', $default = '', $options = '', $placeholder = '', $desc_primary = '', $enable_table = false ) {
 
 		//editor options
-		$editor_toolbar = 'formatselect fontselect forecolor backcolor bold italic underline strikethrough bullist numlist blockquote code alignleft aligncenter alignright uix_slideshow_link uix_slideshow_unlink | removeformat outdent indent superscript subscript hr uix_slideshow_image uix_slideshow_highlightcode media customCode fullscreen';
+		$editor_toolbar = 'formatselect fontselect forecolor backcolor bold italic underline strikethrough bullist numlist blockquote code alignleft aligncenter alignright uix_slideshow_cmb_link uix_slideshow_cmb_unlink | removeformat outdent indent superscript subscript hr uix_slideshow_cmb_image uix_slideshow_cmb_highlightcode media uix_slideshow_cmb_customcode fullscreen';
 		$editor_height = 200;  
 
 
@@ -29,7 +29,7 @@ class UixSlideshowFormType_Editor extends Uix_Slideshow_Custom_Metaboxes {
 
 					<?php 
 
-						$editor_toolbar  = 'formatselect fontselect forecolor backcolor bold italic underline strikethrough bullist numlist blockquote code alignleft aligncenter alignright uix_slideshow_link uix_slideshow_unlink | removeformat outdent indent superscript subscript hr uix_slideshow_image uix_slideshow_highlightcode media customCode fullscreen';
+						$editor_toolbar  = 'formatselect fontselect forecolor backcolor bold italic underline strikethrough bullist numlist blockquote code alignleft aligncenter alignright uix_slideshow_cmb_link uix_slideshow_cmb_unlink | removeformat outdent indent superscript subscript hr uix_slideshow_cmb_image uix_slideshow_cmb_highlightcode media uix_slideshow_cmb_customcode fullscreen';
 						$editor_height   = 200;
 						if ( is_array ( $options ) ) {
 							if ( isset( $options[ 'editor_toolbar' ] ) ) $editor_toolbar = $options[ 'editor_toolbar' ];

@@ -1,0 +1,186 @@
+<?php
+//==========================================================================================
+//================================ DEMO ====================================================
+//==========================================================================================
+
+
+
+if ( !class_exists( 'UixSlideshow' ) ) {
+    return;
+}
+
+/*
+ * Custom Metaboxes and Fields
+ *
+ */
+if ( class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) { 
+	
+
+    if ( !function_exists( 'yourtheme_modify_vars' ) ) {
+        add_filter( 'uix_slideshow_custom_metaboxes_vars', 'yourtheme_modify_vars' );
+        function yourtheme_modify_vars() {
+
+			$all_config  = array(
+
+				//-- Slider Settings
+				array(
+					'config' => array( 
+						'id'         =>  'your-theme-main-settings', 
+						'title'      =>  esc_html__( 'Slider Settings', 'your-theme' ),
+						'screen'     =>  'your-theme', 
+						'context'    =>  'normal',
+						'priority'   =>  'high',
+						'fields' => array( 
+
+							array(
+								'id'             =>  'uix_slideshow_img',
+								'type'           =>  'image',
+								'title'          =>  esc_html__( 'Slider Image or Video', 'your-theme' ),
+								'options'     =>  array( 
+														'label_controller_up_remove'  => esc_html__( 'Remove', 'your-theme' ),
+														'label_controller_up_add'     => esc_html__( 'Select a file', 'your-theme' )
+												  )
+							),
+
+							array(
+								'id'             =>  'uix_slideshow_caption',
+								'type'           =>  'textarea',
+								'title'          =>  esc_html__( 'Caption', 'your-theme' ),
+								'desc_primary'   =>  UixSlideshow::kses( __( 'When this field is not empty, it will be displayed on the front-end page.', 'your-theme' ) ),
+								'options'     =>  array( 
+													'rows'  => 3	
+												  )
+							),
+
+							array(
+								'id'       =>  'uix_slideshow_title_color',
+								'type'     =>  'color',
+								'title'    =>  esc_html__( 'Title Color', 'your-theme' ),
+								'default'  => '#ffffff'
+							),
+
+							array(
+								'id'       =>  'uix_slideshow_caption_color',
+								'type'     =>  'color',
+								'title'    =>  esc_html__( 'Caption Color', 'your-theme' ),
+								'default'  => '#ffffff'
+							),
+
+
+						)
+					)
+
+				),
+
+
+
+				//-- URL Settings
+				array(
+					'config' => array( 
+						'id'         =>  'your-theme-url-settings', 
+						'title'      =>  esc_html__( 'URL Settings', 'your-theme' ),
+						'screen'     =>  'your-theme', 
+						'context'    =>  'normal',
+						'priority'   =>  'high',
+						'fields' => array( 
+
+
+							array(
+								'id'             =>  'uix_slideshow_url',
+								'type'           =>  'url',
+								'title'          =>  esc_html__( 'URL', 'your-theme' ),
+								'placeholder'    =>  esc_html__( 'http://', 'your-theme' ),
+								'desc_primary'   =>  UixSlideshow::kses( __( 'Enter a custom URL to link this slide to. When the URL is not empty, the button will be displayed on the front-end page.', 'your-theme' ) ),
+							),
+
+							array(
+								'id'            =>  'uix_slideshow_target',
+								'type'          =>  'checkbox',
+								'title'         =>  esc_html__( 'Target', 'your-theme' ),
+								'desc_primary'   =>  UixSlideshow::kses( __( 'Open Link In A New Window/Tab.', 'your-theme' ) ),
+
+							),
+
+
+
+
+
+
+						)
+					)
+
+				),
+
+
+				//-- Button Settings
+				array(
+					'config' => array( 
+						'id'         =>  'your-theme-btn-settings', 
+						'title'      =>  esc_html__( 'Button Settings', 'your-theme' ),
+						'screen'     =>  'your-theme', 
+						'context'    =>  'side',
+						'priority'   =>  'low',
+						'fields' => array( 
+
+							array(
+								'id'       =>  'uix_slideshow_bcolor',
+								'type'     =>  'color',
+								'title'    =>  esc_html__( 'Background/Border Color', 'your-theme' ),
+								'default'  => '#ffffff'
+							),
+
+							array(
+								'id'       =>  'uix_slideshow_button_textcolor',
+								'type'     =>  'color',
+								'title'    =>  esc_html__( 'Text Color', 'your-theme' ),
+								'default'  => '#ffffff'
+							),
+
+							array(
+								'id'          =>  'uix_slideshow_bsize',
+								'type'        =>  'select',
+								'title'       =>  esc_html__( 'Size', 'uiuxlabtheme' ),
+								'default'     =>  'small',
+								'options'     =>  array( 
+													'value'       => array(
+														'tiny'     => esc_html__( 'Tiny', 'your-theme' ),
+														'small'    => esc_html__( 'Small', 'your-theme' ),
+														'medium'   => esc_html__( 'Medium', 'your-theme' ),
+														'large'    => esc_html__( 'Large', 'your-theme' ),
+													 )
+
+
+												  )
+
+							),
+
+
+							array(
+								'id'             =>  'uix_slideshow_button_text',
+								'type'           =>  'text',
+								'title'          =>  esc_html__( 'Text On The Button', 'your-theme' ),
+								'default'        => esc_html__( 'Check Out', 'your-theme' )
+							),
+
+
+
+
+
+						)
+					)
+
+				),
+
+
+			);
+
+
+            return $all_config;
+
+        } 
+    }
+
+    
+}
+
+

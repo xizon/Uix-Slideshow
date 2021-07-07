@@ -3,7 +3,7 @@
 * Field Type: Price
 *
 */
-class UixSlideshowFormType_Price extends Uix_Slideshow_Custom_Metaboxes {
+class UixSlideshowCmbFormType_Price extends Uix_Slideshow_Custom_Metaboxes {
 	
 	public static function add( $id = '', $title = '', $desc = '', $default = '', $options = '', $placeholder = '', $desc_primary = '', $enable_table = false ) {
 	?>

@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-if ( !class_exists( 'Uix_Slideshow_UploadMedia' ) ) {
+if ( !class_exists( 'Uix_Slideshow_Cmb_UploadMedia' ) ) {
 	
-	class Uix_Slideshow_UploadMedia {
+	class Uix_Slideshow_Cmb_UploadMedia {
 		
 		public static function add( $args, $echo = true ) {
 			
@@ -37,13 +37,14 @@ if ( !class_exists( 'Uix_Slideshow_UploadMedia' ) ) {
                 $file_type == 'mpg'
             ) {
                 $is_video = true;
-            } 
-         
+            }  
+            
 	
 			$code =  '
 			<div class="uix-slideshow-cmb__btn--upload-container '.( $child ? 'uix-slideshow-cmb__btn--upload-container--child' : '' ).'">
-				<input type="hidden" id="'.esc_attr( $id ).'_filetype" name="'.esc_attr( $id ).'_filetype" value="'.esc_attr( ( $is_video ? 'video' : 'image' ) ).'"/>
-                
+            
+                <input type="hidden" id="'.esc_attr( $id ).'_filetype" name="'.esc_attr( $id ).'_filetype" value="'.esc_attr( ( $is_video ? 'video' : 'image' ) ).'"/>
+				
 				<label for="'.esc_attr( $id ).'">'.esc_html( $title ).'</label>
 				'.( !empty( $id ) ? '<input type="text" id="'.esc_attr( $id ).'" class="'.esc_attr( $class ).'" name="'.esc_attr( $name ).'" value="'.esc_attr( $value ).'" placeholder="'.esc_attr( $placeholder ).'" />' : '' ).' 
 				<a href="javascript:" class="uix-slideshow-cmb__btn uix-slideshow-cmb__btn--upload uix-slideshow-cmb__upload-target" id="trigger_id_'.esc_attr( $id ).'" data-insert-img="'.esc_attr( $id ).'" data-insert-preview="'.esc_attr( $id ).'_preview"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 550.801 550.8"><g><path d="M515.828,61.201H34.972C15.659,61.201,0,76.859,0,96.172v358.458C0,473.942,15.659,489.6,34.972,489.6h480.856 c19.314,0,34.973-15.658,34.973-34.971V96.172C550.801,76.859,535.143,61.201,515.828,61.201z M515.828,96.172V350.51l-68.92-62.66 c-10.359-9.416-26.289-9.04-36.186,0.866l-69.752,69.741L203.438,194.179c-10.396-12.415-29.438-12.537-39.99-0.271L34.972,343.219 V96.172H515.828z M367.201,187.972c0-26.561,21.523-48.086,48.084-48.086c26.562,0,48.086,21.525,48.086,48.086 c0,26.561-21.523,48.085-48.086,48.085C388.725,236.058,367.201,214.533,367.201,187.972z"/></g></svg>'.esc_html( $label_add ).'</a>

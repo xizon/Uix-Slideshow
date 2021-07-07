@@ -3,7 +3,7 @@
 * Field Type: Radio & Radio Image
 *
 */
-class UixSlideshowFormType_Radio extends Uix_Slideshow_Custom_Metaboxes {
+class UixSlideshowCmbFormType_Radio extends Uix_Slideshow_Custom_Metaboxes {
 	
 	public static function add( $id = '', $title = '', $desc = '', $default = '', $options = '', $placeholder = '', $desc_primary = '', $enable_table = false ) {
 	?>
@@ -174,83 +174,83 @@ class UixSlideshowFormType_Radio extends Uix_Slideshow_Custom_Metaboxes {
 									<?php
 									//------
 									if ( $toggle_ipt_type == 'text' ) {
-										UixSlideshowFormType_Text::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Text::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}	
 
 									//------
 									if ( $toggle_ipt_type == 'textarea' ) {
-										UixSlideshowFormType_Textarea::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Textarea::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}	
 
 									//------
 									if ( $toggle_ipt_type == 'url' ) {
-										UixSlideshowFormType_Url::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Url::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}	
 
 									//------
 									if ( $toggle_ipt_type == 'number' ) {
-										UixSlideshowFormType_Number::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Number::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}				
 
 									//------
 									if ( $toggle_ipt_type == 'radio' ) {
-										UixSlideshowFormType_Radio::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Radio::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}			
 
 									//------
 									if ( $toggle_ipt_type == 'image' ) {
-										UixSlideshowFormType_Image::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Image::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}						
 
 									//------
 									if ( $toggle_ipt_type == 'color' ) {
-										UixSlideshowFormType_Color::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Color::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}				
 
 									//------
 									if ( $toggle_ipt_type == 'checkbox' ) {
-										UixSlideshowFormType_Checkbox::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Checkbox::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}		
 
 									//------
 									if ( $toggle_ipt_type == 'select' ) {
-										UixSlideshowFormType_Select::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Select::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}					
 
 									//------
 									if ( $toggle_ipt_type == 'editor' ) {
-										UixSlideshowFormType_Editor::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Editor::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}					
 
 									//------
 									if ( $toggle_ipt_type == 'date' ) {
-										UixSlideshowFormType_Date::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Date::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}				
 
 									//------
 									if ( $toggle_ipt_type == 'price' ) {
-										UixSlideshowFormType_Price::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_Price::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}		
 
 									//------
 									if ( $toggle_ipt_type == 'multi-checkbox' ) {
-										UixSlideshowFormType_MultiCheckbox::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_MultiCheckbox::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}	
 
 									//------
 									if ( $toggle_ipt_type == 'custom-attrs' ) {
-										UixSlideshowFormType_CustomAttrs::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_CustomAttrs::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}	
 
 
 									//------
 									if ( $toggle_ipt_type == 'multi-content' ) {
-										UixSlideshowFormType_MultiContent::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_MultiContent::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}	
 
 									//------
 									if ( $toggle_ipt_type == 'multi-portfolio' ) {
-										UixSlideshowFormType_MultiPortfolio::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
+										UixSlideshowCmbFormType_MultiPortfolio::add( $toggle_ipt_id, $toggle_ipt_title, $toggle_ipt_desc, $toggle_ipt_default, $toggle_ipt_options, $toggle_ipt_placeholder, $toggle_ipt_desc_primary, false );
 									}	                                                               
 
 									?>

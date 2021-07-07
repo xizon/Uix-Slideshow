@@ -3,7 +3,7 @@
 * Field Type: Image
 *
 */
-class UixSlideshowFormType_Image extends Uix_Slideshow_Custom_Metaboxes {
+class UixSlideshowCmbFormType_Image extends Uix_Slideshow_Custom_Metaboxes {
 	
 	public static function add( $id = '', $title = '', $desc = '', $default = '', $options = '', $placeholder = '', $desc_primary = '', $enable_table = false ) {
 
@@ -32,7 +32,7 @@ class UixSlideshowFormType_Image extends Uix_Slideshow_Custom_Metaboxes {
 
 					<div class="uix-slideshow-cmb__upload-wrapper">
 						<?php
-						Uix_Slideshow_UploadMedia::add( array(
+						Uix_Slideshow_Cmb_UploadMedia::add( array(
 							'title'          => '',
 							'id'             => esc_attr( $id ),
 							'name'           => esc_attr( $id ),

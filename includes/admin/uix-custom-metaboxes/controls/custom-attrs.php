@@ -13,9 +13,9 @@
 		foreach( $_data as $value ) {
 		?>
 			<li>
-				<strong><?php echo esc_html( Uix_Slideshow_Custom_Metaboxes::parse_json_data_from_editor( $value[ 'name' ] ) ); ?></strong>
+				<strong><?php echo esc_html( Uix_Slideshow_Custom_Metaboxes::parse_jsondata_from_editor( $value[ 'name' ] ) ); ?></strong>
 				<p>
-					<?php echo UixSlideshow::kses( Uix_Slideshow_Custom_Metaboxes::parse_json_data_from_editor( $value[ 'value' ] ) ); ?>
+					<?php echo UixSlideshowCmb::kses( Uix_Slideshow_Custom_Metaboxes::parse_jsondata_from_editor( $value[ 'value' ] ) ); ?>
 				</p>
 			</li>
 		<?php
@@ -26,7 +26,7 @@
 
 *
 */
-class UixSlideshowFormType_CustomAttrs extends Uix_Slideshow_Custom_Metaboxes {
+class UixSlideshowCmbFormType_CustomAttrs extends Uix_Slideshow_Custom_Metaboxes {
 	
 	public static function add( $id = '', $title = '', $desc = '', $default = '', $options = '', $placeholder = '', $desc_primary = '', $enable_table = false ) {
 
@@ -122,8 +122,8 @@ class UixSlideshowFormType_CustomAttrs extends Uix_Slideshow_Custom_Metaboxes {
 									foreach( $project_custom_attrs as $value ) {
 
 										if ( is_array( $value ) && sizeof( $value ) > 0 ) {
-											echo str_replace( '{name}', esc_attr( self::parse_json_data_from_editor( $value[ 'name' ] ) ), 
-														 str_replace( '{value}', esc_attr( self::parse_json_data_from_editor( $value[ 'value' ] ) ),
+											echo str_replace( '{name}', esc_attr( self::parse_jsondata_from_editor( $value[ 'name' ] ) ), 
+														 str_replace( '{value}', esc_attr( self::parse_jsondata_from_editor( $value[ 'value' ] ) ),
 														 $temp 
 														));           
 										}

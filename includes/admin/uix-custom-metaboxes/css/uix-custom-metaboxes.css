@@ -2,7 +2,7 @@
  * ************************************************
  * Uix Custom Metaboxes
  *
- * @version		: 1.9 (December 8, 2020)
+ * @version		: 2.0 (July 5, 2021))
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  * @license     : MIT
@@ -808,7 +808,6 @@ table.uix-slideshow-cmb .uix-slideshow-cmb__label {
 .uix-slideshow-cmb__custom-attributes-field {
     padding-top: 3px;
 }
-
 
 .uix-slideshow-cmb__custom-attributes-field input,
 .uix-slideshow-cmb__custom-attributes-field textarea {
