@@ -233,169 +233,161 @@
              * @param  {Boolean} resize            - Determine whether the window size changes.
              * @return {Void}
              */
-            function sliderInit( resize ) {
+            function sliderInit(resize) {
 
-                $sliderWrapper.each( function()  {
+                var $items = $sliderWrapper.find('.uix-slideshow__item'),
+                    $first = $items.first(),
+                    nativeItemW,
+                    nativeItemH,
+                    activated = $sliderWrapper.data('activated');
 
-                    var $this                    = $( this ),
-                        $items                   = $this.find( '.uix-slideshow__item' ),
-                        $first                   = $items.first(),
-                        nativeItemW,
-                        nativeItemH,
-                        activated                = $this.data( 'activated' ); 
-				
-				
-                
-                    if ( typeof activated === typeof undefined || activated === 0 ) {
-                        
-                        var dataAuto                = settings.auto, 
-                            dataTiming              = settings.timing, 
-                            dataLoop                = settings.loop, 
-                            dataControlsPagination  = settings.paginationID, 
-                            dataControlsArrows      = settings.arrowsID,
-                            dataDraggable           = settings.draggable,
-                            dataDraggableCursor     = settings.draggableCursor,                     
-                            dataCountTotal          = settings.countTotalID,
-                            dataCountCur            = settings.countCurID;    
 
-                        
-                        if ( typeof dataAuto === typeof undefined ) dataAuto = false;	
-                        if ( typeof dataTiming === typeof undefined ) dataTiming = 10000;
-                        if ( typeof dataLoop === typeof undefined ) dataLoop = false; 
-                        if ( typeof dataControlsPagination === typeof undefined ) dataControlsPagination = '.uix-advanced-slider__pagination';
-                        if ( typeof dataControlsArrows === typeof undefined || dataControlsArrows == false ) dataControlsArrows = '.uix-advanced-slider__arrows';
-                        if ( typeof dataDraggable === typeof undefined ) dataDraggable = false;
-                        if ( typeof dataDraggableCursor === typeof undefined || dataDraggableCursor == false ) dataDraggableCursor = 'move';
-                        if ( typeof dataCountTotal === typeof undefined ) dataCountTotal = 'p.count em.count';
-                        if ( typeof dataCountCur === typeof undefined ) dataCountCur = 'p.count em.current';      
 
-                        
-                        //Images loaded
-                        //-------------------------------------	
-                        var images = [];
-                        $items.each( function()  {
-                            var imgURL   = $( this ).find( 'img' ).attr( 'src' );
-                            if ( typeof imgURL != typeof undefined ) {
-                                images.push( imgURL );
-                            }
+                if (typeof activated === typeof undefined || activated === 0) {
+
+                    var dataAuto = settings.auto,
+                        dataTiming = settings.timing,
+                        dataLoop = settings.loop,
+                        dataControlsPagination = settings.paginationID,
+                        dataControlsArrows = settings.arrowsID,
+                        dataDraggable = settings.draggable,
+                        dataDraggableCursor = settings.draggableCursor,
+                        dataCountTotal = settings.countTotalID,
+                        dataCountCur = settings.countCurID;
+
+
+                    if (typeof dataAuto === typeof undefined) dataAuto = false;
+                    if (typeof dataTiming === typeof undefined) dataTiming = 10000;
+                    if (typeof dataLoop === typeof undefined) dataLoop = false;
+                    if (typeof dataControlsPagination === typeof undefined) dataControlsPagination = '.uix-advanced-slider__pagination';
+                    if (typeof dataControlsArrows === typeof undefined || dataControlsArrows == false) dataControlsArrows = '.uix-advanced-slider__arrows';
+                    if (typeof dataDraggable === typeof undefined) dataDraggable = false;
+                    if (typeof dataDraggableCursor === typeof undefined || dataDraggableCursor == false) dataDraggableCursor = 'move';
+                    if (typeof dataCountTotal === typeof undefined) dataCountTotal = 'p.count em.count';
+                    if (typeof dataCountCur === typeof undefined) dataCountCur = 'p.count em.current';
+
+
+                    //Images loaded
+                    //-------------------------------------	
+                    var images = [];
+                    $items.each(function () {
+                        var imgURL = $(this).find('img').attr('src');
+                        if (typeof imgURL != typeof undefined) {
+                            images.push(imgURL);
+                        }
+                    });
+
+                    loader(images, loadImage, function () {
+                        $sliderWrapper.addClass('is-loaded');
+                    });
+
+
+
+                    //Autoplay times
+                    var playTimes;
+                    //A function called "timer" once every second (like a digital watch).
+                    $sliderWrapper[0].animatedSlides;
+
+
+                    setTimeout(function () {
+
+                        //The speed of movement between elements.
+                        // Avoid the error that getTransitionDuration takes 0
+                        animDelay = getTransitionDuration($first[0]);
+
+                    }, 100);
+
+
+
+                    //Initialize the first item container
+                    //-------------------------------------		
+                    $items.addClass('next');
+                    setTimeout(function () {
+                        $first.addClass('is-active');
+                    }, animDelay);
+
+
+                    if ($first.find('video').length > 0) {
+
+                        //Returns the dimensions (intrinsic height and width ) of the video
+                        var video = document.getElementById($first.find('video').attr('id')),
+                            videoURL = $first.find('source:first').attr('src');
+
+                        if (typeof videoURL === typeof undefined) videoURL = $first.find('video').attr('src');
+                        $first.find('video').css({
+                            'width': $sliderWrapper.width() + 'px'
                         });
 
-                        loader( images, loadImage, function () {
-                            $sliderWrapper.addClass( 'is-loaded' );
-                        });	
-                        
-                        
 
-                        //Autoplay times
-                        var playTimes;
-                        //A function called "timer" once every second (like a digital watch).
-                        $this[0].animatedSlides;
+                        video.addEventListener('loadedmetadata', function (e) {
+                            $sliderWrapper.css('height', this.videoHeight * ($sliderWrapper.width() / this.videoWidth) + 'px');
 
+                            nativeItemW = this.videoWidth;
+                            nativeItemH = this.videoHeight;
 
-                        setTimeout( function(){
+                            //Initialize all the items to the stage
+                            addItemsToStage($sliderWrapper, nativeItemW, nativeItemH, dataControlsPagination, dataControlsArrows, dataLoop, dataDraggable, dataDraggableCursor, dataCountTotal, dataCountCur);
 
-                            //The speed of movement between elements.
-                            // Avoid the error that getTransitionDuration takes 0
-                            animDelay = getTransitionDuration( $first[0] );
+                        }, false);
 
-                        }, 100 );  
+                        video.src = videoURL;
 
 
+                    } else {
 
-                        //Initialize the first item container
-                        //-------------------------------------		
-                        $items.addClass( 'next' );
-                        setTimeout( function() {
-                            $first.addClass( 'is-active' );
-                        }, animDelay );  
+                        var imgURL = $first.find('img').attr('src');
 
+                        if (typeof imgURL != typeof undefined) {
+                            var img = new Image();
 
-                        if ( $first.find( 'video' ).length > 0 ) {
+                            img.onload = function () {
+                                $sliderWrapper.css('height', $sliderWrapper.width() * (this.height / this.width) + 'px');
 
-                            //Returns the dimensions (intrinsic height and width ) of the video
-                            var video    = document.getElementById( $first.find( 'video' ).attr( 'id' ) ),
-                                videoURL = $first.find( 'source:first' ).attr( 'src' );
-                          
-                            if ( typeof videoURL === typeof undefined ) videoURL = $first.find( 'video' ).attr( 'src' );
-                            $first.find( 'video' ).css({
-                                'width': $this.width() + 'px'
-                            });
-                            
-
-                            video.addEventListener( 'loadedmetadata', function( e ) {
-                                $this.css( 'height', this.videoHeight*($this.width()/this.videoWidth) + 'px' );	
-
-                                nativeItemW = this.videoWidth;
-                                nativeItemH = this.videoHeight;	
+                                nativeItemW = this.width;
+                                nativeItemH = this.height;
 
                                 //Initialize all the items to the stage
-                                addItemsToStage( $this, nativeItemW, nativeItemH, dataControlsPagination, dataControlsArrows, dataLoop, dataDraggable, dataDraggableCursor, dataCountTotal, dataCountCur );
+                                addItemsToStage($sliderWrapper, nativeItemW, nativeItemH, dataControlsPagination, dataControlsArrows, dataLoop, dataDraggable, dataDraggableCursor, dataCountTotal, dataCountCur);
 
-                            }, false);	
+                            };
 
-                            video.src = videoURL;
-
-
-                        } else {
-
-                            var imgURL   = $first.find( 'img' ).attr( 'src' );
-
-                            if ( typeof imgURL != typeof undefined ) {
-                                var img = new Image();
-
-                                img.onload = function() {
-                                    $this.css( 'height', $this.width()*(this.height/this.width) + 'px' );		
-
-                                    nativeItemW = this.width;
-                                    nativeItemH = this.height;	
-
-                                    //Initialize all the items to the stage
-                                    addItemsToStage( $this, nativeItemW, nativeItemH, dataControlsPagination, dataControlsArrows, dataLoop, dataDraggable, dataDraggableCursor, dataCountTotal, dataCountCur );
-
-                                };
-
-                                img.src = imgURL;
-                            }
+                            img.src = imgURL;
+                        }
 
 
 
-                        }	
+                    }
 
 
 
-                        //Autoplay Slider
-                        //-------------------------------------		
-                        if ( !resize ) {
+                    //Autoplay Slider
+                    //-------------------------------------		
+                    if (!resize) {
 
 
 
-                            if ( dataAuto && !isNaN( parseFloat( dataTiming ) ) && isFinite( dataTiming ) ) {
+                        if (dataAuto && !isNaN(parseFloat(dataTiming)) && isFinite(dataTiming)) {
 
-                                sliderAutoPlay( playTimes, dataTiming, dataLoop, $this, dataCountTotal, dataCountCur, dataControlsPagination, dataControlsArrows );
+                            sliderAutoPlay(playTimes, dataTiming, dataLoop, $sliderWrapper, dataCountTotal, dataCountCur, dataControlsPagination, dataControlsArrows);
 
-                                $this.on({
-                                    mouseenter: function() {
-                                        clearInterval( $this[0].animatedSlides );
-                                    },
-                                    mouseleave: function() {
-                                        sliderAutoPlay( playTimes, dataTiming, dataLoop, $this, dataCountTotal, dataCountCur, dataControlsPagination, dataControlsArrows );
-                                    }
-                                });	
+                            $sliderWrapper.on({
+                                mouseenter: function () {
+                                    clearInterval($sliderWrapper[0].animatedSlides);
+                                },
+                                mouseleave: function () {
+                                    sliderAutoPlay(playTimes, dataTiming, dataLoop, $sliderWrapper, dataCountTotal, dataCountCur, dataControlsPagination, dataControlsArrows);
+                                }
+                            });
 
-                            }
+                        }
 
 
-                        }   
+                    }
 
-                        //Prevents front-end javascripts that are activated with AJAX to repeat loading.
-                        $this.data( 'activated', 1 );
+                    //Prevents front-end javascripts that are activated with AJAX to repeat loading.
+                    $sliderWrapper.data('activated', 1);
 
-                    }//endif activated
-  
-                    
-
-                });
-
+                }//endif activated
 
             }
 

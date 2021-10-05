@@ -40,6 +40,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 ### Updates
 
 
+##### = 1.6.3 (October 5, 2021) =
+
+* Tweak: Optimized the performance of core scripts and removed unnecessary traversal.
+
+
 ##### = 1.6.2 (July 5, 2021) =
 
 * Tweak: Performance optimization of dynamic forms (use virtual tree to update dom) for Custom Meta Boxes.
@@ -304,7 +309,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 5.5.*
 - WP 5.6.*
 - WP 5.7.*
-
+- WP 5.8.*
 
 
 ### Screenshot

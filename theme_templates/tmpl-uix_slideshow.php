@@ -24,7 +24,7 @@ $uix_slideshow_query = new WP_Query(
 	)
 );
 
-
+$uix_slideshow_id = uniqid();
 
 $uix_slideshow_opt_animation       = get_option( 'uix_slideshow_opt_animation', 'slide' );
 $uix_slideshow_opt_auto            = get_option( 'uix_slideshow_opt_auto', true );
@@ -70,8 +70,8 @@ $translation_array = array(
           data-timing="<?php echo esc_attr( $translation_array[ 'speed' ] ); ?>" 
           data-count-total="false"
           data-count-now="false"
-          data-controls-pagination=".my-a-slider-pagination-1" 
-          data-controls-arrows=".my-a-slider-arrows-1">
+          data-controls-pagination=".my-a-slider-pagination-<?php echo esc_attr($uix_slideshow_id); ?>" 
+          data-controls-arrows=".my-a-slider-arrows-<?php echo esc_attr($uix_slideshow_id); ?>">
            <div class="uix-slideshow__inner">
 
            <?php
@@ -184,10 +184,10 @@ $translation_array = array(
        
 
        <?php if ( $uix_slideshow_opt_paging_nav ) { ?>
-           <div class="uix-slideshow__pagination my-a-slider-pagination-1"></div>
+           <div class="uix-slideshow__pagination my-a-slider-pagination-<?php echo esc_attr($uix_slideshow_id); ?>"></div>
        <?php } ?>
        <?php if ( $uix_slideshow_opt_arr_nav ) { ?>
-           <div class="uix-slideshow__arrows my-a-slider-arrows-1">
+           <div class="uix-slideshow__arrows my-a-slider-arrows-<?php echo esc_attr($uix_slideshow_id); ?>">
                 <a href="#" class="uix-slideshow__arrows--prev"><?php echo wp_kses( $translation_array[ 'prev_txt' ], wp_kses_allowed_html( 'post' ) ); ?></a>
                 <a href="#" class="uix-slideshow__arrows--next"><?php echo wp_kses( $translation_array[ 'next_txt' ], wp_kses_allowed_html( 'post' ) ); ?></a>
            </div>

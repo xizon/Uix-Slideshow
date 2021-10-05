@@ -5,8 +5,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
-Tested up to: 5.7.2
-Stable tag: 1.6.2
+Tested up to: 5.8.1
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -120,6 +120,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 
 == Changelog ==
+
+
+= 1.6.3 (October 5, 2021) =
+
+* Tweak: Optimized the performance of core scripts and removed unnecessary traversal.
 
 
 = 1.6.2 (July 5, 2021) =
