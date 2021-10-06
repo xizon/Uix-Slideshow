@@ -39,6 +39,10 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+#### = 1.6.4 (October 6, 2021) =
+
+* Fix: Fixed the issue of triggering touch events on the mobile terminal of core script.
+
 
 ##### = 1.6.3 (October 5, 2021) =
 
