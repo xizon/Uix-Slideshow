@@ -300,8 +300,10 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 4.3.*
 - WP 4.4.1
 - WP 4.4.2
-- WP 4.5.*
-- WP 4.6
+- WP 4.5
+- WP 4.5.1
+- WP 4.5.2
+- WP 4.5.3
 - WP 4.6.*
 - WP 4.7.*
 - WP 4.8.*
@@ -314,6 +316,8 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 5.6.*
 - WP 5.7.*
 - WP 5.8.*
+- WP 5.9.*
+- WP 6.0.*
 
 
 ### Screenshot
