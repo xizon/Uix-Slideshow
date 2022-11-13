@@ -5,8 +5,9 @@ Author URI: https://uiux.cc
 Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
-Tested up to: 6.0
-Stable tag: 1.6.4
+Requires PHP: 5.6
+Tested up to: 6.1
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -120,6 +121,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 
 == Changelog ==
+
+
+= 1.6.5 (November 12, 2022) =
+
+* Tweak: Enhance the functionality of the uix custom metabox.
 
 
 = 1.6.4 (October 6, 2021) =

@@ -2,9 +2,6 @@
 /**
 * Field Type: Editor
 *
-* @print: 
-* echo UixSlideshowCmb::kses( get_post_meta( get_the_ID(), 'cus_page_ex_demoname_appear_3', true ) );
-*
 */
 class UixSlideshowCmbFormType_Editor extends Uix_Slideshow_Custom_Metaboxes {
 	

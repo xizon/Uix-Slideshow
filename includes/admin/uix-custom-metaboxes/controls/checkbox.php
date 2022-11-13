@@ -2,9 +2,6 @@
 	/**
 	* Field Type: Checkbox
 	*
-	* @print: 
-	* echo ( get_post_meta( get_the_ID(), 'cus_page_ex_demoname_8', true ) ) ? esc_attr( '_blank' ) : esc_attr( '_self' );
-	*
 	*/
 class UixSlideshowCmbFormType_Checkbox extends Uix_Slideshow_Custom_Metaboxes {
 	

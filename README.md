@@ -39,6 +39,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+
+##### = 1.6.5 (November 12, 2022) =
+
+* Tweak: Enhance the functionality of the uix custom metabox.
+
 #### = 1.6.4 (October 6, 2021) =
 
 * Fix: Fixed the issue of triggering touch events on the mobile terminal of core script.
@@ -318,6 +323,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 5.8.*
 - WP 5.9.*
 - WP 6.0.*
+- WP 6.1.*
 
 
 ### Screenshot

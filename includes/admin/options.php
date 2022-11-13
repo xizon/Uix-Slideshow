@@ -9,6 +9,7 @@ if ( class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
 	
     $custom_metaboxes_uix_slideshow_vars  = array(
 
+        
         //-- Slider Settings
         array(
             'config' => array( 
