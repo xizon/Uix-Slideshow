@@ -324,6 +324,8 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 5.9.*
 - WP 6.0.*
 - WP 6.1.*
+- WP 6.3.*
+- WP 6.4.*
 
 
 ### Screenshot

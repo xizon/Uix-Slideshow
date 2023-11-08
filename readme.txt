@@ -6,7 +6,7 @@ Plugin URL: https://uiux.cc/wp-plugins/uix-slideshow/
 Tags: slideshow, slider, post type, slides, carousel
 Requires at least: 4.2
 Requires PHP: 5.6
-Tested up to: 6.1
+Tested up to: 6.4
 Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
