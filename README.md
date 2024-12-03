@@ -39,6 +39,9 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.6.6 (December 3, 2024) =
+
+* Fix: Security fixes, assign specific permissions to shortcodes.
 
 ##### = 1.6.5 (November 12, 2022) =
 
@@ -326,6 +329,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 6.1.*
 - WP 6.3.*
 - WP 6.4.*
+- WP 6.7.*
 
 
 ### Screenshot

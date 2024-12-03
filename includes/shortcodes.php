@@ -23,7 +23,9 @@ if ( !class_exists( 'UixSlideshow_Shortcode' ) ) {
 			//Search content for shortcodes and filter shortcodes through their hooks.
 			add_filter( 'widget_text', 'do_shortcode' );
 			add_filter( 'the_excerpt', 'do_shortcode' );
-			add_filter( 'comment_text', 'do_shortcode' );
+            add_filter( 'comment_text', array( __CLASS__, 'exclude_specific_shortcodes_in_comments' ) );
+
+            
 		
 			//Add an operation entry in the admin panel
 			add_filter( 'mce_buttons', array( __CLASS__, 'register_buttons' ) );
@@ -50,6 +52,10 @@ if ( !class_exists( 'UixSlideshow_Shortcode' ) ) {
 		 *
 		 */
 		public static function func( $atts, $content = null ) {
+            if ( (!is_single() && !is_page()) && !current_user_can('edit_posts') ) {
+                return '';
+            }
+
 			extract( shortcode_atts( array( 
 				 
 			 ), $atts ) );
@@ -76,7 +82,27 @@ if ( !class_exists( 'UixSlideshow_Shortcode' ) ) {
 	
 		}
 		
-		
+		/*
+		 * Only specific shortcodes are excluded from parsing in the comment section
+		 *
+		 *
+		 */
+		public static function exclude_specific_shortcodes_in_comments( $comment_text ) {
+            $shortcodes_to_exclude = [
+                'uix_slideshow_output'
+            ];
+        
+            foreach ($shortcodes_to_exclude as $shortcode) {
+                if (shortcode_exists($shortcode)) {
+                    remove_shortcode($shortcode);
+                }
+            }
+            $comment_text = do_shortcode($comment_text);
+        
+            return $comment_text;
+		}
+
+
 		/*
 		 * To add buttons to the editor
 		 *
