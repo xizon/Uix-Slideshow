@@ -127,7 +127,7 @@ if ( class_exists( 'Uix_Slideshow_Custom_Metaboxes' ) ) {
                     array(
                         'id'          =>  'uix_slideshow_bsize',
                         'type'        =>  'select',
-                        'title'       =>  esc_html__( 'Size', 'uiuxlabtheme' ),
+                        'title'       =>  esc_html__( 'Size', 'uix-slideshow' ),
                         'default'     =>  'small',
                         'options'     =>  array( 
                                             'value'       => array(

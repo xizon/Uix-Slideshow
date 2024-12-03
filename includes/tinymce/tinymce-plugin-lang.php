@@ -9,8 +9,8 @@ if ( ! class_exists( '_WP_Editors' ) )
 
 function uix_slideshow_custom_tinymce_plugin_translation() {
     $strings = array(
-        'lang_1' => __( 'Uix Slideshow', 'uix_slideshow' ),
-		'lang_2' => __( 'Insert Uix Slideshow', 'uix_slideshow' ),
+        'lang_1' => __( 'Uix Slideshow', 'uix-slideshow' ),
+		'lang_2' => __( 'Insert Uix Slideshow', 'uix-slideshow' ),
 
 		
     );
