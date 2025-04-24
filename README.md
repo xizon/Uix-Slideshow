@@ -39,6 +39,11 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 
 ### Updates
 
+##### = 1.6.7 (April 24, 2025) =
+
+* Fix: Avoid the error "Function _load_textdomain_just_in_time was called incorrectly".
+
+
 ##### = 1.6.6 (December 3, 2024) =
 
 * Fix: Security fixes, assign specific permissions to shortcodes.
@@ -330,6 +335,7 @@ Go to **"Uix Slideshow -> Settings -> General Settings"** or **"Uix Slideshow ->
 - WP 6.3.*
 - WP 6.4.*
 - WP 6.7.*
+- WP 6.8.*
 
 
 ### Screenshot

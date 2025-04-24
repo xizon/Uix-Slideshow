@@ -8,7 +8,7 @@
  * Plugin name: Uix Slideshow
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-slideshow/
  * Description: This plugin is a simple way to build, organize and display slideshow into any existing WordPress theme.  
- * Version:     1.6.6
+ * Version:     1.6.7
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -31,6 +31,15 @@ class UixSlideshow {
 	
 		self::setup_constants();
 		self::includes();
+
+
+        // Avoid the error "Function _load_textdomain_just_in_time was called incorrectly"
+        add_action('admin_init', function() {
+            
+            //Options for custom meta boxes
+            require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/admin/options.php';
+		
+        });
 	
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
@@ -85,10 +94,7 @@ class UixSlideshow {
 		
 		//Custom post type function initialization
 		require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/admin/post-type-init.php';
-        
-		//Options for custom meta boxes
-		require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/admin/options.php';
-		
+
 		//Plugin shortcodes
 		require_once UIX_SLIDESHOW_PLUGIN_DIR.'includes/shortcodes.php';
 
